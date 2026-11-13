@@ -42,3 +42,7 @@ Runtime implementation/qualification evidence is recorded separately.
 managed sessions, explicit human exceptions and evaluated maintained workflows.
 It adds design and verification obligations without changing runtime schemas,
 existing acceptance results or operational permissions.
+
+[Runtime integration v1](runtime-integration-v1.md) defines the explicitly versioned
+core/host library, durable artifact acceptance and delivery outbox extension.
+It leaves Runtime v1 and synthetic fixture semantics unchanged.
