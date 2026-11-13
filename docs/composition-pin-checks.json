@@ -5,9 +5,10 @@
   "composition_base": "e8cd5779968fede213443db13a591c992cd0e183",
   "input_sha256": {
     "composition.lock.json": "d57f23c7bc9928a207f2f5b4946a81d22084e81a9ea5e3c2028b41ddd6fc0154",
-    "STATUS.json": "0c851beb00627a49348cc7d462b547f80569e959ea5990646810b33e91b96cd8",
+    "STATUS.json": "a2be81bd8b9cfd4bebe15e0c5152b19e017a6040d7355a9a53bf14c6a062a43d",
     "docs/IMPLEMENTATION.md": "8dff4a8690ea34d4d696e499b23910f14da61b3837c27d11ed88446c72aa464f",
-    "docs/FIXTURE_KIT.md": "adc1b0c0567c3104af79e44adc86fbaf50ad484a8e6b7a5ce40fda391a84f6de"
+    "docs/FIXTURE_KIT.md": "adc1b0c0567c3104af79e44adc86fbaf50ad484a8e6b7a5ce40fda391a84f6de",
+    "specs/README.md": "0271568767b74a078ef3bae8d4a26080cc149f6ab48d644cceba8f985edbba6f"
   },
   "tool_versions": {
     "python3 --version": "Python 3.9.6",
@@ -69,7 +70,7 @@
           "exit_code": 0,
           "elapsed_seconds": 1.488,
           "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 16 tests\ntest an_old_acceptance_cannot_accept_a_new_revision_with_identical_bytes ... ok\ntest acceptance_of_a_previous_validation_is_rejected ... ok\ntest delivery_before_acceptance_rejects_without_mutation ... ok\ntest admission_distinguishes_transport_replay_revision_and_intent ... ok\ntest a_delivered_receipt_cannot_be_replaced_or_regressed_to_uncertain ... ok\ntest conflicting_payload_host_workspace_policy_and_revision_reuse_are_rejected ... ok\ntest duplicate_delivery_is_not_a_new_reservation ... ok\ntest host_pin_never_fails_over_and_unknown_is_not_eligible ... ok\ntest opaque_ids_reject_empty_whitespace_urls_and_overlong_values ... ok\ntest delivery_id_and_destination_conflicts_reject_in_every_reserved_state ... ok\ntest receipt_or_uncertainty_before_reservation_is_rejected ... ok\ntest transport_namespaces_do_not_alias_event_ids ... ok\ntest lifecycle_requires_validation_acceptance_and_observed_receipt ... ok\ntest state_transition_matrix_rejects_skip_repeat_and_regression ... ok\ntest uncertain_delivery_requires_reconciliation_not_blind_retry ... ok\ntest all_transitions_reject_changed_digest_identity_revision_or_policy ... ok\n\ntest result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 3 tests\ntest failed_delivery_reuse_does_not_register_a_new_task_or_revision ... ok\ntest id_alphabet_and_length_boundaries_are_exhaustive_for_ascii ... ok\ntest every_artifact_action_trace_through_length_seven_matches_transition_table ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s\n\n",
-          "stderr_tail": "   Compiling runspindle-core v0.0.0 (/Users/stc/runspindle/local/implementation/pins/components/core)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.26s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_core-f1aaf100c3bf4d1f)\n     Running tests/contracts.rs (target/debug/deps/contracts-30a000a14cb859f5)\n     Running tests/sequence_contracts.rs (target/debug/deps/sequence_contracts-89478b1d5c369760)\n"
+          "stderr_tail": "   Compiling runspindle-core v0.0.0 ($CHECKOUT/components/core)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.26s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_core-f1aaf100c3bf4d1f)\n     Running tests/contracts.rs (target/debug/deps/contracts-30a000a14cb859f5)\n     Running tests/sequence_contracts.rs (target/debug/deps/sequence_contracts-89478b1d5c369760)\n"
         },
         {
           "command": [
@@ -84,7 +85,7 @@
           "exit_code": 0,
           "elapsed_seconds": 0.606,
           "stdout_tail": "",
-          "stderr_tail": "    Checking runspindle-core v0.0.0 (/Users/stc/runspindle/local/implementation/pins/components/core)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.54s\n"
+          "stderr_tail": "    Checking runspindle-core v0.0.0 ($CHECKOUT/components/core)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.54s\n"
         },
         {
           "command": [
@@ -151,7 +152,7 @@
           "exit_code": 0,
           "elapsed_seconds": 1.193,
           "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
-          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-host v0.0.0 (/Users/stc/runspindle/local/implementation/pins/components/host)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.15s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_host-4177524fc35ab8d6)\n"
+          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-host v0.0.0 ($CHECKOUT/components/host)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.15s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_host-4177524fc35ab8d6)\n"
         },
         {
           "command": [
@@ -208,7 +209,7 @@
           "exit_code": 0,
           "elapsed_seconds": 1.11,
           "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
-          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-browser v0.0.0 (/Users/stc/runspindle/local/implementation/pins/components/browser)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.07s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_browser-7c5c021dcc630b94)\n"
+          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-browser v0.0.0 ($CHECKOUT/components/browser)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.07s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_browser-7c5c021dcc630b94)\n"
         },
         {
           "command": [
@@ -495,5 +496,6 @@
   "github_ci": "not_run",
   "isolated_integration": "not_run",
   "live_acceptance": "not_run",
-  "deployment": "not_run"
+  "deployment": "not_run",
+  "sanitization": "Absolute checkout paths in captured output are normalized to $CHECKOUT; command outcomes and revisions are unchanged."
 }

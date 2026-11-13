@@ -20,8 +20,10 @@
   "shared_fixture_contract": "provisional_test_only",
   "stage": "scaffold",
   "synthetic_fixture_contracts": {
-    "consumer_adoption": "not_run",
+    "consumer_adoption": "locally_tested_python_fixture_consumers",
+    "cross_language_parity": "not_run",
     "evidence": "docs/FIXTURE_KIT.md",
+    "runtime_mapping": "not_run",
     "status": "locally_tested_provisional_bundle",
     "upstream_qualification": "blocked",
     "version": "runspindle.fixture.v1"

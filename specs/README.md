@@ -21,10 +21,13 @@ Preserve explicit authority and unknown outcomes. Distinguish request admission,
 3. Bounded live acceptance in an authorized target.
 4. Failure, restart, uncertain-effect reconciliation and rollback evidence.
 
-None of these product gates has been run for this scaffold.
+Full integrated product gates remain not run. Local bounded component and
+fixture tests are recorded separately from integrated acceptance.
 
 See [system contract](system.md).
 
 A provisional [synthetic fixture contract](../docs/FIXTURE_KIT.md) now has a
 stdlib validator, versioned bundle and local conformance tests. It is test-only;
-component adoption, upstream qualification and system acceptance remain unverified.
+standalone Python consumers are adopted in all seven pinned repositories.
+Runtime mappings, cross-language parity, upstream qualification and system
+acceptance remain unverified.
