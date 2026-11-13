@@ -3,9 +3,9 @@
     "browser": "locally_tested_fixture_consumer_runtime_stub",
     "console": "locally_tested_process_local_projection_and_fixture_consumer",
     "core": "locally_tested_in_memory_model_and_fixture_consumer",
-    "host": "locally_tested_fixture_consumer_runtime_stub",
-    "platform": "locally_tested_fixture_consumer_runtime_unimplemented",
-    "refinery": "locally_tested_process_local_lineage_and_fixture_consumer",
+    "host": "locally_tested_transport_independent_lifecycle_adapter",
+    "platform": "locally_tested_isolated_pinned_temporal_development_lane",
+    "refinery": "locally_tested_process_local_lineage_and_synthetic_evaluation",
     "tether": "locally_tested_fixture_consumer_runtime_unimplemented"
   },
   "dev_deployment": "not_run",

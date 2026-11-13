@@ -1,67 +1,73 @@
 # Bounded implementation progress
 
-The composition remains a scaffold, not an integrated or deployed system.
-`composition.lock.json` and all seven gitlinks are advanced together only to
-component commits merged after separate exact-head review and local checks.
+The composition remains an undeployed development boundary. Component code,
+isolated development integration and full-system acceptance are separate evidence.
+The [runtime.v1 contract](../specs/runtime-v1.md) is specified independently of the
+[test-only fixture format](FIXTURE_KIT.md). No operational acceptance gate is
+changed to unconditional success.
 
-## Implemented component slices
+## Component slices
 
-- **Core:** dependency-free process-local request/revision/host-pin and exact-reference
-  artifact/delivery model. Twenty Rust tests include 97,655 action-prefix checks;
-  three deliberate model mutations are detected. No durable outbox, real hashing,
-  authentication, native launch or Temporal integration is implemented.
-- **Refinery:** original bounded process-local immutable byte/hash lineage,
-  attributable-feedback verifier seam, conflict quarantine and family-grouped
-  locked split. The verifier defaults to deny; it is not an authentication system.
-  No provider, durable store, evaluation, promotion or serving adapter is supplied.
-- **Console:** original process-local identity/revision/freshness projection and
-  cancellable read/passive-view controller, with no control grant. Fourteen Node
-  tests and three detected mutations cover late replies, invalid identity, unknown
-  timestamps and viewer invalidation. No rendered UI, actual desktop or authoritative
-  backend is connected.
+- **Core:** Rust SDK 1.2.0 implements a durable bounded admission-registry workflow,
+  deterministic child operations, explicit revisions, injected default-deny grants
+  and uncertain-effect reconciliation without blind activity retry. The registry
+  retains at most 1,024 deliveries/revisions without eviction and assumes one
+  registry authority per Temporal namespace. Twenty-seven Rust and eleven Python
+  tests, strict offline Clippy/formatting, three registry-code mutations and a real
+  development lane exercise fresh worker/server recovery, revoked authority,
+  cancellation races and four history replays. Native freshness/wire qualification,
+  browser-side fencing and production durability remain blocked. The process-local
+  artifact model does not implement real validation/acceptance/delivery adapters.
+- **Host:** transport-independent bounded Rust lifecycle coordination preserves
+  the selected host/workspace, operation/epoch and actual observed native session.
+  Lost launch replies reconcile before further dispatch. Cancellation request,
+  acknowledgement and observed terminal outcome remain distinct. Nineteen Rust
+  and seven Python tests plus three deliberate mutations exercise scripted peers.
+  This is process-local component evidence; native app-server/macOS/Linux protocol,
+  durable host recovery, capture, text transfer and submission remain unqualified.
+- **Refinery:** immutable byte/hash lineage and family-locked splits feed an
+  offline synthetic evaluator. One reservation/settlement budget covers all
+  baseline/candidate stages and retries, including in-flight cancellation usage.
+  Unknown safety/cost/usage, outstanding reservations, leakage, empty evaluation
+  and malformed values cannot pass. Fifty-three Python tests and three detected
+  implementation mutations run without real providers. DSPy/optimizer/provider
+  compatibility, durable storage, approval, promotion and serving remain absent.
+- **Platform:** official CLI 1.10.0 runs the embedded development server in a
+  disposable isolated internal Docker network with no host gateway or published
+  ports, UI disabled and one per-run SQLite volume. Killed-server restart reuses
+  that volume. Preparation qualifies official source/archive/license bytes;
+  runtime revalidates them and rebuilds the exact image offline before execution.
+  Eighteen tests include five real lane cases and independent cleanup readback;
+  two unsafe mutations are detected. Only Linux arm64 is exercised. Other upstream
+  dependencies, telemetry privacy/readback, distribution and CI remain unqualified.
+- **Console:** the previously pinned process-local identity/revision/freshness
+  projection and passive-view controller remain synthetic component evidence.
+  Actual rendered UI, accessibility and authoritative backend are not integrated.
 
-See the exact pinned component evidence in
-[core](../components/core/docs/IMPLEMENTATION_EVIDENCE.md),
-[refinery](../components/refinery/docs/IMPLEMENTATION_EVIDENCE.md) and
-[console](../components/console/docs/IMPLEMENTATION_EVIDENCE.md). Component tests
-exercise the actual bounded library code with synthetic inputs. They do not
-qualify real upstream adapters or establish durable/restart guarantees.
+Component changes merge in their own repositories first. A separate pin PR moves
+all changed gitlinks and `composition.lock.json` together after independent review.
+[Exact-pin checks](temporal-pin-checks.json) run in a clean isolated checkout;
+unrelated runner-fleet changes in the original workspace are preserved/excluded.
+See the [ledger](IMPLEMENTATION_LEDGER.md) and pinned component evidence for exact
+reviewed heads, merge commits, commands, source hashes and remaining issue criteria.
 
-## Shared synthetic fixture adoption
+## Shared fixture adoption and remaining gates
 
-All seven components vendor their relevant immutable subset of the original
-[test-only fixture kit](FIXTURE_KIT.md) from composition commit
-`e8cd5779968fede213443db13a591c992cd0e183`. Each has a separate reviewed pin for
-source commit, schema and origin/subset manifest digests. Consumers verify all
-bytes before executing the exact verified Python source snapshot; unpinned
-bytecode cannot substitute for it. Golden observations and negative identity,
-version, epoch, receipt and digest vectors run without sibling services.
+All seven components retain immutable relevant subsets of synthetic fixture commit
+`e8cd5779968fede213443db13a591c992cd0e183`. Their Python consumers validate bytes
+before executing exact verified source; untracked bytecode cannot replace it.
+This proves fixture-format conformance, not runtime wire parity or authenticated
+upstream compatibility. Browser and Tether runtime work remains queued.
 
-This establishes Python fixture-format conformance in each source repository,
-not cross-language runtime wire compatibility. Host/browser runtime entrypoints
-still fail closed; Tether/platform runtime adapters are not implemented. The
-fixture schema remains provisional and is not the native app-server, vault,
-viewer, telemetry or Temporal protocol.
+A real-core/real-Temporal composition scenario is a separate development lane.
+Scripted sibling boundaries must be reported explicitly. It cannot establish
+browser credential isolation/fencing, exact artifact delivery, telemetry readback,
+candidate serving, all-component integration or live acceptance. Required
+blocked/not-run gates aggregate to non-success even when the core lane passes.
 
-## Verification and remaining gates
-
-[composition-pin-checks.json](composition-pin-checks.json) records checks rerun
-against the exact new pins, tool versions, source/config hashes and outcomes.
-Local checks are separate from GitHub Actions, isolated integration and live
-acceptance. The repositories expose no required branch status contexts; merges
-use normal exact-head GitHub merges after independent review and required local
-checks. No bypass or protection setting was used or changed.
-
-No qualified isolated runner is visible; GitHub workflows remain unverified.
-Wiring optional refinery behavior tests into CI was rejected because the connected
-OAuth app lacks workflow scope; the optional workflow edit was removed without
-credential changes. Existing self-hosted-only workflows and blocked acceptance
-entrypoints are preserved.
-
-Remaining gates include reviewed authenticated authority/identity/retention/store
-interfaces, durable outbox/epoch fencing and fresh-process recovery; actual
-native/browser/Tether/telemetry/serving adapters; pinned qualified upstreams and
-licenses; rendered accessibility; system integration and distribution. Exact
-private source/dependency and rights dispositions remain necessary for all full
-selected-source lifts. No legacy archival, production activation or deployment
-follows from the local synthetic results.
+GitHub Actions is unverified; no qualified isolated runner was established by this
+tranche. Current rules/readbacks and local checks are recorded separately; no
+protection bypass, runner provisioning or CI/credential expansion is performed.
+Exact private source/dependency/rights dispositions remain required for full source
+migration. No legacy archival, live provider calls, paid evaluation, external
+posting or production activation follows from local synthetic/development results.

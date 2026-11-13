@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-13T19:22:56.146744+00:00",
+  "scope": "Exact merged component pins in clean isolated composition checkout; core pin pending",
+  "evidence_classes": [
+    "component",
+    "isolated_temporal_development_integration"
+  ],
+  "github_ci": "unverified",
+  "live_acceptance": "not_run",
+  "platform": "linux/arm64 Docker engine; macOS controller",
+  "tools": {
+    "python3": "Python 3.9.6",
+    "python3.13": "Python 3.13.18",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "docker_server": "29.9.2"
+  },
+  "checks": [
+    {
+      "component": "host",
+      "commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
+      "command": "python3 tools/check_lifecycle.py",
+      "result": "passed",
+      "rust_tests": 19,
+      "python_tests": 7,
+      "mutations": 3,
+      "format": "passed",
+      "offline_clippy": "passed",
+      "scaffold": "passed",
+      "operational_gate": {
+        "result": "blocked",
+        "exit_code": 78
+      }
+    },
+    {
+      "component": "refinery",
+      "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+      "commands": [
+        "python3.13 -m unittest discover -s tests -q",
+        "python3.13 tools/check_evaluation_mutations.py",
+        "python3 tools/check_scaffold.py"
+      ],
+      "result": "passed",
+      "python_tests": 53,
+      "mutations": 3
+    },
+    {
+      "component": "platform",
+      "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+      "command": "RUNSPINDLE_TEMPORAL_PREPARED=<prepared-cache> python3 -m unittest discover -s tests -v",
+      "result": "passed",
+      "python_tests": 18,
+      "actual_temporal_lane_tests": 5,
+      "skipped": 0,
+      "elapsed_seconds": 31.565,
+      "additional_commands": [
+        "python3 tools/check_temporal_mutations.py",
+        "python3 tools/check_scaffold.py"
+      ],
+      "mutations": 2,
+      "scaffold": "passed"
+    }
+  ]
+}
