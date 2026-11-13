@@ -68,3 +68,9 @@ requirements remain incomplete. The command therefore returns **78**; a failed
 assertion returns **1**. Missing/incompatible prerequisites are blocked, never
 passed by scaffold success. This is bounded development persistence evidence,
 not production durability, browser fencing or completed issue #2 acceptance.
+
+The [recorded two-run evidence](core-temporal-scenario-evidence.json) has matching
+normalized outcomes, source pins, image/toolchain bindings and all staged script
+hashes. Both real-core lanes passed and returned 78 for the blocked system
+aggregate. The unrelated-image negative control also returned blocked/78 before
+execution. Twenty-nine composition tests cover the oracle and setup regressions.

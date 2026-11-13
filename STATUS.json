@@ -15,6 +15,23 @@
   "legacy_archival": "not_started",
   "live_acceptance": "not_run",
   "production_deployment": "not_run",
+  "real_core_temporal_development_lane": {
+    "evidence": "docs/core-temporal-scenario-evidence.json",
+    "native_wire_qualification": "blocked",
+    "not_exercised": [
+      "browser",
+      "delivery",
+      "provider",
+      "console",
+      "refinery"
+    ],
+    "repeat_runs": 2,
+    "scripted_boundaries": [
+      "host"
+    ],
+    "status": "passed",
+    "system_aggregate": "blocked"
+  },
   "runner_capacity": "unverified",
   "runtime_contract": {
     "descriptor": "contracts/runtime-v1.json",
