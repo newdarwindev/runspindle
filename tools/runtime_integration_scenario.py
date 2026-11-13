@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Pinned H02/H07 with composition-owned direct ledger observations; system stays blocked."""
 import argparse
+import contextlib
 import datetime
 import hashlib
 import json
@@ -137,7 +138,12 @@ def records(directory, database, sql):
         + ",".join(p.name for p in directory.iterdir()),
     )
     try:
-        with sqlite3.connect("file:" + str(path) + "?mode=ro", uri=True) as db:
+        # WAL readers need writable coordination files across the Docker bind
+        # mount. mode=rw forbids creating a missing DB; query_only forbids data writes.
+        with contextlib.closing(
+            sqlite3.connect("file:" + str(path) + "?mode=rw", uri=True)
+        ) as db:
+            db.execute("PRAGMA query_only=ON")
             return db.execute(sql).fetchall()
     except sqlite3.Error as error:
         raise AssertionError(

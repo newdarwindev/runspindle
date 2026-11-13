@@ -304,6 +304,24 @@ class Oracles(unittest.TestCase):
             context = delivery_fixture(root, True)
             self.assertEqual(scenario.observe_delivery(root, context)["send_calls"], 0)
 
+    def test_observer_cannot_mutate_existing_ledger_or_create_missing_database(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            delivery_fixture(root)
+            with self.assertRaisesRegex(AssertionError, "readback failed"):
+                scenario.records(root, "core.sqlite", "DELETE FROM acceptances")
+            self.assertEqual(
+                len(
+                    scenario.records(
+                        root, "core.sqlite", "SELECT record FROM acceptances"
+                    )
+                ),
+                1,
+            )
+            with self.assertRaisesRegex(AssertionError, "missing independent ledger"):
+                scenario.records(root, "missing.sqlite", "SELECT 1")
+            self.assertFalse((root / "missing.sqlite").exists())
+
     def test_source_loading_ignores_untracked_bytecode(self):
         with tempfile.TemporaryDirectory() as directory:
             path = pathlib.Path(directory) / "module.py"
