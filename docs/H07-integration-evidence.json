@@ -1,0 +1,100 @@
+{
+  "aggregate": "blocked",
+  "boundary_matrix": {
+    "real": [
+      "core_acceptance_store",
+      "core_outbox",
+      "Temporal"
+    ],
+    "scripted": [
+      "destination_transport"
+    ]
+  },
+  "component_outcomes": [
+    {
+      "accepted_sha256": "acd3de62416a434e6d3628e738f497c6ffde196e6d23888a3f50e8c1f120c39a",
+      "boundary": "lost_ack_after_send",
+      "conflicting_receipt": "durably_fenced",
+      "duplicate": "same_receipt",
+      "receipt_count": 1,
+      "replay": "passed",
+      "send_calls": 1,
+      "state": "delivered"
+    },
+    {
+      "accepted_sha256": "acd3de62416a434e6d3628e738f497c6ffde196e6d23888a3f50e8c1f120c39a",
+      "boundary": "reservation_before_send",
+      "receipt_count": 0,
+      "send_calls": 0,
+      "state": "unknown"
+    }
+  ],
+  "evidence_class": "isolated_integration",
+  "independent_observations": [
+    {
+      "accepted_sha256": "acd3de62416a434e6d3628e738f497c6ffde196e6d23888a3f50e8c1f120c39a",
+      "boundary": "lost_ack_after_send",
+      "conflicting_receipt": "durably_fenced",
+      "receipt_count": 1,
+      "send_calls": 1
+    },
+    {
+      "accepted_sha256": "acd3de62416a434e6d3628e738f497c6ffde196e6d23888a3f50e8c1f120c39a",
+      "boundary": "reservation_before_send",
+      "receipt_count": 0,
+      "send_calls": 0,
+      "state": "unknown"
+    }
+  ],
+  "lane": "H07",
+  "lane_status": "passed",
+  "live_acceptance": "not_run",
+  "normalized_outcome_sha256": "0a4a0bee651499d5493b07727674258f773e53407603399e7fba17af72602a12",
+  "observed_at": "2026-11-13T21:55:17.303566+00:00",
+  "repeat_runs": 2,
+  "schema_version": "runspindle.integration-scenario-report.v1",
+  "seed": 17,
+  "sources": {
+    "components": {
+      "browser": {
+        "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+        "path": "components/browser"
+      },
+      "console": {
+        "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+        "path": "components/console"
+      },
+      "core": {
+        "commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+        "path": "components/core"
+      },
+      "host": {
+        "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+        "path": "components/host"
+      },
+      "platform": {
+        "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+        "path": "components/platform"
+      },
+      "refinery": {
+        "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+        "path": "components/refinery"
+      },
+      "tether": {
+        "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+        "path": "components/tether"
+      }
+    },
+    "composition_head": "720b47e24c8490c4956f50787cefac09708eeb72",
+    "contract": "runspindle.integration.v1"
+  },
+  "system_gates": {
+    "Tether_source_and_transport": "blocked",
+    "browser_fencing": "not_run",
+    "console_projection": "not_run",
+    "full_workflow_acceptance": "blocked",
+    "live_acceptance": "not_run",
+    "native_wire": "blocked",
+    "provider_live": "not_run"
+  }
+}

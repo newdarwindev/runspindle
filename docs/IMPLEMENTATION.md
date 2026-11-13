@@ -8,23 +8,23 @@ changed to unconditional success.
 
 ## Component slices
 
-- **Core:** Rust SDK 1.2.0 implements a durable bounded admission-registry workflow,
-  deterministic child operations, explicit revisions, injected default-deny grants
-  and uncertain-effect reconciliation without blind activity retry. The registry
-  retains at most 1,024 deliveries/revisions without eviction and assumes one
-  registry authority per Temporal namespace. Twenty-seven Rust and eleven Python
-  tests, strict offline Clippy/formatting, three registry-code mutations and a real
-  development lane exercise fresh worker/server recovery, revoked authority,
-  cancellation races and four history replays. Native freshness/wire qualification,
-  browser-side fencing and production durability remain blocked. The process-local
-  artifact model does not implement real validation/acceptance/delivery adapters.
-- **Host:** transport-independent bounded Rust lifecycle coordination preserves
-  the selected host/workspace, operation/epoch and actual observed native session.
-  Lost launch replies reconcile before further dispatch. Cancellation request,
-  acknowledgement and observed terminal outcome remain distinct. Nineteen Rust
-  and seven Python tests plus three deliberate mutations exercise scripted peers.
-  This is process-local component evidence; native app-server/macOS/Linux protocol,
-  durable host recovery, capture, text transfer and submission remain unqualified.
+- **Core:** bounded Temporal admission now has a separately versioned real host
+  library lane pinned to host `6caf08d3`, with complete bindings, native observation
+  sequences/freshness, unknown outcomes and accepted cancellation intent. A separate
+  core-owned SQLite store retains immutable actual artifact bytes and validation/
+  acceptance references; a transactional single-send outbox reconciles exact
+  destination receipts and durably fences contradictions. Forty-eight Rust and
+  sixteen Python tests, strict Clippy/formatting and isolated behavioral mutations
+  pass. H02/H07 each pass twice on the exact prepared binary; the original scripted
+  core remains a separate regression suite. Native/provider/Tether, production
+  authority, browser fencing and full-system/live acceptance remain unqualified.
+- **Host:** the real Rust lifecycle adapter supports Memory and bounded SQLite
+  storage with transactional compare-and-swap ownership. Dispatch/cancel intent,
+  complete bindings, native identity/sequences and pending receipts survive fresh
+  processes; concurrent owners cannot duplicate launches. Twenty-seven Rust and
+  seven Python tests plus duplicate-dispatch/session-rebinding behavioral mutations
+  pass. Native app-server compatibility, capture/text transfer/submission, production
+  authority and filesystem/power-loss durability remain blocked or unqualified.
 - **Refinery:** immutable byte/hash lineage and family-locked splits feed an
   offline synthetic evaluator. One reservation/settlement budget covers all
   baseline/candidate stages and retries, including in-flight cancellation usage.
@@ -74,3 +74,24 @@ protection bypass, runner provisioning or CI/credential expansion is performed.
 Exact private source/dependency/rights dispositions remain required for full source
 migration. No legacy archival, live provider calls, paid evaluation, external
 posting or production activation follows from local synthetic/development results.
+
+## Current H02/H07 tranche
+
+[Runtime integration v1](../specs/runtime-integration-v1.md) and
+[composition verification](RUNTIME_INTEGRATION.md) qualify real core + pinned host
+library + Temporal, and real artifact acceptance/outbox + Temporal, respectively.
+Native and destination peers remain scripted. Composition-owned query-only
+observers directly read independent peer ledgers and coordinator stores; they
+check call order/counts, observed identity/outcomes, actual byte digests and
+persistent conflict fences. Both lanes pass two seeded runs with matching
+normalized outcomes; both system aggregates remain blocked. See
+[H02 evidence](H02-integration-evidence.json), [H07 evidence](H07-integration-evidence.json)
+and [review/merge evidence](runtime-integration-pin-evidence.json).
+
+Platform PR8 merged readiness preparation separately; the composition platform
+pin stays `96eb567`. No runners or services were installed. The structural-only
+contracts CI remains unchanged after the existing OAuth workflow-scope limitation;
+`tools/check_library_pins.py` is a separate fail-closed local/runtime prerequisite.
+Remote CI and live acceptance remain unverified/not run. Source/rights dependency
+closure and native-produced artifact provenance remain explicit gaps; no issue or
+legacy repository was closed or archived by these bounded offline lanes.
