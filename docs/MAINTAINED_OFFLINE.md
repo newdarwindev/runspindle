@@ -77,3 +77,5 @@ remains separate. Run the full composition unit suite in a separate composition
 worktree with the reviewed seven pins; running its pin checks against the
 unrelated platform checkout correctly fails closed. The current checkout's
 scaffold and candidate lanes can run without modifying that checkout.
+
+Concurrent remote mains have since advanced to a separate Strix/CI tranche, including newer composition pins. These candidates retain the instructed base and do not qualify those newer revisions. Reconcile that work, then independently review and retest the exact merged heads before any pin upgrade. Draft dependency reviews: [contract #40](https://github.com/newdarwindev/runspindle/pull/40), [core #15](https://github.com/newdarwindev/runspindle-core/pull/15), [refinery #14](https://github.com/newdarwindev/runspindle-refinery/pull/14), [platform #13](https://github.com/newdarwindev/runspindle-platform/pull/13).

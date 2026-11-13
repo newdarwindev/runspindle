@@ -1,0 +1,214 @@
+{
+  "version": "runspindle.maintained-scenarios.v1",
+  "status": "blocked",
+  "seed": 17,
+  "composition_head": "aa90a41bb6f9ae0d93a926e9b997d86fcc0e10cc",
+  "sources": {
+    "core": {
+      "base": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+      "commit": "dc15b85ba5dd972d83f0739d17194095e21d27ba"
+    },
+    "host": {
+      "base": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+      "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352"
+    },
+    "browser": {
+      "base": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5"
+    },
+    "tether": {
+      "base": "6003f2315146d05d77918024d1bc81049a78a312",
+      "commit": "6003f2315146d05d77918024d1bc81049a78a312"
+    },
+    "refinery": {
+      "base": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+      "commit": "14d0c985fb30ef353df9b9769fe8773e5ec6869e"
+    },
+    "console": {
+      "base": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9"
+    },
+    "platform": {
+      "base": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+      "commit": "089337e8ca41e96fbfbcd5d79c52f0816330f036"
+    }
+  },
+  "contract_sha256": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68",
+  "lanes": {
+    "H10": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "output_revisions": 13,
+        "examples": 11,
+        "quarantine": [
+          "conflicting_feedback",
+          "conflicting_feedback",
+          "missing_or_changed_output"
+        ],
+        "dataset_sha256": "06b168869f3d84c58b70a4ae4d50cc34a99760a5e6b417b785c9cb5b9bd47043",
+        "split_sha256": "6e2bc3617edc0791305b6037ec9f12e9c35801daa753b1abd831609df062eace"
+      },
+      "outcome_sha256": "986b51ca6bd65ac8f28f4b0caf9c35e0e66a0e1b6fc87812268e89ea077ec8fd"
+    },
+    "H11": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "lineage": {
+          "output_revisions": 13,
+          "examples": 11,
+          "quarantine": [
+            "conflicting_feedback",
+            "conflicting_feedback",
+            "missing_or_changed_output"
+          ],
+          "dataset_sha256": "06b168869f3d84c58b70a4ae4d50cc34a99760a5e6b417b785c9cb5b9bd47043",
+          "split_sha256": "6e2bc3617edc0791305b6037ec9f12e9c35801daa753b1abd831609df062eace"
+        },
+        "serving": {
+          "attempts": 8,
+          "load_order": [
+            "candidate-0",
+            "candidate-1",
+            "rollback"
+          ],
+          "active_sha256": "bdb03c2d116aea0a8c3f6723a2ae1d26ca275e3e5991322b458550b9fa0280ff",
+          "recovery": "fresh_process_after_actual_load_before_registry_ack",
+          "dspy": "real_local_synthetic_LM",
+          "monetary_cost": "not_measured"
+        }
+      },
+      "outcome_sha256": "43d81fde37bdbd84028c8b93340874f74a8a47ee34a476a2a6b01328acafa584"
+    },
+    "H12": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "installed_files": {
+          "browser/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "browser/component.json": "f015f505797a11d75bd1fe948f738f70d0ba66a43b592a2ac3d1a908cbb3b785",
+          "console/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "console/component.json": "c84cd81eaf377c85e2dfc2a13a2674061fa4a1bcd86b243d1b3a19089ecc8e81",
+          "contracts/maintained-evidence-v1.json": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68",
+          "core/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "core/component.json": "9850d59ba260f2369ebcc82e6c4cb50aa5094d2d420900cdb9ff0b78027e8e73",
+          "development/README.txt": "b62f0398338eedb09d6c27a7e447767e91b3421ed2cafb57542be0c16913d894",
+          "host/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "host/component.json": "f20c60916e043841dd645c05ea545578e4b32cac8bc9fbe46be7d90004d036eb",
+          "platform/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "platform/component.json": "d82e1d3e47405801742a8f771a2399d5abfef80efcb84bbab8b8506330b8225a",
+          "refinery/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "refinery/component.json": "9087375ff81753004c13a9112981c92081cb83737e2f350f89a141725ef0741c",
+          "tether/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
+          "tether/component.json": "c341012bedecdd118ecfd523c1b3c3f026f344afb73cd3b4b9e383134f9cfb84"
+        },
+        "manifest_sha256": "abf9298201009540cadc06e269cd72af2c1e64e08212c3281204fa96e3c58d67",
+        "target": "linux/arm64",
+        "unsupported": [
+          "full_product",
+          "native",
+          "Tether",
+          "browser",
+          "console",
+          "provider",
+          "production_services"
+        ]
+      },
+      "outcome_sha256": "c5e0bc8f9d6463cba662b75317063d2e8c7894d8a3b5a57bac5a6eefa345e473"
+    }
+  },
+  "required_gates": {
+    "independent_final_head_review": "pending",
+    "composition_pin_upgrade": "not_run",
+    "Langfuse": "blocked",
+    "native_wire": "blocked",
+    "Tether": "blocked",
+    "browser": "deferred",
+    "console": "deferred",
+    "provider_live": "deferred",
+    "paid_evaluation": "deferred",
+    "full_product_release": "blocked",
+    "live_acceptance": "not_run"
+  },
+  "boundaries": {
+    "H10": {
+      "real": [
+        "refinery_SQLite"
+      ],
+      "scripted": [
+        "Tether_observations",
+        "consent_and_actor_authority"
+      ]
+    },
+    "H11": {
+      "real": [
+        "refinery_SQLite",
+        "pinned_DSPy_Predict",
+        "local_serving_load_readback_rollback"
+      ],
+      "scripted": [
+        "LM_completions",
+        "approval_authority"
+      ]
+    },
+    "H12": {
+      "real": [
+        "development_metadata_bundle",
+        "Linux_arm64_disposable_filesystem"
+      ],
+      "unsupported": [
+        "product_adapters",
+        "services"
+      ]
+    }
+  },
+  "timestamp": "2026-11-13T23:20:33.513011+00:00",
+  "execution_source_hashes": {
+    "tools/maintained_lane_worker.py": "1e835d91e9197192f339c4463ac40d8709f4603ff90680299a5859072e36ff84",
+    "tools/maintained_scenarios.py": "91ee6e1b5e49152a1743d9be7b75732441a89e0a4e7d0853c81cbae26e0fd274",
+    "tests/test_maintained_scenarios.py": "68d49bd684691128bba5391fba34f175976768be17877b2792ee1b10c713ed2d",
+    "specs/maintained-scenarios-v1.json": "a45d4a370c50d2178a8bcddf646fc68e2df6671376f2441b79efec078a99b94c",
+    "contracts/maintained-evidence-v1.json": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68"
+  },
+  "verification": {
+    "composition_unit": "46 passed in isolated worktree with reviewed seven pins",
+    "current_checkout_pin_check": "expected failure on unrelated platform checkout; no reset applied",
+    "scaffold": "passed",
+    "core": "49 Rust/16 Python; strict Clippy/fmt/scaffold; admission/H02/H07 each repeated twice",
+    "host": "27 Rust/7 Python; strict Clippy/fmt/scaffold; source pin unchanged",
+    "refinery": "70 Python;4durable+3evaluation mutations;actual offline DSPy twice;scaffold",
+    "platform": "27host preparedTemporal tests with3Linux skips;5separateLinux installtests;2mutations;Collector privacy/queue twice;scaffold"
+  },
+  "H08": {
+    "status": "blocked",
+    "partial_evidence": "platform:docs/maintained-offline-tests.json",
+    "qualified": "synthetic_standard_Collector_file_diagnostics_only",
+    "Langfuse": "blocked_MinIO_dependency_artifact_access",
+    "native_producer": "blocked"
+  },
+  "artifact": {
+    "path": "local/maintained-artifacts/development.bundle",
+    "sha256": "fe254df4d76c213958166c0019e72c1a79984d4f3c6812a449c4a9597b62df6f",
+    "scope": "development_metadata_only; no product binaries/services"
+  },
+  "draft_reviews": {
+    "contract": "https://github.com/newdarwindev/runspindle/pull/40",
+    "core": "https://github.com/newdarwindev/runspindle-core/pull/15",
+    "refinery": "https://github.com/newdarwindev/runspindle-refinery/pull/14",
+    "platform": "https://github.com/newdarwindev/runspindle-platform/pull/13"
+  },
+  "remote_main_drift": {
+    "composition": "c973374b6b57608b16ed647bf55b501bad40ed01",
+    "core": "c73dcc2a4cb527400c45efe2877af6a58cacacf5",
+    "refinery": "f3964f613edc90a0affd4a9e9059408da54f121e",
+    "platform": "9cb7530ee9084c2d2843961c7da9ba979d828b0a",
+    "scope": "Concurrent Strix/CI work advanced mains and component pins after the instructed base. Not merged/rebased or qualified by this tranche; reconcile and retest exact final heads before merging."
+  },
+  "live_acceptance": "not_run",
+  "production_activation": "not_run",
+  "issues_closed": []
+}

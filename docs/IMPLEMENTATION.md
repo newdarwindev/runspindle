@@ -95,3 +95,7 @@ contracts CI remains unchanged after the existing OAuth workflow-scope limitatio
 Remote CI and live acceptance remain unverified/not run. Source/rights dependency
 closure and native-produced artifact provenance remain explicit gaps; no issue or
 legacy repository was closed or archived by these bounded offline lanes.
+
+## Additional offline candidates
+
+[Maintained workflow candidates](MAINTAINED_OFFLINE.md) add bounded core admission checks, durable refinery/DSPy/local serving and standard Collector/development-metadata qualification. [Exact candidate observations](maintained-scenario-evidence.json) and [240 original criterion mappings](offline-issue-audit.json) remain distinct from the reviewed pins above. Independent review, concurrent-main reconciliation, Langfuse/native/Tether and full-product gates remain blocked/pending. No issues closed.

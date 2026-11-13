@@ -14,6 +14,20 @@
   "isolated_integration": "not_run",
   "legacy_archival": "not_started",
   "live_acceptance": "not_run",
+  "maintained_offline_candidates": {
+    "H08": "blocked_Langfuse_dependency_and_native;partial_standard_Collector_file_diagnostics_passed",
+    "H10": "passed_candidate_refinery_SQLite_scripted_Tether",
+    "H11": "passed_candidate_SQLite_DSPy_local_serving_recovery_and_rollback",
+    "H12": "passed_candidate_disposable_development_metadata_bundle_only",
+    "composition_pins": "unchanged",
+    "concurrent_remote_mains": "require_separate_reconciliation_and_requalification",
+    "contract": "runspindle.maintained-evidence.v1",
+    "evidence": "docs/maintained-scenario-evidence.json",
+    "independent_review": "pending",
+    "repeat_runs": 2,
+    "sources": "specs/maintained-scenarios-v1.json",
+    "system_aggregate": "blocked"
+  },
   "production_deployment": "not_run",
   "real_core_temporal_development_lane": {
     "evidence": "docs/core-temporal-scenario-evidence.json",
