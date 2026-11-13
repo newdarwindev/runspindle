@@ -14,7 +14,8 @@
     "artifacts": 1024,
     "artifact_bytes": 1048576,
     "acceptances": 1024,
-    "deliveries": 1024
+    "deliveries": 1024,
+    "validations": 1024
   },
   "artifact_reference": [
     "binding",

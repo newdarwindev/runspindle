@@ -49,7 +49,10 @@ Binding + artifact ID + positive artifact revision. Store bounded actual bytes a
 an immutable BLOB, compute SHA-256 from those bytes, and return that exact reference.
 A duplicate identity with changed bytes conflicts. A validation records the exact
 artifact reference, validator revision and policy revision, plus passed/failed.
-The injected validator receives the actual stored bytes; a caller's digest or
+Validation records are immutable: the artifact/validator/policy key cannot be
+overwritten with another result. Acceptance records likewise cannot change their
+artifact, validation, validator or policy binding. The injected validator receives
+the actual stored bytes; a caller's digest or
 boolean is not validation. Acceptance requires a passing validation of that exact
 revision and policy and an injected authorized acceptance verifier, default deny.
 The verifier sees the complete binding, artifact, validator and policy references.
@@ -85,9 +88,10 @@ H02: real core + immutable pinned host Rust library + real pinned Temporal,
 scripted native peer. H07: real core acceptance/outbox stores + real Temporal,
 scripted destination. Each lane runs independently and fails closed on missing
 prepared artifacts. No provider, browser, native protocol, Tether or live acceptance
-is implied. Component stores have at most 1,024 operations/artifacts/acceptances/
+is implied. Component stores have at most 1,024 operations/artifacts/validations/acceptances/
 deliveries, 4,096 queued host receipts, and 1 MiB per artifact. Full stores reject
-new identities while preserving existing records. All SQLite dependencies, bundled
+new identities while preserving existing records; exact duplicate validations
+reconcile at capacity and changed results conflict. All SQLite dependencies, bundled
 SQLite bytes, licenses and toolchain evidence are pinned before execution.
 
 Fresh-process recovery, concurrent ownership, independent call/order and digest
