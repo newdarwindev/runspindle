@@ -197,7 +197,10 @@ def verify_core_image(image, root=ROOT):
         raise Blocked('core dependency inventory differs')
     def docker(*args):
         return subprocess.run(['docker', *args], capture_output=True, text=True, check=True, timeout=30)
-    metadata = json.loads(docker('image', 'inspect', image).stdout)[0]
+    try:
+        metadata = json.loads(docker('image', 'inspect', image).stdout)[0]
+    except subprocess.CalledProcessError as exc:
+        raise Blocked('prepared core image unavailable: ' + image) from exc
     labels = metadata['Config'].get('Labels') or {}
     if labels.get('org.runspindle.binary_sha256') != evidence['binary_sha256']:
         raise Blocked('core image binary label differs')
@@ -215,6 +218,13 @@ def verify_core_image(image, root=ROOT):
     finally:
         docker('rm', '--force', name)
     return evidence
+
+
+def setup_lane(lane_module, prepared):
+    try:
+        return lane_module.Lane(prepared)
+    except subprocess.CalledProcessError as exc:
+        raise Blocked('prepared Temporal lane prerequisite unavailable') from exc
 
 
 def run(platform_prepared, core_image):
@@ -269,7 +279,7 @@ def run(platform_prepared, core_image):
             raise Blocked('scenario deadline: ' + label)
 
         save_script()
-        with lane_module.Lane(platform_prepared) as lane:
+        with setup_lane(lane_module, platform_prepared) as lane:
             mounts = [{'source': directory, 'target': '/effects', 'read_only': False}]
 
             def client(command):

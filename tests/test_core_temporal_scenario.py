@@ -135,6 +135,17 @@ class ScenarioOracle(unittest.TestCase):
             with self.assertRaises(scenario.Blocked):
                 scenario.validate_manifest(bad)
 
+    def test_setup_artifact_failure_blocks_but_executed_command_failure_fails(self):
+        import subprocess
+        failure = subprocess.CalledProcessError(1, ['docker', 'image', 'inspect', 'missing'])
+        class MissingPreparedLane:
+            @staticmethod
+            def Lane(prepared):
+                raise failure
+        with self.assertRaisesRegex(scenario.Blocked, 'prerequisite unavailable'):
+            scenario.setup_lane(MissingPreparedLane, 'prepared')
+        self.assertEqual(scenario.exception_status(failure), 'failed')
+
     def test_current_pinned_inventory_is_exact(self):
         inventory = scenario.inventory()
         self.assertEqual(set(inventory['components']), {'core', 'host', 'browser', 'tether', 'refinery', 'console', 'platform'})
