@@ -1,17 +1,116 @@
 {
   "version": "runspindle.runtime.v1",
   "status": "bounded_development_contract",
-  "ids": {"pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$", "max_bytes": 128},
-  "digest": {"algorithm": "sha256", "encoding": "lowercase_hex", "bytes": 32},
-  "binding": ["task_id", "revision", "operation_id", "policy_revision", "host_id", "workspace_id", "lease_epoch"],
-  "admission": ["delivery_namespace", "delivery_id", "task_id", "revision", "predecessor_revision", "normalized_digest", "policy_revision", "host_id", "workspace_id", "lease_epoch", "grant_ref"],
+  "ids": {
+    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+    "max_bytes": 128
+  },
+  "digest": {
+    "algorithm": "sha256",
+    "encoding": "lowercase_hex",
+    "bytes": 32
+  },
+  "binding": [
+    "task_id",
+    "revision",
+    "operation_id",
+    "policy_revision",
+    "host_id",
+    "workspace_id",
+    "lease_epoch"
+  ],
+  "admission": [
+    "delivery_namespace",
+    "delivery_id",
+    "task_id",
+    "revision",
+    "operation_id",
+    "predecessor_revision",
+    "normalized_digest",
+    "policy_revision",
+    "host_id",
+    "workspace_id",
+    "lease_epoch",
+    "grant_ref"
+  ],
   "registry_capacity": 1024,
-  "operation_states": ["scheduled", "acknowledged", "unknown", "observed_completed", "observed_failed", "observed_cancelled"],
-  "reconciliation_outcomes": ["observed_completed", "observed_failed", "observed_cancelled", "observed_running", "proven_absent", "unknown"],
-  "cancellation_states": ["not_requested", "requested", "acknowledged", "observed_terminal"],
-  "native_observation": ["binding", "native_session_id", "sequence", "observed_at_ms", "state"],
-  "evaluation_budget_units": ["calls", "tokens", "elapsed_ms", "cost_microunits"],
-  "evidence_classes": ["synthetic_contract", "component", "isolated_integration", "live_acceptance"],
+  "operation_states": [
+    "scheduled",
+    "acknowledged",
+    "unknown",
+    "observed_completed",
+    "observed_failed",
+    "observed_cancelled"
+  ],
+  "reconciliation_outcomes": [
+    "observed_completed",
+    "observed_failed",
+    "observed_cancelled",
+    "observed_running",
+    "proven_absent",
+    "unknown"
+  ],
+  "cancellation_states": [
+    "not_requested",
+    "requested",
+    "acknowledged",
+    "observed_terminal"
+  ],
+  "native_observation": [
+    "binding",
+    "native_session_id",
+    "sequence",
+    "observed_at_ms",
+    "state"
+  ],
+  "evaluation_budget_units": [
+    "calls",
+    "tokens",
+    "elapsed_ms",
+    "cost_microunits"
+  ],
+  "evidence_classes": [
+    "synthetic_contract",
+    "component",
+    "isolated_integration",
+    "live_acceptance"
+  ],
   "authority_default": "deny",
-  "fixture_format": "separate:runspindle.fixture.v1"
+  "fixture_format": "separate:runspindle.fixture.v1",
+  "evaluation_input": [
+    "version",
+    "manifest_digest",
+    "baseline_digest",
+    "candidate_digest",
+    "config_digest",
+    "budget"
+  ],
+  "evaluation_config": [
+    "metric_id",
+    "metric_version",
+    "provider_id",
+    "optimizer_id",
+    "currency",
+    "cost_scale",
+    "thresholds"
+  ],
+  "evaluation_thresholds": [
+    "min_quality",
+    "max_quality_regression",
+    "max_latency_ms",
+    "max_cost_microunits",
+    "require_safe"
+  ],
+  "evaluation_output": [
+    "version",
+    "manifest_digest",
+    "baseline_digest",
+    "candidate_digest",
+    "config_digest",
+    "status",
+    "reasons",
+    "usage",
+    "baseline_metrics",
+    "candidate_metrics"
+  ]
 }

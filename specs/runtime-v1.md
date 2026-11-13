@@ -34,7 +34,10 @@ Epoch comparison in core is not proof that a browser/provider has fenced effects
 Admission fields are listed in the descriptor, plus the version envelope. The
 `(delivery_namespace, delivery_id)` key binds exactly one admitted request. The
 `(task_id, revision)` key binds normalized digest, policy, explicit host/workspace
-and lease epoch. Repeated identical delivery returns the original job binding;
+lease epoch and caller-provided initial `operation_id`. This operation ID must
+be unique within a task revision and immutable for its initial effect; a different
+operation ID for an existing delivery/revision conflicts. Subsequent effects must
+have distinct IDs with separately verified authority. Repeated identical delivery returns the original job binding;
 a changed field conflicts. Another delivery of the same exact revision returns
 the same job. No text similarity merges distinct task IDs.
 
@@ -115,6 +118,19 @@ resets per stage/retry. Cancellation is checked before every call and after retu
 in-flight consumption remains charged. Concurrent calls must share reservations.
 Unknown quality/safety/cost/time, missing results, exhausted budget or cancellation
 blocks the gate. Thresholds are explicit locked config, not fabricated defaults.
+
+The descriptor freezes evaluation input/output field names. `manifest_digest`
+locks the exact lineage dataset and split. `config_digest` locks canonical config
+bytes including metric ID/version, provider and optimizer config IDs, currency and
+positive integer cost scale (microunits per currency unit). Thresholds contain
+minimum quality, maximum quality regression versus baseline, maximum latency in
+milliseconds, maximum measured cost in microunits and `require_safe=true`. Quality
+metrics/thresholds must be finite numbers in the locked metric's declared range;
+all integer units follow the value rules above. Native mappings may expose richer
+threshold types but must hash every effective gate argument; an unhashed override
+is invalid. Results echo all five input digests/version, cumulative usage,
+baseline/candidate metrics, status and explicit blocking reasons. Result status is
+`passed`, `blocked` or `failed`; missing/unknown metrics remain null and cannot pass.
 
 ## Evidence and acceptance
 
