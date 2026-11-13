@@ -1218,7 +1218,10 @@
     "full_system_acceptance": "blocked",
     "source_migration": "not_advanced",
     "runner_provisioning": "not_performed",
-    "production_activation": "not_performed"
+    "production_activation": "not_performed",
+    "original_open_issues_verified": 51,
+    "issue_state_observed_at": "2026-11-13T19:57:39.472488+00:00",
+    "original_issue_closures_by_this_tranche": 0
   },
   "previous_tranche": {
     "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",
