@@ -128,10 +128,21 @@ def load_component(core, relative, name):
 
 
 def records(directory, database, sql):
-    with sqlite3.connect(
-        "file:" + str(directory / database) + "?mode=ro", uri=True
-    ) as db:
-        return db.execute(sql).fetchall()
+    path = directory / database
+    check(
+        path.is_file(),
+        "missing independent ledger: "
+        + database
+        + "; available="
+        + ",".join(p.name for p in directory.iterdir()),
+    )
+    try:
+        with sqlite3.connect("file:" + str(path) + "?mode=ro", uri=True) as db:
+            return db.execute(sql).fetchall()
+    except sqlite3.Error as error:
+        raise AssertionError(
+            database + " independent readback failed: " + str(error)
+        ) from error
 
 
 def observe_host(directory, context):
