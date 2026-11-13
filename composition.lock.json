@@ -19,28 +19,28 @@
       "component": "browser",
       "repository": "newdarwindev/runspindle-browser",
       "path": "components/browser",
-      "commit": "8c4bf30ce7bc80fb06b38d3b7e3219ee400916c4",
+      "commit": "0260b3cb7c41c06576b2e3805621cec65a997111",
       "url": "https://github.com/newdarwindev/runspindle-browser.git"
     },
     {
       "component": "tether",
       "repository": "newdarwindev/runspindle-tether",
       "path": "components/tether",
-      "commit": "cb378341a7b978fe475c5e9e59f5b5da5791cdea",
+      "commit": "700c45cbcb8626d3f041d8424569f8978baad8cb",
       "url": "https://github.com/newdarwindev/runspindle-tether.git"
     },
     {
       "component": "refinery",
       "repository": "newdarwindev/runspindle-refinery",
       "path": "components/refinery",
-      "commit": "28c560ff5b0ec6c1b7c8ec1f9fce1323b5190a1c",
+      "commit": "e6aa648a001a817514480da7a6ab564339402b5d",
       "url": "https://github.com/newdarwindev/runspindle-refinery.git"
     },
     {
       "component": "console",
       "repository": "newdarwindev/runspindle-console",
       "path": "components/console",
-      "commit": "3c39d60e0dd526b187159b8d02e006608e8a0605",
+      "commit": "8d76a3919b019539aa4201294fef88cf2de645eb",
       "url": "https://github.com/newdarwindev/runspindle-console.git"
     },
     {

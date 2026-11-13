@@ -14,40 +14,147 @@
       "status": "adapted_spec"
     },
     {
-      "destination": "docs/research",
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/runspindle-paper.pdf",
       "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
-      "modifications": "Not imported; full dependencies, content and rights review remains.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-002",
-      "status": "pending_review"
+      "status": "adapted_document"
     },
     {
-      "destination": "docs/presentations",
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/argument.pdf",
       "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
-      "modifications": "Not imported; full dependencies, content and rights review remains.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-003",
-      "status": "pending_review"
+      "status": "adapted_document"
     },
     {
-      "destination": "docs/presentations",
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/fleet.pdf",
       "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
-      "modifications": "Not imported; full dependencies, content and rights review remains.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-004",
-      "status": "pending_review"
+      "status": "adapted_document"
     },
     {
-      "destination": "docs/research/economics",
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/economics.md",
       "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
-      "modifications": "Not imported; full dependencies, content and rights review remains.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-005",
-      "status": "pending_review"
+      "status": "adapted_document"
+    },
+    {
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/browser.html",
+      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
+      "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
+      "source_description": "Selected legacy design source; exact source mapping retained privately.",
+      "source_id": "SRC-009",
+      "status": "adapted_document"
+    },
+    {
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/vision.html",
+      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
+      "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
+      "source_description": "Selected legacy design source; exact source mapping retained privately.",
+      "source_id": "SRC-010",
+      "status": "adapted_document"
+    },
+    {
+      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "destination": "docs/marketing/workflow-refinery.pdf",
+      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "migration_status": "partial",
+      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "published_adaptations": [
+        "docs/marketing"
+      ],
+      "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
+      "source_description": "Selected legacy design source; exact source mapping retained privately.",
+      "source_id": "SRC-013",
+      "status": "adapted_document"
+    },
+    {
+      "destination": "docs/migration/technical-coverage.md",
+      "license_review": "No dependency code copied into this coverage table.",
+      "modifications": "Capability coverage summary only; implementation references and detailed adaptations belong to the component repositories.",
+      "rights_basis": "Owner-selected adaptation; original rights retained.",
+      "source_description": "Selected legacy technical source; exact mapping retained privately.",
+      "source_id": "SRC-006",
+      "status": "adapted_spec"
+    },
+    {
+      "destination": "docs/migration/technical-coverage.md",
+      "license_review": "No dependency code copied into this coverage table.",
+      "modifications": "Capability coverage summary only; implementation references and detailed adaptations belong to the component repositories.",
+      "rights_basis": "Owner-selected adaptation; original rights retained.",
+      "source_description": "Selected legacy technical source; exact mapping retained privately.",
+      "source_id": "SRC-007",
+      "status": "adapted_spec"
+    },
+    {
+      "destination": "docs/migration/technical-coverage.md",
+      "license_review": "No dependency code copied into this coverage table.",
+      "modifications": "Capability coverage summary only; implementation references and detailed adaptations belong to the component repositories.",
+      "rights_basis": "Owner-selected adaptation; original rights retained.",
+      "source_description": "Selected legacy technical source; exact mapping retained privately.",
+      "source_id": "SRC-008",
+      "status": "adapted_spec"
+    },
+    {
+      "destination": "docs/migration/technical-coverage.md",
+      "license_review": "No dependency code copied into this coverage table.",
+      "modifications": "Capability coverage summary only; implementation references and detailed adaptations belong to the component repositories.",
+      "rights_basis": "Owner-selected adaptation; original rights retained.",
+      "source_description": "Selected legacy technical source; exact mapping retained privately.",
+      "source_id": "SRC-011",
+      "status": "adapted_spec"
+    },
+    {
+      "destination": "docs/migration/technical-coverage.md",
+      "license_review": "No dependency code copied into this coverage table.",
+      "modifications": "Capability coverage summary only; implementation references and detailed adaptations belong to the component repositories.",
+      "rights_basis": "Owner-selected adaptation; original rights retained.",
+      "source_description": "Selected legacy technical source; exact mapping retained privately.",
+      "source_id": "SRC-012",
+      "status": "adapted_spec"
     }
   ]
 }

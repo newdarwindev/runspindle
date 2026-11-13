@@ -1,0 +1,21 @@
+{
+  "artifacts": [
+    {
+      "implementation_evidence": false,
+      "kind": "adapted_technical_document",
+      "path": "docs/migration/technical-coverage.md",
+      "sha256": "7a3a347ac48a3ec7752a45662e85a1aaf9ee3f88fae82a37a1d0b4cb1f6107be",
+      "source_ids": [
+        "SRC-001",
+        "SRC-006",
+        "SRC-007",
+        "SRC-008",
+        "SRC-011",
+        "SRC-012"
+      ],
+      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+    }
+  ],
+  "migration_status": "partial",
+  "schema_version": 1
+}

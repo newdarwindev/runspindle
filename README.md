@@ -34,3 +34,7 @@ runspindle/
 Clone with `git clone --recurse-submodules https://github.com/newdarwindev/runspindle.git`. Component Git links and `composition.lock.json` must agree.
 
 See the [per-repository workflow table](docs/CI_PLAN.md) and [migration gates](docs/MIGRATION.md).
+
+The [technical coverage map](docs/migration/technical-coverage.md) distinguishes preserved requirements and references from unverified implementation.
+
+New conceptual documentation is in [docs/marketing](docs/marketing/README.md). Its published PDFs are ReportLab adaptations; TeX compilation and runtime acceptance are not established.

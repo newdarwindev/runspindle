@@ -13,7 +13,7 @@ assert s['live_acceptance'] == 'not_run'
 p = json.loads((root/'provenance.json').read_text())
 for item in p['sources']:
     assert re.fullmatch(r'SRC-[0-9]{3}', item['source_id'])
-    assert item['status'] in ['adapted_spec','pending_review','reference_only']
+    assert item['status'] in ['adapted_spec','adapted_document','pending_review','reference_only']
 for path in (root/'.github/workflows').glob('*.yml'):
     text = path.read_text()
     assert 'runs-on: [self-hosted, linux, x64, runspindle-isolated]' in text, path
@@ -37,4 +37,5 @@ for item in lock['components']:
     assert modules[section]['path'] == path and modules[section]['url'] == item['url']
     entry = subprocess.check_output(['git','ls-files','--stage','--',path],cwd=root,text=True)
     assert entry.startswith('160000 ' + item['commit'] + ' 0\t'), path
+subprocess.run([sys.executable,str(root/'tools/check_artifacts.py')],check=True)
 print(json.dumps({'status':'passed','evidence_class':'scaffold_structure','repository':c['repository'],'product_acceptance':'not_run'},sort_keys=True))
