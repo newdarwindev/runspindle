@@ -53,7 +53,8 @@
   "checks": {
     "host": "27 Rust tests, 7 Python fixtures, Clippy/fmt/scaffold and 2 behavioral mutations",
     "core": "48 Rust tests,16 Python tests, strict Clippy/fmt/scaffold; H02/H07 twice each and original scripted-core Temporal regression; isolated runtime/artifact/outbox mutations",
-    "platform": "32 Python tests including all 5 prepared Temporal cases, scaffold/fixtures/mutations/Black/Ruff; no runner installed"
+    "platform": "32 Python tests including all 5 prepared Temporal cases, scaffold/fixtures/mutations/Black/Ruff; no runner installed",
+    "composition": "32 tests, scaffold and explicit fail-closed check_library_pins.py passed"
   },
   "prepared_runtime": {
     "schema_version": 1,
@@ -85,8 +86,13 @@
     "isolation": "runtime must use platform internal network; no published ports; pull never",
     "operational_acceptance": "not_run"
   },
-  "github_ci": "unverified; no required checks/protections/rulesets at component readback",
+  "github_ci": "unverified; existing workflow unchanged; explicit library alignment is not run by structural-only contracts CI",
   "composition_H02_H07": "pending separate scenario integration PR",
   "native_Tether_live": "blocked",
-  "production_activation": "not_run"
+  "production_activation": "not_run",
+  "workflow_scope": {
+    "status": "existing OAuth app lacks workflow scope",
+    "resolution": "workflow edit was not applied; retained original structural CI and added separate fail-closed local/runtime-lane alignment check",
+    "permissions": "unchanged"
+  }
 }

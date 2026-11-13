@@ -37,11 +37,5 @@ for item in lock['components']:
     assert modules[section]['path'] == path and modules[section]['url'] == item['url']
     entry = subprocess.check_output(['git','ls-files','--stage','--',path],cwd=root,text=True)
     assert entry.startswith('160000 ' + item['commit'] + ' 0\t'), path
-# Composition's host gitlink and the core library/lock source must agree.
-by_name = {item['component']: item for item in lock['components']}
-host_revision = by_name['host']['commit']
-core = root/by_name['core']['path']
-assert re.search(r'runspindle-host\s*=\s*\{[^\n]*rev\s*=\s*"' + host_revision + '"', (core/'Cargo.toml').read_text()), 'core/host library pin mismatch'
-assert '?rev=' + host_revision + '#' + host_revision in (core/'Cargo.lock').read_text(), 'Cargo.lock host pin mismatch'
 subprocess.run([sys.executable,str(root/'tools/check_artifacts.py')],check=True)
 print(json.dumps({'status':'passed','evidence_class':'scaffold_structure','repository':c['repository'],'product_acceptance':'not_run'},sort_keys=True))
