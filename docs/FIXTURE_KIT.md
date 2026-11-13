@@ -28,7 +28,8 @@ the tests and this document. Test seed is `90210`; fixture observation time is
 | Bundle integrity and 17 unittest cases, including negative subcases | passed locally | synthetic fixture conformance |
 | Standalone subsets for all seven components, fresh Python processes, repeated byte-identical exports | passed locally | synthetic fixture packaging |
 | Structural and published artifact checks | passed locally | scaffold structure / artifact integrity |
-| Actual producer/consumer adoption and cross-language validators | not-run | component contract conformance |
+| Standalone Python fixture subsets adopted in seven pinned repositories | passed locally; see composition-pin-checks.json | synthetic fixture conformance |
+| Runtime producer/consumer mappings and cross-language validators | not-run | component runtime conformance |
 | Pinned upstream/native/browser/Temporal compatibility | blocked: adapters and pins absent | isolated integration |
 | Durable restart, authenticated authority, live acceptance, deployment | not-run | separate product gates |
 
@@ -148,9 +149,10 @@ resource deadline, fault points, real/fake matrix and cleanup owner independentl
 
 ## Remaining issue #1 work
 
-Consumer pin PRs and actual producer/consumer parity in all seven repositories
-remain open. Runtime adapter mappings cannot be agreed or qualified from these
-fixtures alone. Stateful scenario implementations, real store concurrency and
+Seven component consumer pin PRs have merged and their exact source revisions are
+bound by composition.lock.json. Actual runtime producer/consumer parity and
+cross-language validators remain open. Runtime adapter mappings cannot be agreed
+or qualified from these fixtures alone. Stateful scenario implementations, real store concurrency and
 restart, upstream pins and bounded integration belong to subsequent component
 and composition work. This change therefore references #1 without closing it.
 It does not complete source migration, authorize legacy archival or establish

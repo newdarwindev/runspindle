@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "evidence_class": "local_pinned_component_and_fixture_tests",
+  "observed_at": "2026-11-13T18:50:56.648360+00:00",
+  "composition_base": "e8cd5779968fede213443db13a591c992cd0e183",
+  "input_sha256": {
+    "composition.lock.json": "d57f23c7bc9928a207f2f5b4946a81d22084e81a9ea5e3c2028b41ddd6fc0154",
+    "STATUS.json": "a2be81bd8b9cfd4bebe15e0c5152b19e017a6040d7355a9a53bf14c6a062a43d",
+    "docs/IMPLEMENTATION.md": "8dff4a8690ea34d4d696e499b23910f14da61b3837c27d11ed88446c72aa464f",
+    "docs/FIXTURE_KIT.md": "adc1b0c0567c3104af79e44adc86fbaf50ad484a8e6b7a5ce40fda391a84f6de",
+    "specs/README.md": "0271568767b74a078ef3bae8d4a26080cc149f6ab48d644cceba8f985edbba6f"
+  },
+  "tool_versions": {
+    "python3 --version": "Python 3.9.6",
+    "python3.13 --version": "Python 3.13.18",
+    "cargo -V": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "rustc -V": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "node --version": "v26.13.0",
+    "npm --version": "11.20.0"
+  },
+  "components": {
+    "core": {
+      "commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.04,
+          "stdout_tail": "{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-core\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.284,
+          "stdout_tail": "",
+          "stderr_tail": "test_bytecode_cache_cannot_replace_the_verified_source (test_shared_fixtures.SharedFixtures) ... ok\ntest_changed_output_cannot_change_the_independent_oracle (test_shared_fixtures.SharedFixtures) ... ok\ntest_consumer_needs_no_sibling_checkout_or_git_metadata (test_shared_fixtures.SharedFixtures) ... ok\ntest_extra_files_are_not_part_of_the_reviewed_subset (test_shared_fixtures.SharedFixtures) ... ok\ntest_fresh_process_checks_only_the_standalone_copy (test_shared_fixtures.SharedFixtures) ... ok\ntest_manifest_or_fixture_tampering_fails_before_import (test_shared_fixtures.SharedFixtures) ... ok\ntest_missing_independent_receipt_cannot_assert_delivery (test_shared_fixtures.SharedFixtures) ... ok\ntest_network_is_denied_before_dns_or_socket_creation (test_shared_fixtures.SharedFixtures) ... ok\ntest_pin_rejects_floating_commit_and_changed_origin (test_shared_fixtures.SharedFixtures) ... ok\ntest_pinned_core_subset_and_every_negative_vector (test_shared_fixtures.SharedFixtures) ... ok\ntest_vector_checker_detects_a_permissive_broken_validator (test_shared_fixtures.SharedFixtures) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.181s\n\nOK\n"
+        },
+        {
+          "command": [
+            "cargo",
+            "fmt",
+            "--all",
+            "--",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.32,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "cargo",
+            "test",
+            "--offline",
+            "--all-targets"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.488,
+          "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 16 tests\ntest an_old_acceptance_cannot_accept_a_new_revision_with_identical_bytes ... ok\ntest acceptance_of_a_previous_validation_is_rejected ... ok\ntest delivery_before_acceptance_rejects_without_mutation ... ok\ntest admission_distinguishes_transport_replay_revision_and_intent ... ok\ntest a_delivered_receipt_cannot_be_replaced_or_regressed_to_uncertain ... ok\ntest conflicting_payload_host_workspace_policy_and_revision_reuse_are_rejected ... ok\ntest duplicate_delivery_is_not_a_new_reservation ... ok\ntest host_pin_never_fails_over_and_unknown_is_not_eligible ... ok\ntest opaque_ids_reject_empty_whitespace_urls_and_overlong_values ... ok\ntest delivery_id_and_destination_conflicts_reject_in_every_reserved_state ... ok\ntest receipt_or_uncertainty_before_reservation_is_rejected ... ok\ntest transport_namespaces_do_not_alias_event_ids ... ok\ntest lifecycle_requires_validation_acceptance_and_observed_receipt ... ok\ntest state_transition_matrix_rejects_skip_repeat_and_regression ... ok\ntest uncertain_delivery_requires_reconciliation_not_blind_retry ... ok\ntest all_transitions_reject_changed_digest_identity_revision_or_policy ... ok\n\ntest result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 3 tests\ntest failed_delivery_reuse_does_not_register_a_new_task_or_revision ... ok\ntest id_alphabet_and_length_boundaries_are_exhaustive_for_ascii ... ok\ntest every_artifact_action_trace_through_length_seven_matches_transition_table ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s\n\n",
+          "stderr_tail": "   Compiling runspindle-core v0.0.0 ($CHECKOUT/components/core)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.26s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_core-f1aaf100c3bf4d1f)\n     Running tests/contracts.rs (target/debug/deps/contracts-30a000a14cb859f5)\n     Running tests/sequence_contracts.rs (target/debug/deps/sequence_contracts-89478b1d5c369760)\n"
+        },
+        {
+          "command": [
+            "cargo",
+            "clippy",
+            "--offline",
+            "--all-targets",
+            "--",
+            "-D",
+            "warnings"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.606,
+          "stdout_tail": "",
+          "stderr_tail": "    Checking runspindle-core v0.0.0 ($CHECKOUT/components/core)\n    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.54s\n"
+        },
+        {
+          "command": [
+            "python3",
+            "tools/check_model_mutations.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.886,
+          "stdout_tail": "{\"evidence_class\": \"local_synthetic_mutation_tests\", \"mutations\": [{\"mutation\": \"uncertain_becomes_retryable\", \"outcome\": \"detected\", \"test\": \"every_artifact_action_trace_through_length_seven_matches_transition_table\"}, {\"mutation\": \"id_accepts_129_bytes\", \"outcome\": \"detected\", \"test\": \"id_alphabet_and_length_boundaries_are_exhaustive_for_ascii\"}, {\"mutation\": \"conflict_consumes_intent_revision\", \"outcome\": \"detected\", \"test\": \"failed_delivery_reuse_does_not_register_a_new_task_or_revision\"}], \"product_acceptance\": \"not_run\", \"status\": \"passed\", \"temporary_copy_cleanup\": \"completed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.024,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "host": {
+      "commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.038,
+          "stdout_tail": "{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-host\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.485,
+          "stdout_tail": "",
+          "stderr_tail": "test_changed_identity_and_unknown_outcome_cannot_pass (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_corruption_and_pin_rewrite_fail_before_loading_code (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_fixed_pin_and_golden_identity (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_published_positive_and_negative_vectors (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_standalone_with_no_sibling_and_denied_network (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_unknown_fields_and_boolean_revisions_reject (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_unreviewed_bytecode_cannot_replace_verified_source (test_shared_fixtures.ConsumerFixtures) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.380s\n\nOK\n"
+        },
+        {
+          "command": [
+            "cargo",
+            "test",
+            "--offline",
+            "--all-targets"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.193,
+          "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-host v0.0.0 ($CHECKOUT/components/host)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.15s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_host-4177524fc35ab8d6)\n"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.016,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "browser": {
+      "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.12,
+          "stdout_tail": "{\"evidence_class\": \"reference_bytes_and_syntax\", \"files\": 2, \"status\": \"passed\", \"execution\": \"not_run\"}\n{\"evidence_class\": \"artifact_integrity\", \"files\": 6, \"status\": \"passed\", \"runtime_acceptance\": \"not_run\"}\n{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-browser\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.485,
+          "stdout_tail": "",
+          "stderr_tail": "test_changed_identity_and_unknown_outcome_cannot_pass (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_corruption_and_pin_rewrite_fail_before_loading_code (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_fixed_pin_and_golden_identity (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_published_positive_and_negative_vectors (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_standalone_with_no_sibling_and_denied_network (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_unknown_fields_and_boolean_revisions_reject (test_shared_fixtures.ConsumerFixtures) ... ok\ntest_unreviewed_bytecode_cannot_replace_verified_source (test_shared_fixtures.ConsumerFixtures) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.388s\n\nOK\n"
+        },
+        {
+          "command": [
+            "cargo",
+            "test",
+            "--offline",
+            "--all-targets"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.11,
+          "stdout_tail": "\nrunning 1 test\ntest tests::unimplemented_activation_fails_closed ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr_tail": "    Blocking waiting for file lock on package cache\n    Blocking waiting for file lock on package cache\n   Compiling runspindle-browser v0.0.0 ($CHECKOUT/components/browser)\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.07s\n     Running unittests src/lib.rs (target/debug/deps/runspindle_browser-7c5c021dcc630b94)\n"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.019,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "tether": {
+      "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.079,
+          "stdout_tail": "{\"evidence_class\": \"artifact_integrity\", \"files\": 3, \"status\": \"passed\", \"runtime_acceptance\": \"not_run\"}\n{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-tether\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "tools/check_shared_fixtures.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.06,
+          "stdout_tail": "{\"component\": \"tether\", \"evidence_class\": \"synthetic_fixture_conformance\", \"golden\": 3, \"integration\": \"not_run\", \"live_acceptance\": \"not_run\", \"negative_vectors\": 6, \"runtime_adapter\": \"not_implemented\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.123,
+          "stdout_tail": "",
+          "stderr_tail": "test_all_pinned_vectors_without_network (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_corrupt_validator_rejected_before_import (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_matching_unreviewed_bytecode_cache_is_never_executed (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_self_rehashed_tampering_does_not_update_reviewed_pin (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_unexpected_bundle_file_rejected (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_wrong_origin_pin_rejected (test_shared_fixtures.SharedFixtureTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.031s\n\nOK\n"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.019,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "platform": {
+      "commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.042,
+          "stdout_tail": "{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-platform\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "tools/check_shared_fixtures.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.104,
+          "stdout_tail": "{\"component\": \"platform\", \"evidence_class\": \"synthetic_fixture_conformance\", \"golden\": 2, \"integration\": \"not_run\", \"live_acceptance\": \"not_run\", \"negative_vectors\": 4, \"runtime_adapter\": \"not_implemented\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.186,
+          "stdout_tail": "",
+          "stderr_tail": "test_all_pinned_vectors_without_network (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_corrupt_validator_rejected_before_import (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_matching_unreviewed_bytecode_cache_is_never_executed (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_self_rehashed_tampering_does_not_update_reviewed_pin (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_unexpected_bundle_file_rejected (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_wrong_origin_pin_rejected (test_shared_fixtures.SharedFixtureTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.053s\n\nOK\n"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.026,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "refinery": {
+      "commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.313,
+          "stdout_tail": "{\"evidence_class\": \"reference_bytes_and_syntax\", \"files\": 1, \"status\": \"passed\", \"execution\": \"not_run\"}\n{\"evidence_class\": \"artifact_integrity\", \"files\": 5, \"status\": \"passed\", \"runtime_acceptance\": \"not_run\"}\n{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-refinery\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3.13",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.597,
+          "stdout_tail": "",
+          "stderr_tail": "test_every_refinery_identity_field_is_bound_to_independent_request) ... ok\ntest_loader_compiles_verified_snapshot_without_rereading_source (test_shared_fixtures.SharedFixtureTests.test_loader_compiles_verified_snapshot_without_rereading_source) ... ok\ntest_missing_extra_and_malformed_fields_reject (test_shared_fixtures.SharedFixtureTests.test_missing_extra_and_malformed_fields_reject) ... ok\ntest_pinned_loader_rejects_tampering_and_consistent_manifest_rewrite (test_shared_fixtures.SharedFixtureTests.test_pinned_loader_rejects_tampering_and_consistent_manifest_rewrite) ... ok\ntest_pinned_subset_inventory_and_source_integrity (test_shared_fixtures.SharedFixtureTests.test_pinned_subset_inventory_and_source_integrity) ... ok\ntest_planted_bytecode_cache_never_replaces_verified_source (test_shared_fixtures.SharedFixtureTests.test_planted_bytecode_cache_never_replaces_verified_source) ... ok\ntest_refinery_unknown_outcomes_never_become_success (test_shared_fixtures.SharedFixtureTests.test_refinery_unknown_outcomes_never_become_success) ... ok\ntest_serving_needs_observed_receipt_and_exact_approved_bytes (test_shared_fixtures.SharedFixtureTests.test_serving_needs_observed_receipt_and_exact_approved_bytes) ... ok\ntest_standalone_subset_runs_without_siblings_and_without_network (test_shared_fixtures.SharedFixtureTests.test_standalone_subset_runs_without_siblings_and_without_network) ... ok\n\n----------------------------------------------------------------------\nRan 33 tests in 0.167s\n\nOK\n"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.02,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    },
+    "console": {
+      "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "checks": [
+        {
+          "command": [
+            "python3",
+            "tools/check_scaffold.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.089,
+          "stdout_tail": "{\"evidence_class\": \"artifact_integrity\", \"files\": 6, \"status\": \"passed\", \"runtime_acceptance\": \"not_run\"}\n{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle-console\", \"status\": \"passed\"}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.141,
+          "stdout_tail": "",
+          "stderr_tail": "test_matching_bytecode_cache_is_rejected_without_executing_it (test_shared_fixtures.ExecutableSnapshotTests) ... ok\ntest_validator_compiles_verified_snapshot_if_source_changes_after_verification (test_shared_fixtures.ExecutableSnapshotTests) ... ok\ntest_corrupted_validator_fails_before_its_code_can_execute (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_every_negative_vector_rejects_with_declared_error (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_positive_console_subset_with_independent_synthetic_receipts (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_self_rehashed_manifest_still_fails_independent_pin (test_shared_fixtures.SharedFixtureTests) ... ok\ntest_unexpected_file_or_symlink_rejected (test_shared_fixtures.SharedFixtureTests) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.047s\n\nOK\n"
+        },
+        {
+          "command": [
+            "npm",
+            "test"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.676,
+          "stdout_tail": "\n> runspindle-console@0.0.0 test\n> node --test test/*.test.js\n\n\u2714 timestamps are observed, bounded and reevaluated with the injected clock (1.097334ms)\n\u2714 all explicit observation states preserve identity and never enable execution (1.145291ms)\n\u2714 old, duplicate, conflicting and mismatched updates preserve the accepted observation (0.827042ms)\n\u2714 an event gap remains unknown until a newer complete snapshot (0.334416ms)\n\u2714 task switch aborts request; late success and failure cannot populate the next task (0.312584ms)\n\u2714 latest overlapping request wins, including an adapter that ignores abort (0.139041ms)\n\u2714 missing APIs, empty results, malformed results and backend failure are explicit (0.243375ms)\n\u2714 passive opening is deduplicated and never invokes a control boundary (0.1865ms)\n\u2714 a delayed view is closed after navigation; stale or denied viewer URLs cause zero calls (0.183084ms)\n\u2714 untrusted URL and text values cannot become active content through rendering helpers (0.425709ms)\n\u2714 task and observation bounds are enforced; returned objects cannot mutate accepted state (0.200041ms)\n\u2714 identities require own data properties and cannot drop inherited identity during copying (0.203791ms)\n\u2714 revised or revoked view source invalidates pending passive admission and closes stale handles (0.2725ms)\n\u2714 unimplemented state remains explicit (0.475834ms)\n\u2139 tests 14\n\u2139 suites 0\n\u2139 pass 14\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 240.273084\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "python3",
+            "tools/check_projection_mutations.py"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 1.059,
+          "stdout_tail": "{\"evidence_class\": \"synthetic_component_mutation\", \"observations\": [{\"exit_code\": 1, \"mutation\": \"duplicate_revision\", \"status\": \"detected\"}, {\"exit_code\": 1, \"mutation\": \"wrong_identity\", \"status\": \"detected\"}, {\"exit_code\": 1, \"mutation\": \"unknown_is_fresh\", \"status\": \"detected\"}]}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.024,
+          "stdout_tail": "",
+          "stderr_tail": ""
+        }
+      ],
+      "operational_negative_control": {
+        "exit_code": 78,
+        "output": "{\"gate\": \"composition-pin-verification\", \"reason\": \"Implementation, qualified local capacity and acceptance evidence are not yet available.\", \"status\": \"blocked\"}"
+      }
+    }
+  },
+  "composition_checks": [
+    {
+      "command": [
+        "python3",
+        "fixtures/v1/fixturekit.py"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "{\"status\": \"passed\", \"evidence_class\": \"synthetic_fixture_integrity\", \"integration\": \"not-run\", \"live_acceptance\": \"not-run\"}\n",
+      "stderr_tail": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": "test_all_boundary_golden_oracles (test_fixturekit.Fixtures) ... ok\ntest_all_consumers_export_without_siblings_and_verify_in_fresh_process (test_fixturekit.Fixtures) ... ok\ntest_bool_negative_and_oversized_integer_rejected (test_fixturekit.Fixtures) ... ok\ntest_bundle_integrity_and_exact_artifact_bytes (test_fixturekit.Fixtures) ... ok\ntest_bundle_tampering_and_extra_files (test_fixturekit.Fixtures) ... ok\ntest_clock_ids_spy_reset_and_cleanup_after_failure (test_fixturekit.Fixtures) ... ok\ntest_duplicate_json_keys_rejected (test_fixturekit.Fixtures) ... ok\ntest_export_never_overwrites_existing_directory (test_fixturekit.Fixtures) ... ok\ntest_fabricated_receipts_not_accepted (test_fixturekit.Fixtures) ... ok\ntest_fault_inventory_covers_required_boundaries (test_fixturekit.Fixtures) ... ok\ntest_id_bounds_and_origin_restriction (test_fixturekit.Fixtures) ... ok\ntest_incomplete_required_lanes_fail_closed (test_fixturekit.Fixtures) ... ok\ntest_invalid_identity_combinations (test_fixturekit.Fixtures) ... ok\ntest_published_mutations_fail_independent_oracle (test_fixturekit.Fixtures) ... ok\ntest_required_identity_and_extra_data_rejected (test_fixturekit.Fixtures) ... ok\ntest_serialization_and_message_bounds (test_fixturekit.Fixtures) ... ok\ntest_unknown_events_versions_states_and_timestamp (test_fixturekit.Fixtures) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.407s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/check_scaffold.py"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "{\"evidence_class\": \"artifact_integrity\", \"files\": 19, \"status\": \"passed\", \"runtime_acceptance\": \"not_run\"}\n{\"evidence_class\": \"scaffold_structure\", \"product_acceptance\": \"not_run\", \"repository\": \"newdarwindev/runspindle\", \"status\": \"passed\"}\n",
+      "stderr_tail": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ],
+  "github_ci": "not_run",
+  "isolated_integration": "not_run",
+  "live_acceptance": "not_run",
+  "deployment": "not_run",
+  "sanitization": "Absolute checkout paths in captured output are normalized to $CHECKOUT; command outcomes and revisions are unchanged."
+}
