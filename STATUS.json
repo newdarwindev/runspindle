@@ -40,6 +40,12 @@
     "status": "specified",
     "version": "runspindle.runtime.v1"
   },
+  "runtime_integration_contract": {
+    "descriptor": "contracts/runtime-integration-v1.json",
+    "specification": "specs/runtime-integration-v1.md",
+    "status": "specified_unimplemented",
+    "version": "runspindle.integration.v1"
+  },
   "selected_source_migration": "partial",
   "shared_fixture_contract": "provisional_test_only",
   "stage": "scaffold",
