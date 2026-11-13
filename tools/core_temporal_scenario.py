@@ -341,7 +341,7 @@ def main():
     result['observed_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     pathlib.Path(args.report).write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
     print(json.dumps({key: result[key] for key in ('real_core_lane', 'aggregate')}))
-    raise SystemExit(0 if result['aggregate'] == 'passed' else 78)
+    raise SystemExit({'passed': 0, 'failed': 1, 'blocked': 78}[result['aggregate']])
 
 
 if __name__ == '__main__':
