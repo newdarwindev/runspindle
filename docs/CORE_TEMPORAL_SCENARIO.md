@@ -10,7 +10,7 @@ and keeps all required system gates blocked/not-run.
 ## Preparation and offline run
 
 Use the exact committed Linux arm64 pins, Docker with isolated gateway support,
-Python 3.11+ and Cargo for preparation. Do not select another version or service
+Python 3.9+ (controller tested on 3.9.6) and Cargo for preparation. Do not select another version or service
 when a prerequisite is missing. See the pinned component instructions in
 [platform](../components/platform/docs/TEMPORAL_LANE.md) and
 [core](../components/core/docs/TEMPORAL_RUNTIME.md).
