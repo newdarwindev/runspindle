@@ -155,6 +155,7 @@ def run(platform_prepared, core_image):
                    'crash_after_launch': True, 'terminal': None, 'cancel_acknowledged': True}
     script = [base_script]
     observed = {}
+    script_hashes = []
     with tempfile.TemporaryDirectory(prefix='runspindle-synthetic-effects-') as directory:
         effects = pathlib.Path(directory)
 
@@ -162,6 +163,7 @@ def run(platform_prepared, core_image):
             temporary = effects / 'script.next'
             temporary.write_text(json.dumps(script, sort_keys=True))
             temporary.replace(effects / 'script.json')
+            script_hashes.append(sha256(effects / 'script.json'))
 
         def calls():
             path = effects / 'calls.jsonl'
@@ -241,11 +243,12 @@ def run(platform_prepared, core_image):
             observed['replay'] = json.loads(replay.stdout.strip().splitlines()[-1])
             observed['calls_after_replay'] = len(calls())
             assertions = assert_observations(observed, admission)
-            resources = {'container': lane.server, 'network': lane.network, 'volume': lane.volume}
+            resources = [('container', lane.server), ('network', lane.network), ('volume', lane.volume)]
+            resources += [('container', name) for name in sorted(lane.clients)]
             toolchains = {'core_image': core_image, 'temporal_image': lane.image,
                           'platform_prepared': lane.metadata,
                           'core_dependencies_sha256': sha256(core_dependencies)}
-        for kind, name in resources.items():
+        for kind, name in resources:
             if lane_module.docker(kind, 'inspect', name, check=False).returncode == 0:
                 raise AssertionError('scenario cleanup left resource: ' + kind)
         result = {'schema_version': 'runspindle.scenario-report.v1',
@@ -253,7 +256,11 @@ def run(platform_prepared, core_image):
                   'real_core_lane': 'passed', 'aggregate': aggregate('passed', config['required_system_gates']),
                   'system_gates': config['required_system_gates'], 'boundary_matrix': config['boundary_matrix'],
                   'source': sources, 'toolchains': toolchains, 'assertions': assertions,
-                  'cleanup': 'independently_absent', 'observations': observed}
+                  'cleanup': 'independently_absent', 'observations': observed,
+                  'script_sha256s': script_hashes}
+        normalized = {key: result[key] for key in ('scenario_id', 'boundary_matrix', 'assertions', 'system_gates')}
+        result['normalized_outcome_sha256'] = hashlib.sha256(
+            json.dumps(normalized, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
         return result
 
 
