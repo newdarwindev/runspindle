@@ -112,6 +112,17 @@ class ScenarioOracle(unittest.TestCase):
             with self.assertRaisesRegex(scenario.Blocked, 'does not match'):
                 scenario.verify_core_image('sha256:' + 'b' * 64, root)
 
+    def test_polling_partial_peer_record_never_qualifies_final_evidence(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory) / 'calls.jsonl'
+            path.write_bytes(b'{"action":"launch"}\n{"action":')
+            self.assertEqual(scenario.read_peer_calls(path), [{'action': 'launch'}])
+            with self.assertRaisesRegex(AssertionError, 'incomplete'):
+                scenario.read_peer_calls(path, require_complete=True)
+            path.write_bytes(b'{"action":"launch"}\n{"action":"discover"}\n')
+            self.assertEqual(len(scenario.read_peer_calls(path, require_complete=True)), 2)
+
     def test_current_pinned_inventory_is_exact(self):
         inventory = scenario.inventory()
         self.assertEqual(set(inventory['components']), {'core', 'host', 'browser', 'tether', 'refinery', 'console', 'platform'})

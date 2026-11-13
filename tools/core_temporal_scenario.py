@@ -81,6 +81,21 @@ def binding(admission):
     return {key: admission[key] for key in keys}
 
 
+def read_peer_calls(path, require_complete=False):
+    path = pathlib.Path(path)
+    if not path.exists():
+        return []
+    data = path.read_bytes()
+    if len(data) > 2_097_152:
+        raise Blocked('peer ledger exceeds development evidence bound')
+    if data and not data.endswith(b'\n'):
+        if require_complete:
+            raise AssertionError('peer ledger has an incomplete final record')
+        # A poll may overlap an append; only newline-committed records are visible.
+        data = data[:data.rfind(b'\n') + 1]
+    return [json.loads(line) for line in data.splitlines()]
+
+
 def assert_observations(observed, admission):
     """Independent assertions over client replies and the scripted peer's ledger."""
     job = 'job-' + hashlib.sha256(f"{admission['task_id']}\n{admission['revision']}".encode()).hexdigest()
@@ -218,9 +233,8 @@ def run(platform_prepared, core_image):
             temporary.replace(effects / 'script.json')
             script_hashes.append(sha256(effects / 'script.json'))
 
-        def calls():
-            path = effects / 'calls.jsonl'
-            return [json.loads(line) for line in path.read_text().splitlines()] if path.exists() else []
+        def calls(require_complete=False):
+            return read_peer_calls(effects / 'calls.jsonl', require_complete)
 
         def wait_for(callback, label, seconds=60):
             until = time.monotonic() + seconds
@@ -288,13 +302,13 @@ def run(platform_prepared, core_image):
                 state = client({'command': 'registry', 'registry_id': registry})
                 return state['terminal'].get(job)
             observed['terminal'] = wait_for(terminal_registry, 'observed terminal in registry')
-            observed['calls'] = calls()
+            observed['calls'] = calls(require_complete=True)
             observed['effect_receipts'] = [json.loads(p.read_text()) for p in effects.glob('effect-*.json')]
             history = client({'command': 'history', 'workflow_id': job})
             (effects / 'history.json').write_text(json.dumps(history))
             replay = lane.run_client(core_image, ['replay', '/effects/history.json'], mounts=mounts, deadline=30)
             observed['replay'] = json.loads(replay.stdout.strip().splitlines()[-1])
-            observed['calls_after_replay'] = len(calls())
+            observed['calls_after_replay'] = len(calls(require_complete=True))
             assertions = assert_observations(observed, admission)
             resources = [('container', lane.server), ('network', lane.network), ('volume', lane.volume)]
             resources += [('container', name) for name in sorted(lane.clients)]
