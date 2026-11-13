@@ -5,14 +5,14 @@
       "component": "core",
       "repository": "newdarwindev/runspindle-core",
       "path": "components/core",
-      "commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
       "url": "https://github.com/newdarwindev/runspindle-core.git"
     },
     {
       "component": "host",
       "repository": "newdarwindev/runspindle-host",
       "path": "components/host",
-      "commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+      "commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
       "url": "https://github.com/newdarwindev/runspindle-host.git"
     },
     {
@@ -33,7 +33,7 @@
       "component": "refinery",
       "repository": "newdarwindev/runspindle-refinery",
       "path": "components/refinery",
-      "commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+      "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
       "url": "https://github.com/newdarwindev/runspindle-refinery.git"
     },
     {
@@ -47,10 +47,13 @@
       "component": "platform",
       "repository": "newdarwindev/runspindle-platform",
       "path": "components/platform",
-      "commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+      "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
       "url": "https://github.com/newdarwindev/runspindle-platform.git"
     }
   ],
   "stage": "scaffold",
-  "upstream_dependency_pins": "not_selected"
+  "upstream_dependency_pins": {
+    "temporal_cli": "components/platform/temporal/dependencies.json",
+    "temporal_sdk_rust": "components/core/temporal/toolchain.json"
+  }
 }
