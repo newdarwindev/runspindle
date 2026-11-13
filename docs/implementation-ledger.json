@@ -14,7 +14,7 @@
     "runspindle-console": "8d76a3919b019539aa4201294fef88cf2de645eb",
     "runspindle-platform": "373a56196cee275efca8597ea79a0ba4c14bf7a8"
   },
-  "github_gate_observation": "2026-11-13T19:26:50.202746+00:00: all eight main branches unprotected with no branch rules and zero visible runners; no qualified remote CI established; normal exact-head merges only.",
+  "github_gate_observation": "2026-11-13T19:49:12.074748+00:00: all eight main branches unprotected with no branch rules and zero visible runners; normal exact-head merges only; CI remains unverified.",
   "merge_policy": "Coordinator uses normal exact-head merges after separate final-diff review, required local checks and refreshed repository rules. Rules/branches/main and branch protection readbacks list no required remote status contexts. Missing runner/CI and blocked operational acceptance remain separate unresolved evidence; no bypass or protection change.",
   "pin_policy": "Component PRs merged first. Separate composition PR27 atomically advances seven gitlinks and composition.lock.json; exact-pin checks and independent review are recorded there. No unmerged component pin is used.",
   "issues": [
@@ -1148,7 +1148,7 @@
     "system_acceptance": "blocked",
     "live_acceptance": "not_run",
     "github_ci": "unverified",
-    "pin_pr": "pending_review"
+    "pin_pr": "https://github.com/newdarwindev/runspindle/pull/32"
   },
   "previous_tranche": {
     "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",
@@ -1539,7 +1539,7 @@
   "final_github_readback": [
     {
       "repository": "newdarwindev/runspindle",
-      "main_commit": "4b700269be9a4feab7b955faf0229fbdd77d8aa9",
+      "main_commit": "95891774a0f557a4762bf277729eec6fac5ea18c",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1547,7 +1547,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-core",
-      "main_commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "main_commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1555,7 +1555,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-host",
-      "main_commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
+      "main_commit": "48711a44a393e3f7b43a5660fccc7abd3cbfb584",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1563,7 +1563,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-browser",
-      "main_commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "main_commit": "035c287631c640e9c489cbb2bef4b2e63f82de27",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1571,7 +1571,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-tether",
-      "main_commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "main_commit": "98578c00a3f732acf4b9709ad8735b7a9e91c4b6",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1579,7 +1579,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-refinery",
-      "main_commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+      "main_commit": "3aeeb97b196a98ad5f30f850c17eb5c8079fa3bf",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1587,7 +1587,7 @@
     },
     {
       "repository": "newdarwindev/runspindle-console",
-      "main_commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "main_commit": "32d88eee7469403f8291449b45be3903b5acc3df",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
@@ -1595,12 +1595,12 @@
     },
     {
       "repository": "newdarwindev/runspindle-platform",
-      "main_commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+      "main_commit": "aa22706c2eb4eb8c346018fc327bcf73ecad2c1b",
       "protected": false,
       "rules": [],
       "visible_runners": 0,
       "github_ci": "unverified_by_this_tranche"
     }
   ],
-  "final_github_readback_at": "2026-11-13T19:26:50.202746+00:00"
+  "final_github_readback_at": "2026-11-13T19:49:12.074748+00:00"
 }
