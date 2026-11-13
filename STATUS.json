@@ -16,6 +16,13 @@
   "live_acceptance": "not_run",
   "production_deployment": "not_run",
   "runner_capacity": "unverified",
+  "runtime_contract": {
+    "descriptor": "contracts/runtime-v1.json",
+    "runtime_wire_conformance": "not_run",
+    "specification": "specs/runtime-v1.md",
+    "status": "specified",
+    "version": "runspindle.runtime.v1"
+  },
   "selected_source_migration": "partial",
   "shared_fixture_contract": "provisional_test_only",
   "stage": "scaffold",

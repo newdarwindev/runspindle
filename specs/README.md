@@ -31,3 +31,7 @@ stdlib validator, versioned bundle and local conformance tests. It is test-only;
 standalone Python consumers are adopted in all seven pinned repositories.
 Runtime mappings, cross-language parity, upstream qualification and system
 acceptance remain unverified.
+
+The separate [Runtime v1 development contract](runtime-v1.md) specifies bounded
+admission, operation, reconciliation, cancellation, host and evaluation seams.
+Runtime implementation/qualification evidence is recorded separately.
