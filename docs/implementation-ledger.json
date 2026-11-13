@@ -46,7 +46,7 @@
       "title": "Specify isolated composition scenarios and failure-injection matrix",
       "status": "partial_implemented_pending_review",
       "branch": "implementation/core-temporal-scenario",
-      "pr": null,
+      "pr": "https://github.com/newdarwindev/runspindle/pull/33",
       "tested_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
       "tests": [
         "29 composition tests including malicious bytecode/image/identity/call-order/unknown/cancel/replay/manifest mutations",
@@ -55,7 +55,10 @@
         "scaffold/artifact19/diff checks"
       ],
       "merge_commit": null,
-      "blocker": "Real-core/Temporal development lane with scripted host is implemented; browser/delivery/provider/console/refinery are not exercised. Full nine-step/all-component/native/browser-fencing/artifact-delivery/telemetry/serving/live criteria remain blocked; no complete issue2 acceptance claim."
+      "blocker": "Real-core/Temporal development lane with scripted host is implemented; browser/delivery/provider/console/refinery are not exercised. Full nine-step/all-component/native/browser-fencing/artifact-delivery/telemetry/serving/live criteria remain blocked; no complete issue2 acceptance claim.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle/pull/33"
+      ]
     },
     {
       "repository": "newdarwindev/runspindle",
@@ -1176,7 +1179,8 @@
     "pin_pr": "https://github.com/newdarwindev/runspindle/pull/32",
     "pin_merge_commit": "3f8a1c683b0a9a7ca5dad41c2f5757bd5ff16a7d",
     "scenario_evidence": "docs/core-temporal-scenario-evidence.json",
-    "scenario_source_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29"
+    "scenario_source_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
+    "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/33"
   },
   "previous_tranche": {
     "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",
