@@ -44,17 +44,17 @@
       "issue": 2,
       "url": "https://github.com/newdarwindev/runspindle/issues/2",
       "title": "Specify isolated composition scenarios and failure-injection matrix",
-      "status": "partial_implemented_pending_review",
+      "status": "partial_merged",
       "branch": "implementation/core-temporal-scenario",
       "pr": "https://github.com/newdarwindev/runspindle/pull/33",
-      "tested_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
+      "tested_commit": "feabae3aa00a0294199e747ebb550528e35145e2",
       "tests": [
-        "29 composition tests including malicious bytecode/image/identity/call-order/unknown/cancel/replay/manifest mutations",
-        "2 real core/Temporal runs with one launch/one cancel, worker/server recovery and history replay; exact normalized/source/script/toolchain equality",
-        "unrelated image negative control blocked/78",
-        "scaffold/artifact19/diff checks"
+        "29 Python tests; scaffold/19 artifact hashes/diff",
+        "2 recorded real-core/Temporal runs and independent third reviewer run; normalized hash 0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+        "Each real lane passed; required full-system aggregate blocked/78; one launch/one cancel; same-session recovery; replay no calls; cleanup absent",
+        "Unrelated-image negative control blocked/78"
       ],
-      "merge_commit": null,
+      "merge_commit": "2d928b11de1494d8a82ece888fecfbeb0cef665a",
       "blocker": "Real-core/Temporal development lane with scripted host is implemented; browser/delivery/provider/console/refinery are not exercised. Full nine-step/all-component/native/browser-fencing/artifact-delivery/telemetry/serving/live criteria remain blocked; no complete issue2 acceptance claim.",
       "work_prs": [
         "https://github.com/newdarwindev/runspindle/pull/33"
@@ -148,13 +148,21 @@
       "issue": 9,
       "url": "https://github.com/newdarwindev/runspindle/issues/9",
       "title": "H02: Specify semi-mocked acceptance for execute on the selected host and recover the native session",
-      "status": "blocked",
-      "branch": null,
-      "pr": null,
-      "tested_commit": null,
-      "tests": [],
-      "merge_commit": null,
-      "blocker": "Required functional dependencies remain incomplete: runspindle-core#2, runspindle-core#3, runspindle-host#2. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+      "status": "partial_merged",
+      "branch": "implementation/core-temporal-scenario",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/33",
+      "tested_commit": "feabae3aa00a0294199e747ebb550528e35145e2",
+      "tests": [
+        "29 Python tests; scaffold/19 artifact hashes/diff",
+        "2 recorded real-core/Temporal runs and independent third reviewer run; normalized hash 0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+        "Each real lane passed; required full-system aggregate blocked/78; one launch/one cancel; same-session recovery; replay no calls; cleanup absent",
+        "Unrelated-image negative control blocked/78"
+      ],
+      "merge_commit": "2d928b11de1494d8a82ece888fecfbeb0cef665a",
+      "blocker": "Real-core/Temporal development evidence now covers offline explicit host pins, lost launch reply, same observed scripted native session, worker/server restart and cancellation distinctions. Native app-server compatibility, real-host lane, core/host wire freshness/identity qualification and full H02/live criteria remain blocked.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle/pull/33"
+      ]
     },
     {
       "repository": "newdarwindev/runspindle",
@@ -1150,16 +1158,37 @@
       "github_ci": "unverified",
       "evidence_class": "exact_pin_component_and_isolated_development_checks",
       "remaining_gaps": "Full-system/native/browser/provider/delivery/telemetry/serving/CI/live acceptance remains blocked; separate real-core scenario follows."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/33",
+      "issues": [
+        2
+      ],
+      "branch": "implementation/core-temporal-scenario",
+      "reviewed_commit": "feabae3aa00a0294199e747ebb550528e35145e2",
+      "merge_commit": "2d928b11de1494d8a82ece888fecfbeb0cef665a",
+      "reviewer": "platform",
+      "review_result": "Exact-head independent approval/comment5897162755; reviewer third real run,29tests/scaffold/hash checks passed; no blocking findings in bounded scope.",
+      "tests": [
+        "29 Python tests; scaffold/19 artifact hashes/diff",
+        "2 recorded real-core/Temporal runs and independent third reviewer run; normalized hash 0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+        "Each real lane passed; required full-system aggregate blocked/78; one launch/one cancel; same-session recovery; replay no calls; cleanup absent",
+        "Unrelated-image negative control blocked/78"
+      ],
+      "github_ci": "unverified",
+      "evidence_class": "isolated_integration_real_core_temporal_scripted_host",
+      "remaining_gaps": "All-component integration/native/browser/delivery/provider/console/refinery operations and live acceptance not qualified."
     }
   ],
-  "updated_at": "2026-11-13T19:52:49.425270+00:00",
+  "updated_at": "2026-11-13T19:56:51.405266+00:00",
   "additional_blockers": [
     "No qualified isolated runner visible; GitHub Actions remains unverified.",
     "Optional refinery CI behavior-test wiring was rejected by OAuth workflow-scope permission; optional workflow change removed without new credentials.",
     "No private exact selected-source/dependency/rights records imported or disclosed.",
     "New live/provider issues created after the initial inventory are outside this batch; no live calls, provider use or paid work is authorized or performed."
   ],
-  "current_composition_base": "3f8a1c683b0a9a7ca5dad41c2f5757bd5ff16a7d",
+  "current_composition_base": "2d928b11de1494d8a82ece888fecfbeb0cef665a",
   "current_component_pins": {
     "core": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
     "host": "3d329c68605a0e484592ede74493c615e6b90f8c",
@@ -1172,7 +1201,7 @@
   "temporal_tranche": {
     "composition_base": "4dd2ef1030b20c7a2061d2e23b0266935f508c58",
     "runtime_contract_commit": "4b700269be9a4feab7b955faf0229fbdd77d8aa9",
-    "status": "bounded_lane_passed_twice_system_aggregate_blocked",
+    "status": "bounded_runtime_tranche_merged_system_acceptance_blocked",
     "system_acceptance": "blocked",
     "live_acceptance": "not_run",
     "github_ci": "unverified",
@@ -1180,7 +1209,19 @@
     "pin_merge_commit": "3f8a1c683b0a9a7ca5dad41c2f5757bd5ff16a7d",
     "scenario_evidence": "docs/core-temporal-scenario-evidence.json",
     "scenario_source_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
-    "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/33"
+    "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/33",
+    "scenario_reviewed_commit": "feabae3aa00a0294199e747ebb550528e35145e2",
+    "scenario_merge_commit": "2d928b11de1494d8a82ece888fecfbeb0cef665a",
+    "independent_review_comment": "5897162755",
+    "independent_normalized_outcome_sha256": "0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+    "all_original_issues_still_open": true,
+    "full_system_acceptance": "blocked",
+    "source_migration": "not_advanced",
+    "runner_provisioning": "not_performed",
+    "production_activation": "not_performed",
+    "original_open_issues_verified": 51,
+    "issue_state_observed_at": "2026-11-13T19:57:39.472488+00:00",
+    "original_issue_closures_by_this_tranche": 0
   },
   "previous_tranche": {
     "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",
