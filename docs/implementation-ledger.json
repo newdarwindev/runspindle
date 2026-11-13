@@ -284,18 +284,26 @@
       "url": "https://github.com/newdarwindev/runspindle-core/issues/1",
       "title": "Specify isolated orchestration, recovery and artifact adapter tests",
       "status": "partial_merged",
-      "branch": "test/pin-shared-fixtures",
-      "pr": "https://github.com/newdarwindev/runspindle-core/pull/7",
-      "tested_commit": "b411ee5c4cc384497557200cac1ee582eb49d2b3",
+      "branch": "implementation/temporal-runtime-v1",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/9",
+      "tested_commit": "5d7e614c9e40690d83b0e7508fd861841743da41",
       "tests": [
-        "20 Rust tests; fmt; offline clippy; 3 detected mutations; scaffold",
-        "11 Python + 20 Rust tests; fmt/clippy; 9 vectors; 3 mutations; scaffold"
+        "27 Rust tests",
+        "11 Python tests",
+        "strict offline Clippy all targets with runtime feature",
+        "formatting",
+        "3 behavioral registry-code mutation detections",
+        "18 real Temporal assertions including worker/server recovery and cancellation barrier",
+        "4 histories replayed without port calls",
+        "scaffold",
+        "operational gate blocked/78"
       ],
-      "merge_commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
-      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Reviewed durability/retention/authentication/freshness interfaces and selected store/Temporal pins are unresolved; only the existing local Rust model and Python fixture consumer are tested.",
+      "merge_commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "blocker": "One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified.",
       "work_prs": [
         "https://github.com/newdarwindev/runspindle-core/pull/6",
-        "https://github.com/newdarwindev/runspindle-core/pull/7"
+        "https://github.com/newdarwindev/runspindle-core/pull/7",
+        "https://github.com/newdarwindev/runspindle-core/pull/9"
       ]
     },
     {
@@ -303,26 +311,52 @@
       "issue": 2,
       "url": "https://github.com/newdarwindev/runspindle-core/issues/2",
       "title": "F02: Implement scoped intent admission and durable request identity",
-      "status": "blocked",
-      "branch": null,
-      "pr": null,
-      "tested_commit": null,
-      "tests": [],
-      "merge_commit": null,
-      "blocker": "Reviewed authenticated-admission identity/revision/retention contract and atomic outbox/store selection are unresolved; no durable adapter exists. Requires unresolved interfaces described in runtime contracts from #1 and core #1."
+      "status": "partial_merged",
+      "branch": "implementation/temporal-runtime-v1",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/9",
+      "tested_commit": "5d7e614c9e40690d83b0e7508fd861841743da41",
+      "tests": [
+        "27 Rust tests",
+        "11 Python tests",
+        "strict offline Clippy all targets with runtime feature",
+        "formatting",
+        "3 behavioral registry-code mutation detections",
+        "18 real Temporal assertions including worker/server recovery and cancellation barrier",
+        "4 histories replayed without port calls",
+        "scaffold",
+        "operational gate blocked/78"
+      ],
+      "merge_commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "blocker": "One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-core/pull/9"
+      ]
     },
     {
       "repository": "newdarwindev/runspindle-core",
       "issue": 3,
       "url": "https://github.com/newdarwindev/runspindle-core/issues/3",
       "title": "F03: Coordinate pinned execution and uncertain-effect recovery",
-      "status": "blocked",
-      "branch": null,
-      "pr": null,
-      "tested_commit": null,
-      "tests": [],
-      "merge_commit": null,
-      "blocker": "Pinned Temporal SDK/server and durable workflow/effect-store contract are unselected; host native binding and browser reconciliation/fencing adapters are absent. Requires unresolved interfaces described in core #2 and host #2."
+      "status": "partial_merged",
+      "branch": "implementation/temporal-runtime-v1",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/9",
+      "tested_commit": "5d7e614c9e40690d83b0e7508fd861841743da41",
+      "tests": [
+        "27 Rust tests",
+        "11 Python tests",
+        "strict offline Clippy all targets with runtime feature",
+        "formatting",
+        "3 behavioral registry-code mutation detections",
+        "18 real Temporal assertions including worker/server recovery and cancellation barrier",
+        "4 histories replayed without port calls",
+        "scaffold",
+        "operational gate blocked/78"
+      ],
+      "merge_commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "blocker": "One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-core/pull/9"
+      ]
     },
     {
       "repository": "newdarwindev/runspindle-core",
@@ -1060,18 +1094,46 @@
       "github_ci": "unverified",
       "evidence_class": "isolated_development_integration",
       "remaining_gaps": "Linux arm64 bounded development lane only. Other platform dependency/telemetry/distribution/runner/CI/live/production acceptance remains blocked."
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/9",
+      "issues": [
+        1,
+        2,
+        3
+      ],
+      "branch": "implementation/temporal-runtime-v1",
+      "reviewed_commit": "5d7e614c9e40690d83b0e7508fd861841743da41",
+      "merge_commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "reviewer": "platform",
+      "review_result": "Platform exact-head review5897053317 independently reran Rust27/Python11/18 real assertions/4 history replays/scaffold/source-hash checks after timing-race correction.",
+      "tests": [
+        "27 Rust tests",
+        "11 Python tests",
+        "strict offline Clippy all targets with runtime feature",
+        "formatting",
+        "3 behavioral registry-code mutation detections",
+        "18 real Temporal assertions including worker/server recovery and cancellation barrier",
+        "4 histories replayed without port calls",
+        "scaffold",
+        "operational gate blocked/78"
+      ],
+      "github_ci": "unverified",
+      "evidence_class": "isolated_development_integration",
+      "remaining_gaps": "One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified."
     }
   ],
-  "updated_at": "2026-11-13T19:19:54.379413+00:00",
+  "updated_at": "2026-11-13T19:47:00.614499+00:00",
   "additional_blockers": [
     "No qualified isolated runner visible; GitHub Actions remains unverified.",
     "Optional refinery CI behavior-test wiring was rejected by OAuth workflow-scope permission; optional workflow change removed without new credentials.",
     "No private exact selected-source/dependency/rights records imported or disclosed.",
     "New live/provider issues created after the initial inventory are outside this batch; no live calls, provider use or paid work is authorized or performed."
   ],
-  "current_composition_base": "4b700269be9a4feab7b955faf0229fbdd77d8aa9",
+  "current_composition_base": "95891774a0f557a4762bf277729eec6fac5ea18c",
   "current_component_pins": {
-    "core": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+    "core": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
     "host": "3d329c68605a0e484592ede74493c615e6b90f8c",
     "browser": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
     "tether": "6003f2315146d05d77918024d1bc81049a78a312",
@@ -1082,11 +1144,11 @@
   "temporal_tranche": {
     "composition_base": "4dd2ef1030b20c7a2061d2e23b0266935f508c58",
     "runtime_contract_commit": "4b700269be9a4feab7b955faf0229fbdd77d8aa9",
-    "status": "in_progress",
+    "status": "four_components_merged_pin_review_pending",
     "system_acceptance": "blocked",
     "live_acceptance": "not_run",
     "github_ci": "unverified",
-    "pin_pr": "pending_final_core_merge"
+    "pin_pr": "pending_review"
   },
   "previous_tranche": {
     "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",

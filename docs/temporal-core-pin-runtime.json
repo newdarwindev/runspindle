@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "evidence_class": "isolated_integration",
+  "checks": [
+    "concurrent_duplicate_same_job",
+    "offline_pin_zero_launch",
+    "delivery_conflict_denied",
+    "active_revision_denied",
+    "unknown_version_denied",
+    "fresh_worker_and_server_database_recovery",
+    "revoked_authority_no_effect",
+    "same_observed_native_identity",
+    "lost_reply_discover_before_retry",
+    "stale_cancel_denied",
+    "cancel_ack_not_terminal",
+    "completion_wins_cancel_race",
+    "next_revision_after_terminal",
+    "old_duplicate_original_binding",
+    "cancel_during_online_observation_zero_launch",
+    "history_records_online_reply_after_cancel_acceptance",
+    "real_history_replay_registry_and_operations",
+    "independent_launch_and_cancel_counts_and_order"
+  ],
+  "image_id": "sha256:b615189193ec2ed422105a70bc78e3494c6512db23185fec503aecb7a55fca12",
+  "sdk_revision": "c675c32469af707e1c979a7b808c70b4a0608b82",
+  "source_hashes": {
+    "Cargo.toml": "028bb1137c1d95ae65bf0a9ddec916646ee08fe089b4810f8d3a3f33a2d9aaf9",
+    "Cargo.lock": "5ada42a96ee9eda3e68c1cb93080c2319322cc5bf8d3166fef785a96ced2d89d",
+    "temporal/toolchain.json": "3902172aac23f43d70c509a37930696f01102f6dc6e20c8c51607526b2611990",
+    "src/artifact.rs": "ec8ba59c519b0a845a207db455e8bbde94b8fcc8e48c83b0977be9b8edcf6de7",
+    "src/bin/temporal-runtime.rs": "29c85e38fe86f6ecf022a534511656d07cd489f1411d87bee5def3e5b437383b",
+    "src/identity.rs": "bb8b23a9a614a974c05a4f329d4e4da8565a28af6008a95e40591ced1ec9da25",
+    "src/lib.rs": "6d10ef4185567edc99297489524aed198ff09a08c178f19ea6539cfdfe011c07",
+    "src/runtime.rs": "c7e9affa19f8c4f0097e5ae9a37f918a0db5638fb65df9b75a1dcdf983cb778f"
+  },
+  "launch_count": 2,
+  "cancel_count": 1,
+  "race_observations": {
+    "before_release": {
+      "binding": {
+        "host_id": "offline-selected-host",
+        "lease_epoch": 1,
+        "operation_id": "race-operation",
+        "policy_revision": "policy-1",
+        "revision": 1,
+        "task_id": "task-race",
+        "workspace_id": "selected-workspace"
+      },
+      "cancellation": "requested",
+      "native_session_id": null,
+      "state": "scheduled"
+    },
+    "online_reply_after_release": {
+      "binding": {
+        "task_id": "task-race",
+        "revision": 1,
+        "operation_id": "race-operation",
+        "policy_revision": "policy-1",
+        "host_id": "offline-selected-host",
+        "workspace_id": "selected-workspace",
+        "lease_epoch": 1
+      },
+      "status": "online",
+      "native_session_id": null
+    },
+    "temporal_history_order": {
+      "cancel_update_accepted_event": 15,
+      "online_activity_completed_event": 18
+    }
+  },
+  "cleanup": "passed",
+  "live_acceptance": "not_run",
+  "boundary_matrix": {
+    "core": "real",
+    "temporal": "real_dev_database",
+    "host": "scripted_activity_peer",
+    "browser": "not_exercised",
+    "delivery": "not_exercised",
+    "provider": "not_exercised"
+  }
+}

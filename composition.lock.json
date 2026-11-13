@@ -5,7 +5,7 @@
       "component": "core",
       "repository": "newdarwindev/runspindle-core",
       "path": "components/core",
-      "commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
       "url": "https://github.com/newdarwindev/runspindle-core.git"
     },
     {
@@ -54,6 +54,6 @@
   "stage": "scaffold",
   "upstream_dependency_pins": {
     "temporal_cli": "components/platform/temporal/dependencies.json",
-    "temporal_sdk_rust": "pending_core_merge"
+    "temporal_sdk_rust": "components/core/temporal/toolchain.json"
   }
 }

@@ -93,6 +93,18 @@ GitHub-account approvals.
   deletion ownership. Linux arm64 development persistence, denied egress and
   cleanup are exercised; other dependencies/telemetry/distribution/CI are unqualified.
 
+- [Core PR9](https://github.com/newdarwindev/runspindle-core/pull/9): reviewed
+  `5d7e614c9e40690d83b0e7508fd861841743da41`, merged
+  `d50e219c8df21b06bfdc2eba75e6a58ed9b4596e`. Platform independently checked
+  27 Rust and 11 Python tests plus 18 real Temporal assertions and four history
+  replays. Formatting, strict offline Clippy and three registry-code mutations pass.
+  Review replaced a time-dependent cancellation test with a bounded atomic peer
+  barrier; real history proves cancellation acceptance precedes the held Online
+  completion, with zero launches for that race. It also fixed shared spy append
+  atomicity, historical operation-ID reuse and mutable builder selection. Native
+  freshness/wire, browser fencing, multi-registry/upgrade and production authority
+  remain unqualified. The branch includes the concurrent reviewed guidance update.
+
 [Exact-pin rechecks](temporal-pin-checks.json) are performed in a clean isolated
 composition clone. Unrelated runner-fleet changes in the original platform
 submodule are preserved and excluded. No runner provisioning, new credentials,
@@ -126,9 +138,9 @@ that is required to complete the issue. All initial issues are listed once.
 | [runspindle#17](https://github.com/newdarwindev/runspindle/issues/17) | blocked. Required functional dependencies remain incomplete: runspindle-refinery#4, runspindle-tether#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available. |
 | [runspindle#18](https://github.com/newdarwindev/runspindle/issues/18) | blocked. Required functional dependencies remain incomplete: runspindle-refinery#4, runspindle-refinery#5, runspindle-refinery#6, runspindle-core#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available. |
 | [runspindle#19](https://github.com/newdarwindev/runspindle/issues/19) | blocked. Required functional dependencies remain incomplete: runspindle-platform#4, runspindle-platform#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available. |
-| [runspindle-core#1](https://github.com/newdarwindev/runspindle-core/issues/1) | partial merged. Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Reviewed durability/retention/authentication/freshness interfaces and selected store/Temporal pins are unresolved; only the existing local Rust model and Python fixture consumer are tested. |
-| [runspindle-core#2](https://github.com/newdarwindev/runspindle-core/issues/2) | blocked. Reviewed authenticated-admission identity/revision/retention contract and atomic outbox/store selection are unresolved; no durable adapter exists. Requires unresolved interfaces described in runtime contracts from #1 and core #1. |
-| [runspindle-core#3](https://github.com/newdarwindev/runspindle-core/issues/3) | blocked. Pinned Temporal SDK/server and durable workflow/effect-store contract are unselected; host native binding and browser reconciliation/fencing adapters are absent. Requires unresolved interfaces described in core #2 and host #2. |
+| [runspindle-core#1](https://github.com/newdarwindev/runspindle-core/issues/1) | partial merged. One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified. |
+| [runspindle-core#2](https://github.com/newdarwindev/runspindle-core/issues/2) | partial merged. One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified. |
+| [runspindle-core#3](https://github.com/newdarwindev/runspindle-core/issues/3) | partial merged. One bounded registry authority per development namespace and simplified scripted host ports. Production identity/expiry, trusted native freshness/wire, browser fencing, artifact/delivery/provider adapters, multiple registries, upgrades, GitHub CI and live acceptance remain unqualified. |
 | [runspindle-core#4](https://github.com/newdarwindev/runspindle-core/issues/4) | blocked. Trusted validator/approver and destination-policy adapter contracts are unresolved; model only compares supplied digests and cannot hash/authenticate bytes. Requires unresolved interfaces described in runtime contracts from #1/core #1. |
 | [runspindle-core#5](https://github.com/newdarwindev/runspindle-core/issues/5) | blocked. Atomic durable delivery outbox/epoch contract and existing Tether transport are missing; accepted-byte recovery cannot be tested. Requires unresolved interfaces described in core #4/tether #3. |
 | [runspindle-host#1](https://github.com/newdarwindev/runspindle-host/issues/1) | partial merged. Native app-server compatibility, platform capabilities and durable recovery remain unqualified. |

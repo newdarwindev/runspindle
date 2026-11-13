@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "observed_at": "2026-11-13T19:22:56.146744+00:00",
-  "scope": "Exact merged component pins in clean isolated composition checkout; core pin pending",
+  "scope": "Exact four merged component pins in clean isolated composition checkout",
   "evidence_classes": [
     "component",
     "isolated_temporal_development_integration"
@@ -60,6 +60,47 @@
       ],
       "mutations": 2,
       "scaffold": "passed"
+    },
+    {
+      "component": "core",
+      "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "commands": [
+        "pinned builder061420d04a6f6ac173e3b1835b0594bcbe9d17044f5e015ca4fb767f9c57813e cargo test --locked --offline --features temporal-runtime --target-dir local/linux-target",
+        "python3 -m unittest discover -s tests -p test_*.py",
+        "python3 tools/check_scaffold.py",
+        "python3 tools/test_temporal_runtime.py --platform ../platform --platform-prepared <prepared-cache> --core-prepared <prepared-cache>"
+      ],
+      "rust_tests": 27,
+      "python_tests": 11,
+      "real_temporal_assertions": 18,
+      "history_replays": 4,
+      "real_lane": "passed",
+      "cleanup": "passed",
+      "prior_head_format_strict_offline_clippy_and_3_mutations": "passed_at_identical_runtime_source_hashes_recorded_in_component_docs/runtime-tests.json",
+      "rust_status": "passed",
+      "real_lane_report": "docs/temporal-core-pin-runtime.json",
+      "real_lane_report_sha256": "b85c4241ad055095fc52b5e3f0ec709e9b72e3e69d62d4bc75d253bf0bef7dca"
     }
-  ]
+  ],
+  "composition_base": "95891774a0f557a4762bf277729eec6fac5ea18c",
+  "component_pins": {
+    "core": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+    "host": "3d329c68605a0e484592ede74493c615e6b90f8c",
+    "browser": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+    "tether": "6003f2315146d05d77918024d1bc81049a78a312",
+    "refinery": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+    "console": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+    "platform": "96eb567ef32c68c52c19ea8fd77f11e5340e291b"
+  },
+  "composition_checks": {
+    "commands": [
+      "python3 -m unittest discover -s tests -v",
+      "python3 tools/check_scaffold.py",
+      "git diff --check"
+    ],
+    "python_tests": 17,
+    "artifact_hashes": 19,
+    "status": "passed"
+  },
+  "updated_at": "2026-11-13T19:48:31.596204+00:00"
 }
