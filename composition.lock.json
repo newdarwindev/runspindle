@@ -5,14 +5,14 @@
       "component": "core",
       "repository": "newdarwindev/runspindle-core",
       "path": "components/core",
-      "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+      "commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
       "url": "https://github.com/newdarwindev/runspindle-core.git"
     },
     {
       "component": "host",
       "repository": "newdarwindev/runspindle-host",
       "path": "components/host",
-      "commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
+      "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
       "url": "https://github.com/newdarwindev/runspindle-host.git"
     },
     {

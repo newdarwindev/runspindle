@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "evidence_class": "reviewed_component_pin_qualification",
+  "pins_advanced": {
+    "core": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+    "host": "6caf08d3f642691ceecffc76c5aa378fbdd7a352"
+  },
+  "unchanged_platform_pin": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+  "reviewed_merges": [
+    {
+      "component": "platform",
+      "pr": "https://github.com/newdarwindev/runspindle-platform/pull/8",
+      "independently_reviewed_head": "b14d2c75944cd988f5c5dea03e42b9334ac16fb0",
+      "merge_commit": "6740a771e72bf8dcafaf3beb7d6b65d17e4b09b0",
+      "review": "approved_exact_final_head"
+    },
+    {
+      "component": "composition",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/35",
+      "independently_reviewed_head": "c969eaef1ed76c0881df9d094a4442fb5c7904d1",
+      "merge_commit": "96299842505ce7662178b7c7b00fd31f6c2754f0",
+      "review": "approved_exact_final_head"
+    },
+    {
+      "component": "host",
+      "pr": "https://github.com/newdarwindev/runspindle-host/pull/7",
+      "independently_reviewed_head": "764df9f6b7ce4876f779d1dc50036fa00c267f96",
+      "merge_commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+      "review": "approved_exact_final_head"
+    },
+    {
+      "component": "core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/11",
+      "independently_reviewed_head": "4b85f9df6433b7119122a5ac88ac1fcc1bd60bd9",
+      "merge_commit": "a306e61b68b8b335d03f80f2d0de004c1d91a6f8",
+      "review": "approved_exact_final_head"
+    },
+    {
+      "component": "core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/12",
+      "independently_reviewed_head": "cce1396fef428fe39c3d909285678787711837bb",
+      "merge_commit": "64d29f097933e075f9c415cfaeea0983b584a4fd",
+      "review": "approved_exact_final_head"
+    },
+    {
+      "component": "core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/13",
+      "independently_reviewed_head": "00f04c57b26f407390bd3baac3d96c9cb30ebbfd",
+      "merge_commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+      "review": "approved_exact_final_head"
+    }
+  ],
+  "checks": {
+    "host": "27 Rust tests, 7 Python fixtures, Clippy/fmt/scaffold and 2 behavioral mutations",
+    "core": "48 Rust tests,16 Python tests, strict Clippy/fmt/scaffold; H02/H07 twice each and original scripted-core Temporal regression; isolated runtime/artifact/outbox mutations",
+    "platform": "32 Python tests including all 5 prepared Temporal cases, scaffold/fixtures/mutations/Black/Ruff; no runner installed"
+  },
+  "prepared_runtime": {
+    "schema_version": 1,
+    "features": "delivery-runtime",
+    "evidence_class": "prepared_dependency_artifacts",
+    "image_id": "sha256:da947cd806e24acfdcc791e678505100b36c3acb348006477064d2304f95a1dd",
+    "builder_image_id": "sha256:061420d04a6f6ac173e3b1835b0594bcbe9d17044f5e015ca4fb767f9c57813e",
+    "source_hashes": {
+      "Cargo.toml": "c4640f9d1bab4f2a3adff6d5deb3d61d0e8081c2aebf1dfabedd969854abf862",
+      "Cargo.lock": "df971ac2e789b5e6000731185485a32766eaec7b44f1055c872148f1e8698d68",
+      "temporal/toolchain.json": "3902172aac23f43d70c509a37930696f01102f6dc6e20c8c51607526b2611990",
+      "src/artifact.rs": "ec8ba59c519b0a845a207db455e8bbde94b8fcc8e48c83b0977be9b8edcf6de7",
+      "src/bin/temporal-runtime.rs": "d80e733db0e2209fd3db890ccea7f422310ae29e89c2437adaab0330261305d0",
+      "src/delivery_runtime.rs": "e1d364a052cb0701f785a19bd795eb96e18dddc8bac7d218cb75990ace03c4b7",
+      "src/durable.rs": "5d20503b0bbf3d7912264f510fed89585296ae09e2f88087effafacb0cfccd56",
+      "src/identity.rs": "bb8b23a9a614a974c05a4f329d4e4da8565a28af6008a95e40591ced1ec9da25",
+      "src/integration.rs": "210f60622bfde9ede928ffc4ce599faf98e34b6f31cff57037a8d007eb375133",
+      "src/lib.rs": "8b5380c63ef1f9b54f781a2c686e5ee3734415f8c356d94760db3399f540df42",
+      "src/outbox.rs": "685e7faac482247b8b99dce1d5404e7408f13d1712a1a6713a02a18fef1df122",
+      "src/runtime.rs": "71af331a1d905852dba21b78580614ed1998ae5a6f01eee192b4277c704e8b04"
+    },
+    "source_sha256": "09775c5079552abb26cce85ffb9a893ea722852c9c69a4f1e6dcb7ab4ca81863",
+    "binary_sha256": "ecef3f9b57d57e7d93f1449a608360588641371bf955b31af0807e0407882386",
+    "cargo_lock_sha256": "df971ac2e789b5e6000731185485a32766eaec7b44f1055c872148f1e8698d68",
+    "sdk_revision": "c675c32469af707e1c979a7b808c70b4a0608b82",
+    "sdk_version": "1.2.0",
+    "rust_version": "1.94.1",
+    "dependency_inventory_sha256": "4c7f6810c1bb61000584c54c5d249b8d945cd2239406cd286cb620222f338453",
+    "isolation": "runtime must use platform internal network; no published ports; pull never",
+    "operational_acceptance": "not_run"
+  },
+  "github_ci": "unverified; no required checks/protections/rulesets at component readback",
+  "composition_H02_H07": "pending separate scenario integration PR",
+  "native_Tether_live": "blocked",
+  "production_activation": "not_run"
+}
