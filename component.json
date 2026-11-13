@@ -1,0 +1,9 @@
+{
+  "api_version": "runspindle.v1alpha0",
+  "component": "composition",
+  "description": "Composition and release boundary for seven pinned component repositories",
+  "implementation_language": "composition",
+  "repository": "newdarwindev/runspindle",
+  "schema_version": 1,
+  "stage": "scaffold"
+}

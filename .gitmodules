@@ -1,0 +1,21 @@
+[submodule "components/core"]
+	path = components/core
+	url = https://github.com/newdarwindev/runspindle-core.git
+[submodule "components/host"]
+	path = components/host
+	url = https://github.com/newdarwindev/runspindle-host.git
+[submodule "components/browser"]
+	path = components/browser
+	url = https://github.com/newdarwindev/runspindle-browser.git
+[submodule "components/tether"]
+	path = components/tether
+	url = https://github.com/newdarwindev/runspindle-tether.git
+[submodule "components/refinery"]
+	path = components/refinery
+	url = https://github.com/newdarwindev/runspindle-refinery.git
+[submodule "components/console"]
+	path = components/console
+	url = https://github.com/newdarwindev/runspindle-console.git
+[submodule "components/platform"]
+	path = components/platform
+	url = https://github.com/newdarwindev/runspindle-platform.git
