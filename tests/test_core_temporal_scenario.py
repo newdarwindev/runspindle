@@ -123,6 +123,18 @@ class ScenarioOracle(unittest.TestCase):
             path.write_bytes(b'{"action":"launch"}\n{"action":"discover"}\n')
             self.assertEqual(len(scenario.read_peer_calls(path, require_complete=True)), 2)
 
+    def test_manifest_cannot_relabel_unexercised_system_gates_as_passing(self):
+        import json
+        config = json.loads(scenario.MANIFEST.read_text())
+        self.assertEqual(scenario.validate_manifest(config), config)
+        for mutate in (lambda c: c['required_system_gates'].update(browser_fencing='passed'),
+                       lambda c: c['boundary_matrix'].update(browser='real'),
+                       lambda c: c.update(seed=True)):
+            bad = copy.deepcopy(config)
+            mutate(bad)
+            with self.assertRaises(scenario.Blocked):
+                scenario.validate_manifest(bad)
+
     def test_current_pinned_inventory_is_exact(self):
         inventory = scenario.inventory()
         self.assertEqual(set(inventory['components']), {'core', 'host', 'browser', 'tether', 'refinery', 'console', 'platform'})

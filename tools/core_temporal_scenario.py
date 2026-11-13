@@ -15,6 +15,31 @@ class Blocked(RuntimeError):
     """Missing prerequisite, incompatible pin, or incomplete evidence."""
 
 
+EXPECTED_BOUNDARIES = {
+    'core': 'real_rust_temporal_worker', 'temporal': 'real_pinned_development_server',
+    'host': 'scripted_activity_peer', 'browser': 'not_exercised', 'delivery': 'not_exercised',
+    'provider': 'not_exercised', 'console': 'not_exercised', 'refinery': 'not_exercised',
+}
+EXPECTED_GATES = {
+    'all_component_isolated_integration': 'blocked', 'native_protocol_compatibility': 'blocked',
+    'browser_fencing': 'blocked', 'artifact_acceptance_and_delivery': 'blocked',
+    'telemetry_readback': 'blocked', 'candidate_approval_and_serving': 'blocked', 'live_acceptance': 'not_run',
+}
+
+
+def validate_manifest(config):
+    if (config.get('schema_version') != 'runspindle.scenario.v1' or
+            config.get('scenario_id') != 'core-temporal-pinned-recovery-v1' or
+            config.get('runtime_contract') != 'runspindle.runtime.v1' or
+            type(config.get('seed')) is not int or config['seed'] != 17):
+        raise Blocked('incompatible scenario')
+    if config.get('boundary_matrix') != EXPECTED_BOUNDARIES:
+        raise Blocked('scenario cannot qualify unexercised boundaries')
+    if config.get('required_system_gates') != EXPECTED_GATES:
+        raise Blocked('scenario cannot pass unqualified system gates')
+    return config
+
+
 def sha256(path):
     return hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
 
@@ -53,9 +78,7 @@ def inventory(root=ROOT):
     if json.loads(contract.read_text()).get('version') != 'runspindle.runtime.v1':
         raise Blocked('incompatible runtime contract')
     manifest = root / 'scenarios/core-temporal-v1.json'
-    config = json.loads(manifest.read_text())
-    if config.get('runtime_contract') != 'runspindle.runtime.v1' or config.get('seed') != 17:
-        raise Blocked('incompatible scenario')
+    config = validate_manifest(json.loads(manifest.read_text()))
     return {
         'composition_commit': git(root, 'rev-parse', 'HEAD'),
         'components': components,
