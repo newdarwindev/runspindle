@@ -42,3 +42,15 @@ See the [per-repository workflow table](docs/CI_PLAN.md) and [migration gates](d
 The [technical coverage map](docs/migration/technical-coverage.md) distinguishes preserved requirements and references from unverified implementation.
 
 New conceptual documentation is in [docs/marketing](docs/marketing/README.md). Its published PDFs are ReportLab adaptations; TeX compilation and runtime acceptance are not established.
+
+## Desired technical direction
+
+Composition and maintained workflows: this component contributes to turning authorized one-off work into
+repeatable, maintained cross-application workflows. Scoped access, managed
+sessions, explicit human exceptions and evaluated DSPy candidates are intended
+to compose into that capability; no automatic improvement or live integration
+is implied.
+
+Read [the component-specific technical intent](specs/desired-intent.md) for its
+interfaces, privacy boundaries, failure cases and acceptance obligations. Current
+implementation and evidence limits above remain unchanged.
