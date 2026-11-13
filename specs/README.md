@@ -35,3 +35,14 @@ acceptance remain unverified.
 The separate [Runtime v1 development contract](runtime-v1.md) specifies bounded
 admission, operation, reconciliation, cancellation, host and evaluation seams.
 Runtime implementation/qualification evidence is recorded separately.
+
+## Engineering direction
+
+[Desired intent](desired-intent.md) connects this component to scoped access,
+managed sessions, explicit human exceptions and evaluated maintained workflows.
+It adds design and verification obligations without changing runtime schemas,
+existing acceptance results or operational permissions.
+
+[Runtime integration v1](runtime-integration-v1.md) defines the explicitly versioned
+core/host library, durable artifact acceptance and delivery outbox extension.
+It leaves Runtime v1 and synthetic fixture semantics unchanged.

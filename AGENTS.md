@@ -30,3 +30,13 @@ Update evidence for implemented stories and their remaining gaps. Do not mark se
 ![validation](https://github.com/newdarwindev/runspindle/actions/workflows/validation.yml/badge.svg) [validation](https://github.com/newdarwindev/runspindle/actions/workflows/validation.yml)
 
 ![fleet-qualification](https://github.com/newdarwindev/runspindle/actions/workflows/fleet-qualification.yml/badge.svg) [fleet-qualification](https://github.com/newdarwindev/runspindle/actions/workflows/fleet-qualification.yml)
+
+## Desired capability and implementation discipline
+
+Read [the technical intent](specs/desired-intent.md) before proposing architecture
+or changing workflow behavior. Design changes around the complete authorized workflow lifecycle, not a collection of independently green demos. Preserve component pins unless a separately reviewed change qualifies the exact newer code. Require independent seam observations before making integration claims.
+
+Tie each implementation change to a documented intent, existing contract and
+negative test. Preserve all existing permission and evidence boundaries.
+Optimization may change candidate behavior within approved interfaces; it must
+not change authority, conceal uncertainty or reinterpret approval scope.

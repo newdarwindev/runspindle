@@ -1,0 +1,71 @@
+{
+  "version": "runspindle.integration.v1",
+  "extends": "runspindle.runtime.v1",
+  "format": "Rust library semantic mapping",
+  "fixture_format": "separate:runspindle.fixture.v1",
+  "authority_default": "deny",
+  "host_storage": [
+    "memory",
+    "sqlite"
+  ],
+  "limits": {
+    "operations": 1024,
+    "host_receipts": 4096,
+    "artifacts": 1024,
+    "artifact_bytes": 1048576,
+    "acceptances": 1024,
+    "deliveries": 1024,
+    "validations": 1024
+  },
+  "artifact_reference": [
+    "binding",
+    "artifact_id",
+    "artifact_revision",
+    "sha256"
+  ],
+  "validation": [
+    "artifact",
+    "validator_revision",
+    "policy_revision",
+    "passed"
+  ],
+  "delivery_request": [
+    "version",
+    "artifact",
+    "account_id",
+    "destination_id",
+    "delivery_operation_id"
+  ],
+  "delivery_receipt": [
+    "request",
+    "receipt_id"
+  ],
+  "delivery_states": [
+    "reserved",
+    "unknown",
+    "delivered"
+  ],
+  "lanes": {
+    "H02": {
+      "real": [
+        "core",
+        "host_library",
+        "temporal"
+      ],
+      "scripted": [
+        "native_peer"
+      ]
+    },
+    "H07": {
+      "real": [
+        "core_acceptance_store",
+        "core_outbox",
+        "temporal"
+      ],
+      "scripted": [
+        "destination_transport"
+      ]
+    }
+  },
+  "specification": "specs/runtime-integration-v1.md"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "runspindle.scenario.v1",
+  "scenario_id": "core-temporal-pinned-recovery-v1",
+  "runtime_contract": "runspindle.runtime.v1",
+  "seed": 17,
+  "boundary_matrix": {
+    "core": "real_rust_temporal_worker",
+    "temporal": "real_pinned_development_server",
+    "host": "scripted_activity_peer",
+    "browser": "not_exercised",
+    "delivery": "not_exercised",
+    "provider": "not_exercised",
+    "console": "not_exercised",
+    "refinery": "not_exercised"
+  },
+  "fault_schedule": [
+    "selected_host_offline",
+    "concurrent_duplicate_admission",
+    "conflicting_admission",
+    "launch_accepted_reply_lost",
+    "worker_killed_before_reconciliation",
+    "server_killed_same_database",
+    "fresh_worker_reconciles_same_native_session",
+    "cancellation_ack_before_observed_terminal"
+  ],
+  "required_system_gates": {
+    "all_component_isolated_integration": "blocked",
+    "native_protocol_compatibility": "blocked",
+    "browser_fencing": "blocked",
+    "artifact_acceptance_and_delivery": "blocked",
+    "telemetry_readback": "blocked",
+    "candidate_approval_and_serving": "blocked",
+    "live_acceptance": "not_run"
+  }
+}

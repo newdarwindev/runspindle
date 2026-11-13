@@ -1,0 +1,1265 @@
+{
+  "checks": {
+    "artifact_hashes": 19,
+    "git_diff_check": "passed",
+    "python_tests": 29,
+    "scaffold": "passed"
+  },
+  "command_exit_codes": [
+    78,
+    78
+  ],
+  "evidence_class": "isolated_integration",
+  "github_ci": "unverified",
+  "live_acceptance": "not_run",
+  "negative_control": {
+    "aggregate": "blocked",
+    "live_acceptance": "not_run",
+    "observed_at": "2026-11-13T19:52:20.388229+00:00",
+    "real_core_lane": "blocked",
+    "reason": "core image does not match pinned build evidence"
+  },
+  "negative_control_exit_code": 78,
+  "normalized_outcome_sha256": "0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+  "observed_at": "2026-11-13T19:52:49.425270+00:00",
+  "runs": [
+    {
+      "aggregate": "blocked",
+      "assertions": {
+        "cancel_calls": 1,
+        "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+        "launch_calls": 1,
+        "native_session_id": "observed-native-17",
+        "terminal": "observed_cancelled"
+      },
+      "boundary_matrix": {
+        "browser": "not_exercised",
+        "console": "not_exercised",
+        "core": "real_rust_temporal_worker",
+        "delivery": "not_exercised",
+        "host": "scripted_activity_peer",
+        "provider": "not_exercised",
+        "refinery": "not_exercised",
+        "temporal": "real_pinned_development_server"
+      },
+      "cleanup": "independently_absent",
+      "evidence_class": "isolated_integration",
+      "normalized_outcome_sha256": "0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+      "observations": {
+        "active_revision": {
+          "job_id": null,
+          "status": "predecessor_active"
+        },
+        "admission_replies": [
+          {
+            "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+            "status": "duplicate_delivery"
+          },
+          {
+            "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+            "status": "admitted"
+          }
+        ],
+        "calls": [
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "conflicting-policy",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-next-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-next-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": 1,
+              "revision": 2,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "launch",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "discover",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "cancel",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          }
+        ],
+        "calls_after_replay": 20,
+        "cancel": {
+          "accepted": true
+        },
+        "cancel_acknowledged": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "acknowledged",
+          "native_session_id": "observed-native-17",
+          "state": "acknowledged"
+        },
+        "conflict": {
+          "job_id": null,
+          "status": "delivery_conflict"
+        },
+        "duplicate_after_restart": {
+          "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+          "status": "duplicate_delivery"
+        },
+        "effect_receipts": [
+          {
+            "binding": {
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17",
+            "status": "running"
+          }
+        ],
+        "offline_launch_count": 0,
+        "recovered": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "not_requested",
+          "native_session_id": "observed-native-17",
+          "state": "acknowledged"
+        },
+        "replay": {
+          "check": "history_replay",
+          "evidence_class": "isolated_integration",
+          "status": "passed"
+        },
+        "terminal": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "observed_terminal",
+          "native_session_id": "observed-native-17",
+          "state": "observed_cancelled"
+        },
+        "worker_exit": 93,
+        "wrong_cancel": {
+          "accepted": false
+        }
+      },
+      "observed_at": "2026-11-13T19:51:14.715665+00:00",
+      "real_core_lane": "passed",
+      "scenario_id": "core-temporal-pinned-recovery-v1",
+      "schema_version": "runspindle.scenario-report.v1",
+      "script_sha256s": [
+        "c538eed8994c148826fff98aafd6e0101023a5375a5c4bca5499d5b6541bfb37",
+        "c8acafabad8af181dd50188a2d8dc7ffdcf07d116f377786f64c0564931e32c4",
+        "d1046d0f438c16c9c69b32e65912de866ed5986f998a7afcefc87816479185a1",
+        "e0404c34d31742c2ed36e8b65d797ee0060544068ebfd8b44169f9a1f66a105d",
+        "c98e39052dd3659784cffb58255ed2ae2971b09b7fd6e55af2d4d55ee3312e2d"
+      ],
+      "source": {
+        "components": {
+          "browser": {
+            "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+            "repository": "newdarwindev/runspindle-browser"
+          },
+          "console": {
+            "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+            "repository": "newdarwindev/runspindle-console"
+          },
+          "core": {
+            "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+            "repository": "newdarwindev/runspindle-core"
+          },
+          "host": {
+            "commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
+            "repository": "newdarwindev/runspindle-host"
+          },
+          "platform": {
+            "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+            "repository": "newdarwindev/runspindle-platform"
+          },
+          "refinery": {
+            "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+            "repository": "newdarwindev/runspindle-refinery"
+          },
+          "tether": {
+            "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+            "repository": "newdarwindev/runspindle-tether"
+          }
+        },
+        "composition_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
+        "contract_sha256": "5cb611d251d286ee108b70e85c3781d47b4501585b46d16bfb8054dac47860c1",
+        "driver_sha256": "654790d0588315d9f169e77b0b35e7e3c95a58f925853bc404507d94df599e25",
+        "fixture_manifest_sha256": "1dd35d045064056dd66e6da3619ff100549e1c3e81c928f076cfd4109a524d81",
+        "lock_sha256": "c1ce9526115b9d2a2f7edd6a96b6955212123817c84650c93b1fb0317c25559c",
+        "scenario_sha256": "2f0aec3847638dfb762a5532261c5c419984287888db5f2867791d97f959100c",
+        "seed": 17
+      },
+      "system_gates": {
+        "all_component_isolated_integration": "blocked",
+        "artifact_acceptance_and_delivery": "blocked",
+        "browser_fencing": "blocked",
+        "candidate_approval_and_serving": "blocked",
+        "live_acceptance": "not_run",
+        "native_protocol_compatibility": "blocked",
+        "telemetry_readback": "blocked"
+      },
+      "toolchains": {
+        "core_build": {
+          "binary_sha256": "994e4687957cac46059133efb8557e8f960036da2fbe2baf3128956ea3da440b",
+          "builder_image_id": "sha256:061420d04a6f6ac173e3b1835b0594bcbe9d17044f5e015ca4fb767f9c57813e",
+          "cargo_lock_sha256": "5ada42a96ee9eda3e68c1cb93080c2319322cc5bf8d3166fef785a96ced2d89d",
+          "dependency_inventory_sha256": "caf5efe05c1dbfd24584263db64df6b2d7e1258dfd4b32c2e6f56d1881a77392",
+          "evidence_class": "prepared_dependency_artifacts",
+          "image_id": "sha256:b615189193ec2ed422105a70bc78e3494c6512db23185fec503aecb7a55fca12",
+          "isolation": "runtime must use platform internal network; no published ports; pull never",
+          "operational_acceptance": "not_run",
+          "rust_version": "1.94.1",
+          "schema_version": 1,
+          "sdk_revision": "c675c32469af707e1c979a7b808c70b4a0608b82",
+          "sdk_version": "1.2.0",
+          "source_hashes": {
+            "Cargo.lock": "5ada42a96ee9eda3e68c1cb93080c2319322cc5bf8d3166fef785a96ced2d89d",
+            "Cargo.toml": "028bb1137c1d95ae65bf0a9ddec916646ee08fe089b4810f8d3a3f33a2d9aaf9",
+            "src/artifact.rs": "ec8ba59c519b0a845a207db455e8bbde94b8fcc8e48c83b0977be9b8edcf6de7",
+            "src/bin/temporal-runtime.rs": "29c85e38fe86f6ecf022a534511656d07cd489f1411d87bee5def3e5b437383b",
+            "src/identity.rs": "bb8b23a9a614a974c05a4f329d4e4da8565a28af6008a95e40591ced1ec9da25",
+            "src/lib.rs": "6d10ef4185567edc99297489524aed198ff09a08c178f19ea6539cfdfe011c07",
+            "src/runtime.rs": "c7e9affa19f8c4f0097e5ae9a37f918a0db5638fb65df9b75a1dcdf983cb778f",
+            "temporal/toolchain.json": "3902172aac23f43d70c509a37930696f01102f6dc6e20c8c51607526b2611990"
+          },
+          "source_sha256": "d2b2d59d8e450bea7324b492feed75b9dbe0bac74457d9a502f5b696d2b330e7"
+        },
+        "core_dependencies_sha256": "caf5efe05c1dbfd24584263db64df6b2d7e1258dfd4b32c2e6f56d1881a77392",
+        "core_image": "sha256:b615189193ec2ed422105a70bc78e3494c6512db23185fec503aecb7a55fca12",
+        "platform_prepared": {
+          "architecture": "arm64",
+          "archive_sha256": "6e526d2f089bf5acead2129f1f63e303b848410d5d9d86b9255359dcea6eaaa8",
+          "binary_sha256": "1d08e4e0ec7ce5397681aefe14a4ee9b738a56ca974974bfaf5a18ea922c0bc5",
+          "image": "sha256:f7d5589e604551906f44c50d0036fd9fb71b72664ca87b8ee824aef78b5c43e0",
+          "pins_sha256": "8318dcd9ecd49755203d45caf3b8b444b01b0f8358fc292be9a61ecb8519772e",
+          "schema_version": 1,
+          "version": "temporal version 1.10.0 (Server 1.32.2, UI 2.56.1)"
+        },
+        "temporal_image": "sha256:f7d5589e604551906f44c50d0036fd9fb71b72664ca87b8ee824aef78b5c43e0"
+      }
+    },
+    {
+      "aggregate": "blocked",
+      "assertions": {
+        "cancel_calls": 1,
+        "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+        "launch_calls": 1,
+        "native_session_id": "observed-native-17",
+        "terminal": "observed_cancelled"
+      },
+      "boundary_matrix": {
+        "browser": "not_exercised",
+        "console": "not_exercised",
+        "core": "real_rust_temporal_worker",
+        "delivery": "not_exercised",
+        "host": "scripted_activity_peer",
+        "provider": "not_exercised",
+        "refinery": "not_exercised",
+        "temporal": "real_pinned_development_server"
+      },
+      "cleanup": "independently_absent",
+      "evidence_class": "isolated_integration",
+      "normalized_outcome_sha256": "0b0d100516012230e3d3799f8066b5af1bd485f18aa965601dc9bd6ac177694e",
+      "observations": {
+        "active_revision": {
+          "job_id": null,
+          "status": "predecessor_active"
+        },
+        "admission_replies": [
+          {
+            "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+            "status": "admitted"
+          },
+          {
+            "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+            "status": "duplicate_delivery"
+          }
+        ],
+        "calls": [
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "conflicting-policy",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-next-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-next-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": 1,
+              "revision": 2,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "observe_host",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "launch",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "discover",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "cancel",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          },
+          {
+            "action": "verify",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": null
+          },
+          {
+            "action": "poll",
+            "admission": {
+              "delivery_id": "event-17",
+              "delivery_namespace": "synthetic",
+              "grant_ref": "synthetic-grant-17",
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "normalized_digest": "802a4b827fc3c413e46151b3831b1a5ac0d4dfa167320faa983da66bac9ead2e",
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "predecessor_revision": null,
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "version": "runspindle.runtime.v1",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17"
+          }
+        ],
+        "calls_after_replay": 22,
+        "cancel": {
+          "accepted": true
+        },
+        "cancel_acknowledged": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "acknowledged",
+          "native_session_id": "observed-native-17",
+          "state": "acknowledged"
+        },
+        "conflict": {
+          "job_id": null,
+          "status": "delivery_conflict"
+        },
+        "duplicate_after_restart": {
+          "job_id": "job-7372cbad6fbcea4961b411b092ef2f95304438e87d0000368fd8d1b7dad86ccb",
+          "status": "duplicate_delivery"
+        },
+        "effect_receipts": [
+          {
+            "binding": {
+              "host_id": "offline-host-17",
+              "lease_epoch": 1,
+              "operation_id": "operation-17",
+              "policy_revision": "policy-17",
+              "revision": 1,
+              "task_id": "scenario-task-17",
+              "workspace_id": "workspace-17"
+            },
+            "native_session_id": "observed-native-17",
+            "status": "running"
+          }
+        ],
+        "offline_launch_count": 0,
+        "recovered": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "not_requested",
+          "native_session_id": "observed-native-17",
+          "state": "acknowledged"
+        },
+        "replay": {
+          "check": "history_replay",
+          "evidence_class": "isolated_integration",
+          "status": "passed"
+        },
+        "terminal": {
+          "binding": {
+            "host_id": "offline-host-17",
+            "lease_epoch": 1,
+            "operation_id": "operation-17",
+            "policy_revision": "policy-17",
+            "revision": 1,
+            "task_id": "scenario-task-17",
+            "workspace_id": "workspace-17"
+          },
+          "cancellation": "observed_terminal",
+          "native_session_id": "observed-native-17",
+          "state": "observed_cancelled"
+        },
+        "worker_exit": 93,
+        "wrong_cancel": {
+          "accepted": false
+        }
+      },
+      "observed_at": "2026-11-13T19:52:09.799770+00:00",
+      "real_core_lane": "passed",
+      "scenario_id": "core-temporal-pinned-recovery-v1",
+      "schema_version": "runspindle.scenario-report.v1",
+      "script_sha256s": [
+        "c538eed8994c148826fff98aafd6e0101023a5375a5c4bca5499d5b6541bfb37",
+        "c8acafabad8af181dd50188a2d8dc7ffdcf07d116f377786f64c0564931e32c4",
+        "d1046d0f438c16c9c69b32e65912de866ed5986f998a7afcefc87816479185a1",
+        "e0404c34d31742c2ed36e8b65d797ee0060544068ebfd8b44169f9a1f66a105d",
+        "c98e39052dd3659784cffb58255ed2ae2971b09b7fd6e55af2d4d55ee3312e2d"
+      ],
+      "source": {
+        "components": {
+          "browser": {
+            "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+            "repository": "newdarwindev/runspindle-browser"
+          },
+          "console": {
+            "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+            "repository": "newdarwindev/runspindle-console"
+          },
+          "core": {
+            "commit": "d50e219c8df21b06bfdc2eba75e6a58ed9b4596e",
+            "repository": "newdarwindev/runspindle-core"
+          },
+          "host": {
+            "commit": "3d329c68605a0e484592ede74493c615e6b90f8c",
+            "repository": "newdarwindev/runspindle-host"
+          },
+          "platform": {
+            "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+            "repository": "newdarwindev/runspindle-platform"
+          },
+          "refinery": {
+            "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+            "repository": "newdarwindev/runspindle-refinery"
+          },
+          "tether": {
+            "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+            "repository": "newdarwindev/runspindle-tether"
+          }
+        },
+        "composition_commit": "d53fce7fbfc8b4a5ed751e092dabd618cc124d29",
+        "contract_sha256": "5cb611d251d286ee108b70e85c3781d47b4501585b46d16bfb8054dac47860c1",
+        "driver_sha256": "654790d0588315d9f169e77b0b35e7e3c95a58f925853bc404507d94df599e25",
+        "fixture_manifest_sha256": "1dd35d045064056dd66e6da3619ff100549e1c3e81c928f076cfd4109a524d81",
+        "lock_sha256": "c1ce9526115b9d2a2f7edd6a96b6955212123817c84650c93b1fb0317c25559c",
+        "scenario_sha256": "2f0aec3847638dfb762a5532261c5c419984287888db5f2867791d97f959100c",
+        "seed": 17
+      },
+      "system_gates": {
+        "all_component_isolated_integration": "blocked",
+        "artifact_acceptance_and_delivery": "blocked",
+        "browser_fencing": "blocked",
+        "candidate_approval_and_serving": "blocked",
+        "live_acceptance": "not_run",
+        "native_protocol_compatibility": "blocked",
+        "telemetry_readback": "blocked"
+      },
+      "toolchains": {
+        "core_build": {
+          "binary_sha256": "994e4687957cac46059133efb8557e8f960036da2fbe2baf3128956ea3da440b",
+          "builder_image_id": "sha256:061420d04a6f6ac173e3b1835b0594bcbe9d17044f5e015ca4fb767f9c57813e",
+          "cargo_lock_sha256": "5ada42a96ee9eda3e68c1cb93080c2319322cc5bf8d3166fef785a96ced2d89d",
+          "dependency_inventory_sha256": "caf5efe05c1dbfd24584263db64df6b2d7e1258dfd4b32c2e6f56d1881a77392",
+          "evidence_class": "prepared_dependency_artifacts",
+          "image_id": "sha256:b615189193ec2ed422105a70bc78e3494c6512db23185fec503aecb7a55fca12",
+          "isolation": "runtime must use platform internal network; no published ports; pull never",
+          "operational_acceptance": "not_run",
+          "rust_version": "1.94.1",
+          "schema_version": 1,
+          "sdk_revision": "c675c32469af707e1c979a7b808c70b4a0608b82",
+          "sdk_version": "1.2.0",
+          "source_hashes": {
+            "Cargo.lock": "5ada42a96ee9eda3e68c1cb93080c2319322cc5bf8d3166fef785a96ced2d89d",
+            "Cargo.toml": "028bb1137c1d95ae65bf0a9ddec916646ee08fe089b4810f8d3a3f33a2d9aaf9",
+            "src/artifact.rs": "ec8ba59c519b0a845a207db455e8bbde94b8fcc8e48c83b0977be9b8edcf6de7",
+            "src/bin/temporal-runtime.rs": "29c85e38fe86f6ecf022a534511656d07cd489f1411d87bee5def3e5b437383b",
+            "src/identity.rs": "bb8b23a9a614a974c05a4f329d4e4da8565a28af6008a95e40591ced1ec9da25",
+            "src/lib.rs": "6d10ef4185567edc99297489524aed198ff09a08c178f19ea6539cfdfe011c07",
+            "src/runtime.rs": "c7e9affa19f8c4f0097e5ae9a37f918a0db5638fb65df9b75a1dcdf983cb778f",
+            "temporal/toolchain.json": "3902172aac23f43d70c509a37930696f01102f6dc6e20c8c51607526b2611990"
+          },
+          "source_sha256": "d2b2d59d8e450bea7324b492feed75b9dbe0bac74457d9a502f5b696d2b330e7"
+        },
+        "core_dependencies_sha256": "caf5efe05c1dbfd24584263db64df6b2d7e1258dfd4b32c2e6f56d1881a77392",
+        "core_image": "sha256:b615189193ec2ed422105a70bc78e3494c6512db23185fec503aecb7a55fca12",
+        "platform_prepared": {
+          "architecture": "arm64",
+          "archive_sha256": "6e526d2f089bf5acead2129f1f63e303b848410d5d9d86b9255359dcea6eaaa8",
+          "binary_sha256": "1d08e4e0ec7ce5397681aefe14a4ee9b738a56ca974974bfaf5a18ea922c0bc5",
+          "image": "sha256:f7d5589e604551906f44c50d0036fd9fb71b72664ca87b8ee824aef78b5c43e0",
+          "pins_sha256": "8318dcd9ecd49755203d45caf3b8b444b01b0f8358fc292be9a61ecb8519772e",
+          "schema_version": 1,
+          "version": "temporal version 1.10.0 (Server 1.32.2, UI 2.56.1)"
+        },
+        "temporal_image": "sha256:f7d5589e604551906f44c50d0036fd9fb71b72664ca87b8ee824aef78b5c43e0"
+      }
+    }
+  ],
+  "same_source_toolchains_and_fault_scripts": true,
+  "schema_version": 1,
+  "scope": "real_core_and_real_temporal_with_scripted_host_only",
+  "system_acceptance": "blocked"
+}

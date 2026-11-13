@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "evidence_class": "isolated_integration",
+  "contract": "runspindle.integration.v1",
+  "execution_source_commit": "720b47e24c8490c4956f50787cefac09708eeb72",
+  "execution_source_hashes": {
+    "tools/runtime_integration_scenario.py": "d784fb2a930c2d5798923f7deda478a92db4148ed6be7e3e2efe78b2eeb25f29",
+    "specs/runtime-integration-scenarios-v1.json": "882cb19b197c1bf623182886ed1fad8d05898c201324825aed3f34746d92b1b8",
+    "tests/test_runtime_integration_scenario.py": "2687bd35145a4dd7ce591559994322022125fdba3ec594144cfa21574b9bb865"
+  },
+  "source_matches_final_code": "verified after execution against recorded Git objects",
+  "lanes": {
+    "H02": {
+      "status": "passed",
+      "evidence": "docs/H02-integration-evidence.json",
+      "normalized_outcome_sha256": "693b83258b3a4548c3e3b062bf521f50ec89f0bda91c1f6521825f9e8fee6e82",
+      "repeat_runs": 2
+    },
+    "H07": {
+      "status": "passed",
+      "evidence": "docs/H07-integration-evidence.json",
+      "normalized_outcome_sha256": "0a4a0bee651499d5493b07727674258f773e53407603399e7fba17af72602a12",
+      "repeat_runs": 2
+    }
+  },
+  "aggregate": "blocked",
+  "required_system_gates": {
+    "Tether_source_and_transport": "blocked",
+    "browser_fencing": "not_run",
+    "console_projection": "not_run",
+    "full_workflow_acceptance": "blocked",
+    "live_acceptance": "not_run",
+    "native_wire": "blocked",
+    "provider_live": "not_run"
+  },
+  "composition_tests": 40,
+  "library_alignment": "passed explicit fail-closed local check; not run by unchanged structural CI",
+  "github_ci": "unverified",
+  "workflow_scope": "existing OAuth app cannot update workflows; no workflow or permission change applied",
+  "runtime_build": "components/core/docs/runtime-build.json",
+  "dependency_inventory": "components/core/docs/runtime-dependencies.json",
+  "scaffold": "passed",
+  "boundaries": "Native and destination peers scripted; actual native/Tether/provider/browser/console/live acceptance absent",
+  "live_acceptance": "not_run",
+  "reviewed_scenario_head": "11fa9459691c6d00b90e5952f46ee80cafe871ec",
+  "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/38",
+  "scenario_merge_commit": "96807f515acb8da2cd1c5423dc893a0a86eb98e1",
+  "independent_reproduction": "H02 and H07 each passed twice at reviewed head; normalized observations/hashes match stored execution evidence"
+}
