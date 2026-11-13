@@ -24,3 +24,7 @@ Preserve explicit authority and unknown outcomes. Distinguish request admission,
 None of these product gates has been run for this scaffold.
 
 See [system contract](system.md).
+
+A provisional [synthetic fixture contract](../docs/FIXTURE_KIT.md) now has a
+stdlib validator, versioned bundle and local conformance tests. It is test-only;
+component adoption, upstream qualification and system acceptance remain unverified.
