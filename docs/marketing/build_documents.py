@@ -37,7 +37,7 @@ def article(name,title,parts):
  body+='\\end{document}\n'; (P/(name+'.tex')).write_text(body)
 article('runspindle-paper','Runspindle: Authorized Work as a Verifiable System',sections)
 article('workflow-refinery','Runspindle Refinery: A Human-Guided Evaluation Loop',[sections[i] for i in [0,4,5,7,8]])
-(P/'economics.md').write_text('# Runspindle economics\n\nStatus: proposed accounting model; no measured results.\n\n'+sections[5][1]+'\n\nSource concept: SRC-002.\n')
+(P/'economics.md').write_text('# Runspindle economics\n\nStatus: proposed accounting model; no measured results.\n\n'+sections[5][1]+'\n\nSource concept: SRC-005.\n')
 (P/'overview.md').write_text('# Runspindle\n\n'+'\n\n'.join('## '+h+'\n\n'+t for h,t in sections)+'\n')
 style='body{max-width:72rem;margin:auto;padding:3rem 1.5rem;font:18px/1.65 system-ui;color:#183247;background:#f7fafc}h1{font-size:3rem;line-height:1.1}h2{line-height:1.25;margin-top:2.6rem}p{max-width:78ch}.badge{color:#6b3600;background:#fff0d3;padding:1rem;border-radius:.6rem}a{color:#075985}nav{display:flex;gap:1rem;flex-wrap:wrap}footer{border-top:1px solid #b8c8d2;margin-top:3rem;padding-top:1rem}'
 def page(name,title,parts):

@@ -86,7 +86,7 @@
       "implementation_evidence": false,
       "kind": "new_renderer",
       "path": "docs/marketing/build_documents.py",
-      "sha256": "543b52e530a41119fe50018853f901608af0dfa70065ba1d715b1cc7abb3e19e",
+      "sha256": "335e8af7784597303eacec1f7cd46caeb48fb739f141f0d75ffcf3925a37d915",
       "source_ids": [
         "SRC-002",
         "SRC-003",
@@ -103,7 +103,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/economics.md",
-      "sha256": "71e0f4513035f616368b73441598693ad9d7c66822ea5474a4eac23bab9812d1",
+      "sha256": "cc332e959701b405b2cf7a569aa662803db3cabaf24534a5cc336e14ee2a845f",
       "source_ids": [
         "SRC-005"
       ],
