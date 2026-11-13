@@ -1,13 +1,14 @@
 """Independent evidence oracle mutations; these are synthetic contract evidence."""
 import copy
-import importlib.util
+import types
 import pathlib
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('core_scenario', ROOT / 'tools/core_temporal_scenario.py')
-scenario = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(scenario)
+source = ROOT / 'tools/core_temporal_scenario.py'
+scenario = types.ModuleType('core_scenario')
+scenario.__file__ = str(source)
+exec(compile(source.read_bytes(), str(source), 'exec'), scenario.__dict__)
 
 
 class ScenarioOracle(unittest.TestCase):
@@ -72,8 +73,12 @@ class ScenarioOracle(unittest.TestCase):
             scenario.assert_observations(bad, self.admission)
 
     def test_required_unavailable_system_gates_are_non_success(self):
-        for state in ('blocked', 'not_run', 'unknown', 'failed'):
+        for state in ('blocked', 'not_run', 'unknown'):
             self.assertEqual(scenario.aggregate('passed', {'required': state}), 'blocked')
+        self.assertEqual(scenario.aggregate('passed', {'required': 'failed'}), 'failed')
+        self.assertEqual(scenario.aggregate('failed', {'required': 'blocked'}), 'failed')
+        self.assertEqual(scenario.exception_status(AssertionError('broken invariant')), 'failed')
+        self.assertEqual(scenario.exception_status(scenario.Blocked('missing pin')), 'blocked')
         self.assertEqual(scenario.aggregate('passed', {}), 'blocked')
         self.assertEqual(scenario.aggregate('blocked', {'required': 'passed'}), 'blocked')
         self.assertEqual(scenario.aggregate('passed', {'required': 'passed'}), 'passed')

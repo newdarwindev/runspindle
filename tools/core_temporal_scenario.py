@@ -70,6 +70,8 @@ def inventory(root=ROOT):
 
 def aggregate(real_core_lane, gates):
     """A passing development lane cannot turn unimplemented system gates green."""
+    if real_core_lane == 'failed' or 'failed' in gates.values():
+        return 'failed'
     return 'passed' if real_core_lane == 'passed' and gates and all(
         state == 'passed' for state in gates.values()) else 'blocked'
 
@@ -128,7 +130,7 @@ def assert_observations(observed, admission):
 def run(platform_prepared, core_image):
     import concurrent.futures
     import copy
-    import importlib.util
+    import types
     import tempfile
     import time
     import uuid
@@ -141,9 +143,10 @@ def run(platform_prepared, core_image):
     core_dependencies = ROOT / 'components/core/docs/runtime-dependencies.json'
     if not core_dependencies.is_file():
         raise Blocked('pinned core does not implement Temporal runtime')
-    spec = importlib.util.spec_from_file_location('runspindle_temporal_lane', platform)
-    lane_module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(lane_module)
+    # Execute the exact inventoried source bytes; an untracked .pyc cannot replace them.
+    lane_module = types.ModuleType('runspindle_temporal_lane')
+    lane_module.__file__ = str(platform)
+    exec(compile(platform.read_bytes(), str(platform), 'exec'), lane_module.__dict__)
     admission = {'version': 'runspindle.runtime.v1', 'delivery_namespace': 'synthetic',
                  'delivery_id': 'event-17', 'task_id': 'scenario-task-17', 'revision': 1,
                  'operation_id': 'operation-17', 'predecessor_revision': None,
@@ -264,6 +267,12 @@ def run(platform_prepared, core_image):
         return result
 
 
+def exception_status(exc):
+    if isinstance(exc, (Blocked, OSError)) or type(exc).__name__ == 'Blocked':
+        return 'blocked'
+    return 'failed'
+
+
 def main():
     import argparse
     import datetime
@@ -274,8 +283,9 @@ def main():
     args = parser.parse_args()
     try:
         result = run(args.platform_prepared, args.core_image)
-    except (Blocked, AssertionError, OSError, ValueError, KeyError, subprocess.SubprocessError) as exc:
-        result = {'real_core_lane': 'blocked', 'aggregate': 'blocked', 'reason': str(exc),
+    except (Blocked, AssertionError, OSError, ValueError, KeyError, RuntimeError, subprocess.SubprocessError) as exc:
+        state = exception_status(exc)
+        result = {'real_core_lane': state, 'aggregate': state, 'reason': str(exc),
                   'live_acceptance': 'not_run'}
     result['observed_at'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     pathlib.Path(args.report).write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
