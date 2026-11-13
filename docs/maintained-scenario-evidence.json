@@ -199,7 +199,8 @@
     "contract": "https://github.com/newdarwindev/runspindle/pull/40",
     "core": "https://github.com/newdarwindev/runspindle-core/pull/15",
     "refinery": "https://github.com/newdarwindev/runspindle-refinery/pull/14",
-    "platform": "https://github.com/newdarwindev/runspindle-platform/pull/13"
+    "platform": "https://github.com/newdarwindev/runspindle-platform/pull/13",
+    "composition": "https://github.com/newdarwindev/runspindle/pull/41"
   },
   "remote_main_drift": {
     "composition": "c973374b6b57608b16ed647bf55b501bad40ed01",
@@ -210,5 +211,11 @@
   },
   "live_acceptance": "not_run",
   "production_activation": "not_run",
-  "issues_closed": []
+  "issues_closed": [],
+  "issue_reconciliation": {
+    "issues_updated": 20,
+    "readback_verified": 20,
+    "original_checklists_preserved": true,
+    "issues_closed": 0
+  }
 }
