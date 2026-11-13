@@ -1,0 +1,99 @@
+{
+  "aggregate": "blocked",
+  "boundary_matrix": {
+    "real": [
+      "core",
+      "host_library",
+      "Temporal"
+    ],
+    "scripted": [
+      "native_peer"
+    ]
+  },
+  "component_outcomes": [
+    {
+      "boundary": "after_peer_effect",
+      "cancel_during_terminal_observation": "accepted_intent_preserved",
+      "cancels": 1,
+      "launch_calls": 1,
+      "pre_dispatch_cancel": "durable_local_outcome",
+      "replay": "passed",
+      "session": "observed-peer-session",
+      "terminal": "completed"
+    },
+    {
+      "boundary": "before_peer_effect",
+      "launch_calls": 1,
+      "native_receipts": 0,
+      "unknown": true
+    }
+  ],
+  "evidence_class": "isolated_integration",
+  "independent_observations": [
+    {
+      "boundary": "after_peer_effect",
+      "cancel_calls": 1,
+      "cancel_completion_race": "preserved",
+      "identity_preserved": true,
+      "launch_calls": 1,
+      "native_receipts": 1
+    },
+    {
+      "boundary": "before_peer_effect",
+      "launch_calls": 1,
+      "native_receipts": 0,
+      "state": "unknown"
+    }
+  ],
+  "lane": "H02",
+  "lane_status": "passed",
+  "live_acceptance": "not_run",
+  "normalized_outcome_sha256": "693b83258b3a4548c3e3b062bf521f50ec89f0bda91c1f6521825f9e8fee6e82",
+  "observed_at": "2026-11-13T21:54:22.167787+00:00",
+  "repeat_runs": 2,
+  "schema_version": "runspindle.integration-scenario-report.v1",
+  "seed": 17,
+  "sources": {
+    "components": {
+      "browser": {
+        "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+        "path": "components/browser"
+      },
+      "console": {
+        "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+        "path": "components/console"
+      },
+      "core": {
+        "commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+        "path": "components/core"
+      },
+      "host": {
+        "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+        "path": "components/host"
+      },
+      "platform": {
+        "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+        "path": "components/platform"
+      },
+      "refinery": {
+        "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+        "path": "components/refinery"
+      },
+      "tether": {
+        "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+        "path": "components/tether"
+      }
+    },
+    "composition_head": "720b47e24c8490c4956f50787cefac09708eeb72",
+    "contract": "runspindle.integration.v1"
+  },
+  "system_gates": {
+    "Tether_source_and_transport": "blocked",
+    "browser_fencing": "not_run",
+    "console_projection": "not_run",
+    "full_workflow_acceptance": "blocked",
+    "live_acceptance": "not_run",
+    "native_wire": "blocked",
+    "provider_live": "not_run"
+  }
+}

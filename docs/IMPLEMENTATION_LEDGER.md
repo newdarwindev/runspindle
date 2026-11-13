@@ -189,3 +189,36 @@ that is required to complete the issue. All initial issues are listed once.
 | [runspindle-platform#2](https://github.com/newdarwindev/runspindle-platform/issues/2) | blocked. Exact privately retained SRC-011 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. |
 | [runspindle-platform#3](https://github.com/newdarwindev/runspindle-platform/issues/3) | blocked. Pinned native/Collector/Langfuse compatibility and permitted telemetry surfaces are unselected. Schema-URL masking gap remains unresolved; no real backend readback adapter. Requires unresolved interfaces described in runtime contracts from #1/host #2. |
 | [runspindle-platform#4](https://github.com/newdarwindev/runspindle-platform/issues/4) | blocked. No qualified upstream source/image/toolchain digest set, target compatibility/license inventory or accepted component release. Disposable installed-byte/rollback adapter cannot be qualified. Requires unresolved interfaces described in platform #3. |
+
+## Next runtime integration tranche
+
+The [current evidence](runtime-integration-evidence.json) and machine ledger key
+`runtime_integration_tranche` record the selected library/SQLite boundary.
+Merge order was contract [#35](https://github.com/newdarwindev/runspindle/pull/35),
+[host #7](https://github.com/newdarwindev/runspindle-host/pull/7),
+[core bridge #11](https://github.com/newdarwindev/runspindle-core/pull/11),
+[artifacts #12](https://github.com/newdarwindev/runspindle-core/pull/12),
+[outbox #13](https://github.com/newdarwindev/runspindle-core/pull/13), then separate
+[composition pins #37](https://github.com/newdarwindev/runspindle/pull/37).
+Every exact final component/pin head had independent approval. Platform #8 merged
+preparation only and did not advance its composition pin or deploy runners.
+
+H02 and H07 each passed two seeded composition runs with independent direct
+SQLite observations. Host dispatch, validation/acceptance, delivery reservation,
+lost acknowledgement and receipt-conflict fences survive fresh processes; real
+Temporal restarts/replay preserve observations without duplicate effects.
+Core has48 Rust/16 Python tests, host27 Rust/7 Python, composition40 Python;
+strict Clippy, formatting, scaffold and isolated behavioral mutations pass.
+Mutations cover duplicate dispatch, session rebinding, skipped validation, changed
+bytes and fabricated receipts. Earlier shared-target outputs were discarded;
+private mutation targets now clean the component and assert qualification output
+is unchanged. Native/real Tether/provider/browser/console and full-system/live
+acceptance remain blocked/not run. Missing private source/rights records remain
+external blockers. No issue was closed, legacy repository archived, credential or
+permission changed, runner provisioned, paid call made or production activated.
+
+The existing OAuth app rejected a proposed workflow edit for lack of workflow
+scope. It was not applied: original structural CI stays intact, while explicit
+library alignment fails closed on missing/mismatched pins. Remote CI and that
+CI alignment gate remain unverified/not run; local success is not CI/deployment
+proof. The original unrelated platform checkout is preserved.

@@ -54,3 +54,9 @@ is implied.
 Read [the component-specific technical intent](specs/desired-intent.md) for its
 interfaces, privacy boundaries, failure cases and acceptance obligations. Current
 implementation and evidence limits above remain unchanged.
+
+The [H02/H07 runtime integration lanes](docs/RUNTIME_INTEGRATION.md) now exercise
+real core/host/Temporal and durable accepted-byte delivery through scripted peers.
+Repeated offline passes remain separate from blocked native/Tether/full-system
+and live acceptance. Exact reviewed pins and remaining gaps are in the
+[implementation ledger](docs/IMPLEMENTATION_LEDGER.md).

@@ -1,0 +1,19 @@
+{
+  "version": "runspindle.integration-scenarios.v1",
+  "contract": "runspindle.integration.v1",
+  "seed": 17,
+  "repeat_runs": 2,
+  "lanes": {
+    "H02": {"real": ["core", "host_library", "Temporal"], "scripted": ["native_peer"]},
+    "H07": {"real": ["core_acceptance_store", "core_outbox", "Temporal"], "scripted": ["destination_transport"]}
+  },
+  "required_system_gates": {
+    "native_wire": "blocked",
+    "Tether_source_and_transport": "blocked",
+    "browser_fencing": "not_run",
+    "provider_live": "not_run",
+    "console_projection": "not_run",
+    "full_workflow_acceptance": "blocked",
+    "live_acceptance": "not_run"
+  }
+}

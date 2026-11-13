@@ -2,8 +2,8 @@
   "component_contracts": {
     "browser": "locally_tested_fixture_consumer_runtime_stub",
     "console": "locally_tested_process_local_projection_and_fixture_consumer",
-    "core": "locally_tested_bounded_durable_temporal_development_workflows",
-    "host": "locally_tested_transport_independent_lifecycle_adapter",
+    "core": "locally_tested_host_and_artifact_delivery_temporal_development",
+    "host": "locally_tested_bounded_durable_lifecycle_library",
     "platform": "locally_tested_isolated_pinned_temporal_development_lane",
     "refinery": "locally_tested_process_local_lineage_and_synthetic_evaluation",
     "tether": "locally_tested_fixture_consumer_runtime_unimplemented"
@@ -43,8 +43,19 @@
   "runtime_integration_contract": {
     "descriptor": "contracts/runtime-integration-v1.json",
     "specification": "specs/runtime-integration-v1.md",
-    "status": "specified_unimplemented",
+    "status": "specified_with_bounded_qualified_library_mapping",
     "version": "runspindle.integration.v1"
+  },
+  "runtime_integration_lanes": {
+    "H02": "passed_real_core_host_library_Temporal_scripted_native_peer",
+    "H07": "passed_real_acceptance_outbox_Temporal_scripted_destination",
+    "Tether_source_transport": "blocked",
+    "contract": "runspindle.integration.v1",
+    "evidence": "docs/runtime-integration-evidence.json",
+    "github_ci": "unverified",
+    "native_wire": "blocked",
+    "repeat_runs": 2,
+    "system_aggregate": "blocked"
   },
   "selected_source_migration": "partial",
   "shared_fixture_contract": "provisional_test_only",
