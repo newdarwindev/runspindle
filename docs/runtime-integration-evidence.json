@@ -41,5 +41,9 @@
   "dependency_inventory": "components/core/docs/runtime-dependencies.json",
   "scaffold": "passed",
   "boundaries": "Native and destination peers scripted; actual native/Tether/provider/browser/console/live acceptance absent",
-  "live_acceptance": "not_run"
+  "live_acceptance": "not_run",
+  "reviewed_scenario_head": "11fa9459691c6d00b90e5952f46ee80cafe871ec",
+  "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/38",
+  "scenario_merge_commit": "96807f515acb8da2cd1c5423dc893a0a86eb98e1",
+  "independent_reproduction": "H02 and H07 each passed twice at reviewed head; normalized observations/hashes match stored execution evidence"
 }

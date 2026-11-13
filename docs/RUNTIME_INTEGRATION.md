@@ -12,6 +12,11 @@ synthetic fixture format unchanged. Component gitlinks/lock entries and core's
 host library Cargo revision must agree. Preparation pins exact dependencies,
 bundled SQLite bytes, notices, toolchain, source, executable and image. Missing
 or mismatching preparation blocks a lane; no service/runner is substituted.
+Use the reviewed `delivery-runtime` prepared artifact matching
+`components/core/docs/runtime-build.json`. Explicit acquisition/build is
+`python3 components/core/tools/prepare_temporal_runtime.py --acquire --features delivery-runtime`.
+It produces a candidate; a different image/build record needs separate
+qualification and must not silently replace the committed record.
 
 ```sh
 python3 tools/check_library_pins.py

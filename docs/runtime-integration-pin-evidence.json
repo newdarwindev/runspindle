@@ -94,5 +94,14 @@
     "status": "existing OAuth app lacks workflow scope",
     "resolution": "workflow edit was not applied; retained original structural CI and added separate fail-closed local/runtime-lane alignment check",
     "permissions": "unchanged"
+  },
+  "subsequent_composition_qualification": {
+    "pr": "https://github.com/newdarwindev/runspindle/pull/38",
+    "reviewed_head": "11fa9459691c6d00b90e5952f46ee80cafe871ec",
+    "merge_commit": "96807f515acb8da2cd1c5423dc893a0a86eb98e1",
+    "evidence": "docs/runtime-integration-evidence.json",
+    "H02": "passed_twice",
+    "H07": "passed_twice",
+    "aggregate": "blocked"
   }
 }
