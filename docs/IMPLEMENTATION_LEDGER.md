@@ -222,3 +222,10 @@ scope. It was not applied: original structural CI stays intact, while explicit
 library alignment fails closed on missing/mismatched pins. Remote CI and that
 CI alignment gate remain unverified/not run; local success is not CI/deployment
 proof. The original unrelated platform checkout is preserved.
+
+Composition scenarios [PR38](https://github.com/newdarwindev/runspindle/pull/38)
+merged as `96807f515acb8da2cd1c5423dc893a0a86eb98e1` after independent approval of
+exact head `11fa9459691c6d00b90e5952f46ee80cafe871ec`. The reviewer repeated both
+real lanes twice, matched their independent normalized hashes, and passed all40
+Python tests plus scaffold/library alignment. This closeout records that merge;
+it adds no new runtime, deployment, rights or live-acceptance claim.

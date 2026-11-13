@@ -1840,6 +1840,14 @@
     "live_acceptance": "not_run",
     "production_activation": "not_run",
     "legacy_archival": "not_started",
-    "issues_closed": []
+    "issues_closed": [],
+    "composition_scenarios": {
+      "pr": "https://github.com/newdarwindev/runspindle/pull/38",
+      "reviewed_head": "11fa9459691c6d00b90e5952f46ee80cafe871ec",
+      "merge_commit": "96807f515acb8da2cd1c5423dc893a0a86eb98e1",
+      "independent_review": "approved exact final head;40 tests,alignment/scaffold/source checks;H02/H07 each repeated twice and hashes match committed evidence",
+      "aggregate": "blocked; expected exit78",
+      "no_scope_expansion": true
+    }
   }
 }
