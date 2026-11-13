@@ -1,0 +1,233 @@
+[
+  {
+    "expected_error": "schema-version",
+    "id": "admission.observed-unknown-version",
+    "kind": "admission.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "admission.observed-wrong-host",
+    "kind": "admission.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "native.observed-unknown-version",
+    "kind": "native.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "native.observed-wrong-host",
+    "kind": "native.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "browser.observed-unknown-version",
+    "kind": "browser.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "browser.observed-wrong-host",
+    "kind": "browser.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "event.observed-unknown-version",
+    "kind": "event.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "event.observed-wrong-host",
+    "kind": "event.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "artifact.observed-unknown-version",
+    "kind": "artifact.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "artifact.observed-wrong-host",
+    "kind": "artifact.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "telemetry.observed-unknown-version",
+    "kind": "telemetry.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "telemetry.observed-wrong-host",
+    "kind": "telemetry.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "feedback.observed-unknown-version",
+    "kind": "feedback.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "feedback.observed-wrong-host",
+    "kind": "feedback.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "schema-version",
+    "id": "candidate.observed-unknown-version",
+    "kind": "candidate.observed",
+    "mutation": {
+      "path": [
+        "schema"
+      ],
+      "value": "runspindle.fixture.v99"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "candidate.observed-wrong-host",
+    "kind": "candidate.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "host_id"
+      ],
+      "value": "synthetic-other-host"
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "stale-epoch",
+    "kind": "browser.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "lease_epoch"
+      ],
+      "value": 1
+    }
+  },
+  {
+    "expected_error": "identity-mismatch",
+    "id": "changed-artifact",
+    "kind": "artifact.observed",
+    "mutation": {
+      "path": [
+        "identity",
+        "artifact_digest"
+      ],
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  {
+    "expected_error": "uncertainty-is-not-success",
+    "id": "unknown-not-success",
+    "kind": "artifact.observed",
+    "mutation": {
+      "path": [
+        "state"
+      ],
+      "value": "unknown"
+    }
+  },
+  {
+    "expected_error": "missing-independent-receipt",
+    "id": "fabricated-delivery",
+    "kind": "artifact.observed",
+    "mutation": {
+      "path": [
+        "detail",
+        "receipt_id"
+      ],
+      "value": "synthetic-forged"
+    }
+  }
+]

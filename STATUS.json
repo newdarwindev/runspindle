@@ -10,5 +10,12 @@
   "production_deployment": "not_run",
   "runner_capacity": "unverified",
   "selected_source_migration": "partial",
-  "stage": "scaffold"
+  "stage": "scaffold",
+  "synthetic_fixture_contracts": {
+    "consumer_adoption": "not_run",
+    "evidence": "docs/FIXTURE_KIT.md",
+    "status": "locally_tested_provisional_bundle",
+    "upstream_qualification": "blocked",
+    "version": "runspindle.fixture.v1"
+  }
 }

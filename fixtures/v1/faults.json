@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "expected_effect_calls": 1,
+      "id": "duplicate",
+      "required_observation": "same-task-and-operation",
+      "schedule": [
+        "deliver:1",
+        "deliver:1"
+      ]
+    },
+    {
+      "expected_effect_calls": 0,
+      "id": "reorder",
+      "required_observation": "older-observation-cannot-replace-newer",
+      "schedule": [
+        "sequence:2",
+        "sequence:1"
+      ]
+    },
+    {
+      "expected_effect_calls": 1,
+      "id": "timeout",
+      "required_observation": "unknown-no-blind-retry",
+      "schedule": [
+        "send",
+        "timeout",
+        "readback:absent"
+      ]
+    },
+    {
+      "expected_effect_calls": 1,
+      "id": "partial-response",
+      "required_observation": "unknown-no-delivered-state",
+      "schedule": [
+        "send",
+        "partial-receipt"
+      ]
+    },
+    {
+      "expected_effect_calls": 1,
+      "id": "retry",
+      "required_observation": "new-attempt-same-operation",
+      "schedule": [
+        "explicit-rejection",
+        "retry-authorized"
+      ]
+    },
+    {
+      "expected_effect_calls": 1,
+      "id": "restart",
+      "required_observation": "blocked-until-real-durable-adapter",
+      "schedule": [
+        "commit",
+        "stop",
+        "fresh-process-read"
+      ]
+    },
+    {
+      "expected_effect_calls": 1,
+      "id": "uncertain-effect",
+      "required_observation": "unknown-no-resubmit",
+      "schedule": [
+        "send",
+        "lost-ack",
+        "readback:inconclusive"
+      ]
+    }
+  ],
+  "classification": "model_schedule_not_runtime_recovery",
+  "schema": "runspindle.fixture.v1",
+  "seed": 90210
+}
