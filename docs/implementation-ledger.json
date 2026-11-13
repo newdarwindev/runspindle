@@ -1,0 +1,1345 @@
+{
+  "schema_version": 1,
+  "inventory_observed_at": "2026-11-13T18:33:42Z",
+  "initial_open_issues": 51,
+  "initial_open_prs": 0,
+  "composition_base": "6c7b930f1f42f5937c2c21b09fdc36e931a8ac4f",
+  "repository_bases": {
+    "runspindle": "6c7b930f1f42f5937c2c21b09fdc36e931a8ac4f",
+    "runspindle-core": "e9244235228069db83e221832e1682393c10d88c",
+    "runspindle-host": "da84cce7fc85a1617685dc27ec415ed957a75cba",
+    "runspindle-browser": "0260b3cb7c41c06576b2e3805621cec65a997111",
+    "runspindle-tether": "700c45cbcb8626d3f041d8424569f8978baad8cb",
+    "runspindle-refinery": "e6aa648a001a817514480da7a6ab564339402b5d",
+    "runspindle-console": "8d76a3919b019539aa4201294fef88cf2de645eb",
+    "runspindle-platform": "373a56196cee275efca8597ea79a0ba4c14bf7a8"
+  },
+  "github_gate_observation": "2026-11-13T18:33:42Z: all eight rules/branches/main empty and branches/main protected=false; actions/runners lists total_count=0; recent head workflow runs queued/pending. No qualified isolated CI execution established.",
+  "merge_policy": "Coordinator uses normal exact-head merges after separate final-diff review, required local checks and refreshed repository rules. Rules/branches/main and branch protection readbacks list no required remote status contexts. Missing runner/CI and blocked operational acceptance remain separate unresolved evidence; no bypass or protection change.",
+  "pin_policy": "Component PRs merged first. Separate composition PR27 atomically advances seven gitlinks and composition.lock.json; exact-pin checks and independent review are recorded there. No unmerged component pin is used.",
+  "issues": [
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle/issues/1",
+      "title": "Specify shared isolation contracts and synthetic fixture kit",
+      "status": "partial_merged",
+      "branch": "implementation/shared-fixture-kit",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/21",
+      "tested_commit": "019f3827fe43d39ed521e6032f8f08219e9f0b22",
+      "tests": [
+        "17 Python tests; fixture CLI; scaffold; 19 artifacts"
+      ],
+      "merge_commit": "e8cd5779968fede213443db13a591c992cd0e183",
+      "blocker": "Shared provisional test-only kit and seven pinned Python consumers are implemented/merged. Full issue remains open for actual runtime producer-consumer agreement, cross-language validators and upstream adapter mappings; fixture conformance does not authenticate authority or establish runtime compatibility.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle/pull/21"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle/issues/2",
+      "title": "Specify isolated composition scenarios and failure-injection matrix",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Shared fixture-format conformance exists in all seven pinned repositories, but full component adapter suites and required one-real-component functions remain incomplete. Durable/authority/native/browser/Tether/telemetry/serving interfaces and upstream pins are unqualified, so required real-component/all-component lanes remain blocked/not-run."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle/issues/3",
+      "title": "[SRC-001] Complete core-product artifact lift and requirement mapping",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-001 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 4,
+      "url": "https://github.com/newdarwindev/runspindle/issues/4",
+      "title": "[SRC-002] Lift full research paper with reviewed dependencies",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-002 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Actual TeX/Beamer source build is unverified; current ReportLab PDFs do not satisfy source-build acceptance."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 5,
+      "url": "https://github.com/newdarwindev/runspindle/issues/5",
+      "title": "[SRC-003] Lift argument presentation with editable source",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-003 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Actual TeX/Beamer source build is unverified; current ReportLab PDFs do not satisfy source-build acceptance."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 6,
+      "url": "https://github.com/newdarwindev/runspindle/issues/6",
+      "title": "[SRC-004] Lift fleet presentation with truthful capability labels",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-004 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Actual TeX/Beamer source build is unverified; current ReportLab PDFs do not satisfy source-build acceptance."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 7,
+      "url": "https://github.com/newdarwindev/runspindle/issues/7",
+      "title": "[SRC-005] Lift economics section with auditable assumptions",
+      "status": "partial_merged",
+      "branch": "fix/economics-source-id",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/20",
+      "tested_commit": "8f42ed515155b77759fb0285bdb72f263f54c9f1",
+      "tests": [
+        "scaffold; 19 artifact hashes; attribution and AST checks"
+      ],
+      "merge_commit": "19171525f2df493dfacf04101be08a35c4478b5f",
+      "blocker": "Attribution mismatch corrected; full source-section/citation disposition still needs exact private SRC-005 record and rights review.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle/pull/20"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 8,
+      "url": "https://github.com/newdarwindev/runspindle/issues/8",
+      "title": "H01: Specify semi-mocked acceptance for request slack work and follow truthful progress",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-tether#3, runspindle-core#2, runspindle-host#2, runspindle-core#5. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 9,
+      "url": "https://github.com/newdarwindev/runspindle/issues/9",
+      "title": "H02: Specify semi-mocked acceptance for execute on the selected host and recover the native session",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-core#2, runspindle-core#3, runspindle-host#2. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 10,
+      "url": "https://github.com/newdarwindev/runspindle/issues/10",
+      "title": "H03: Specify semi-mocked acceptance for use only the scoped website account and origin",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-browser#6, runspindle-core#2, runspindle-core#3, runspindle-host#2. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 11,
+      "url": "https://github.com/newdarwindev/runspindle/issues/11",
+      "title": "H04: Specify semi-mocked acceptance for resume isolated browser profiles and forget precisely",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-browser#7, runspindle-browser#6, runspindle-core#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 12,
+      "url": "https://github.com/newdarwindev/runspindle/issues/12",
+      "title": "H05: Specify semi-mocked acceptance for reconcile an uncertain website action without duplication",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-browser#8, runspindle-core#3, runspindle-browser#6, runspindle-host#2. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 13,
+      "url": "https://github.com/newdarwindev/runspindle/issues/13",
+      "title": "H06: Specify semi-mocked acceptance for observe, take control and hand back without overlapping authority",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-browser#9, runspindle-console#3, runspindle-core#3, runspindle-browser#6. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 14,
+      "url": "https://github.com/newdarwindev/runspindle/issues/14",
+      "title": "H07: Specify semi-mocked acceptance for deliver the exact accepted artifact after restart",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-core#4, runspindle-core#5, runspindle-tether#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 15,
+      "url": "https://github.com/newdarwindev/runspindle/issues/15",
+      "title": "H08: Specify semi-mocked acceptance for read back correlated telemetry and diagnose failures honestly",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-platform#3, runspindle-host#2, runspindle-core#2, runspindle-core#3, runspindle-console#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 16,
+      "url": "https://github.com/newdarwindev/runspindle/issues/16",
+      "title": "H09: Specify semi-mocked acceptance for inspect actual fleet/session state with truthful freshness",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-console#3, runspindle-host#2, runspindle-browser#9, runspindle-platform#3, runspindle-core#4, runspindle-core#5. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 17,
+      "url": "https://github.com/newdarwindev/runspindle/issues/17",
+      "title": "H10: Specify semi-mocked acceptance for create replayable examples from exact attributable feedback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-refinery#4, runspindle-tether#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 18,
+      "url": "https://github.com/newdarwindev/runspindle/issues/18",
+      "title": "H11: Specify semi-mocked acceptance for evaluate and approve exact candidates with safe rollback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-refinery#4, runspindle-refinery#5, runspindle-refinery#6, runspindle-core#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "issue": 19,
+      "url": "https://github.com/newdarwindev/runspindle/issues/19",
+      "title": "H12: Specify semi-mocked acceptance for verify pinned release installation and bounded rollback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Required functional dependencies remain incomplete: runspindle-platform#4, runspindle-platform#3. Real-component and pinned integration lanes cannot be claimed from model fixtures; runtime contract agreement and composition #2 remain prerequisites. Shared test-only fixtures are available."
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-core/issues/1",
+      "title": "Specify isolated orchestration, recovery and artifact adapter tests",
+      "status": "partial_merged",
+      "branch": "test/pin-shared-fixtures",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/7",
+      "tested_commit": "b411ee5c4cc384497557200cac1ee582eb49d2b3",
+      "tests": [
+        "20 Rust tests; fmt; offline clippy; 3 detected mutations; scaffold",
+        "11 Python + 20 Rust tests; fmt/clippy; 9 vectors; 3 mutations; scaffold"
+      ],
+      "merge_commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Reviewed durability/retention/authentication/freshness interfaces and selected store/Temporal pins are unresolved; only the existing local Rust model and Python fixture consumer are tested.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-core/pull/6",
+        "https://github.com/newdarwindev/runspindle-core/pull/7"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-core/issues/2",
+      "title": "F02: Implement scoped intent admission and durable request identity",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Reviewed authenticated-admission identity/revision/retention contract and atomic outbox/store selection are unresolved; no durable adapter exists. Requires unresolved interfaces described in runtime contracts from #1 and core #1."
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-core/issues/3",
+      "title": "F03: Coordinate pinned execution and uncertain-effect recovery",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Pinned Temporal SDK/server and durable workflow/effect-store contract are unselected; host native binding and browser reconciliation/fencing adapters are absent. Requires unresolved interfaces described in core #2 and host #2."
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "issue": 4,
+      "url": "https://github.com/newdarwindev/runspindle-core/issues/4",
+      "title": "F09: Validate and accept exact artifact bytes",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Trusted validator/approver and destination-policy adapter contracts are unresolved; model only compares supplied digests and cannot hash/authenticate bytes. Requires unresolved interfaces described in runtime contracts from #1/core #1."
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "issue": 5,
+      "url": "https://github.com/newdarwindev/runspindle-core/issues/5",
+      "title": "F10: Deliver accepted artifacts with durable exact-target receipts",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Atomic durable delivery outbox/epoch contract and existing Tether transport are missing; accepted-byte recovery cannot be tested. Requires unresolved interfaces described in core #4/tether #3."
+    },
+    {
+      "repository": "newdarwindev/runspindle-host",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-host/issues/1",
+      "title": "Specify fake native sessions and host lifecycle isolation tests",
+      "status": "partial_merged",
+      "branch": "test/pin-shared-fixtures",
+      "pr": "https://github.com/newdarwindev/runspindle-host/pull/3",
+      "tested_commit": "471e7597b1976d87db7f111f81835299488fde2e",
+      "tests": [
+        "7 Python + 1 Rust stub tests; fixture CLI; scaffold"
+      ],
+      "merge_commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Pinned app-server public protocol and core host freshness/cancellation semantics are unresolved; no actual adapter suite exists. Capture/text-transfer methods remain an explicit decision.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-host/pull/3"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-host",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-host/issues/2",
+      "title": "F04: Bind and recover actual native Codex sessions",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact supported app-server version/protocol and macOS/Linux capability qualification are unselected; capture/text-transfer/submission decisions are explicitly unresolved in native-sessions.md. Requires unresolved interfaces described in runtime contracts from #1/host #1."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/1",
+      "title": "Specify isolated vault, browser and fenced handoff mocks",
+      "status": "partial_merged",
+      "branch": "test/pin-shared-fixtures",
+      "pr": "https://github.com/newdarwindev/runspindle-browser/pull/10",
+      "tested_commit": "457129b030f2a4519503fbfc56b0330ca004743c",
+      "tests": [
+        "7 Python + 1 Rust stub tests; fixture CLI; scaffold"
+      ],
+      "merge_commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Authenticated principal/observation and durable lease-store/native-session interfaces plus qualified OpenBao/PinchTab/KasmVNC pins are unresolved; vault/profile/handoff mocks cannot qualify those interfaces.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-browser/pull/10"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/2",
+      "title": "[SRC-006] Complete credential-storage specification lift",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-006 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/3",
+      "title": "[SRC-007] Port reviewed OpenBao resolver beyond inert reference",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-007 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Public inert reference exists, but does not resolve the exact dependency/rights review or required trusted runtime/store interfaces."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 4,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/4",
+      "title": "[SRC-008] Port fixture gateway with durable authority fencing",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-008 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Public inert reference exists, but does not resolve the exact dependency/rights review or required trusted runtime/store interfaces."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 5,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/5",
+      "title": "[SRC-009] Lift browser product page and architecture assets",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-009 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 6,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/6",
+      "title": "F05: Resolve credentials only for trusted scoped observations",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "No reviewed authenticated principal/origin-observation/durable lease interface or qualified OpenBao/PinchTab pins. Caller-provided scope is insufficient. Requires unresolved interfaces described in runtime contracts from #1/browser #1/core #2/host #2."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 7,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/7",
+      "title": "F06: Isolate encrypted profiles and explicit forgetting",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Encrypted checkpoint/key-store, integrity and exclusive writer/forgetting adapter contracts are unselected; qualified browser/session observation is absent. Requires unresolved interfaces described in browser #6/#9."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 8,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/8",
+      "title": "F07: Reconcile stateful website actions before retry",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Durable effect-journal/readback contract and trusted browser native observation binding are absent. Unknown submissions cannot be retried safely. Requires unresolved interfaces described in browser #6/host #2/core #3."
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "issue": 9,
+      "url": "https://github.com/newdarwindev/runspindle-browser/issues/9",
+      "title": "F08: Fence exclusive takeover and authenticated handback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Reviewed durable epoch/lease store, authenticated release authority and viewer-input closure/fencing acknowledgements are absent; no qualified KasmVNC/PinchTab pins. Requires unresolved interfaces described in browser #6/core #3."
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-tether/issues/1",
+      "title": "Specify fake Slack transport and durable mirroring test harness",
+      "status": "partial_merged",
+      "branch": "fix/verified-fixture-loader",
+      "pr": "https://github.com/newdarwindev/runspindle-tether/pull/5",
+      "tested_commit": "b8fc2911ed4d9f87e0e531444bd677b139c16f08",
+      "tests": [
+        "5 Python tests; fixture CLI; scaffold",
+        "6 Python tests; matching cache negative control; fixture CLI; scaffold"
+      ],
+      "merge_commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Existing Tether selected source/dependency closure and runtime transport/event contract are unavailable; durable journal and trusted sanitization/authority interfaces are unresolved.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-tether/pull/4",
+        "https://github.com/newdarwindev/runspindle-tether/pull/5"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-tether/issues/2",
+      "title": "[SRC-014] Complete mirroring audit adaptation and coverage mapping",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-014 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-tether/issues/3",
+      "title": "F01: Admit and mirror identity-bound Slack work",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Existing selected Tether source/revision/runtime contract is not present in this repository; importing its exact dependency closure requires private source/rights review. No authenticated actor/native event/durable transport adapter. Requires unresolved interfaces described in core #2/host #2."
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/1",
+      "title": "Specify offline DSPy, lineage and candidate promotion test doubles",
+      "status": "partial_merged",
+      "branch": "test/pin-shared-fixtures",
+      "pr": "https://github.com/newdarwindev/runspindle-refinery/pull/8",
+      "tested_commit": "849b6f4525787063e5f629124350a8804733318e",
+      "tests": [
+        "33 Python tests; pre-execution source snapshot/cache regressions; scaffold"
+      ],
+      "merge_commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Reviewed metric/budget/approval/store interfaces, pinned DSPy and real serving/store adapters are unresolved; lineage and Python fixtures cover a bounded subset.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-refinery/pull/8"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/2",
+      "title": "[SRC-012] Port experiment helper with verified evaluation gates",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-012 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Public inert reference exists, but does not resolve the exact dependency/rights review or required trusted runtime/store interfaces."
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/3",
+      "title": "[SRC-013] Lift full refinery white paper and figures",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-013 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material. Actual TeX/Beamer source build is unverified; current ReportLab PDFs do not satisfy source-build acceptance."
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 4,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/4",
+      "title": "F11: Build immutable feedback lineage and leakage-safe datasets",
+      "status": "partial_merged",
+      "branch": "implementation/refinery-lineage",
+      "pr": "https://github.com/newdarwindev/runspindle-refinery/pull/7",
+      "tested_commit": "0fa93bf3b9107ab9f13f6889d79013cd4885be86",
+      "tests": [
+        "22 Python lineage tests; scaffold; input hashes"
+      ],
+      "merge_commit": "1c35a7bf77ffe6135e4293396efb3e1184569f3e",
+      "blocker": "Process-local lineage candidate; trusted Tether collection adapter, durable store and runtime wire agreement remain missing.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-refinery/pull/7"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 5,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/5",
+      "title": "F14: Evaluate candidates under global budgets and locked evidence",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "No pinned DSPy/provider/optimizer adapter, agreed metric/safety/cost thresholds or locked lineage dataset from refinery #4; missing values must remain unknown."
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "issue": 6,
+      "url": "https://github.com/newdarwindev/runspindle-refinery/issues/6",
+      "title": "F15: Approve exact candidates and reconcile serving rollback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "No independently authenticated approval authority, target serving-load acknowledgement contract or durable concurrent registry/store. Requires unresolved interfaces described in refinery #5/platform #4."
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-console/issues/1",
+      "title": "Specify synthetic fleet, event-stream and desktop-view test fixtures",
+      "status": "partial_merged",
+      "branch": "test/pin-shared-fixtures",
+      "pr": "https://github.com/newdarwindev/runspindle-console/pull/5",
+      "tested_commit": "2cb13692509a07ae2a70ca89d5e21235a3fda22b",
+      "tests": [
+        "7 Python + 14 Node tests; 3 mutations; scaffold"
+      ],
+      "merge_commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Actual UI and authorized stream/desktop backend adapters are absent; rendered keyboard/focus/a11y and JavaScript wire mapping remain untested.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-console/pull/5"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-console/issues/2",
+      "title": "[SRC-010] Lift refinery vision page into console product docs",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-010 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-console/issues/3",
+      "title": "F12: Render truthful identity-bound fleet and desktop views",
+      "status": "partial_merged",
+      "branch": "implementation/console-freshness",
+      "pr": "https://github.com/newdarwindev/runspindle-console/pull/4",
+      "tested_commit": "5430f4d78c670ce8abb5c5762fcb9c0b7f341a6e",
+      "tests": [
+        "14 Node tests; 3 detected mutations; scaffold; two review findings fixed"
+      ],
+      "merge_commit": "fc9d046c42c4dd2ed9660aea7b85c7f8bd4eec61",
+      "blocker": "Process-local projection candidate; actual desktop/authority adapters and rendered keyboard/focus tests remain missing.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-console/pull/4"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "issue": 1,
+      "url": "https://github.com/newdarwindev/runspindle-platform/issues/1",
+      "title": "Specify disposable dependency, telemetry and distribution test harness",
+      "status": "partial_merged",
+      "branch": "fix/verified-fixture-loader",
+      "pr": "https://github.com/newdarwindev/runspindle-platform/pull/6",
+      "tested_commit": "b2ce91a2b6d58538f92d2167e1d434891869ef67",
+      "tests": [
+        "5 Python tests; fixture CLI; scaffold",
+        "6 Python tests; matching cache negative control; fixture CLI; scaffold"
+      ],
+      "merge_commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+      "blocker": "Pinned standalone fixture conformance is implemented/merged; full component suite remains open. Qualified upstream digest/toolchain set and telemetry/install/real-store interfaces are unselected. Known schema-URL masking gap is unresolved.",
+      "work_prs": [
+        "https://github.com/newdarwindev/runspindle-platform/pull/5",
+        "https://github.com/newdarwindev/runspindle-platform/pull/6"
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "issue": 2,
+      "url": "https://github.com/newdarwindev/runspindle-platform/issues/2",
+      "title": "[SRC-011] Complete native monitoring document lift",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Exact privately retained SRC-011 source-section/dependency closure and cleared rights/content dispositions are absent from these public checkouts; cannot verify completeness or import additional material."
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "issue": 3,
+      "url": "https://github.com/newdarwindev/runspindle-platform/issues/3",
+      "title": "F13: Persist correlated telemetry with qualified privacy and readback",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "Pinned native/Collector/Langfuse compatibility and permitted telemetry surfaces are unselected. Schema-URL masking gap remains unresolved; no real backend readback adapter. Requires unresolved interfaces described in runtime contracts from #1/host #2."
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "issue": 4,
+      "url": "https://github.com/newdarwindev/runspindle-platform/issues/4",
+      "title": "F16: Verify reproducible target releases and bounded recovery",
+      "status": "blocked",
+      "branch": null,
+      "pr": null,
+      "tested_commit": null,
+      "tests": [],
+      "merge_commit": null,
+      "blocker": "No qualified upstream source/image/toolchain digest set, target compatibility/license inventory or accepted component release. Disposable installed-byte/rollback adapter cannot be qualified. Requires unresolved interfaces described in platform #3."
+    }
+  ],
+  "work": [
+    {
+      "repository": "newdarwindev/runspindle",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/20",
+      "issue": 7,
+      "branch": "fix/economics-source-id",
+      "reviewed_commit": "8f42ed515155b77759fb0285bdb72f263f54c9f1",
+      "merge_commit": "19171525f2df493dfacf04101be08a35c4478b5f",
+      "reviewer": "core",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "scaffold; 19 artifact hashes; attribution and AST checks",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:38:23Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle",
+      "pr": "https://github.com/newdarwindev/runspindle/pull/21",
+      "issue": 1,
+      "branch": "implementation/shared-fixture-kit",
+      "reviewed_commit": "019f3827fe43d39ed521e6032f8f08219e9f0b22",
+      "merge_commit": "e8cd5779968fede213443db13a591c992cd0e183",
+      "reviewer": "core",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "17 Python tests; fixture CLI; scaffold; 19 artifacts",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:39:44Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/6",
+      "issue": 1,
+      "branch": "implementation/core-contract-tests",
+      "reviewed_commit": "b504033389124de725f72bc364645f629ebfeb56",
+      "merge_commit": "9f6c94d64aecf62e688a6b0f3429beaf10a4ccbb",
+      "reviewer": "coordinator",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "20 Rust tests; fmt; offline clippy; 3 detected mutations; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:38:21Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "pr": "https://github.com/newdarwindev/runspindle-refinery/pull/7",
+      "issue": 4,
+      "branch": "implementation/refinery-lineage",
+      "reviewed_commit": "0fa93bf3b9107ab9f13f6889d79013cd4885be86",
+      "merge_commit": "1c35a7bf77ffe6135e4293396efb3e1184569f3e",
+      "reviewer": "console",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "22 Python lineage tests; scaffold; input hashes",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:40:00Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "pr": "https://github.com/newdarwindev/runspindle-console/pull/4",
+      "issue": 3,
+      "branch": "implementation/console-freshness",
+      "reviewed_commit": "5430f4d78c670ce8abb5c5762fcb9c0b7f341a6e",
+      "merge_commit": "fc9d046c42c4dd2ed9660aea7b85c7f8bd4eec61",
+      "reviewer": "refinery",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "14 Node tests; 3 detected mutations; scaffold; two review findings fixed",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:41:29Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "pr": "https://github.com/newdarwindev/runspindle-core/pull/7",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "b411ee5c4cc384497557200cac1ee582eb49d2b3",
+      "merge_commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "reviewer": "console and shared",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "11 Python + 20 Rust tests; fmt/clippy; 9 vectors; 3 mutations; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:48:41Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-host",
+      "pr": "https://github.com/newdarwindev/runspindle-host/pull/3",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "471e7597b1976d87db7f111f81835299488fde2e",
+      "merge_commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+      "reviewer": "core",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "7 Python + 1 Rust stub tests; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:48:45Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "pr": "https://github.com/newdarwindev/runspindle-browser/pull/10",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "457129b030f2a4519503fbfc56b0330ca004743c",
+      "merge_commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "reviewer": "core",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "7 Python + 1 Rust stub tests; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:48:49Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "pr": "https://github.com/newdarwindev/runspindle-refinery/pull/8",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "849b6f4525787063e5f629124350a8804733318e",
+      "merge_commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+      "reviewer": "console",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "33 Python tests; pre-execution source snapshot/cache regressions; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:49:05Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "pr": "https://github.com/newdarwindev/runspindle-console/pull/5",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "2cb13692509a07ae2a70ca89d5e21235a3fda22b",
+      "merge_commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "reviewer": "refinery",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "7 Python + 14 Node tests; 3 mutations; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:49:09Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "pr": "https://github.com/newdarwindev/runspindle-tether/pull/4",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "f5a0b0996533aeb413324f3b1dbb26d273a53ec6",
+      "merge_commit": "723ce9eb7fcae3ae73b46ca1647725ea89802f3f",
+      "reviewer": "shared",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "5 Python tests; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:45:00Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "pr": "https://github.com/newdarwindev/runspindle-platform/pull/5",
+      "issue": 1,
+      "branch": "test/pin-shared-fixtures",
+      "reviewed_commit": "aa3bb4981f6d33ff4b8fadb1841957c92109941b",
+      "merge_commit": "9afd8a5aa9dd218ed740d8adbc477504d377cc10",
+      "reviewer": "shared",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "5 Python tests; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:45:03Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "pr": "https://github.com/newdarwindev/runspindle-tether/pull/5",
+      "issue": 1,
+      "branch": "fix/verified-fixture-loader",
+      "reviewed_commit": "b8fc2911ed4d9f87e0e531444bd677b139c16f08",
+      "merge_commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "reviewer": "shared",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "6 Python tests; matching cache negative control; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:49:13Z"
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "pr": "https://github.com/newdarwindev/runspindle-platform/pull/6",
+      "issue": 1,
+      "branch": "fix/verified-fixture-loader",
+      "reviewed_commit": "b2ce91a2b6d58538f92d2167e1d434891869ef67",
+      "merge_commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+      "reviewer": "shared",
+      "review_result": "no_blocking_findings_at_final_head",
+      "tests": "6 Python tests; matching cache negative control; fixture CLI; scaffold",
+      "github_ci": "not_run",
+      "evidence_class": "local_synthetic_component_or_fixture_tests",
+      "merged_at": "2026-11-13T18:49:17Z"
+    }
+  ],
+  "updated_at": "2026-11-13T18:55:07.732230+00:00",
+  "composition_pin_pr": "https://github.com/newdarwindev/runspindle/pull/27",
+  "composition_pin_reviewed_commit": "18d6775e6c87e0f200c595141b5013d6d773d48d",
+  "composition_pin_merge_commit": "e3ece9b8a5d910c65a3754903519a621d440ed03",
+  "additional_blockers": [
+    "No qualified isolated runner visible; GitHub Actions remains unverified.",
+    "Optional refinery CI behavior-test wiring was rejected by OAuth workflow-scope permission; optional workflow change removed without new credentials.",
+    "No private exact selected-source/dependency/rights records imported or disclosed.",
+    "New live/provider issues created after the initial inventory are outside this batch; no live calls, provider use or paid work is authorized or performed."
+  ],
+  "current_composition_base": "e3ece9b8a5d910c65a3754903519a621d440ed03",
+  "final_github_readback": [
+    {
+      "repository": "newdarwindev/runspindle",
+      "main_commit": "e3ece9b8a5d910c65a3754903519a621d440ed03",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "contracts",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "e3ece9b8a5d910c65a3754903519a621d440ed03",
+          "url": "https://github.com/newdarwindev/runspindle/actions/runs/43487147344"
+        },
+        {
+          "name": "system-test",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "e3ece9b8a5d910c65a3754903519a621d440ed03",
+          "url": "https://github.com/newdarwindev/runspindle/actions/runs/43487147068"
+        },
+        {
+          "name": "system-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "e8cd5779968fede213443db13a591c992cd0e183",
+          "url": "https://github.com/newdarwindev/runspindle/actions/runs/43484799282"
+        },
+        {
+          "name": "contracts",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "e8cd5779968fede213443db13a591c992cd0e183",
+          "url": "https://github.com/newdarwindev/runspindle/actions/runs/43484799258"
+        },
+        {
+          "name": "system-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "19171525f2df493dfacf04101be08a35c4478b5f",
+          "url": "https://github.com/newdarwindev/runspindle/actions/runs/43484588319"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-core",
+      "main_commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "rust-ci",
+          "status": "pending",
+          "conclusion": null,
+          "commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+          "url": "https://github.com/newdarwindev/runspindle-core/actions/runs/43486223003"
+        },
+        {
+          "name": "orchestration-test",
+          "status": "pending",
+          "conclusion": null,
+          "commit": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+          "url": "https://github.com/newdarwindev/runspindle-core/actions/runs/43486222949"
+        },
+        {
+          "name": "rust-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "9f6c94d64aecf62e688a6b0f3429beaf10a4ccbb",
+          "url": "https://github.com/newdarwindev/runspindle-core/actions/runs/43484580288"
+        },
+        {
+          "name": "orchestration-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "9f6c94d64aecf62e688a6b0f3429beaf10a4ccbb",
+          "url": "https://github.com/newdarwindev/runspindle-core/actions/runs/43484579975"
+        },
+        {
+          "name": "orchestration-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "e9244235228069db83e221832e1682393c10d88c",
+          "url": "https://github.com/newdarwindev/runspindle-core/actions/runs/43420441242"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-host",
+      "main_commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "adapter-test",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+          "url": "https://github.com/newdarwindev/runspindle-host/actions/runs/43486231889"
+        },
+        {
+          "name": "host-ci",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+          "url": "https://github.com/newdarwindev/runspindle-host/actions/runs/43486231768"
+        },
+        {
+          "name": "host-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "da84cce7fc85a1617685dc27ec415ed957a75cba",
+          "url": "https://github.com/newdarwindev/runspindle-host/actions/runs/43412133426"
+        },
+        {
+          "name": "adapter-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "da84cce7fc85a1617685dc27ec415ed957a75cba",
+          "url": "https://github.com/newdarwindev/runspindle-host/actions/runs/43412133214"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-browser",
+      "main_commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "browser-ci",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+          "url": "https://github.com/newdarwindev/runspindle-browser/actions/runs/43486242237"
+        },
+        {
+          "name": "gateway-test",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+          "url": "https://github.com/newdarwindev/runspindle-browser/actions/runs/43486242117"
+        },
+        {
+          "name": "browser-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "0260b3cb7c41c06576b2e3805621cec65a997111",
+          "url": "https://github.com/newdarwindev/runspindle-browser/actions/runs/43416412612"
+        },
+        {
+          "name": "gateway-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "0260b3cb7c41c06576b2e3805621cec65a997111",
+          "url": "https://github.com/newdarwindev/runspindle-browser/actions/runs/43416412414"
+        },
+        {
+          "name": "browser-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "8c4bf30ce7bc80fb06b38d3b7e3219ee400916c4",
+          "url": "https://github.com/newdarwindev/runspindle-browser/actions/runs/43412209784"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-tether",
+      "main_commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "mirror-test",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+          "url": "https://github.com/newdarwindev/runspindle-tether/actions/runs/43486302425"
+        },
+        {
+          "name": "tether-ci",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+          "url": "https://github.com/newdarwindev/runspindle-tether/actions/runs/43486302280"
+        },
+        {
+          "name": "tether-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "723ce9eb7fcae3ae73b46ca1647725ea89802f3f",
+          "url": "https://github.com/newdarwindev/runspindle-tether/actions/runs/43485633392"
+        },
+        {
+          "name": "mirror-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "723ce9eb7fcae3ae73b46ca1647725ea89802f3f",
+          "url": "https://github.com/newdarwindev/runspindle-tether/actions/runs/43485633330"
+        },
+        {
+          "name": "mirror-test",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "700c45cbcb8626d3f041d8424569f8978baad8cb",
+          "url": "https://github.com/newdarwindev/runspindle-tether/actions/runs/43416474877"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-refinery",
+      "main_commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "refinery-ci",
+          "status": "pending",
+          "conclusion": null,
+          "commit": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+          "url": "https://github.com/newdarwindev/runspindle-refinery/actions/runs/43486281411"
+        },
+        {
+          "name": "refinery-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "1c35a7bf77ffe6135e4293396efb3e1184569f3e",
+          "url": "https://github.com/newdarwindev/runspindle-refinery/actions/runs/43484842418"
+        },
+        {
+          "name": "refinery-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "e6aa648a001a817514480da7a6ab564339402b5d",
+          "url": "https://github.com/newdarwindev/runspindle-refinery/actions/runs/43416453541"
+        },
+        {
+          "name": "refinery-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "28c560ff5b0ec6c1b7c8ec1f9fce1323b5190a1c",
+          "url": "https://github.com/newdarwindev/runspindle-refinery/actions/runs/43412379739"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-console",
+      "main_commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "console-build",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+          "url": "https://github.com/newdarwindev/runspindle-console/actions/runs/43486292048"
+        },
+        {
+          "name": "console-ci",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+          "url": "https://github.com/newdarwindev/runspindle-console/actions/runs/43486291825"
+        },
+        {
+          "name": "console-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "fc9d046c42c4dd2ed9660aea7b85c7f8bd4eec61",
+          "url": "https://github.com/newdarwindev/runspindle-console/actions/runs/43485076773"
+        },
+        {
+          "name": "console-build",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "fc9d046c42c4dd2ed9660aea7b85c7f8bd4eec61",
+          "url": "https://github.com/newdarwindev/runspindle-console/actions/runs/43485076700"
+        },
+        {
+          "name": "console-build",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "8d76a3919b019539aa4201294fef88cf2de645eb",
+          "url": "https://github.com/newdarwindev/runspindle-console/actions/runs/43416432465"
+        }
+      ]
+    },
+    {
+      "repository": "newdarwindev/runspindle-platform",
+      "main_commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+      "protected": false,
+      "rules": [],
+      "required_status_checks": {
+        "enforcement_level": "off",
+        "contexts": [],
+        "checks": []
+      },
+      "visible_runners": 0,
+      "recent_workflows": [
+        {
+          "name": "platform-ci",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+          "url": "https://github.com/newdarwindev/runspindle-platform/actions/runs/43486310026"
+        },
+        {
+          "name": "dev-smoke",
+          "status": "queued",
+          "conclusion": null,
+          "commit": "5d3f99931075fd6a6f81f91f4aa49352b851b798",
+          "url": "https://github.com/newdarwindev/runspindle-platform/actions/runs/43486309955"
+        },
+        {
+          "name": "platform-ci",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "9afd8a5aa9dd218ed740d8adbc477504d377cc10",
+          "url": "https://github.com/newdarwindev/runspindle-platform/actions/runs/43485644793"
+        },
+        {
+          "name": "dev-smoke",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "9afd8a5aa9dd218ed740d8adbc477504d377cc10",
+          "url": "https://github.com/newdarwindev/runspindle-platform/actions/runs/43485644378"
+        },
+        {
+          "name": "dev-smoke",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "commit": "373a56196cee275efca8597ea79a0ba4c14bf7a8",
+          "url": "https://github.com/newdarwindev/runspindle-platform/actions/runs/43412575356"
+        }
+      ]
+    }
+  ],
+  "final_github_readback_at": "2026-11-13T18:55:10.691321+00:00",
+  "current_component_pins": {
+    "core": "43d71d43fb9181addd138959bd94aa3359bcddf9",
+    "host": "ab34c149c6137ce67ac8433d1bad2fab2572111f",
+    "browser": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+    "tether": "6003f2315146d05d77918024d1bc81049a78a312",
+    "refinery": "94282d8246ffb3e34e03d9633dc0f40772d35c52",
+    "console": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+    "platform": "5d3f99931075fd6a6f81f91f4aa49352b851b798"
+  }
+}
