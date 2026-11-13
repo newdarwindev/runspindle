@@ -83,6 +83,35 @@ class ScenarioOracle(unittest.TestCase):
         self.assertEqual(scenario.aggregate('blocked', {'required': 'passed'}), 'blocked')
         self.assertEqual(scenario.aggregate('passed', {'required': 'passed'}), 'passed')
 
+    def test_untracked_bytecode_cannot_replace_verified_platform_source(self):
+        import importlib.util
+        import os
+        import py_compile
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            source = pathlib.Path(directory) / 'platform_lane.py'
+            source.write_text("VALUE='evil'\n")
+            metadata = source.stat()
+            py_compile.compile(str(source), doraise=True)
+            source.write_text("VALUE='safe'\n")
+            os.utime(source, ns=(metadata.st_atime_ns, metadata.st_mtime_ns))
+            loader_spec = importlib.util.spec_from_file_location('unsafe_control', source)
+            unsafe_control = importlib.util.module_from_spec(loader_spec)
+            loader_spec.loader.exec_module(unsafe_control)
+            self.assertEqual(unsafe_control.VALUE, 'evil')
+            self.assertEqual(scenario.load_exact_source(source, 'verified_lane').VALUE, 'safe')
+
+    def test_unrelated_core_image_rejects_before_any_image_execution(self):
+        import json
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            docs = root / 'components/core/docs'
+            docs.mkdir(parents=True)
+            (docs / 'runtime-build.json').write_text(json.dumps({'image_id': 'sha256:' + 'a' * 64}))
+            with self.assertRaisesRegex(scenario.Blocked, 'does not match'):
+                scenario.verify_core_image('sha256:' + 'b' * 64, root)
+
     def test_current_pinned_inventory_is_exact(self):
         inventory = scenario.inventory()
         self.assertEqual(set(inventory['components']), {'core', 'host', 'browser', 'tether', 'refinery', 'console', 'platform'})

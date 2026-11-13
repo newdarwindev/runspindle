@@ -127,15 +127,67 @@ def assert_observations(observed, admission):
             'native_session_id': 'observed-native-17', 'terminal': final['state']}
 
 
+def load_exact_source(path, name):
+    import types
+    path = pathlib.Path(path)
+    module = types.ModuleType(name)
+    module.__file__ = str(path)
+    exec(compile(path.read_bytes(), str(path), 'exec'), module.__dict__)
+    return module
+
+
+def verify_core_image(image, root=ROOT):
+    """Bind immutable executable bytes to build evidence committed in pinned core."""
+    import re
+    import tempfile
+    import uuid
+    core = pathlib.Path(root) / 'components/core'
+    evidence_path = core / 'docs/runtime-build.json'
+    if not evidence_path.is_file():
+        raise Blocked('pinned core build provenance missing')
+    evidence = json.loads(evidence_path.read_text())
+    if not re.fullmatch('sha256:[a-f0-9]{64}', image) or evidence['image_id'] != image:
+        raise Blocked('core image does not match pinned build evidence')
+    required = {'Cargo.toml', 'Cargo.lock', 'src/lib.rs', 'src/runtime.rs', 'src/bin/temporal-runtime.rs'}
+    if not required.issubset(evidence['source_hashes']):
+        raise Blocked('core build provenance lacks runtime source hashes')
+    for name, expected in evidence['source_hashes'].items():
+        path = (core / name).resolve(strict=True)
+        if core.resolve() not in path.parents or sha256(path) != expected:
+            raise Blocked('core build source differs: ' + name)
+    if evidence['dependency_inventory_sha256'] != sha256(core / 'docs/runtime-dependencies.json'):
+        raise Blocked('core dependency inventory differs')
+    def docker(*args):
+        return subprocess.run(['docker', *args], capture_output=True, text=True, check=True, timeout=30)
+    metadata = json.loads(docker('image', 'inspect', image).stdout)[0]
+    labels = metadata['Config'].get('Labels') or {}
+    if labels.get('org.runspindle.binary_sha256') != evidence['binary_sha256']:
+        raise Blocked('core image binary label differs')
+    if labels.get('org.runspindle.cargo_lock_sha256') != sha256(core / 'Cargo.lock'):
+        raise Blocked('core image lock label differs')
+    name = 'runspindle-provenance-' + uuid.uuid4().hex
+    try:
+        # Creating/copying inspects bytes without executing an unverified image.
+        docker('create', '--pull', 'never', '--network', 'none', '--name', name, image)
+        with tempfile.TemporaryDirectory(prefix='runspindle-binary-verification-') as directory:
+            binary = pathlib.Path(directory) / 'temporal-runtime'
+            docker('cp', name + ':/usr/local/bin/temporal-runtime', str(binary))
+            if sha256(binary) != evidence['binary_sha256']:
+                raise Blocked('core image executable differs from pinned build')
+    finally:
+        docker('rm', '--force', name)
+    return evidence
+
+
 def run(platform_prepared, core_image):
     import concurrent.futures
     import copy
-    import types
     import tempfile
     import time
     import uuid
 
     sources = inventory()
+    core_build = verify_core_image(core_image)
     config = json.loads(MANIFEST.read_text())
     platform = ROOT / 'components/platform/tools/temporal_lane.py'
     if not platform.is_file():
@@ -144,9 +196,7 @@ def run(platform_prepared, core_image):
     if not core_dependencies.is_file():
         raise Blocked('pinned core does not implement Temporal runtime')
     # Execute the exact inventoried source bytes; an untracked .pyc cannot replace them.
-    lane_module = types.ModuleType('runspindle_temporal_lane')
-    lane_module.__file__ = str(platform)
-    exec(compile(platform.read_bytes(), str(platform), 'exec'), lane_module.__dict__)
+    lane_module = load_exact_source(platform, 'runspindle_temporal_lane')
     admission = {'version': 'runspindle.runtime.v1', 'delivery_namespace': 'synthetic',
                  'delivery_id': 'event-17', 'task_id': 'scenario-task-17', 'revision': 1,
                  'operation_id': 'operation-17', 'predecessor_revision': None,
@@ -250,7 +300,8 @@ def run(platform_prepared, core_image):
             resources += [('container', name) for name in sorted(lane.clients)]
             toolchains = {'core_image': core_image, 'temporal_image': lane.image,
                           'platform_prepared': lane.metadata,
-                          'core_dependencies_sha256': sha256(core_dependencies)}
+                          'core_dependencies_sha256': sha256(core_dependencies),
+                          'core_build': core_build}
         for kind, name in resources:
             if lane_module.docker(kind, 'inspect', name, check=False).returncode == 0:
                 raise AssertionError('scenario cleanup left resource: ' + kind)
