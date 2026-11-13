@@ -7,7 +7,7 @@ Every workflow uses isolated local self-hosted capacity. Enabled does not mean r
 | runspindle | `contracts.yml` | Check specification inventory, source provenance and pinned submodule identities. | Scaffold structure only |
 | runspindle | `system-test.yml` | Cross-component synthetic acceptance stories; not implemented. | Fails closed: blocked |
 | runspindle | `distribution.yml` | Assemble verified pinned binaries/images, checksums, SBOM and install bundles; not implemented. | Fails closed: blocked |
-| runspindle-core | `rust-ci.yml` | Rust fmt, clippy, unit and schema checks after compiler and implementation qualification. | Scaffold structure only |
+| runspindle-core | `rust-ci.yml` | Structural checks, Rust fmt, offline unit/contract tests and offline clippy with warnings denied. | Configured for the in-memory contract model; GitHub execution not established |
 | runspindle-core | `orchestration-test.yml` | Temporal retry/cancellation/replay and identity fixtures; not implemented. | Fails closed: blocked |
 | runspindle-host | `host-ci.yml` | Linux and macOS native adapter checks; not implemented. | Scaffold structure only |
 | runspindle-host | `adapter-test.yml` | Session launch/reconnect/lost acknowledgement and capture capability tests; not implemented. | Fails closed: blocked |

@@ -4,6 +4,10 @@ Composition and release boundary for seven pinned component repositories.
 
 **Status: public scaffold, not a deployed or production-ready implementation.**
 
+The core component includes a bounded in-memory identity/artifact contract model.
+Its local synthetic tests do not establish runtime activation, durable effects or
+system acceptance. See [implementation evidence and remaining gaps](docs/IMPLEMENTATION.md).
+
 This repository is one boundary of [Runspindle](https://github.com/newdarwindev/runspindle). Repository boundaries do not require one microservice each.
 
 - Read [specifications](specs/README.md), [agent guidance](AGENTS.md), [provenance](provenance.json), [status](STATUS.json) and [legal status](LEGAL.md).

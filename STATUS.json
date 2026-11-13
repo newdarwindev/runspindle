@@ -1,6 +1,10 @@
 {
+  "component_contracts": {
+    "core": "locally_tested_in_memory_model"
+  },
   "dev_deployment": "not_run",
   "implementation": "not_implemented",
+  "implementation_scope": "integrated_system",
   "legacy_archival": "not_started",
   "live_acceptance": "not_run",
   "production_deployment": "not_run",
