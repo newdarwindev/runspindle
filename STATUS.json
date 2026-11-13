@@ -20,7 +20,7 @@
     "descriptor": "contracts/runtime-v1.json",
     "runtime_wire_conformance": "not_run",
     "specification": "specs/runtime-v1.md",
-    "status": "specified_pending_review",
+    "status": "specified",
     "version": "runspindle.runtime.v1"
   },
   "selected_source_migration": "partial",

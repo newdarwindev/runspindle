@@ -33,11 +33,12 @@ Epoch comparison in core is not proof that a browser/provider has fenced effects
 
 Admission fields are listed in the descriptor, plus the version envelope. The
 `(delivery_namespace, delivery_id)` key binds exactly one admitted request. The
-`(task_id, revision)` key binds normalized digest, policy, explicit host/workspace
+`(task_id, revision)` key binds normalized digest, policy, explicit host/workspace,
 lease epoch and caller-provided initial `operation_id`. This operation ID must
 be unique within a task revision and immutable for its initial effect; a different
 operation ID for an existing delivery/revision conflicts. Subsequent effects must
-have distinct IDs with separately verified authority. Repeated identical delivery returns the original job binding;
+have distinct IDs with separately verified authority. Repeated identical delivery
+returns the original job binding;
 a changed field conflicts. Another delivery of the same exact revision returns
 the same job. No text similarity merges distinct task IDs.
 
