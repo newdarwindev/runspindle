@@ -111,6 +111,22 @@ submodule are preserved and excluded. No runner provisioning, new credentials,
 paid evaluation, external posting, production activation or source migration is
 part of this tranche. Full issue acceptance remains open.
 
+## Real-core composition development lane
+
+[Pin PR32](https://github.com/newdarwindev/runspindle/pull/32) merged as
+`3f8a1c683b0a9a7ca5dad41c2f5757bd5ff16a7d` after Host reviewed exact
+`642be3865bd597cddb33ecd616e41f5687ebfd55`. [Scenario PR33](https://github.com/newdarwindev/runspindle/pull/33)
+then exercises those exact pins. Its [two-run evidence](core-temporal-scenario-evidence.json)
+records the real Rust core/Temporal boundary, scripted host and unexercised
+browser/delivery/provider/console/refinery boundaries. One launch/one cancel,
+worker/server recovery, real history replay and independent resource absence
+passed twice. Normalized outcome, source, toolchain and fault-script hashes match.
+Both commands return 78 because required system gates remain blocked/not-run.
+The unrelated-image negative control blocks before execution. Twenty-nine
+composition tests reject fabricated identity/session/effect/order/state/replay
+and gate claims, poisoned bytecode, partial records and unavailable preparation.
+This is partial issue #2 evidence, not full nine-step/system acceptance.
+
 ## Initial inventory disposition
 
 “Partial merged” means the listed bounded work merged while the full issue

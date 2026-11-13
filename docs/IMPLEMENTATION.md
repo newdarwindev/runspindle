@@ -59,7 +59,10 @@ before executing exact verified source; untracked bytecode cannot replace it.
 This proves fixture-format conformance, not runtime wire parity or authenticated
 upstream compatibility. Browser and Tether runtime work remains queued.
 
-A real-core/real-Temporal composition scenario is a separate development lane.
+The [real-core/real-Temporal composition scenario](CORE_TEMPORAL_SCENARIO.md)
+passed two repeated development runs with matching normalized/source/toolchain/
+fault-script hashes. The core and Temporal are real, host ports scripted; browser,
+delivery, provider, console and refinery operations are not exercised.
 Scripted sibling boundaries must be reported explicitly. It cannot establish
 browser credential isolation/fencing, exact artifact delivery, telemetry readback,
 candidate serving, all-component integration or live acceptance. Required

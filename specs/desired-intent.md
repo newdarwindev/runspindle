@@ -59,6 +59,6 @@ runtime wire enums. The versioned runtime contract remains authoritative.
 ## Present scope
 
 The integrated system is not implemented. Existing contract/fixture and bounded
-component evidence remains distinct from durable orchestration, live session
+component evidence remains distinct from production durable orchestration, live session
 control, qualified cross-app execution and product acceptance. See
 [Runtime v1](runtime-v1.md) and [implementation evidence](../docs/IMPLEMENTATION.md).
