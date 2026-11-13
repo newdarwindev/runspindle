@@ -1,15 +1,23 @@
 {
   "component_contracts": {
-    "core": "locally_tested_in_memory_model"
+    "browser": "locally_tested_fixture_consumer_runtime_stub",
+    "console": "locally_tested_process_local_projection_and_fixture_consumer",
+    "core": "locally_tested_in_memory_model_and_fixture_consumer",
+    "host": "locally_tested_fixture_consumer_runtime_stub",
+    "platform": "locally_tested_fixture_consumer_runtime_unimplemented",
+    "refinery": "locally_tested_process_local_lineage_and_fixture_consumer",
+    "tether": "locally_tested_fixture_consumer_runtime_unimplemented"
   },
   "dev_deployment": "not_run",
   "implementation": "not_implemented",
   "implementation_scope": "integrated_system",
+  "isolated_integration": "not_run",
   "legacy_archival": "not_started",
   "live_acceptance": "not_run",
   "production_deployment": "not_run",
   "runner_capacity": "unverified",
   "selected_source_migration": "partial",
+  "shared_fixture_contract": "provisional_test_only",
   "stage": "scaffold",
   "synthetic_fixture_contracts": {
     "consumer_adoption": "not_run",
