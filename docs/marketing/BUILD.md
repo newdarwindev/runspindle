@@ -2,19 +2,19 @@
 
 Status: newly authored Runspindle design documents, not implemented services.
 
-The four PDF files here were rendered with ReportLab from the same narrative used to author the editable LaTeX and Beamer sources. They are **not** TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
+The three PDFs other than workflow-refinery.pdf were rendered with ReportLab from the same narrative used to author the editable LaTeX and Beamer sources. They are **not** TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
 
-To reproduce the 13 generated narrative, HTML, LaTeX, PDF and notice outputs, use Python 3 with ReportLab installed and run `python build_documents.py` in this directory. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
+To reproduce the 11 generated narrative, HTML, LaTeX, PDF and notice outputs, use Python 3 with ReportLab installed and run `python build_documents.py` in this directory. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
 
-For a complete local TeX installation, the intended optional build is `pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error runspindle-paper.tex`, repeated for `workflow-refinery.tex`, `argument.tex`, and `fleet.tex`. Required packages include geometry, fontenc, lmodern, microtype, hyperref, enumitem, and Beamer for the decks. These TeX builds have not succeeded in the migration environment: installed binaries lack their format definitions and pdflatex initialization file. Do not describe these sources as compile-verified.
+For a complete local TeX installation, the intended optional build is `pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error runspindle-paper.tex`, repeated for `argument.tex` and `fleet.tex`. Required packages include geometry, fontenc, lmodern, microtype, hyperref, enumitem, and Beamer for the decks. These TeX builds have not succeeded in the migration environment: installed binaries lack their format definitions and pdflatex initialization file. Do not describe these sources as compile-verified.
 
-Verification completed: all 19 ReportLab PDF pages were rendered with Poppler and visually reviewed; text/HTML/TeX candidates were scanned for legacy repository references and operational identifiers. The documents describe planned components and do not transfer historical test results to Runspindle. No original source application or build script was executed. No JavaScript framework install was required for the new static pages. HTML browser-level visual verification remains pending.
+Prior concise-derivative verification (before replacing workflow-refinery.pdf): all 19 ReportLab PDF pages were rendered with Poppler and visually reviewed; text/HTML/TeX candidates were scanned for legacy repository references and operational identifiers. The documents describe planned components and do not transfer historical test results to Runspindle. No original source application or build script was executed. No JavaScript framework install was required for the new static pages. HTML browser-level visual verification remains pending.
 
 ## Reproducibility and migration status
 
 Installed renderer: Python 3.12.14, ReportLab 4.4.9. ReportLab invariant mode is enabled to stabilize PDF metadata and identifiers. Determinism applies to these installed versions; cross-version byte identity is not asserted.
 
-All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The four PDFs are ReportLab outputs, not compiled TeX/Beamer.
+All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The three other PDFs are ReportLab outputs, not compiled TeX/Beamer.
 
 ## Console-owned SRC-010 mirror
 
@@ -42,3 +42,25 @@ byte-identical with the installed renderer and that negative preflight cases lea
 all files untouched. Successful hash checks and builds do not pass responsive,
 keyboard or actual browser zoom review. Those SRC-010 gates remain blocked as
 described in `SRC-010-validation.md`; Console issue 2 remains open.
+
+## Canonical SRC-013 paper
+
+[workflow-refinery.pdf](workflow-refinery.pdf) and its [TeX source](workflow-refinery.tex)
+mirror the independently reviewed Refinery paper at commit
+`bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b` (merged in
+`80a87f4569f1dfef14b141e141a89f30a9aaf7cd`). All eight historical figure PDFs,
+the exact MIT notice, [separate font notice](SRC-013-NOTICES.md),
+[source disposition](source-disposition.json), [toolchain lock](toolchain-lock.json)
+and [original build receipt](build-evidence.json) are preserved byte-for-byte.
+This eight-page PDF is TeX-built, not ReportLab output. The generator validates
+this full pinned closure before any writes and never regenerates its TeX or PDF.
+The remaining narratives and decks are concise derivatives, not this full paper.
+
+No additional native compilation was performed for this mirror. The copied
+`build-paper.py` is a reference CLI wrapper, not executed here or during the
+recorded native build; its command/environment matches the executed native wrapper.
+The receipt's `document_content_commit` is a local review identity, not a
+fetchable public ref. Preserve original evidence; use separate integration evidence.
+No runtime, benchmark, measured gains or live acceptance follows from this paper.
+No component Gitlink changed. Root integration remains dependent on PR 53 passing
+and landing; issue 3 remains open until dependent integration passes and lands.

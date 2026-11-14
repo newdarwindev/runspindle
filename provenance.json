@@ -118,18 +118,25 @@
       "canonical_sha256": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "adaptation_limits": "Full selected SRC-013 narrative and eight cleared figures; no runtime, benchmark or live acceptance claim. Root integration pending.",
       "destination": "docs/marketing/workflow-refinery.pdf",
-      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "license_review": "Exact selected MIT notice and separate Latin Modern font notice retained.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Byte-preserved mirror of independently reviewed compiled Refinery adaptation and complete selected figure closure; supersedes concise derivative.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
       "source_description": "Selected legacy design source; exact source mapping retained privately.",
       "source_id": "SRC-013",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "canonical_repository": "newdarwindev/runspindle-refinery",
+      "canonical_commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+      "canonical_path": "docs/design/workflow-refinery.pdf",
+      "canonical_sha256": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
+      "disposition_map": "docs/marketing/source-disposition.json",
+      "notice": "docs/marketing/SRC-013-NOTICES.md",
+      "integration_status": "prepared_dependent_on_PR53_and_root_validation"
     },
     {
       "destination": "docs/migration/technical-coverage.md",
