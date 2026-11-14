@@ -1,0 +1,19 @@
+{
+  "version": "runspindle.streaming-development-bundle.v1",
+  "extends": "runspindle.maintained-evidence.v1",
+  "owner": "platform",
+  "kind": "development_only",
+  "target": "linux/arm64",
+  "encoding": "magic RUNSPINDLE-STREAM\\x00\\x01; uint64 big-endian manifest length; canonical UTF-8 JSON manifest; uncompressed regular-file payloads in sorted manifest path order",
+  "limits": {"manifest_bytes": 33554432, "payload_bytes": 4294967296, "files": 60000, "retained_installations": 8},
+  "bindings": ["composition_commit", "component_commits", "dependencies", "toolchains", "licenses", "target", "entrypoints", "files", "manifest_sha256", "generation", "predecessor"],
+  "file_record": ["size", "sha256", "mode"],
+  "permitted_modes": [420, 493],
+  "paths": "canonical relative POSIX paths; no traversal, hidden segments, absolute paths, links, special files or file/directory conflicts",
+  "verification": "reject unsupported versions, incomplete/changed/trailing payload, mismatched pins/target, missing inventories or license bytes before installation; independently verify extracted/installed bytes and modes",
+  "recovery": "retain exact archive and immutable manifest; commit generation-owned intent before staging; reconcile actual pointer and bytes before acknowledging; rollback requires verified retained predecessor and never regenerates missing predecessor bytes",
+  "authorization": "synthetic disposable Linux arm64 targets only; no persistent services, production activation, native/Tether/browser/console/provider adapters",
+  "metadata_v1": "unchanged; executable payloads do not expand metadata format limits",
+  "independent_review": "user_waived_for_offline_tranche; no review performed",
+  "full_system_acceptance": "blocked"
+}
