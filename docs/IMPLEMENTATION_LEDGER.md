@@ -229,3 +229,27 @@ exact head `11fa9459691c6d00b90e5952f46ee80cafe871ec`. The reviewer repeated bot
 real lanes twice, matched their independent normalized hashes, and passed all40
 Python tests plus scaffold/library alignment. This closeout records that merge;
 it adds no new runtime, deployment, rights or live-acceptance claim.
+
+## Offline implementation finish
+
+The subsequent offline tranche reconciles the Strix/CI mains and merges contracts
+and components before qualifying exact composition pins. Its independent-review
+gate was **user-waived**; no review occurred. This differs from the historical
+reviewed batches above. [Final source/artifact/test evidence](offline-finish-evidence.json)
+and the [240 original criterion mappings](offline-issue-audit.json) record the
+exact merged revisions and remaining gaps. No issue is closed by this tranche.
+
+The runnable development bundle now includes the qualified core executable and
+Temporal prerequisite, refinery source and offline dependencies, platform helpers
+and required notices. Repeated installed-byte, history, peer/serving SQL and
+fresh-process upgrade/rollback observations qualify this bounded Linux arm64
+subset. Metadata and streaming journal families reject incompatible histories
+before intent. The [saved launcher](OFFLINE_BUNDLE.md) executes without component
+checkouts, dependency caches or external egress.
+
+H08 remains blocked on an original dependency notice, followed by MinIO build,
+remaining Langfuse inventories and actual API export/outage/restart readback.
+Native/Tether, browser, console, visual generation, selected-source migrations,
+live providers, paid evaluation and production retain their existing deferrals.
+The unrelated platform checkout is unchanged; runner isolation and operational
+fail-closed gates are preserved.

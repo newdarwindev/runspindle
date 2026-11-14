@@ -1849,5 +1849,22 @@
       "aggregate": "blocked; expected exit78",
       "no_scope_expansion": true
     }
+  },
+  "maintained_offline_candidate_tranche": {
+    "base": "43e0fa0ee6d8062b991455972c5680a5e59b07d9",
+    "contract": "445cc8cd6ea3dd78956ec362904eb5e025292148",
+    "candidate_sources": "specs/maintained-scenarios-v1.json",
+    "evidence": "docs/maintained-scenario-evidence.json",
+    "criterion_audit": "docs/offline-issue-audit.json",
+    "review": "pending independent final-head review; no merges or reviewed pin changes",
+    "remote_main_drift": {
+      "composition": "c973374b6b57608b16ed647bf55b501bad40ed01",
+      "core": "c73dcc2a4cb527400c45efe2877af6a58cacacf5",
+      "refinery": "f3964f613edc90a0affd4a9e9059408da54f121e",
+      "platform": "9cb7530ee9084c2d2843961c7da9ba979d828b0a",
+      "scope": "Concurrent Strix/CI work advanced mains and component pins after the instructed base. Not merged/rebased or qualified by this tranche; reconcile and retest exact final heads before merging."
+    },
+    "full_system_aggregate": "blocked",
+    "issues_closed": []
   }
 }

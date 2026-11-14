@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "status": "bounded_offline_subset_passed_full_system_blocked",
+  "qualified_composition_revision": "3385db6bd2fbd54f0e0cb21259f512248ce1f00e",
+  "component_pins": {
+    "core": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+    "tether": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+    "refinery": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
+  },
+  "runtime_build": {
+    "image_id": "sha256:7ce67150e94f14d3d11bddad94d9e12340c3daa80c1b14e9a8dfbdd7f3673bb7",
+    "binary_sha256": "ceb906820b7dbb3c0edc33b75294f25e5036ddf1e6c3ea5c15eea494077de544",
+    "source_sha256": "c9c5d7179754bb085bdc4a0caa6317c8a1bbeb80e97d181d6458e04664030e1b",
+    "builder_image_id": "sha256:061420d04a6f6ac173e3b1835b0594bcbe9d17044f5e015ca4fb767f9c57813e",
+    "dependency_inventory_sha256": "c4a7ffb71dc7f5067e7ffa06b4603fb0d07181d4f074c828d894c5d6e8a2968b"
+  },
+  "component_evidence": {
+    "core": "components/core/docs/offline-finish-tests.json",
+    "refinery": "components/refinery/docs/offline-finish-tests.json",
+    "platform": "components/platform/docs/offline-finish-tests.json"
+  },
+  "checks": {
+    "composition": "47 unit tests; exact merged pins; H02/H07/H10/H11/H12 twice; saved bundle launcher independently repeated; scaffold/Black/Ruff",
+    "core": "50 Rust/16 Python; strict Clippy/fmt/scaffold; four SDK/client admission boundaries twice and prior executable history recovery/replay; admission/H02/H07 twice; three isolated behavioral mutations",
+    "host": "27 Rust/7 Python; strict Clippy/fmt/scaffold at pinned merged host main; H02 independently observes exact library behavior",
+    "refinery": "70 Python; four durable behavioral mutations; pinned DSPy compatibility repeated with synthetic LM; scaffold; merged revision retested",
+    "platform": "68 prepared host/Temporal tests (60 passed, eight skipped); 12 Linux arm64 metadata/stream tests; five behavioral mutations; standard Collector privacy/queue diagnostics twice; Black/Ruff/scaffold; merged revision retested"
+  },
+  "H12": {
+    "status": "passed",
+    "evidence_class": "candidate_component_composition",
+    "repeat_runs": 2,
+    "outcome": {
+      "baseline_manifest_sha256": "fd43e15cd5a271391e69a6040fb945dfa7445c428759dd04bbd72e4812ff1e36",
+      "baseline_tree_sha256": "d2dd9d5db7347e1f394d33f7c79aa4b750f630a20f6c98b473c627cdef10210f",
+      "bundle_version": "runspindle.streaming-development-bundle.v1",
+      "fresh_process_recovery": [
+        "staged_upgrade",
+        "rollback_intent"
+      ],
+      "installed_files": 12351,
+      "installed_smoke": {
+        "Temporal": {
+          "children": 1,
+          "duplicate": "same_job",
+          "history_replay": "passed_no_effects",
+          "host_launches": 1,
+          "network": "loopback_only_no_external_egress",
+          "registry": "actual_installed_worker",
+          "scripted": [
+            "native_peer",
+            "exact_request_authority"
+          ],
+          "server": "installed_Temporal_1.10.0_embedded_1.32.2"
+        },
+        "core": {
+          "artifact_sha256": "5046301f35ee4a0a734a86439268d3c44d71b98692cf2b2092a5f3f34c11feca",
+          "changed_bytes": "denied",
+          "production_activation": "unsupported",
+          "reopened_bytes": true,
+          "scope": "offline_development_subset",
+          "status": "passed",
+          "unverified_acceptance": "denied"
+        },
+        "dspy_calls": 8,
+        "load_order": [
+          "candidate-0",
+          "candidate-1",
+          "rollback"
+        ],
+        "serving_sha256": "bdb03c2d116aea0a8c3f6723a2ae1d26ca275e3e5991322b458550b9fa0280ff"
+      },
+      "target": "linux/arm64",
+      "unsupported": [
+        "full_product",
+        "native",
+        "Tether",
+        "browser",
+        "console",
+        "provider",
+        "production_services"
+      ],
+      "upgrade_manifest_sha256": "b08534fac8bfd9c5ebb23a6531ab1d4837a6328728ca6117b527fdae381a7eee",
+      "upgrade_tree_sha256": "6698439f5c54faf16a747ffb3858840bb65752c8ab68decdff3a186a3dab6179"
+    },
+    "outcome_sha256": "af2874f63c2d434ad0f7c939fa4f2e78859d6597b512aa46ec453bbe14db69a8"
+  },
+  "saved_bundle_launcher": {
+    "status": "passed",
+    "requires_component_checkouts": false,
+    "requires_dependency_cache": false,
+    "outcome_matches_repeated_qualification": true
+  },
+  "H08": {
+    "status": "blocked",
+    "evidence": "components/platform/telemetry/minio-source-qualification.json",
+    "unresolved_notices": [
+      "github.com/mattn/go-localereader v0.0.1"
+    ],
+    "MinIO_build": "not_run",
+    "Langfuse_service_execution": "not_run",
+    "Langfuse_API_readback": "not_run"
+  },
+  "independent_review": {
+    "status": "user_waived",
+    "review_performed": false
+  },
+  "issues_closed": [],
+  "artifact_directory": "local/offline-development-bundle",
+  "artifact_launch": "python3 run.py --artifacts .",
+  "artifact_hashes": {
+    "baseline.stream": "e319595fbbaaca773afcbb58ac6a7a841b22093e7dec87e4fdc1b0cf5d8ef11e",
+    "upgrade.stream": "1130cc9b262f458f8e040214392dec23ed8217e3dc809337d140a3bdb211fc37",
+    "bundle-input.json": "7344627b3b15fa78f4d017c584d38bf442c2d5d7cd32837ff9692dfa45330d52",
+    "run.py": "9592abb907dfe9d7479b2c969716b7e9e0bf7ee0b345db4da8852a2ba7264303"
+  },
+  "integration_driver_source_binding": {
+    "tools/runtime_integration_scenario.py": "d784fb2a930c2d5798923f7deda478a92db4148ed6be7e3e2efe78b2eeb25f29",
+    "specs/runtime-integration-scenarios-v1.json": "882cb19b197c1bf623182886ed1fad8d05898c201324825aed3f34746d92b1b8",
+    "tests/test_runtime_integration_scenario.py": "2687bd35145a4dd7ce591559994322022125fdba3ec594144cfa21574b9bb865"
+  },
+  "verification_limits": [
+    "Synthetic inputs and scripted native/destination/authority boundaries only",
+    "No real native/Tether/browser/console/provider/production adapters",
+    "No optimizer quality or monetary cost claim",
+    "No power-loss or hostile concurrent filesystem qualification",
+    "GitHub CI capacity not established by local checks"
+  ],
+  "corrected_attempts": [
+    "Removing the external refinery mount exposed an absolute inventory path; package-relative resolution and a checkout/cache-free saved launcher were then tested",
+    "A Linux counterexample showed an already-open metadata installer accepted a streaming journal; both directions now reject before intent and a fifth behavioral mutation detects removal of the fence",
+    "Initial executable temporary mount was noexec; only disposable test targets now explicitly permit execution",
+    "Initial mutation run concurrent with Clippy was discarded; isolated rerun passed"
+  ],
+  "full_system_acceptance": "blocked",
+  "live_acceptance": "not_run",
+  "workspace_artifact_copy": {
+    "path": "local/offline-development-bundle-3385db6",
+    "byte_verification": "all copied files independently rehashed equal to qualified saved artifact",
+    "file_count": 9,
+    "checksums_sha256": "5b0dcc374afaef529414bc3bb69002bc994d966148e1d3edd3366c4127477319"
+  }
+}

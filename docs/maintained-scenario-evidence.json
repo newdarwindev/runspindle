@@ -1,0 +1,195 @@
+{
+  "version": "runspindle.maintained-scenarios.v1",
+  "status": "blocked",
+  "seed": 17,
+  "composition_head": "3385db6bd2fbd54f0e0cb21259f512248ce1f00e",
+  "sources": {
+    "core": {
+      "base": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+      "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f"
+    },
+    "host": {
+      "base": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+      "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76"
+    },
+    "browser": {
+      "base": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+      "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68"
+    },
+    "tether": {
+      "base": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+      "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe"
+    },
+    "refinery": {
+      "base": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+      "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1"
+    },
+    "console": {
+      "base": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+      "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f"
+    },
+    "platform": {
+      "base": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0",
+      "commit": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
+    }
+  },
+  "contract_sha256": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68",
+  "lanes": {
+    "H10": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "output_revisions": 13,
+        "examples": 11,
+        "quarantine": [
+          "conflicting_feedback",
+          "conflicting_feedback",
+          "missing_or_changed_output"
+        ],
+        "dataset_sha256": "06b168869f3d84c58b70a4ae4d50cc34a99760a5e6b417b785c9cb5b9bd47043",
+        "split_sha256": "6e2bc3617edc0791305b6037ec9f12e9c35801daa753b1abd831609df062eace"
+      },
+      "outcome_sha256": "986b51ca6bd65ac8f28f4b0caf9c35e0e66a0e1b6fc87812268e89ea077ec8fd"
+    },
+    "H11": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "lineage": {
+          "output_revisions": 13,
+          "examples": 11,
+          "quarantine": [
+            "conflicting_feedback",
+            "conflicting_feedback",
+            "missing_or_changed_output"
+          ],
+          "dataset_sha256": "06b168869f3d84c58b70a4ae4d50cc34a99760a5e6b417b785c9cb5b9bd47043",
+          "split_sha256": "6e2bc3617edc0791305b6037ec9f12e9c35801daa753b1abd831609df062eace"
+        },
+        "serving": {
+          "attempts": 8,
+          "load_order": [
+            "candidate-0",
+            "candidate-1",
+            "rollback"
+          ],
+          "active_sha256": "bdb03c2d116aea0a8c3f6723a2ae1d26ca275e3e5991322b458550b9fa0280ff",
+          "recovery": "fresh_process_after_actual_load_before_registry_ack",
+          "dspy": "real_local_synthetic_LM",
+          "monetary_cost": "not_measured"
+        }
+      },
+      "outcome_sha256": "43d81fde37bdbd84028c8b93340874f74a8a47ee34a476a2a6b01328acafa584"
+    },
+    "H12": {
+      "status": "passed",
+      "evidence_class": "candidate_component_composition",
+      "repeat_runs": 2,
+      "outcome": {
+        "baseline_manifest_sha256": "fd43e15cd5a271391e69a6040fb945dfa7445c428759dd04bbd72e4812ff1e36",
+        "baseline_tree_sha256": "d2dd9d5db7347e1f394d33f7c79aa4b750f630a20f6c98b473c627cdef10210f",
+        "bundle_version": "runspindle.streaming-development-bundle.v1",
+        "fresh_process_recovery": [
+          "staged_upgrade",
+          "rollback_intent"
+        ],
+        "installed_files": 12351,
+        "installed_smoke": {
+          "Temporal": {
+            "children": 1,
+            "duplicate": "same_job",
+            "history_replay": "passed_no_effects",
+            "host_launches": 1,
+            "network": "loopback_only_no_external_egress",
+            "registry": "actual_installed_worker",
+            "scripted": [
+              "native_peer",
+              "exact_request_authority"
+            ],
+            "server": "installed_Temporal_1.10.0_embedded_1.32.2"
+          },
+          "core": {
+            "artifact_sha256": "5046301f35ee4a0a734a86439268d3c44d71b98692cf2b2092a5f3f34c11feca",
+            "changed_bytes": "denied",
+            "production_activation": "unsupported",
+            "reopened_bytes": true,
+            "scope": "offline_development_subset",
+            "status": "passed",
+            "unverified_acceptance": "denied"
+          },
+          "dspy_calls": 8,
+          "load_order": [
+            "candidate-0",
+            "candidate-1",
+            "rollback"
+          ],
+          "serving_sha256": "bdb03c2d116aea0a8c3f6723a2ae1d26ca275e3e5991322b458550b9fa0280ff"
+        },
+        "target": "linux/arm64",
+        "unsupported": [
+          "full_product",
+          "native",
+          "Tether",
+          "browser",
+          "console",
+          "provider",
+          "production_services"
+        ],
+        "upgrade_manifest_sha256": "b08534fac8bfd9c5ebb23a6531ab1d4837a6328728ca6117b527fdae381a7eee",
+        "upgrade_tree_sha256": "6698439f5c54faf16a747ffb3858840bb65752c8ab68decdff3a186a3dab6179"
+      },
+      "outcome_sha256": "af2874f63c2d434ad0f7c939fa4f2e78859d6597b512aa46ec453bbe14db69a8"
+    }
+  },
+  "required_gates": {
+    "independent_final_head_review": "user_waived_no_review_performed",
+    "composition_pin_upgrade": "passed_exact_component_pins",
+    "Langfuse": "blocked",
+    "native_wire": "blocked",
+    "Tether": "blocked",
+    "browser": "deferred",
+    "console": "deferred",
+    "provider_live": "deferred",
+    "paid_evaluation": "deferred",
+    "full_product_release": "blocked",
+    "live_acceptance": "not_run"
+  },
+  "boundaries": {
+    "H10": {
+      "real": [
+        "refinery_SQLite"
+      ],
+      "scripted": [
+        "Tether_observations",
+        "consent_and_actor_authority"
+      ]
+    },
+    "H11": {
+      "real": [
+        "refinery_SQLite",
+        "pinned_DSPy_Predict",
+        "local_serving_load_readback_rollback"
+      ],
+      "scripted": [
+        "LM_completions",
+        "approval_authority"
+      ]
+    },
+    "H12": {
+      "real": [
+        "streaming_development_executable_and_dependencies",
+        "installed_core_storage_and_default_denial",
+        "installed_Temporal_registry_and_scripted_peer_history_replay",
+        "installed_refinery_DSPy_budget_serving_recovery_rollback",
+        "interrupted_upgrade_and_rollback_fresh_process",
+        "Linux_arm64_disposable_filesystem"
+      ],
+      "unsupported": [
+        "product_adapters",
+        "services"
+      ]
+    }
+  }
+}

@@ -75,7 +75,7 @@ Exact private source/dependency/rights dispositions remain required for full sou
 migration. No legacy archival, live provider calls, paid evaluation, external
 posting or production activation follows from local synthetic/development results.
 
-## Current H02/H07 tranche
+## Historical H02/H07 tranche
 
 [Runtime integration v1](../specs/runtime-integration-v1.md) and
 [composition verification](RUNTIME_INTEGRATION.md) qualify real core + pinned host
@@ -95,3 +95,22 @@ contracts CI remains unchanged after the existing OAuth workflow-scope limitatio
 Remote CI and live acceptance remain unverified/not run. Source/rights dependency
 closure and native-produced artifact provenance remain explicit gaps; no issue or
 legacy repository was closed or archived by these bounded offline lanes.
+
+## Qualified offline development subset
+
+[Maintained workflow qualification](MAINTAINED_OFFLINE.md) now reconciles current
+Strix/CI mains and pins exact merged core, refinery and platform revisions. A
+separately versioned streaming bundle installs and executes core/Temporal,
+refinery/DSPy and platform helpers offline, with independent byte/history/SQL
+observations and fresh-process upgrade/rollback recovery. Existing JSON metadata
+validation remains intact. [Final evidence](offline-finish-evidence.json) and the
+[240-criterion audit](offline-issue-audit.json) distinguish these bounded results
+from full-system acceptance.
+
+Independent review was user-waived for this tranche; no review occurred. H08
+remains blocked on original dependency notice closure, MinIO build, remaining
+Langfuse inventories and actual API readback. Native/Tether prerequisites and
+browser/console/visual/provider/paid/source-migration/production deferrals remain.
+No issues or legacy repositories were closed or archived. The unrelated platform
+checkout was preserved. [Runnable bundle instructions](OFFLINE_BUNDLE.md) describe
+the exact disposable development scope and the saved offline launcher.

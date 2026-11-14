@@ -64,3 +64,13 @@ real core/host/Temporal and durable accepted-byte delivery through scripted peer
 Repeated offline passes remain separate from blocked native/Tether/full-system
 and live acceptance. Exact reviewed pins and remaining gaps are in the
 [implementation ledger](docs/IMPLEMENTATION_LEDGER.md).
+
+## Offline development bundle
+
+The separately qualified [Linux arm64 development bundle](docs/OFFLINE_BUNDLE.md)
+packages core, its Temporal prerequisite, refinery/DSPy dependencies and platform
+helpers. A saved launcher verifies and executes installed bytes with disposable
+upgrade/rollback recovery and denied external egress. This manual offline lane is
+separate from fleet architecture qualification. [Exact evidence](docs/offline-finish-evidence.json)
+retains blocked Langfuse/native/Tether/full-system gates and the user-waived
+independent review; no review or production activation is implied.

@@ -1,0 +1,34 @@
+{
+  "version": "runspindle.maintained-scenarios.v1",
+  "reviewed_composition_base": "02cd0116290fb21f5c447dc3038e9cbf0a3436f0",
+  "sources": {
+    "core": {
+      "base": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+      "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f"
+    },
+    "host": {
+      "base": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+      "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76"
+    },
+    "browser": {
+      "base": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+      "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68"
+    },
+    "tether": {
+      "base": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+      "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe"
+    },
+    "refinery": {
+      "base": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+      "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1"
+    },
+    "console": {
+      "base": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+      "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f"
+    },
+    "platform": {
+      "base": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0",
+      "commit": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
+    }
+  }
+}

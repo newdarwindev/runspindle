@@ -1,5 +1,13 @@
 {
   "license_status": "No blanket license is granted to imported material. See LEGAL.md.",
+  "maintained_offline_contract_source": {
+    "classification": "original_native_evidence_interface_and_synthetic_composition_harness",
+    "contract": "contracts/maintained-evidence-v1.json",
+    "evidence": "docs/maintained-scenario-evidence.json",
+    "legacy_executable_import": "none",
+    "mapping": "specs/maintained-evidence-v1.md",
+    "source_pins": "specs/maintained-scenarios-v1.json"
+  },
   "new_files": "New scaffolding, adapted specifications and original synthetic fixture kit; no old Git history or executable source imported.",
   "provenance_policy": "Public IDs resolve to a privately retained source record containing repository, exact commit, path, source hash and review notes. Private repository names, URLs and operational details are omitted.",
   "runtime_contract_source": "Original runtime.v1 development specification and machine-readable descriptor; no third-party code or legacy source imported.",
@@ -157,5 +165,13 @@
       "source_id": "SRC-012",
       "status": "adapted_spec"
     }
-  ]
+  ],
+  "streaming_offline_bundle": {
+    "classification": "original_composition_packaging_and_synthetic_qualification",
+    "contract": "contracts/streaming-development-bundle-v1.json",
+    "evidence": "docs/offline-finish-evidence.json",
+    "source_pins": "specs/maintained-scenarios-v1.json",
+    "notices": "exact component/dependency notices included in ignored prepared bundle; no executable payload or legacy history committed",
+    "remaining": "Langfuse original notice closure and all retained selected-source/native/Tether/production gaps"
+  }
 }
