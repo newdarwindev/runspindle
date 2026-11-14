@@ -6,3 +6,5 @@ Cost per accepted authorized task is total model, tool, human, verification, mai
 A specialist system also has fixed integration and evaluation costs. Low-volume workflows may remain cheaper with manual assistance. Break-even depends on measured workload mix, acceptance rate, maintenance cadence, and labor assumptions. Saved minutes do not automatically become cash savings. Provider improvements may remove the advantage of a custom harness, so repeat comparisons after material model or platform changes. Runspindle has no measured savings, prices, break-even point, or market-size estimate.
 
 Source concept: SRC-005.
+
+Executable accounting and synthetic sensitivity: [model specification](economics-model.md); run `python3 tools/economics.py` from the repository root. This original model is not measured evidence or a completed historical source lift.

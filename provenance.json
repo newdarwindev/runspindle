@@ -178,5 +178,12 @@
     "classification": "original_contract_independent_python_codec_synthetic_vectors",
     "specification": "specs/runtime-envelopes-v1.md",
     "legacy_source_import": "none"
+  },
+  "economics_model_source": {
+    "classification": "original_synthetic_accounting_and_tests",
+    "specification": "docs/marketing/economics-model.md",
+    "historical_source_import": "none",
+    "measurement": "not_run",
+    "migration_completion": false
   }
 }
