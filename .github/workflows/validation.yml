@@ -40,8 +40,10 @@ jobs:
           python3 tools/feedback_hero.py
           --tether local/feedback-sources/tether
           --refinery local/feedback-sources/refinery
+      - name: Verify pinned document renderer
+        run: /opt/runspindle-documents/bin/python tools/check_document_runtime.py
       - name: Run implemented validation
         env:
           RUNSPINDLE_FEEDBACK_HERO_TETHER: ${{ github.workspace }}/local/feedback-sources/tether
           RUNSPINDLE_FEEDBACK_HERO_REFINERY: ${{ github.workspace }}/local/feedback-sources/refinery
-        run: python3 tools/validate.py
+        run: /opt/runspindle-documents/bin/python tools/validate.py
