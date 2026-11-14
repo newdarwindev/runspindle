@@ -1,0 +1,120 @@
+import copy
+import importlib.util
+import json
+import pathlib
+import subprocess
+import sys
+import unittest
+from typing import Any
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "envelope_codec", ROOT / "conformance/envelope-v1/codec.py"
+)
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("envelope codec module could not be loaded")
+codec = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(codec)
+
+
+class Envelopes(unittest.TestCase):
+    def setUp(self) -> None:
+        self.vectors = json.loads(
+            (ROOT / "conformance/envelope-v1/vectors.json").read_text()
+        )
+
+    def test_vectors_and_independent_component_mappings(self) -> None:
+        for v in self.vectors:
+            e = codec.decode(codec.encode(v["envelope"]))
+            self.assertEqual(codec.component(e), v["component"])
+
+    def test_invalid_before_adapter(self) -> None:
+        observed: list[dict[str, Any]] = []
+        e = self.vectors[0]["envelope"]
+        invalid = []
+        for key, value in [
+            ("version", "unsupported"),
+            ("message_type", "unknown"),
+            ("message_id", "-bad"),
+        ]:
+            x = copy.deepcopy(e)
+            x[key] = value
+            invalid.append(json.dumps(x))
+        for key in e:
+            x = copy.deepcopy(e)
+            del x[key]
+            invalid.append(json.dumps(x))
+        x = copy.deepcopy(e)
+        x["payload"]["binding"] = e["binding"]
+        invalid.append(json.dumps(x))
+        for invalid_counter in [0, -1, 1.0, True, 2**64]:
+            x = copy.deepcopy(e)
+            x["binding"]["lease_epoch"] = invalid_counter
+            invalid.append(json.dumps(x))
+        invalid += [
+            json.dumps(e)[:-1] + ',"version":"runspindle.envelope.v1"}',
+            json.dumps(e).replace('"revision": 1', '"revision": 1,"revision": 2'),
+        ]
+        for raw in invalid:
+            with self.assertRaises((AssertionError, ValueError, TypeError)):
+                codec.consume(raw, e["binding"], observed.append)
+        self.assertEqual(observed, [])
+
+    def test_stale_epoch_session_sequence_and_wrong_destination_zero_calls(
+        self,
+    ) -> None:
+        calls: list[dict[str, Any]] = []
+        for v in self.vectors:
+            e = v["envelope"]
+            expected = dict(e["binding"], lease_epoch=2)
+            with self.assertRaises(AssertionError):
+                codec.consume(codec.encode(e), expected, calls.append)
+        e = self.vectors[1]["envelope"]
+        for args in [dict(session="wrong"), dict(session="session-1", last_sequence=1)]:
+            with self.assertRaises(AssertionError):
+                codec.consume(codec.encode(e), e["binding"], calls.append, **args)
+        for v in self.vectors[2:4]:
+            e = v["envelope"]
+            with self.assertRaises(AssertionError):
+                codec.consume(
+                    codec.encode(e),
+                    e["binding"],
+                    calls.append,
+                    destination=("account-1", "wrong"),
+                )
+        self.assertEqual(calls, [])
+
+
+class LexicalCounters(unittest.TestCase):
+    def test_negative_zero_and_bom_are_rejected(self) -> None:
+        e = json.loads((ROOT / "conformance/envelope-v1/vectors.json").read_text())[1][
+            "envelope"
+        ]
+        raw = codec.encode(e)
+        for malformed in [
+            raw.replace(b'"observed_at_ms":0', b'"observed_at_ms":-0'),
+            b"\xef\xbb\xbf" + raw,
+        ]:
+            with self.assertRaises((AssertionError, ValueError)):
+                codec.decode(malformed)
+
+
+class OptimizedInterpreter(unittest.TestCase):
+    def test_validation_and_context_checks_survive_optimization(self) -> None:
+        # Run existing negative and positive cases under -O without recursively
+        # invoking this subprocess test. unittest assertions remain active.
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-O",
+                "-m",
+                "unittest",
+                "test_envelopes.Envelopes",
+                "test_envelopes.LexicalCounters",
+                "-v",
+            ],
+            cwd=ROOT / "tests",
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
