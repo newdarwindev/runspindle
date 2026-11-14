@@ -2,6 +2,8 @@ import copy
 import importlib.util
 import json
 import pathlib
+import subprocess
+import sys
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -90,3 +92,24 @@ class LexicalCounters(unittest.TestCase):
         ]:
             with self.assertRaises((AssertionError, ValueError)):
                 codec.decode(malformed)
+
+
+class OptimizedInterpreter(unittest.TestCase):
+    def test_validation_and_context_checks_survive_optimization(self):
+        # Run existing negative and positive cases under -O without recursively
+        # invoking this subprocess test. unittest assertions remain active.
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-O",
+                "-m",
+                "unittest",
+                "test_envelopes.Envelopes",
+                "test_envelopes.LexicalCounters",
+                "-v",
+            ],
+            cwd=ROOT / "tests",
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
