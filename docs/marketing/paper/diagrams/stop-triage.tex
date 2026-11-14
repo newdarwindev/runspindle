@@ -1,0 +1,21 @@
+% Original editable classification matrix; not the historical refusal tree.
+\begin{figure}[htbp]
+\centering\small
+\begin{tabular}{|p{0.27\linewidth}|p{0.29\linewidth}|p{0.29\linewidth}|}
+\hline
+\textbf{Observation} & \textbf{Evidence to obtain} & \textbf{Permitted response} \\
+\hline
+Effect is prohibited & Applicable rule and task scope & Stop; preserve the reason \\
+\hline
+Specific authority is absent & Owner decision or required handoff & Wait without performing the effect \\
+\hline
+Tool, context or state is missing & Exact missing precondition & Repair only inside approved scope \\
+\hline
+Action was attempted; result is unclear & Independent external readback & Reconcile before any retry \\
+\hline
+Planning or perception fails & Observed action and verifier result & Bounded investigation or a truthful stop \\
+\hline
+\end{tabular}
+\caption{Proposed stop triage. Multiple labels may apply. This is not a route around a denied action or a diagnosis of hidden model capability.}
+\label{fig:stop-triage}
+\end{figure}

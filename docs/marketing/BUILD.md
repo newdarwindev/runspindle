@@ -2,11 +2,19 @@
 
 Status: newly authored Runspindle design documents, not implemented services.
 
-The three PDFs other than workflow-refinery.pdf were rendered with ReportLab from the same narrative used to author the editable LaTeX and Beamer sources. They are **not** TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
+The argument and fleet PDFs were rendered with ReportLab from their generated Beamer narratives. The preserved older runspindle-paper.pdf also remains ReportLab output, with its old uncompiled companion at paper/legacy/reportlab-paper.tex. It **does not render the new authored runspindle-paper.tex**. None of these three PDFs is TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
 
-To reproduce the 11 generated narrative, HTML, LaTeX, PDF and notice outputs, use Python 3 with ReportLab installed and run `python build_documents.py` in this directory. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
+To reproduce the nine remaining generated narrative, HTML, deck source, PDF and notice outputs, use Python 3 with ReportLab installed and run `python build_documents.py` in this directory. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
 
-For a complete local TeX installation, the intended optional build is `pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error runspindle-paper.tex`, repeated for `argument.tex` and `fleet.tex`. Required packages include geometry, fontenc, lmodern, microtype, hyperref, enumitem, and Beamer for the decks. These TeX builds have not succeeded in the migration environment: installed binaries lack their format definitions and pdflatex initialization file. Do not describe these sources as compile-verified.
+The new SRC-002 paper has a separate source-only build proposal in
+`SRC-002-build-plan.json`. Its minimal installed toolchain inventory is not a
+complete loaded-input closure and no native build has been run for this source.
+The proposed pdflatex command must not be treated as an instruction to execute
+before independent review of the exact source, dependencies, confinement and
+resource limits. No installation is needed or authorized by this document.
+Argument and fleet Beamer sources remain independently compile-unverified. The
+old environment's missing-format failure is historical and is not evidence
+about the newly inventoried native installation.
 
 Prior concise-derivative verification (before replacing workflow-refinery.pdf): all 19 ReportLab PDF pages were rendered with Poppler and visually reviewed; text/HTML/TeX candidates were scanned for legacy repository references and operational identifiers. The documents describe planned components and do not transfer historical test results to Runspindle. No original source application or build script was executed. No JavaScript framework install was required for the new static pages. HTML browser-level visual verification remains pending.
 
@@ -64,3 +72,25 @@ fetchable public ref. Preserve original evidence; use separate integration evide
 No runtime, benchmark, measured gains or live acceptance follows from this paper.
 No component Gitlink changed. Root integration remains dependent on PR 53 passing
 and landing; issue 3 remains open until dependent integration passes and lands.
+
+## Original SRC-002 paper protection
+
+`build_documents.py` validates the existing SRC-010 and SRC-013 canonical closures,
+then validates the independently authored SRC-002 source, old ReportLab pairing,
+18 citation records, 28 disposition units and frozen economics before importing
+ReportLab or writing outputs. It never writes runspindle-paper.tex or
+runspindle-paper.pdf. A changed receipt, source, required schematic, package,
+citation, preserved PDF or economics invariant fails closed. A future reviewed
+native PDF requires a deliberate receipt/guard transition; the legacy generator
+will still have no paper-writing call.
+
+The current SRC-005 disposition updates only the containing TeX hash. Its original
+validation receipt remains byte-preserved and applies to the prior source tree.
+`SRC-002-source-receipt.json` separately binds the current authored inputs, old
+ReportLab PDF, old generated TeX and frozen economic body. Neither representation
+is mislabeled as a compiled output. Run `python3 tools/check_paper_source.py` and
+`python3 tools/check_economics_source.py` from the root for static consistency.
+
+Native acceptance still requires the actual edited-source build, complete loaded
+input hashes, all-page visual/text review and citation/link annotation checks.
+Do not close issue 4 or report that these stages passed from static tests alone.

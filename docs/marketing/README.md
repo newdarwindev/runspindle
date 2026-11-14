@@ -1,8 +1,11 @@
 # Runspindle design adaptations
 
-These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed paper adaptation; the other narratives and decks remain concise derivatives. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
+These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed compiled paper adaptation. SRC-002 now has a full original nine-section editable proposal, not yet compiled; its old PDF is preserved separately from the new source. The other narratives and decks remain concise derivatives. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
 
-- `runspindle-paper.pdf` and `.tex`: proposed system and evaluation argument.
+- `runspindle-paper.tex`: full original research and evaluation proposal, uncompiled.
+- `runspindle-paper.pdf`: unchanged older ReportLab derivative, **not the new paper**.
+- `paper/legacy/reportlab-paper.tex`: old generated, uncompiled companion source.
+- `SRC-002-source-receipt.json`: exact separation of old rendering and new source; native build remains not run.
 - `argument.pdf`/`.tex`, `fleet.pdf`/`.tex`: two concise design decks.
 - `workflow-refinery.pdf` and `.tex`: proposed DSPy evaluation and serving boundaries.
 - `economics.md`: accepted-work cost accounting with no claimed savings.
@@ -18,7 +21,7 @@ renderer verifies the recorded canonical mirror and notice before any writes; it
 does not overwrite the vision page. See [SRC-010-lift.json](SRC-010-lift.json) and
 [SRC-010-validation.md](SRC-010-validation.md).
 
-The three other PDFs were generated with ReportLab, not compiled from TeX/Beamer. Their editable TeX sources are not compile-verified. See [BUILD.md](BUILD.md) for exact tools, reproduction commands and limits, and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for source rights. None of these materials certifies a live implementation, runner, deployment or successful integration.
+The argument and fleet PDFs, plus the preserved older runspindle-paper.pdf, were generated with ReportLab, not compiled from TeX/Beamer. The new runspindle-paper.tex does not match that older PDF. Its five original schematic inputs and all 18 citations are prepared for independent source/build review; no native compilation or page review has occurred. See [BUILD.md](BUILD.md) for exact tools, reproduction commands and limits, and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for source rights. None of these materials certifies a live implementation, runner, deployment or successful integration.
 
 ## Technical grounding for future presentations
 
@@ -49,3 +52,11 @@ fetchable public ref. Preserve original evidence; use separate integration evide
 No runtime, benchmark, measured gains or live acceptance follows from this paper.
 No component Gitlink changed. Root integration remains dependent on PR 53 passing
 and landing; issue 3 remains open until dependent integration passes and lands.
+
+## Original SRC-002 source preparation
+
+See [source review](SRC-002-review.md), [complete disposition](SRC-002-disposition.json),
+[citation review](SRC-002-citations.json) and [proposed native build](SRC-002-build-plan.json).
+The generator verifies source, preserved PDF and frozen economics before any
+writes, then leaves both paper representations alone. It cannot be used to build
+the new paper. Issue 4 remains open and selected-source migration remains partial.

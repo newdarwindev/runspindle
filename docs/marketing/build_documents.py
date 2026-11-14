@@ -6,6 +6,7 @@ from importlib import import_module
 from pathlib import Path
 from typing import Any
 
+from paper_source import verify_paper_source
 from refinery_mirror import verify_refinery_mirror
 
 
@@ -61,6 +62,7 @@ def verify_vision_mirror(folder: Path) -> None:
 P = Path(__file__).resolve().parent
 verify_vision_mirror(P)
 verify_refinery_mirror(P)
+verify_paper_source(P)
 # ReportLab exposes a dynamic configuration module without bundled types.
 rl_config: Any = import_module("reportlab.rl_config")
 rl_config.invariant = 1
@@ -160,9 +162,7 @@ def article(name: str, title: str, parts: list[tuple[str, str]]) -> None:
     (P / (name + ".tex")).write_text(body)
 
 
-article(
-    "runspindle-paper", "Runspindle: Authorized Work as a Verifiable System", sections
-)
+# SRC-002 TeX is independently authored; its old PDF is preserved, not regenerated.
 (P / "economics.md").write_text(
     "# Runspindle economics\n\nStatus: proposed accounting model; no measured results.\n\n"
     + sections[5][1]
@@ -347,9 +347,11 @@ SRC-010 and SRC-013 selected source material carries the MIT notice: Copyright (
 No project license was found for SRC-002 or SRC-009 during source review. No license is invented or assigned to them here. Detailed provenance and original artifacts remain in restricted migration records outside this public candidate. A publisher must resolve the rights to any retained expression before release.
 
 The SRC-013 paper is a byte-preserved, compiled adaptation with eight cleared historical figures. See [SRC-013 notices](SRC-013-NOTICES.md) for the separate Latin Modern font notice and [source disposition](source-disposition.json) for scope. The full historical paper, unselected code, Git history and private operational evidence are not republished. Other documents remain concise conceptual derivatives, not fresh verification of historical claims.
+
+SRC-002 now has a full nine-section original editable research proposal and five original schematic inputs. No historical prose, diagram expression, coordinates, style or binary is imported. Its unchanged older ReportLab PDF is not a rendering of the new source. Native compilation and page review remain unperformed. Citation attribution is not a license to reproduce source expression. See SRC-002-disposition.json and SRC-002-source-receipt.json. The planned Latin Modern font dependency is separately subject to its GUST Font License/LPPL terms; no new font embedding is claimed. The preserved SRC-013 font notice is not a license for the rest of this paper.
 """)
 
-# ReportLab objects are dynamically typed; import only after both preflights.
+# ReportLab objects are dynamically typed; import only after all preflights.
 platypus: Any = import_module("reportlab.platypus")
 styles: Any = import_module("reportlab.lib.styles")
 colors: Any = import_module("reportlab.lib.colors")
@@ -405,9 +407,7 @@ def paper(name: str, title: str, parts: list[tuple[str, str]]) -> None:
     ).build(story, onFirstPage=foot, onLaterPages=foot)
 
 
-paper(
-    "runspindle-paper", "Runspindle: Authorized Work as a Verifiable System", sections
-)
+# Never overwrite the independently authored SRC-002 paper or a future compiled PDF.
 for name in ["argument", "fleet"]:
     source = (P / (name + ".tex")).read_text()
     match = re.search(r"\\title\{([^}]+)", source)

@@ -23,18 +23,27 @@
       "status": "adapted_spec"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
-      "destination": "docs/marketing/runspindle-paper.pdf",
-      "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
+      "adaptation_limits": "Original full-scope concept adaptation with explicit expression exclusions; authored source is not compiled. Preserved old ReportLab PDF is not its rendering.",
+      "destination": "docs/marketing/runspindle-paper.tex",
+      "license_review": "No verified project-wide reuse license for historical prose/figures. Concepts adapted in original expression; citation attribution grants no reproduction rights. Planned font dependency separately recorded; no blanket relicense.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Prepared nine-section original paper, five original editable schematics and all 18 primary citations. Historical prose/diagram expression and binaries excluded. Frozen canonical economics retained unchanged.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-002",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+      "disposition_map": "docs/marketing/SRC-002-disposition.json",
+      "review_record": "docs/marketing/SRC-002-review.md",
+      "source_receipt": "docs/marketing/SRC-002-source-receipt.json",
+      "executable_implementation": "none_in_paper",
+      "verified_behavior": "static_source_integrity_only_native_compile_and_live_acceptance_not_run",
+      "artifact_acceptance": "blocked_native_compile_and_all_pages_review",
+      "preserved_pdf": "older_ReportLab_derivative_not_authored_source_rendering"
     },
     {
       "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
