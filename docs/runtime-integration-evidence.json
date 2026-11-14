@@ -2,13 +2,13 @@
   "schema_version": 1,
   "evidence_class": "isolated_integration",
   "contract": "runspindle.integration.v1",
-  "execution_source_commit": "720b47e24c8490c4956f50787cefac09708eeb72",
+  "execution_source_commit": "3385db6bd2fbd54f0e0cb21259f512248ce1f00e",
   "execution_source_hashes": {
     "tools/runtime_integration_scenario.py": "d784fb2a930c2d5798923f7deda478a92db4148ed6be7e3e2efe78b2eeb25f29",
     "specs/runtime-integration-scenarios-v1.json": "882cb19b197c1bf623182886ed1fad8d05898c201324825aed3f34746d92b1b8",
     "tests/test_runtime_integration_scenario.py": "2687bd35145a4dd7ce591559994322022125fdba3ec594144cfa21574b9bb865"
   },
-  "source_matches_final_code": "verified after execution against recorded Git objects",
+  "source_matches_final_code": "verified unchanged integration driver and scenario/test bytes; exact merged component pins exercised twice",
   "lanes": {
     "H02": {
       "status": "passed",
@@ -45,5 +45,15 @@
   "reviewed_scenario_head": "11fa9459691c6d00b90e5952f46ee80cafe871ec",
   "scenario_pr": "https://github.com/newdarwindev/runspindle/pull/38",
   "scenario_merge_commit": "96807f515acb8da2cd1c5423dc893a0a86eb98e1",
-  "independent_reproduction": "H02 and H07 each passed twice at reviewed head; normalized observations/hashes match stored execution evidence"
+  "independent_reproduction": "H02 and H07 each passed twice at reviewed head; normalized observations/hashes match stored execution evidence",
+  "previous_execution_source_commit": "720b47e24c8490c4956f50787cefac09708eeb72",
+  "component_pins": {
+    "core": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+    "tether": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+    "refinery": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
+  }
 }

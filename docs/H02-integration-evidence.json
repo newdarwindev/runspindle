@@ -49,42 +49,42 @@
   "lane_status": "passed",
   "live_acceptance": "not_run",
   "normalized_outcome_sha256": "693b83258b3a4548c3e3b062bf521f50ec89f0bda91c1f6521825f9e8fee6e82",
-  "observed_at": "2026-11-13T21:54:22.167787+00:00",
+  "observed_at": "2026-11-14T07:19:19.080952+00:00",
   "repeat_runs": 2,
   "schema_version": "runspindle.integration-scenario-report.v1",
   "seed": 17,
   "sources": {
     "components": {
       "browser": {
-        "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+        "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
         "path": "components/browser"
       },
       "console": {
-        "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+        "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
         "path": "components/console"
       },
       "core": {
-        "commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+        "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
         "path": "components/core"
       },
       "host": {
-        "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+        "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
         "path": "components/host"
       },
       "platform": {
-        "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+        "commit": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0",
         "path": "components/platform"
       },
       "refinery": {
-        "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+        "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
         "path": "components/refinery"
       },
       "tether": {
-        "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+        "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe",
         "path": "components/tether"
       }
     },
-    "composition_head": "720b47e24c8490c4956f50787cefac09708eeb72",
+    "composition_head": "3385db6bd2fbd54f0e0cb21259f512248ce1f00e",
     "contract": "runspindle.integration.v1"
   },
   "system_gates": {

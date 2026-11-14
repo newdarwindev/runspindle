@@ -165,5 +165,13 @@
       "source_id": "SRC-012",
       "status": "adapted_spec"
     }
-  ]
+  ],
+  "streaming_offline_bundle": {
+    "classification": "original_composition_packaging_and_synthetic_qualification",
+    "contract": "contracts/streaming-development-bundle-v1.json",
+    "evidence": "docs/offline-finish-evidence.json",
+    "source_pins": "specs/maintained-scenarios-v1.json",
+    "notices": "exact component/dependency notices included in ignored prepared bundle; no executable payload or legacy history committed",
+    "remaining": "Langfuse original notice closure and all retained selected-source/native/Tether/production gaps"
+  }
 }

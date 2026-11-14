@@ -2,35 +2,35 @@
   "version": "runspindle.maintained-scenarios.v1",
   "status": "blocked",
   "seed": 17,
-  "composition_head": "aa90a41bb6f9ae0d93a926e9b997d86fcc0e10cc",
+  "composition_head": "3385db6bd2fbd54f0e0cb21259f512248ce1f00e",
   "sources": {
     "core": {
-      "base": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
-      "commit": "dc15b85ba5dd972d83f0739d17194095e21d27ba"
+      "base": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+      "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f"
     },
     "host": {
-      "base": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
-      "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352"
+      "base": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+      "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76"
     },
     "browser": {
-      "base": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
-      "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5"
+      "base": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+      "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68"
     },
     "tether": {
-      "base": "6003f2315146d05d77918024d1bc81049a78a312",
-      "commit": "6003f2315146d05d77918024d1bc81049a78a312"
+      "base": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+      "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe"
     },
     "refinery": {
-      "base": "355ad581e79f4cfce37e3d82192adb55da9b7669",
-      "commit": "14d0c985fb30ef353df9b9769fe8773e5ec6869e"
+      "base": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+      "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1"
     },
     "console": {
-      "base": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
-      "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9"
+      "base": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+      "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f"
     },
     "platform": {
-      "base": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
-      "commit": "089337e8ca41e96fbfbcd5d79c52f0816330f036"
+      "base": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0",
+      "commit": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
     }
   },
   "contract_sha256": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68",
@@ -88,25 +88,45 @@
       "evidence_class": "candidate_component_composition",
       "repeat_runs": 2,
       "outcome": {
-        "installed_files": {
-          "browser/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "browser/component.json": "f015f505797a11d75bd1fe948f738f70d0ba66a43b592a2ac3d1a908cbb3b785",
-          "console/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "console/component.json": "c84cd81eaf377c85e2dfc2a13a2674061fa4a1bcd86b243d1b3a19089ecc8e81",
-          "contracts/maintained-evidence-v1.json": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68",
-          "core/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "core/component.json": "9850d59ba260f2369ebcc82e6c4cb50aa5094d2d420900cdb9ff0b78027e8e73",
-          "development/README.txt": "b62f0398338eedb09d6c27a7e447767e91b3421ed2cafb57542be0c16913d894",
-          "host/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "host/component.json": "f20c60916e043841dd645c05ea545578e4b32cac8bc9fbe46be7d90004d036eb",
-          "platform/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "platform/component.json": "d82e1d3e47405801742a8f771a2399d5abfef80efcb84bbab8b8506330b8225a",
-          "refinery/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "refinery/component.json": "9087375ff81753004c13a9112981c92081cb83737e2f350f89a141725ef0741c",
-          "tether/LEGAL.md": "7d88ef97a7f3f1f22b3a458d591855104e455c2418311dc3a87eabcb395ade48",
-          "tether/component.json": "c341012bedecdd118ecfd523c1b3c3f026f344afb73cd3b4b9e383134f9cfb84"
+        "baseline_manifest_sha256": "fd43e15cd5a271391e69a6040fb945dfa7445c428759dd04bbd72e4812ff1e36",
+        "baseline_tree_sha256": "d2dd9d5db7347e1f394d33f7c79aa4b750f630a20f6c98b473c627cdef10210f",
+        "bundle_version": "runspindle.streaming-development-bundle.v1",
+        "fresh_process_recovery": [
+          "staged_upgrade",
+          "rollback_intent"
+        ],
+        "installed_files": 12351,
+        "installed_smoke": {
+          "Temporal": {
+            "children": 1,
+            "duplicate": "same_job",
+            "history_replay": "passed_no_effects",
+            "host_launches": 1,
+            "network": "loopback_only_no_external_egress",
+            "registry": "actual_installed_worker",
+            "scripted": [
+              "native_peer",
+              "exact_request_authority"
+            ],
+            "server": "installed_Temporal_1.10.0_embedded_1.32.2"
+          },
+          "core": {
+            "artifact_sha256": "5046301f35ee4a0a734a86439268d3c44d71b98692cf2b2092a5f3f34c11feca",
+            "changed_bytes": "denied",
+            "production_activation": "unsupported",
+            "reopened_bytes": true,
+            "scope": "offline_development_subset",
+            "status": "passed",
+            "unverified_acceptance": "denied"
+          },
+          "dspy_calls": 8,
+          "load_order": [
+            "candidate-0",
+            "candidate-1",
+            "rollback"
+          ],
+          "serving_sha256": "bdb03c2d116aea0a8c3f6723a2ae1d26ca275e3e5991322b458550b9fa0280ff"
         },
-        "manifest_sha256": "abf9298201009540cadc06e269cd72af2c1e64e08212c3281204fa96e3c58d67",
         "target": "linux/arm64",
         "unsupported": [
           "full_product",
@@ -116,14 +136,16 @@
           "console",
           "provider",
           "production_services"
-        ]
+        ],
+        "upgrade_manifest_sha256": "b08534fac8bfd9c5ebb23a6531ab1d4837a6328728ca6117b527fdae381a7eee",
+        "upgrade_tree_sha256": "6698439f5c54faf16a747ffb3858840bb65752c8ab68decdff3a186a3dab6179"
       },
-      "outcome_sha256": "c5e0bc8f9d6463cba662b75317063d2e8c7894d8a3b5a57bac5a6eefa345e473"
+      "outcome_sha256": "af2874f63c2d434ad0f7c939fa4f2e78859d6597b512aa46ec453bbe14db69a8"
     }
   },
   "required_gates": {
-    "independent_final_head_review": "pending",
-    "composition_pin_upgrade": "not_run",
+    "independent_final_head_review": "user_waived_no_review_performed",
+    "composition_pin_upgrade": "passed_exact_component_pins",
     "Langfuse": "blocked",
     "native_wire": "blocked",
     "Tether": "blocked",
@@ -157,7 +179,11 @@
     },
     "H12": {
       "real": [
-        "development_metadata_bundle",
+        "streaming_development_executable_and_dependencies",
+        "installed_core_storage_and_default_denial",
+        "installed_Temporal_registry_and_scripted_peer_history_replay",
+        "installed_refinery_DSPy_budget_serving_recovery_rollback",
+        "interrupted_upgrade_and_rollback_fresh_process",
         "Linux_arm64_disposable_filesystem"
       ],
       "unsupported": [
@@ -165,57 +191,5 @@
         "services"
       ]
     }
-  },
-  "timestamp": "2026-11-13T23:20:33.513011+00:00",
-  "execution_source_hashes": {
-    "tools/maintained_lane_worker.py": "1e835d91e9197192f339c4463ac40d8709f4603ff90680299a5859072e36ff84",
-    "tools/maintained_scenarios.py": "91ee6e1b5e49152a1743d9be7b75732441a89e0a4e7d0853c81cbae26e0fd274",
-    "tests/test_maintained_scenarios.py": "68d49bd684691128bba5391fba34f175976768be17877b2792ee1b10c713ed2d",
-    "specs/maintained-scenarios-v1.json": "a45d4a370c50d2178a8bcddf646fc68e2df6671376f2441b79efec078a99b94c",
-    "contracts/maintained-evidence-v1.json": "46334ee62239b2ac92204bdf851e536486b0231e5a3c15d290cdfdc04cab0c68"
-  },
-  "verification": {
-    "composition_unit": "46 passed in isolated worktree with reviewed seven pins",
-    "current_checkout_pin_check": "expected failure on unrelated platform checkout; no reset applied",
-    "scaffold": "passed",
-    "core": "49 Rust/16 Python; strict Clippy/fmt/scaffold; admission/H02/H07 each repeated twice",
-    "host": "27 Rust/7 Python; strict Clippy/fmt/scaffold; source pin unchanged",
-    "refinery": "70 Python;4durable+3evaluation mutations;actual offline DSPy twice;scaffold",
-    "platform": "27host preparedTemporal tests with3Linux skips;5separateLinux installtests;2mutations;Collector privacy/queue twice;scaffold"
-  },
-  "H08": {
-    "status": "blocked",
-    "partial_evidence": "platform:docs/maintained-offline-tests.json",
-    "qualified": "synthetic_standard_Collector_file_diagnostics_only",
-    "Langfuse": "blocked_MinIO_dependency_artifact_access",
-    "native_producer": "blocked"
-  },
-  "artifact": {
-    "path": "local/maintained-artifacts/development.bundle",
-    "sha256": "fe254df4d76c213958166c0019e72c1a79984d4f3c6812a449c4a9597b62df6f",
-    "scope": "development_metadata_only; no product binaries/services"
-  },
-  "draft_reviews": {
-    "contract": "https://github.com/newdarwindev/runspindle/pull/40",
-    "core": "https://github.com/newdarwindev/runspindle-core/pull/15",
-    "refinery": "https://github.com/newdarwindev/runspindle-refinery/pull/14",
-    "platform": "https://github.com/newdarwindev/runspindle-platform/pull/13",
-    "composition": "https://github.com/newdarwindev/runspindle/pull/41"
-  },
-  "remote_main_drift": {
-    "composition": "c973374b6b57608b16ed647bf55b501bad40ed01",
-    "core": "c73dcc2a4cb527400c45efe2877af6a58cacacf5",
-    "refinery": "f3964f613edc90a0affd4a9e9059408da54f121e",
-    "platform": "9cb7530ee9084c2d2843961c7da9ba979d828b0a",
-    "scope": "Concurrent Strix/CI work advanced mains and component pins after the instructed base. Not merged/rebased or qualified by this tranche; reconcile and retest exact final heads before merging."
-  },
-  "live_acceptance": "not_run",
-  "production_activation": "not_run",
-  "issues_closed": [],
-  "issue_reconciliation": {
-    "issues_updated": 20,
-    "readback_verified": 20,
-    "original_checklists_preserved": true,
-    "issues_closed": 0
   }
 }
