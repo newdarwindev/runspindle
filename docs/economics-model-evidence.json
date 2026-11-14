@@ -1,0 +1,46 @@
+{
+  "evidence_class": "synthetic_accounting",
+  "base_revision": "3c1968bab54b774ccf0239c4450e599049a14455",
+  "source_sha256": {
+    "tools/economics.py": "c68cce9a54a6dfae93bbc4fd5dfcc33bcffb4e133f6e51404897a93547b44585",
+    "tests/test_economics.py": "38235c3d5dd0cb46d48502414fa6c4ff54a7a57d6a39b6bf9948892ea4f82643",
+    "docs/marketing/economics-model.md": "2a3389e64e1c68ff3977ddff192590d4da48900b3fde395cd1eef3978669b617",
+    "docs/marketing/economics.md": "49b5f314523565c077081b7dd3899f86b6faf8bd9099e6e6fe024a393ac4c717",
+    "docs/marketing/build_documents.py": "9c2e39dcf9f4ec881413dc85ad96a75be27960601dae27ec155dea6a9055eeb8"
+  },
+  "tests": {
+    "normal": 12,
+    "optimized": 12,
+    "commands": [
+      "python3 -m unittest discover -s tests -p test_economics.py -v",
+      "python3 -O -m unittest discover -s tests -p test_economics.py -v"
+    ],
+    "deliberate_mutations_detected": [
+      "attempt denominator replaces accepted-authorized denominator",
+      "fixed integration category omitted",
+      "millionths conversion changed to thousandths"
+    ],
+    "decimal_context": "All Decimal Context fields explicit; regression mutates and restores process-global DefaultContext traps, flags, exponent limits and rounding."
+  },
+  "static": "ruff format/lint E4/E7/E9/F/I and mypy strict explicit-package-bases passed for new module/tests",
+  "artifact_integrity": "passed",
+  "economics_generator_expression": "matches checked-in economics.md exactly; full PDF regeneration not run",
+  "full_root_suite": {
+    "normal": {
+      "ran": 65,
+      "status": "passed"
+    },
+    "optimized": {
+      "ran": 65,
+      "status": "passed"
+    },
+    "source_checkout": "all seven components initialized at exact existing gitlinks; composition pin checker passes",
+    "scope": "Python tests only; no native execution or full live integration claim"
+  },
+  "measurement": "not_run",
+  "historical_migration": "partial; source-section disposition not performed",
+  "external_calls": "none",
+  "dependency_revisions": {
+    "scenario_optimization_fix": "ad1814f00834fba2f4a9969ec421ea438e48d2b4"
+  }
+}
