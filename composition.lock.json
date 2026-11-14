@@ -5,7 +5,7 @@
       "component": "core",
       "repository": "newdarwindev/runspindle-core",
       "path": "components/core",
-      "commit": "c73dcc2a4cb527400c45efe2877af6a58cacacf5",
+      "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
       "url": "https://github.com/newdarwindev/runspindle-core.git"
     },
     {
@@ -33,7 +33,7 @@
       "component": "refinery",
       "repository": "newdarwindev/runspindle-refinery",
       "path": "components/refinery",
-      "commit": "f3964f613edc90a0affd4a9e9059408da54f121e",
+      "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
       "url": "https://github.com/newdarwindev/runspindle-refinery.git"
     },
     {
@@ -47,7 +47,7 @@
       "component": "platform",
       "repository": "newdarwindev/runspindle-platform",
       "path": "components/platform",
-      "commit": "9cb7530ee9084c2d2843961c7da9ba979d828b0a",
+      "commit": "644612b70d8353c2d4dc53e3c0682013252c0a61",
       "url": "https://github.com/newdarwindev/runspindle-platform.git"
     }
   ],

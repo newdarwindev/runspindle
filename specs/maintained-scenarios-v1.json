@@ -1,34 +1,34 @@
 {
   "version": "runspindle.maintained-scenarios.v1",
-  "reviewed_composition_base": "43e0fa0ee6d8062b991455972c5680a5e59b07d9",
+  "reviewed_composition_base": "02cd0116290fb21f5c447dc3038e9cbf0a3436f0",
   "sources": {
     "core": {
-      "base": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
-      "commit": "dc15b85ba5dd972d83f0739d17194095e21d27ba"
+      "base": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+      "commit": "83296c3962de7546efdd1bb4e3d7e5b25452509f"
     },
     "host": {
-      "base": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
-      "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352"
+      "base": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+      "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76"
     },
     "browser": {
-      "base": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
-      "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5"
+      "base": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+      "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68"
     },
     "tether": {
-      "base": "6003f2315146d05d77918024d1bc81049a78a312",
-      "commit": "6003f2315146d05d77918024d1bc81049a78a312"
+      "base": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+      "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe"
     },
     "refinery": {
-      "base": "355ad581e79f4cfce37e3d82192adb55da9b7669",
-      "commit": "14d0c985fb30ef353df9b9769fe8773e5ec6869e"
+      "base": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+      "commit": "8959700953b14b8fe7fb86efd8d7647ad364bfe1"
     },
     "console": {
-      "base": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
-      "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9"
+      "base": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+      "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f"
     },
     "platform": {
-      "base": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
-      "commit": "089337e8ca41e96fbfbcd5d79c52f0816330f036"
+      "base": "644612b70d8353c2d4dc53e3c0682013252c0a61",
+      "commit": "644612b70d8353c2d4dc53e3c0682013252c0a61"
     }
   }
 }

@@ -280,32 +280,182 @@ def recover_refinery(directory):
 
 
 def run_bundle(directory):
-    from tools.development_bundle import VERSION, DisposableTarget, verify
+    import subprocess
+    import sys
+    from tools.streaming_bundle import VERSION, StreamingTarget, file_sha
 
     metadata = json.loads((directory / "bundle-input.json").read_bytes())
     pins = metadata["component_commits"]
-    target = DisposableTarget.create()
-    try:
-        content = (directory / "development.bundle").read_bytes()
-        installed = target.install(
-            VERSION, content, component_commits=pins, expected_generation=0
-        )
-        manifest, files, digest = verify(content, component_commits=pins)
-        # Independent filesystem reads outside the install adapter.
+    target = StreamingTarget.create()
+
+    def independent(variant):
+        expected = metadata["bundles"][variant]
+        digest = json.loads((target.root / "active.json").read_bytes())[
+            "manifest_sha256"
+        ]
+        assert digest == expected["sha256"]
+        folder = target.root / "versions" / digest
+        # Hash actual files independently, without using installer's verification.
         observed = {
-            str(p.relative_to(target.root / "versions" / digest)): hashlib.sha256(
-                p.read_bytes()
-            ).hexdigest()
-            for p in (target.root / "versions" / digest).rglob("*")
+            str(p.relative_to(folder)): {
+                "sha256": file_sha(p),
+                "size": p.stat().st_size,
+                "mode": p.stat().st_mode & 0o7777,
+            }
+            for p in folder.rglob("*")
             if p.is_file()
         }
-        assert observed == manifest["files"] and installed["manifest_sha256"] == digest
-        # The actual Linux component suite separately exercises process interruption.
+        assert observed == expected["manifest"]["files"]
+        return (
+            folder,
+            hashlib.sha256(
+                json.dumps(observed, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest(),
+        )
+
+    def action(code, *args, expected=0):
+        script = (
+            "import sys,os,json; from tools.streaming_bundle import StreamingTarget,VERSION; t=StreamingTarget(sys.argv[1]); pins=json.loads(sys.argv[2]); "
+            + code
+        )
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                script,
+                str(target.root),
+                json.dumps(pins),
+                *map(str, args),
+            ],
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+        assert completed.returncode == expected, completed.stderr[-3000:]
+
+    def smoke(folder):
+        env = {
+            **os.environ,
+            "PYTHONPATH": str(folder / "refinery")
+            + ":"
+            + str(folder / "dependencies")
+            + ":"
+            + str(folder / "platform"),
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "DSPY_CACHEDIR": "/tmp/dspy-installed",
+            "HOME": "/tmp",
+            "LITELLM_LOCAL_MODEL_COST_MAP": "True",
+            "HF_HUB_OFFLINE": "1",
+        }
+        core = subprocess.run(
+            [str(folder / "bin/temporal-runtime"), "offline-smoke"],
+            capture_output=True,
+            text=True,
+            cwd="/tmp",
+            env=env,
+            timeout=30,
+        )
+        assert core.returncode == 0, core.stderr
+        core_result = json.loads(core.stdout)
+        assert (
+            core_result["status"] == "passed"
+            and core_result["unverified_acceptance"] == "denied"
+        )
+        evidence = target.root / ("smoke-" + folder.name)
+        evidence.mkdir()
+        worker = folder / "composition/tools/maintained_lane_worker.py"
+        first = subprocess.run(
+            [sys.executable, str(worker), "H11", str(evidence)],
+            capture_output=True,
+            text=True,
+            cwd="/tmp",
+            env=env,
+            timeout=90,
+        )
+        assert first.returncode == 93, first.stderr[-3000:]
+        recovered = subprocess.run(
+            [sys.executable, str(worker), "H11", str(evidence), "--recover"],
+            capture_output=True,
+            text=True,
+            cwd="/tmp",
+            env=env,
+            timeout=90,
+        )
+        assert recovered.returncode == 0, recovered.stderr[-3000:]
+        serving = json.loads((evidence / "H11-worker.json").read_bytes())
+        # Query real SQLite bytes/call order separately from the serving adapter.
+        import sqlite3
+        from contextlib import closing
+
+        with closing(
+            sqlite3.connect(
+                "file:" + str(evidence / "serving.sqlite") + "?mode=rw", uri=True
+            )
+        ) as db:
+            db.execute("PRAGMA query_only=ON")
+            calls = db.execute(
+                "SELECT activation,digest FROM calls WHERE action='load' ORDER BY id"
+            ).fetchall()
+            active = db.execute(
+                "SELECT activation,digest,content FROM active WHERE environment='local'"
+            ).fetchone()
+        assert [r[0] for r in calls] == ["candidate-0", "candidate-1", "rollback"]
+        assert (
+            active[0] == "rollback"
+            and active[1] == hashlib.sha256(active[2]).hexdigest() == calls[0][1]
+        )
+        assert serving["rolled_output"]["candidate_sha256"] == active[1]
         return {
-            "manifest_sha256": digest,
-            "installed_files": observed,
+            "core": core_result,
+            "serving_sha256": active[1],
+            "load_order": [r[0] for r in calls],
+            "dspy_calls": serving["dspy_calls"],
+        }
+
+    try:
+        target.install(
+            VERSION,
+            directory / "baseline.stream",
+            component_commits=pins,
+            expected_generation=0,
+        )
+        folder, baseline_tree = independent("baseline")
+        baseline_smoke = smoke(folder)
+        action(
+            "t.install(VERSION,sys.argv[3],component_commits=pins,expected_generation=1,checkpoint=lambda p:os._exit(101) if p=='after_staged_payload' else None)",
+            directory / "upgrade.stream",
+            expected=101,
+        )
+        assert target.state()["pending"] == metadata["bundles"]["upgrade"]["sha256"]
+        independent("baseline")
+        action("t.recover(VERSION,component_commits=pins);t.close()")
+        folder, upgrade_tree = independent("upgrade")
+        assert smoke(folder) == baseline_smoke
+        action(
+            "t.rollback(VERSION,component_commits=pins,expected_generation=2,checkpoint=lambda p:os._exit(102) if p=='after_rollback_intent' else None)",
+            expected=102,
+        )
+        independent("upgrade")
+        action("t.recover(VERSION,component_commits=pins);t.close()")
+        folder, rolled_tree = independent("baseline")
+        assert (
+            rolled_tree == baseline_tree
+            and target.state()["generation"] == 3
+            and target.state()["pending"] is None
+        )
+        return {
+            "bundle_version": VERSION,
+            "baseline_manifest_sha256": metadata["bundles"]["baseline"]["sha256"],
+            "upgrade_manifest_sha256": metadata["bundles"]["upgrade"]["sha256"],
+            "installed_files": len(
+                metadata["bundles"]["baseline"]["manifest"]["files"]
+            ),
+            "baseline_tree_sha256": baseline_tree,
+            "upgrade_tree_sha256": upgrade_tree,
+            "installed_smoke": baseline_smoke,
+            "fresh_process_recovery": ["staged_upgrade", "rollback_intent"],
             "target": "linux/arm64",
-            "unsupported": installed["unsupported"],
+            "unsupported": metadata["bundles"]["baseline"]["manifest"]["unsupported"],
         }
     finally:
         target.cleanup()

@@ -24,8 +24,8 @@ PYTHON_IMAGE = (
     "python@sha256:0e58fc4a4575979bfce26735236422a48b38dae99d72b9d72a15e8e3fe0f7f93"
 )
 GATES = {
-    "independent_final_head_review": "pending",
-    "composition_pin_upgrade": "not_run",
+    "independent_final_head_review": "user_waived_no_review_performed",
+    "composition_pin_upgrade": "qualified_merged_revisions_required",
     "Langfuse": "blocked",
     "native_wire": "blocked",
     "Tether": "blocked",
@@ -112,7 +112,7 @@ def load(path, name):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
     sys.modules[name] = module
-    spec.loader.exec_module(module)
+    exec(compile(path.read_bytes(), str(path), "exec"), module.__dict__)
     return module
 
 
@@ -289,17 +289,15 @@ def container_worker(lane, directory, sources, *, recover=False):
         "--security-opt",
         "no-new-privileges",
         "--memory",
-        "1536m",
+        "4g" if lane == "H12" else "1536m",
         "--cpus",
         "2",
         "--pids-limit",
         "256",
         "--tmpfs",
-        "/tmp:rw,nosuid,size=256m",
+        "/tmp:rw,exec,nosuid,size=3g" if lane == "H12" else "/tmp:rw,nosuid,size=256m",
         "-v",
         str(ROOT) + ":/composition:ro",
-        "-v",
-        str(refinery) + ":/refinery:ro",
         "-v",
         str(platform) + ":/platform:ro",
         "-v",
@@ -317,11 +315,17 @@ def container_worker(lane, directory, sources, *, recover=False):
         "-e",
         "HF_HUB_OFFLINE=1",
     ]
+    if lane != "H12":
+        arguments += ["-v", str(refinery) + ":/refinery:ro"]
     if lane == "H11":
         arguments += ["-v", str(refinery / "local/python-deps") + ":/deps:ro"]
     arguments += [
         "-e",
-        "PYTHONPATH=/refinery:/platform:/deps",
+        (
+            "PYTHONPATH=/platform"
+            if lane == "H12"
+            else "PYTHONPATH=/refinery:/platform:/deps"
+        ),
         PYTHON_IMAGE,
         "python",
         "/composition/tools/maintained_lane_worker.py",
@@ -332,7 +336,10 @@ def container_worker(lane, directory, sources, *, recover=False):
         arguments.append("--recover")
     try:
         completed = subprocess.run(
-            arguments, capture_output=True, text=True, timeout=90
+            arguments,
+            capture_output=True,
+            text=True,
+            timeout=600 if lane == "H12" else 90,
         )
         expected = 93 if lane == "H11" and not recover else 0
         check(
@@ -396,19 +403,60 @@ def development_bundle(sources):
     return bundle, pins
 
 
-def run_lane(lane, sources, artifact_directory):
+def run_lane(lane, sources, artifact_directory, core_prepared=None):
     with tempfile.TemporaryDirectory(prefix="maintained-" + lane + "-") as temporary:
         directory = Path(temporary)
         if lane == "H12":
-            bundle, pins = development_bundle(sources)
-            (directory / "development.bundle").write_bytes(bundle)
+            from build_offline_bundle import build as build_stream
+
+            check(core_prepared is not None, "qualified core preparation required")
+            pins = {name: item["commit"] for name, item in sources.items()}
+            manifests = {}
+            for variant in ("baseline", "upgrade"):
+                manifest, digest = build_stream(
+                    directory / (variant + ".stream"),
+                    sources,
+                    core_prepared,
+                    variant=variant,
+                )
+                manifests[variant] = {"manifest": manifest, "sha256": digest}
             (directory / "bundle-input.json").write_text(
-                json.dumps({"component_commits": pins})
+                json.dumps({"component_commits": pins, "bundles": manifests})
             )
             container_worker(lane, directory, sources)
             result = json.loads((directory / "H12-worker.json").read_bytes())
             artifact_directory.mkdir(parents=True, exist_ok=True)
-            (artifact_directory / "development.bundle").write_bytes(bundle)
+            for variant in ("baseline", "upgrade"):
+                import shutil
+
+                shutil.copyfile(
+                    directory / (variant + ".stream"),
+                    artifact_directory / (variant + ".stream"),
+                )
+            (artifact_directory / "bundle-input.json").write_bytes(
+                (directory / "bundle-input.json").read_bytes()
+            )
+            for relative, source in {
+                "composition/tools/maintained_lane_worker.py": ROOT
+                / "tools/maintained_lane_worker.py",
+                "platform/tools/development_bundle.py": sources["platform"]["path"]
+                / "tools/development_bundle.py",
+                "platform/tools/streaming_bundle.py": sources["platform"]["path"]
+                / "tools/streaming_bundle.py",
+            }.items():
+                destination = artifact_directory / "bootstrap" / relative
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(source, destination)
+            shutil.copyfile(
+                ROOT / "tools/run_saved_offline_bundle.py",
+                artifact_directory / "run.py",
+            )
+            (artifact_directory / "README.txt").write_text(
+                "Offline development bundle only. Preload the exact Python image from the manifest. "
+                "Run: python3 run.py --artifacts .\n"
+                "Uses disposable Linux arm64 Docker targets with denied network and bounded resources. "
+                "Native, Tether, browser, console, providers and production services are unsupported.\n"
+            )
             return result
         container_worker(lane, directory, sources)
         lineage = observe_lineage(directory)
@@ -444,6 +492,7 @@ def main():
         help="component=/exact/clean/worktree",
     )
     parser.add_argument("--report", required=True)
+    parser.add_argument("--core-prepared", required=True)
     parser.add_argument("--artifacts", default=str(ROOT / "local/maintained-artifacts"))
     args = parser.parse_args()
     overrides = dict(value.split("=", 1) for value in args.component)
@@ -453,7 +502,8 @@ def main():
         lanes = {}
         for lane in ("H10", "H11", "H12"):
             first, second = [
-                run_lane(lane, sources, Path(args.artifacts)) for _ in range(2)
+                run_lane(lane, sources, Path(args.artifacts), args.core_prepared)
+                for _ in range(2)
             ]
             check(first == second, "normalized seeded outcomes differ: " + lane)
             lanes[lane] = {
@@ -494,7 +544,10 @@ def main():
                 },
                 "H12": {
                     "real": [
-                        "development_metadata_bundle",
+                        "streaming_development_executable_and_dependencies",
+                        "installed_core_storage_and_default_denial",
+                        "installed_refinery_DSPy_budget_serving_recovery_rollback",
+                        "interrupted_upgrade_and_rollback_fresh_process",
                         "Linux_arm64_disposable_filesystem",
                     ],
                     "unsupported": ["product_adapters", "services"],

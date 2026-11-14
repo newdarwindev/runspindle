@@ -143,7 +143,10 @@ class MaintainedScenarioTests(unittest.TestCase):
                     lane.observe_serving(directory, result)
 
     def test_required_review_and_external_gates_remain_non_success(self):
-        self.assertEqual(lane.GATES["independent_final_head_review"], "pending")
+        self.assertEqual(
+            lane.GATES["independent_final_head_review"],
+            "user_waived_no_review_performed",
+        )
         self.assertEqual(lane.GATES["Langfuse"], "blocked")
         self.assertEqual(lane.GATES["full_product_release"], "blocked")
 
