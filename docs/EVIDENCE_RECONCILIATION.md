@@ -96,3 +96,18 @@ verification, not real transport, native, runner or live acceptance. No database
 crash/power-loss, producer authentication or signed-receipt durability claim is
 made. Current-main qualification still requires independently refreshed source
 snapshots and exact-head execution on the approved isolated runner lane.
+
+## Foundation campaign integration
+
+The foundation candidate preserves the manifest-driven `tools/validate.py`
+entrypoint from hygiene PR #46. `hygiene.json` requires the evidence mutation
+checker, reconciler and test module explicitly; missing files fail preflight
+instead of silently dropping this check. New files pass the pinned static checks
+without adding diagnostics to the existing debt baseline.
+
+Actual campaign receipt adapters and their source inventories remain private.
+A local passing draft receipt is retained as a local result, with draft, pin,
+dirty, skipped and missing independent-observation reasons preventing promotion
+to current-main acceptance. The synthetic test suite is qualification of the
+checker, not acceptance of the campaign being checked. Hygiene and required
+Strix checks must qualify before dependent merges; no pin update is included.
