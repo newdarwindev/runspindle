@@ -9,7 +9,7 @@
   "bindings": ["composition_commit", "component_commits", "dependencies", "toolchains", "licenses", "target", "entrypoints", "files", "manifest_sha256", "generation", "predecessor"],
   "file_record": ["size", "sha256", "mode"],
   "permitted_modes": [420, 493],
-  "paths": "canonical relative POSIX paths; no traversal, hidden segments, absolute paths, links, special files or file/directory conflicts",
+  "paths": "canonical relative POSIX paths with bounded printable ASCII filenames (including dependency wheel metadata); no traversal, absolute paths, links, special files or file/directory conflicts",
   "verification": "reject unsupported versions, incomplete/changed/trailing payload, mismatched pins/target, missing inventories or license bytes before installation; independently verify extracted/installed bytes and modes",
   "recovery": "retain exact archive and immutable manifest; commit generation-owned intent before staging; reconcile actual pointer and bytes before acknowledging; rollback requires verified retained predecessor and never regenerates missing predecessor bytes",
   "authorization": "synthetic disposable Linux arm64 targets only; no persistent services, production activation, native/Tether/browser/console/provider adapters",
