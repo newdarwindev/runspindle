@@ -135,7 +135,11 @@ def run_refinery(directory, dspy=False):
         )
         from refinery.dspy_local import LocalDSPyProvider
 
-        inventory = Path("/refinery/offline/dependencies.json")
+        from refinery import storage
+
+        inventory = (
+            Path(storage.__file__).resolve().parents[1] / "offline/dependencies.json"
+        )
         provider = LocalDSPyProvider(
             script,
             clock=VirtualClock(),
@@ -279,6 +283,204 @@ def recover_refinery(directory):
             adapter.close()
 
 
+def installed_temporal(folder, evidence, env):
+    """Actual installed server/worker, loopback only, scripted native/authority."""
+    import signal
+    import sqlite3
+    import subprocess
+    import time
+    from contextlib import closing
+
+    temporal = str(folder / "bin/temporal")
+    core = str(folder / "bin/temporal-runtime")
+    state = evidence / "temporal"
+    state.mkdir()
+    request = {
+        "version": "runspindle.integration.v1",
+        "admission": {
+            "version": "runspindle.runtime.v1",
+            "delivery_namespace": "bundle",
+            "delivery_id": "synthetic-delivery",
+            "task_id": "bundle-task",
+            "revision": 1,
+            "predecessor_revision": None,
+            "operation_id": "bundle-operation",
+            "normalized_digest": hashlib.sha256(b"synthetic-bundle-task").hexdigest(),
+            "policy_revision": "synthetic-policy",
+            "host_id": "synthetic-pinned-host",
+            "workspace_id": "synthetic-workspace",
+            "lease_epoch": 1,
+            "grant_ref": "synthetic-exact-grant",
+        },
+    }
+    script = {
+        "request": request,
+        "authorized": True,
+        "online": True,
+        "native_session_id": "synthetic-bundle-session",
+        "crash_after_launch": False,
+        "lost_reply": False,
+        "terminal": "completed",
+    }
+    (state / "native-script.json").write_text(json.dumps(script))
+    processes = []
+    logs = []
+    env = {**env, "USER": "synthetic"}
+    try:
+        server_log = (state / "server.log").open("wb")
+        logs.append(server_log)
+        server = subprocess.Popen(
+            [
+                temporal,
+                "server",
+                "start-dev",
+                "--ip",
+                "127.0.0.1",
+                "--headless",
+                "--db-filename",
+                str(state / "temporal.sqlite"),
+                "--log-level",
+                "error",
+            ],
+            stdout=server_log,
+            stderr=subprocess.STDOUT,
+            env=env,
+            cwd="/tmp",
+            start_new_session=True,
+        )
+        processes.append(server)
+        deadline = time.monotonic() + 30
+        while True:
+            assert server.poll() is None, "installed Temporal exited before readiness"
+            health = subprocess.run(
+                [
+                    temporal,
+                    "operator",
+                    "cluster",
+                    "health",
+                    "--address",
+                    "127.0.0.1:7233",
+                    "--command-timeout",
+                    "2s",
+                ],
+                capture_output=True,
+                env=env,
+                timeout=4,
+            )
+            if health.returncode == 0:
+                break
+            assert time.monotonic() < deadline, "installed Temporal readiness deadline"
+            time.sleep(0.1)
+        worker_log = (state / "worker.log").open("wb")
+        logs.append(worker_log)
+        worker = subprocess.Popen(
+            [core, "worker", "http://temporal:7233", str(state)],
+            stdout=worker_log,
+            stderr=subprocess.STDOUT,
+            env=env,
+            cwd="/tmp",
+            start_new_session=True,
+        )
+        processes.append(worker)
+        command_number = 0
+
+        def client(value):
+            nonlocal command_number
+            command_number += 1
+            path = state / ("command-" + str(command_number) + ".json")
+            path.write_text(json.dumps(value))
+            result = subprocess.run(
+                [core, "client", "http://temporal:7233", str(path)],
+                capture_output=True,
+                text=True,
+                env=env,
+                cwd="/tmp",
+                timeout=30,
+            )
+            assert result.returncode == 0, result.stderr[-2000:]
+            return json.loads(result.stdout)
+
+        registry = "synthetic-bundle-registry"
+        client({"command": "start_host", "registry_id": registry})
+        command = {"command": "admit_host", "registry_id": registry, "request": request}
+        reply = client(command)
+        assert reply["status"] == "admitted"
+        job = reply["job_id"]
+        assert client(command) == {"status": "duplicate_delivery", "job_id": job}
+        deadline = time.monotonic() + 30
+        while True:
+            snapshot = client({"command": "native", "job_id": job})
+            if snapshot and snapshot["execution"] == {"Terminal": "Completed"}:
+                break
+            assert (
+                time.monotonic() < deadline
+            ), "installed native workflow completion deadline"
+            time.sleep(0.1)
+        assert snapshot["native_session_id"] == "synthetic-bundle-session"
+
+        def calls():
+            with closing(
+                sqlite3.connect(
+                    "file:" + str(state / "native-peer.sqlite") + "?mode=rw", uri=True
+                )
+            ) as db:
+                db.execute("PRAGMA query_only=ON")
+                return db.execute(
+                    "SELECT action,binding FROM calls ORDER BY id"
+                ).fetchall()
+
+        observed = calls()
+        launches = [
+            json.loads(binding) for action, binding in observed if action == "launch"
+        ]
+        assert (
+            len(launches) == 1
+            and launches[0]["host_id"] == "synthetic-pinned-host"
+            and launches[0]["lease_epoch"] == 1
+        )
+        children = 0
+        for identifier in (registry, job):
+            history = client({"command": "history", "workflow_id": identifier})
+            if identifier == registry:
+                children = sum(
+                    "ChildWorkflowExecutionStartedEventAttributes"
+                    in event.get("attributes", {})
+                    for event in history["events"]
+                )
+            path = state / "history.json"
+            path.write_text(json.dumps(history))
+            replay = subprocess.run(
+                [core, "replay", str(path)],
+                capture_output=True,
+                text=True,
+                env=env,
+                cwd="/tmp",
+                timeout=30,
+            )
+            assert (
+                replay.returncode == 0
+                and json.loads(replay.stdout)["status"] == "passed"
+            ), replay.stderr[-2000:]
+        assert children == 1 and calls() == observed
+        return {
+            "server": "installed_Temporal_1.10.0_embedded_1.32.2",
+            "registry": "actual_installed_worker",
+            "children": children,
+            "host_launches": 1,
+            "duplicate": "same_job",
+            "history_replay": "passed_no_effects",
+            "scripted": ["native_peer", "exact_request_authority"],
+            "network": "loopback_only_no_external_egress",
+        }
+    finally:
+        for process in reversed(processes):
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGKILL)
+            process.wait(timeout=10)
+        for log in logs:
+            log.close()
+
+
 def run_bundle(directory):
     import subprocess
     import sys
@@ -363,6 +565,7 @@ def run_bundle(directory):
         )
         evidence = target.root / ("smoke-" + folder.name)
         evidence.mkdir()
+        temporal_result = installed_temporal(folder, evidence, env)
         worker = folder / "composition/tools/maintained_lane_worker.py"
         first = subprocess.run(
             [sys.executable, str(worker), "H11", str(evidence)],
@@ -407,6 +610,7 @@ def run_bundle(directory):
         assert serving["rolled_output"]["candidate_sha256"] == active[1]
         return {
             "core": core_result,
+            "Temporal": temporal_result,
             "serving_sha256": active[1],
             "load_order": [r[0] for r in calls],
             "dspy_calls": serving["dspy_calls"],

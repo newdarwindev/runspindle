@@ -289,13 +289,13 @@ def container_worker(lane, directory, sources, *, recover=False):
         "--security-opt",
         "no-new-privileges",
         "--memory",
-        "4g" if lane == "H12" else "1536m",
+        "5g" if lane == "H12" else "1536m",
         "--cpus",
         "2",
         "--pids-limit",
         "256",
         "--tmpfs",
-        "/tmp:rw,exec,nosuid,size=3g" if lane == "H12" else "/tmp:rw,nosuid,size=256m",
+        "/tmp:rw,exec,nosuid,size=4g" if lane == "H12" else "/tmp:rw,nosuid,size=256m",
         "-v",
         str(ROOT) + ":/composition:ro",
         "-v",
@@ -315,6 +315,8 @@ def container_worker(lane, directory, sources, *, recover=False):
         "-e",
         "HF_HUB_OFFLINE=1",
     ]
+    if lane == "H12":
+        arguments += ["--add-host", "temporal:127.0.0.1"]
     if lane != "H12":
         arguments += ["-v", str(refinery) + ":/refinery:ro"]
     if lane == "H11":
@@ -403,7 +405,9 @@ def development_bundle(sources):
     return bundle, pins
 
 
-def run_lane(lane, sources, artifact_directory, core_prepared=None):
+def run_lane(
+    lane, sources, artifact_directory, core_prepared=None, platform_prepared=None
+):
     with tempfile.TemporaryDirectory(prefix="maintained-" + lane + "-") as temporary:
         directory = Path(temporary)
         if lane == "H12":
@@ -417,6 +421,7 @@ def run_lane(lane, sources, artifact_directory, core_prepared=None):
                     directory / (variant + ".stream"),
                     sources,
                     core_prepared,
+                    platform_prepared,
                     variant=variant,
                 )
                 manifests[variant] = {"manifest": manifest, "sha256": digest}
@@ -493,6 +498,7 @@ def main():
     )
     parser.add_argument("--report", required=True)
     parser.add_argument("--core-prepared", required=True)
+    parser.add_argument("--platform-prepared", required=True)
     parser.add_argument("--artifacts", default=str(ROOT / "local/maintained-artifacts"))
     args = parser.parse_args()
     overrides = dict(value.split("=", 1) for value in args.component)
@@ -502,7 +508,13 @@ def main():
         lanes = {}
         for lane in ("H10", "H11", "H12"):
             first, second = [
-                run_lane(lane, sources, Path(args.artifacts), args.core_prepared)
+                run_lane(
+                    lane,
+                    sources,
+                    Path(args.artifacts),
+                    args.core_prepared,
+                    args.platform_prepared,
+                )
                 for _ in range(2)
             ]
             check(first == second, "normalized seeded outcomes differ: " + lane)
@@ -528,7 +540,14 @@ def main():
                 (ROOT / "contracts/maintained-evidence-v1.json").read_bytes()
             ),
             "lanes": lanes,
-            "required_gates": GATES,
+            "required_gates": {
+                **GATES,
+                "composition_pin_upgrade": (
+                    "passed_exact_component_pins"
+                    if all(item["base"] == item["commit"] for item in sources.values())
+                    else "candidate_only"
+                ),
+            },
             "boundaries": {
                 "H10": {
                     "real": ["refinery_SQLite"],
@@ -546,6 +565,7 @@ def main():
                     "real": [
                         "streaming_development_executable_and_dependencies",
                         "installed_core_storage_and_default_denial",
+                        "installed_Temporal_registry_and_scripted_peer_history_replay",
                         "installed_refinery_DSPy_budget_serving_recovery_rollback",
                         "interrupted_upgrade_and_rollback_fresh_process",
                         "Linux_arm64_disposable_filesystem",

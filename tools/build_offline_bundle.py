@@ -19,7 +19,9 @@ def load(path, name):
     return module
 
 
-def build(destination, sources, core_prepared, *, variant="baseline"):
+def build(
+    destination, sources, core_prepared, platform_prepared, *, variant="baseline"
+):
     core, refinery, platform = (
         sources[n]["path"] for n in ("core", "refinery", "platform")
     )
@@ -43,6 +45,12 @@ def build(destination, sources, core_prepared, *, variant="baseline"):
         )
     finally:
         sys.path.pop(0)
+    temporal_helper = load(
+        platform / "tools/temporal_lane.py", "offline_temporal_artifact"
+    )
+    temporal_helper.Lane(platform_prepared)  # verify prepared bytes/image; no start
+    temporal_prepared = Path(platform_prepared)
+    temporal_record = json.loads((temporal_prepared / "prepared.json").read_bytes())
     pins = {name: item["commit"] for name, item in sources.items()}
     files, licenses = {}, {}
 
@@ -72,6 +80,19 @@ def build(destination, sources, core_prepared, *, variant="baseline"):
     if stream.file_sha(executable) != runtime["binary_sha256"]:
         raise RuntimeError("qualified core binary mismatch")
     add("bin/temporal-runtime", executable)
+    add("bin/temporal", temporal_prepared / "temporal")
+    if (
+        stream.file_sha(temporal_prepared / "temporal")
+        != temporal_record["binary_sha256"]
+    ):
+        raise RuntimeError("qualified Temporal executable mismatch")
+    add("platform/temporal/dependencies.json", platform / "temporal/dependencies.json")
+    add("notices/temporal-CLI-LICENSE", platform / "temporal/LICENSE-CLI", notice=True)
+    add(
+        "notices/temporal-SERVER-LICENSE",
+        platform / "temporal/LICENSE-SERVER",
+        notice=True,
+    )
     for path in sorted((Path(core_prepared) / "notices").iterdir()):
         add("notices/core/" + path.name, path, notice=True)
     for path in sorted((core / "licenses").rglob("*")):
@@ -107,7 +128,11 @@ def build(destination, sources, core_prepared, *, variant="baseline"):
                 for part in Path(name).parts
             ),
         )
-    for relative in ("tools/development_bundle.py", "tools/streaming_bundle.py"):
+    for relative in (
+        "tools/development_bundle.py",
+        "tools/streaming_bundle.py",
+        "tools/temporal_lane.py",
+    ):
         add("platform/" + relative, platform / relative)
     for relative in (
         "contracts/maintained-evidence-v1.json",
@@ -136,6 +161,9 @@ def build(destination, sources, core_prepared, *, variant="baseline"):
                 "refinery/inventory": "sha256:"
                 + stream.file_sha(refinery / "offline/dependencies.json"),
                 "python/runtime": dependency_helper.IMAGE.split("@")[1],
+                "temporal/executable": "sha256:" + temporal_record["binary_sha256"],
+                "temporal/inventory": "sha256:"
+                + stream.file_sha(platform / "temporal/dependencies.json"),
             },
             toolchains={
                 "core/builder": runtime["builder_image_id"],
@@ -144,8 +172,8 @@ def build(destination, sources, core_prepared, *, variant="baseline"):
                 "python/runtime": dependency_helper.IMAGE.split("@")[1],
             },
             licenses=licenses,
-            entrypoints={"core": "bin/temporal-runtime"},
-            executable=["bin/temporal-runtime"],
+            entrypoints={"core": "bin/temporal-runtime", "temporal": "bin/temporal"},
+            executable=["bin/temporal-runtime", "bin/temporal"],
         )
 
 
@@ -156,13 +184,16 @@ def main():
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--component", action="append", default=[])
     parser.add_argument("--core-prepared", required=True)
+    parser.add_argument("--platform-prepared", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     sources = inventory(
         json.loads(Path(args.manifest).read_bytes()),
         dict(v.split("=", 1) for v in args.component),
     )
-    manifest, digest = build(args.output, sources, args.core_prepared)
+    manifest, digest = build(
+        args.output, sources, args.core_prepared, args.platform_prepared
+    )
     print(
         json.dumps(
             {

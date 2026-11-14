@@ -1,6 +1,6 @@
 # Runnable offline development bundle
 
-This bundle supports the tested Linux arm64 development subset: core immutable
+This bundle supports the tested Linux arm64 development subset: core Temporal registry with scripted native/authority and immutable
 artifact storage and denial checks, refinery durable lineage and cumulative
 budgets, pinned DSPy with a synthetic local LM, exact candidate serving readback,
 interrupted upgrade recovery and rollback. Native, Tether, browser, console,
@@ -23,6 +23,7 @@ cache, run the composition qualification command (from this repository):
 python3.13 tools/maintained_scenarios.py \
   --manifest specs/maintained-scenarios-v1.json \
   --core-prepared /path/to/qualified/core/local/runtime-prepared \
+  --platform-prepared /path/to/qualified/platform/local/temporal-prepared \
   --report local/maintained-report.json \
   --artifacts local/offline-development-bundle
 ```
@@ -55,7 +56,9 @@ credentials or network acquisition. It checks bootstrap/launcher bytes against
 the bundled manifest before launching a disposable Linux arm64 container with
 `--pull never`, denied network, a read-only root, dropped capabilities, bounded
 CPU/memory/processes and an executable temporary target. It installs and verifies
-all bytes/modes, executes the installed core and packaged refinery/dependencies,
+all bytes/modes, executes the installed core against the included qualified
+Temporal CLI/server on loopback (scripted native peer/authority), independently
+checks one task/child/effect and history replay, executes packaged refinery/dependencies,
 kills a fresh upgrade process after staging, recovers from the retained archive,
 interrupts rollback after durable intent, and recovers the exact predecessor.
 Independent filesystem hashes, SQL call order and serving bytes establish the
