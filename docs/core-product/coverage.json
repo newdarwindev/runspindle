@@ -1,0 +1,1025 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-001",
+  "scope": "selected_core_product_artifact_only",
+  "artifact_status": "accounted_adaptation",
+  "source_expression_imported": false,
+  "executable_implementation": "not_changed",
+  "verified_runtime_behavior": "not_claimed",
+  "historical_source": "retained_privately_with_original_identity_and_hash",
+  "rights": "Owner-directed adaptation of requirements, with original wording and sanitized public references; no blanket license or executable import.",
+  "source_section_counts": {
+    "scope": 1,
+    "boundary": 5,
+    "capabilities": 11,
+    "interfaces": 5,
+    "acceptance": 10,
+    "maintenance": 7,
+    "coordination": 7
+  },
+  "component_pins": {
+    "core": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
+    "tether": "ef4c99a8eea8918350666948a32868e3763e1dbe",
+    "refinery": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
+  },
+  "component_spec_hashes": {
+    "components/browser/specs/credentials-handoff.md": "d3c818c4c8cd0e63ea494fccf7ad95ed33f238bed94f105c73537a518845c7b6",
+    "components/console/specs/fleet-view.md": "ff0b7af18fb2baf71c74d6ceca69588d07d7674efb935d905669ee616e9ebb1d",
+    "components/core/specs/contracts.md": "627604ce5ce2dc51374a0a6d5592e5242476cad3117963fe6a495cb279006a20",
+    "components/core/specs/durable-artifacts.md": "bca04daa47e16c63ff142d4cb0bdd5fa85365883d8abfe60d91e037df612855d",
+    "components/core/specs/durable-delivery.md": "ab9b6ab2f727606dc01647344c749485919014b6ddc1018805de8fcaec6ddde0",
+    "components/core/specs/host-runtime.md": "6b4a314a089c525f6629488c3b2dc95b7768cdba83dea507833fd62899680c2a",
+    "components/host/specs/durable-lifecycle.md": "19bce4026a47a7fb17bca55852e992dbeab84c46dc3ff691a82796402c7147f5",
+    "components/host/specs/native-sessions.md": "8623e9d9ca9215bd9ebfa4be8b9ec58bbb3518612986eff86ab411b63d7f38dc",
+    "components/platform/specs/native-monitoring.md": "6dde6c26b723211d14433b2bfd40af212b92d1e5a2181989e764dc74955d78a8",
+    "components/refinery/specs/durable-offline.md": "86278f19154597738605f40f88fc048d003bef2cc0f20181e45f4a8c333f0201",
+    "components/refinery/specs/experiments.md": "a4c51d4148789f0bec052fb0b64102501a48764e8f9f932273991824286c9d5d",
+    "components/tether/specs/slack-events.md": "77ef813748640b537388b63a7f9701e2f29eacdada8e955ddfc34f970323f218"
+  },
+  "records": [
+    {
+      "id": "I01",
+      "source_section": "scope",
+      "title": "Requirements index, not implementation",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "scope": "This contract assigns responsibility and acceptance obligations. Component specifications remain authoritative for their implementations; neither this index nor its validation grants execution authority or establishes runtime readiness."
+      }
+    },
+    {
+      "id": "B01",
+      "source_section": "boundary",
+      "title": "Product outcome",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "host",
+        "browser",
+        "tether",
+        "refinery",
+        "console",
+        "platform"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "outcome": "An authorized workflow must preserve the selected computer, account scope, control ownership and exact deliverable identity through completion and separately permitted learning.",
+        "supporting_work": "Credentials and account browsers are product capabilities. Packaging, CI, onboarding and public demonstrations support the workflow but cannot substitute for acceptance evidence."
+      }
+    },
+    {
+      "id": "B02",
+      "source_section": "boundary",
+      "title": "Shared identity, separate permission",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "refinery"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "separation": "Connect execution and learning through immutable causal references. A grant for one path never supplies the approval needed by the other."
+      }
+    },
+    {
+      "id": "B03",
+      "source_section": "boundary",
+      "title": "Execution path",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "host",
+        "browser",
+        "tether",
+        "console"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "execution": "Bind the authorized request to normalized intent, durable coordination, the explicitly selected host and leased native/browser session. Reconcile effects or artifact creation, validate and accept exact results, then retain delivery receipts and freshness-aware status."
+      }
+    },
+    {
+      "id": "B04",
+      "source_section": "boundary",
+      "title": "Learning path",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "refinery",
+        "tether"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "learning": "Start with authorized immutable inputs and attributable outputs/feedback; produce replayable examples and locked splits, evaluate a bounded candidate, approve its exact digest, verify the serving version, and retain attribution into subsequent dataset revisions."
+      }
+    },
+    {
+      "id": "B05",
+      "source_section": "boundary",
+      "title": "No implicit authority",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "browser",
+        "refinery",
+        "tether"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "authority": "Feedback, learned programs, issue descriptions and page content are inputs, not grants for another machine, account, operation, publication or provider transmission."
+      }
+    },
+    {
+      "id": "O01",
+      "source_section": "capabilities",
+      "title": "Stable capability labels",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/system.md"
+      ],
+      "obligations": {
+        "labels": "P01\u2013P10 label requirements, not tracker issue numbers or success states. Component owners maintain their own stories and tests; the source map replaces legacy links with the seven current repository boundaries."
+      }
+    },
+    {
+      "id": "P01",
+      "source_section": "capabilities",
+      "title": "Scoped secret resolution",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "platform"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md",
+        "components/platform/specs/native-monitoring.md"
+      ],
+      "obligations": {
+        "scope": "Resolve only the secret required by the approved principal, account, exact origin, operation and current session/lease.",
+        "trusted_origin": "A trusted injector verifies the observed top-level and target-frame origins before retrieval and again before use; supplied origin strings cannot authorize resolution.",
+        "deny": "Wrong account/origin, stale lease, redirects, missing identity or vault failure deny access without fallback credentials.",
+        "privacy": "Keep secret values in the authorized helper, outside histories, telemetry, screenshots and public receipts. Use OpenBao rather than a replacement credential service."
+      }
+    },
+    {
+      "id": "P02",
+      "source_section": "capabilities",
+      "title": "Isolated encrypted profiles",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md"
+      ],
+      "obligations": {
+        "encryption": "Account profile checkpoints require authenticated encryption and account isolation, with exclusive ownership of the active profile lease.",
+        "restore": "Verify the restored account/browser identity before further use. Successful decryption or restoration is not proof of authentication and is not submission permission.",
+        "retention": "Keep approved retention and explicit forgetting separate from cookie expiration, credential rotation and target-site revocation; none silently performs the others."
+      }
+    },
+    {
+      "id": "P03",
+      "source_section": "capabilities",
+      "title": "Account-bound browser work",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "core"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md",
+        "components/core/specs/contracts.md"
+      ],
+      "obligations": {
+        "binding": "Associate observations and actions with the approved intent, account, browser instance, tab/target and current epoch.",
+        "uncertainty": "Keep an ambiguous submission unknown until independently observed outcome reconciliation; do not repeat it just because the response was lost.",
+        "upstream": "Use the selected PinchTab boundary for automation and do not create another Playwright automation service."
+      }
+    },
+    {
+      "id": "P04",
+      "source_section": "capabilities",
+      "title": "Fenced human control",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "console"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md",
+        "components/console/specs/fleet-view.md"
+      ],
+      "obligations": {
+        "fence": "Acknowledge the fence on agent commands before granting interactive human control. A passive KasmVNC view carries no control capability.",
+        "handback": "Resume only after the current holder authenticates release, all viewer inputs close, the expected epoch matches and fresh trusted account/target observations agree.",
+        "recovery": "Stale commands, forged release and missing observations grant no authority; interrupted ownership must survive restart without silent takeover."
+      }
+    },
+    {
+      "id": "P05",
+      "source_section": "capabilities",
+      "title": "Pinned dispatch and sessions",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "host"
+      ],
+      "targets": [
+        "components/core/specs/host-runtime.md",
+        "components/host/specs/durable-lifecycle.md",
+        "components/host/specs/native-sessions.md"
+      ],
+      "obligations": {
+        "host_pin": "An explicit unavailable host remains queued; do not silently substitute a different host.",
+        "native_identity": "Preserve durable job and operation identities and the actual native session/host binding across reconnect and restart.",
+        "launch": "Reconcile a lost launch acknowledgement before another launch.",
+        "cancellation": "Keep cancellation request, acknowledgement and observed termination separate. A cancelled request is not fabricated native completion."
+      }
+    },
+    {
+      "id": "P06",
+      "source_section": "capabilities",
+      "title": "Exact accepted deliverables",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "tether",
+        "console"
+      ],
+      "targets": [
+        "components/core/specs/durable-artifacts.md",
+        "components/core/specs/durable-delivery.md",
+        "components/tether/specs/slack-events.md",
+        "components/console/specs/fleet-view.md"
+      ],
+      "obligations": {
+        "states": "Track produced, validated, accepted and delivered separately, including rejection, failure and unknown outcomes.",
+        "bytes": "Validation and acceptance refer to exact artifact bytes, digest, schema, revision and evidence; a mutable location cannot identify accepted content.",
+        "restart": "After restart, deliver already accepted bytes without regenerating completed work; reconcile uncertain delivery before retry.",
+        "destination": "Use existing Tether for authorized sanitized delivery, binding the receipt to the exact destination and artifact. Do not replace it with Slack Bolt."
+      }
+    },
+    {
+      "id": "P07",
+      "source_section": "capabilities",
+      "title": "Attributable native telemetry",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "platform",
+        "host"
+      ],
+      "targets": [
+        "components/platform/specs/native-monitoring.md",
+        "components/host/specs/native-sessions.md"
+      ],
+      "obligations": {
+        "identity": "Retain producer/version, installed configuration digest, privacy-policy revision and task/native-session/trace/span/event identity.",
+        "readback": "Distinguish emission, buffering, export, rejection, replay, duplication, loss and backend persistence. A successful local receiver response proves no backend record.",
+        "privacy": "Qualify privacy across the complete envelope, including schema URLs; unsupported sanitization blocks the path. Use native export and standard Collectors with qualified Langfuse readback, not a reconstruction receiver or uploader."
+      }
+    },
+    {
+      "id": "P08",
+      "source_section": "capabilities",
+      "title": "Truthful observed status",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "console",
+        "core",
+        "host",
+        "browser",
+        "platform"
+      ],
+      "targets": [
+        "components/console/specs/fleet-view.md",
+        "components/core/specs/contracts.md",
+        "components/platform/specs/native-monitoring.md"
+      ],
+      "obligations": {
+        "freshness": "Project exact task, selected host, actual session, browser, trace and artifact references with observation timestamps and explicit stale, offline and unknown values.",
+        "view": "Show the operated desktop/browser only when that view is qualified; a simulation is not live integration evidence.",
+        "authority": "Read models and passive views never authorize execution, credential retrieval or takeover."
+      }
+    },
+    {
+      "id": "P09",
+      "source_section": "capabilities",
+      "title": "Replayable feedback lineage",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "refinery",
+        "tether"
+      ],
+      "targets": [
+        "components/refinery/specs/experiments.md",
+        "components/refinery/specs/durable-offline.md",
+        "components/tether/specs/slack-events.md"
+      ],
+      "obligations": {
+        "lineage": "Each usable example needs immutable source/input/output/context revisions and hashes, completeness, exact feedback target and attributable actor/provenance.",
+        "quarantine": "Quarantine missing context, non-replayable labels and conflicting feedback instead of treating them as training examples.",
+        "splits": "Keep related threads and revisions in one leakage-safe family partition.",
+        "collection": "Existing Tether supplies separately permitted sanitized observations; collection does not authorize training or provider transmission. Do not introduce Argilla or Presidio as a replacement boundary."
+      }
+    },
+    {
+      "id": "P10",
+      "source_section": "capabilities",
+      "title": "Evaluated approved serving",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "refinery"
+      ],
+      "targets": [
+        "components/refinery/specs/experiments.md",
+        "components/refinery/specs/durable-offline.md"
+      ],
+      "obligations": {
+        "evaluation": "Use Python DSPy within explicit data/provider authority and cumulative budgets. Compare baseline and candidate on the same locked held-out cases with quality, safety, latency and measured cost; missing measurements remain unknown.",
+        "approval": "Promotion requires approval for the exact candidate bytes, evaluation evidence, policy and serving target. A passing score or caller-provided actor string is not approval.",
+        "load": "Verify the serving process actually loaded the approved digest; rejected loading preserves the previous approved candidate.",
+        "rollback": "Rollback verifies a compatible approved predecessor and changes future serving without rewriting the attribution of earlier outputs."
+      }
+    },
+    {
+      "id": "C01",
+      "source_section": "interfaces",
+      "title": "Request to native session",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "host",
+        "tether"
+      ],
+      "targets": [
+        "specs/runtime-v1.md",
+        "specs/runtime-integration-v1.md",
+        "components/core/specs/host-runtime.md",
+        "components/host/specs/durable-lifecycle.md"
+      ],
+      "obligations": {
+        "request": "Carry request revision, delivery ID, semantic intent ID, policy revision, job/operation identity and authorized host/workspace/action. Delivery duplication cannot create another intent.",
+        "host": "Core retains the selected host; host records the observed native session. Offline pins queue and unknown launch acknowledgements reconcile before effect retry.",
+        "cancel": "Preserve requested, acknowledged and verified cancellation/termination as different facts, including after restart."
+      }
+    },
+    {
+      "id": "C02",
+      "source_section": "interfaces",
+      "title": "Browser and credential scope",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "core",
+        "host",
+        "console"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md",
+        "specs/runtime-v1.md",
+        "components/console/specs/fleet-view.md"
+      ],
+      "obligations": {
+        "reference": "Core passes scoped references, never secret values; browser resolves them only for the approved principal/account/origin/operation and active lease.",
+        "observation": "Trusted top-level and frame-origin observations precede secret retrieval and injection.",
+        "handoff": "Preserve account, browser instance, tab/target, holder and epoch across handoff. Fence agent effects before interactive control; authenticate release and reobserve identity before return.",
+        "permission": "Neither stored credentials, restored profiles nor passive viewing grants submission or control authority."
+      }
+    },
+    {
+      "id": "C03",
+      "source_section": "interfaces",
+      "title": "Artifacts to delivery receipts",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "tether",
+        "console"
+      ],
+      "targets": [
+        "specs/runtime-integration-v1.md",
+        "components/core/specs/durable-artifacts.md",
+        "components/core/specs/durable-delivery.md",
+        "components/tether/specs/slack-events.md"
+      ],
+      "obligations": {
+        "acceptance": "Separate production, validation, acceptance and delivery. Bind schema, validation evidence and acceptance to exact immutable bytes and revision.",
+        "receipt": "Tether receipts preserve accepted digest, delivery operation and authorized destination; Console only projects observed status.",
+        "reconcile": "Resume delivery from accepted stored bytes after restart; independently reconcile ambiguous effects before any permitted retry, never regenerate or blindly resend."
+      }
+    },
+    {
+      "id": "C04",
+      "source_section": "interfaces",
+      "title": "Telemetry to projections",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "host",
+        "platform",
+        "console",
+        "tether"
+      ],
+      "targets": [
+        "components/platform/specs/native-monitoring.md",
+        "components/console/specs/fleet-view.md",
+        "specs/maintained-evidence-v1.md"
+      ],
+      "obligations": {
+        "envelope": "Carry source/producer version, installed configuration, policy revision and native-session/task/trace/span/event references without private content.",
+        "transport": "Keep emission, queued/exported, rejected, persisted, replayed, duplicate and lost measurements distinct. Backend readback must correlate the same identities.",
+        "projection": "Preserve observation time, freshness and unknowns in Console and sanitized Tether projections. Neither a process listing nor local HTTP success authorizes a completion claim."
+      }
+    },
+    {
+      "id": "C05",
+      "source_section": "interfaces",
+      "title": "Dataset to serving attribution",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "tether",
+        "refinery"
+      ],
+      "targets": [
+        "components/refinery/specs/experiments.md",
+        "components/refinery/specs/durable-offline.md",
+        "specs/maintained-evidence-v1.md"
+      ],
+      "obligations": {
+        "lineage": "Preserve source/input/output revisions and hashes, completeness, exact feedback target and actor/provenance; unusable context stays quarantined.",
+        "evaluation": "Keep related revisions within one partition and bind approved candidate bytes to locked evaluation evidence.",
+        "serving": "Require observed serving digest and output attribution; failed loading preserves the prior approved version, and rollback never changes earlier attribution."
+      }
+    },
+    {
+      "id": "A00",
+      "source_section": "acceptance",
+      "title": "Synthetic slice, not a run",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "docs/FIXTURE_KIT.md",
+        "specs/runtime-integration-scenarios-v1.json"
+      ],
+      "obligations": {
+        "isolation": "Exercise these obligations only through separately authorized bounded tests with invented records, synthetic accounts and controlled targets.",
+        "reuse": "Reuse the composition test work in issue #1 and existing lanes. This artifact lift adds documentation validation, not a second runtime harness."
+      }
+    },
+    {
+      "id": "G01",
+      "source_section": "acceptance",
+      "title": "Admit and dispatch",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "host",
+        "tether"
+      ],
+      "targets": [
+        "docs/H02-integration-evidence.json",
+        "specs/runtime-integration-v1.md"
+      ],
+      "obligations": {
+        "evidence": "Require policy/admission decision, immutable intent, authorized selected host and an actual native/session receipt.",
+        "negative": "Reject scope expansion, queue an offline host pin and reconcile unknown launch acknowledgement without duplicate launch."
+      },
+      "gate": {
+        "requirements": [
+          "P05",
+          "C01"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": "H02",
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G02",
+      "source_section": "acceptance",
+      "title": "Open the scoped account",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "core"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md"
+      ],
+      "obligations": {
+        "evidence": "Require a non-secret scoped-reference receipt and current trusted account, origin, browser and lease observations.",
+        "negative": "Wrong account or origin must fail before secret resolution; restored profiles do not bypass identity checks."
+      },
+      "gate": {
+        "requirements": [
+          "P01",
+          "P02",
+          "P03",
+          "C02"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": null,
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G03",
+      "source_section": "acceptance",
+      "title": "Transfer control safely",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "console"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md"
+      ],
+      "obligations": {
+        "evidence": "Require observed agent fencing, the human control lease, authenticated release and fresh account/browser identity.",
+        "negative": "Reject stale commands and forged release. Restart preserves unresolved ownership, rather than restoring agent authority."
+      },
+      "gate": {
+        "requirements": [
+          "P04",
+          "C02"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": null,
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G04",
+      "source_section": "acceptance",
+      "title": "Reconcile a synthetic submission",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "browser",
+        "core"
+      ],
+      "targets": [
+        "components/browser/specs/credentials-handoff.md"
+      ],
+      "obligations": {
+        "evidence": "Record the exact approved intent and an independently observed target outcome.",
+        "negative": "A response timeout remains unknown until reconciliation; no blind duplicate submission."
+      },
+      "gate": {
+        "requirements": [
+          "P03",
+          "C02"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": null,
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G05",
+      "source_section": "acceptance",
+      "title": "Accept and deliver exact bytes",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "tether",
+        "console"
+      ],
+      "targets": [
+        "docs/H07-integration-evidence.json",
+        "specs/runtime-integration-v1.md"
+      ],
+      "obligations": {
+        "evidence": "Require actual artifact digest, validation and acceptance identities, exact authorized destination and observed delivery receipt.",
+        "negative": "Changed bytes cannot inherit acceptance; coordinator restart resumes delivery without regenerating already accepted work."
+      },
+      "gate": {
+        "requirements": [
+          "P06",
+          "C03"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": "H07",
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G06",
+      "source_section": "acceptance",
+      "title": "Read back the same task",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "platform",
+        "host",
+        "console"
+      ],
+      "targets": [
+        "docs/MAINTAINED_OFFLINE.md",
+        "specs/maintained-evidence-v1.md"
+      ],
+      "obligations": {
+        "evidence": "Correlate exact task/session/event identity with synthetic backend readback and fresh Console observations.",
+        "negative": "Process existence, export claims and local HTTP acknowledgement cannot substitute for backend persistence or a fresh projection."
+      },
+      "gate": {
+        "requirements": [
+          "P07",
+          "P08",
+          "C04"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": "H08",
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G07",
+      "source_section": "acceptance",
+      "title": "Build replayable examples",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "tether",
+        "refinery"
+      ],
+      "targets": [
+        "docs/FEEDBACK_HERO.md",
+        "docs/MAINTAINED_OFFLINE.md"
+      ],
+      "obligations": {
+        "evidence": "Verify immutable input/output/context, exact feedback revision and actor, lineage hashes and usable-row validation.",
+        "negative": "Missing or contradictory context is quarantined and related revisions cannot leak between splits."
+      },
+      "gate": {
+        "requirements": [
+          "P09",
+          "C05"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": "H10",
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "G08",
+      "source_section": "acceptance",
+      "title": "Evaluate, approve and serve",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "refinery"
+      ],
+      "targets": [
+        "docs/MAINTAINED_OFFLINE.md",
+        "specs/maintained-evidence-v1.md"
+      ],
+      "obligations": {
+        "evidence": "Require locked split, paired baseline/candidate metrics, exact approval, observed serving digest, versioned outputs and rollback evidence.",
+        "negative": "Missing metrics, altered bytes, unauthorized promotion or worse quality block promotion; failed loading keeps the earlier approved artifact."
+      },
+      "gate": {
+        "requirements": [
+          "P10",
+          "C05"
+        ],
+        "composition_issue": "https://github.com/newdarwindev/runspindle/issues/1",
+        "existing_lane": "H11",
+        "full_slice_status": "not_run",
+        "evidence_class": "requirement_not_execution",
+        "related_evidence": "Existing bounded results remain at their own exact revisions; they do not establish this full slice or transfer to newer code."
+      }
+    },
+    {
+      "id": "A09",
+      "source_section": "acceptance",
+      "title": "Per-gate evidence, never a blanket pass",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "docs/IMPLEMENTATION.md"
+      ],
+      "obligations": {
+        "states": "Record not_run, passed, failed, blocked and unknown separately, with exact source/config/artifact revisions, timestamp, environment and evidence class.",
+        "classes": "Distinguish synthetic, component, isolated integration and live acceptance. Document completeness is a separate artifact result, not a successful product gate."
+      }
+    },
+    {
+      "id": "M01",
+      "source_section": "maintenance",
+      "title": "Owner specifications",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Component repositories own detailed stories, tests and implementation semantics; this index owns responsibility and cross-boundary requirements."
+      }
+    },
+    {
+      "id": "M02",
+      "source_section": "maintenance",
+      "title": "Change-to-evidence trace",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Each implementation change names its story, updates exact evidence and states the remaining gap. A commit alone does not complete a feature."
+      }
+    },
+    {
+      "id": "M03",
+      "source_section": "maintenance",
+      "title": "No historical result transfer",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Bind every result to the source, configuration and artifact actually tested. Isolated success does not prove authenticated use, live recovery, full source migration or independently verified restoration."
+      }
+    },
+    {
+      "id": "M04",
+      "source_section": "maintenance",
+      "title": "Separate observations",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform",
+        "console"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Keep source checks, installed state, invocation, backend readback and user acceptance as separate claims."
+      }
+    },
+    {
+      "id": "M05",
+      "source_section": "maintenance",
+      "title": "Private operational material",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Exclude real credentials, runtime ledgers, private source expression, recovery material and machine-specific identities from public specifications, fixtures and evidence."
+      }
+    },
+    {
+      "id": "M06",
+      "source_section": "maintenance",
+      "title": "No activation through documentation",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Preserve disabled workflows and existing approval boundaries. Requirements grant no permission to deploy, activate services, enroll telemetry, incur spending, publish data or schedule recurring work."
+      }
+    },
+    {
+      "id": "M07",
+      "source_section": "maintenance",
+      "title": "Archived applications remain archived",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "AGENTS.md",
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "maintenance": "Historical archived applications are outside this product boundary. This lift neither reopens nor activates them."
+      }
+    },
+    {
+      "id": "X01",
+      "source_section": "coordination",
+      "title": "Historical product coordination",
+      "disposition": "excluded",
+      "reason": "Replace the legacy product issue link with the current intent; no historical issue body is selected or imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X02",
+      "source_section": "coordination",
+      "title": "Historical dispatch coordination",
+      "disposition": "excluded",
+      "reason": "Replace the legacy dispatch issue link with the current core/host contract; no historical discussion or runtime record is imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/runtime-integration-v1.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X03",
+      "source_section": "coordination",
+      "title": "Historical learning coordination",
+      "disposition": "excluded",
+      "reason": "Replace the legacy lineage issue link with the current Refinery seam; linked source expression is not selected.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/maintained-evidence-v1.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X04",
+      "source_section": "coordination",
+      "title": "Historical repository-session index",
+      "disposition": "excluded",
+      "reason": "Omit the legacy relative index and its device/session details; current host ownership supplies the requirement boundary.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "components/host/specs/native-sessions.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X05",
+      "source_section": "coordination",
+      "title": "Historical execution-workflow index",
+      "disposition": "excluded",
+      "reason": "Omit the legacy relative workflow page; current explicit lifecycle requirements replace its navigation role.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "specs/desired-intent.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X06",
+      "source_section": "coordination",
+      "title": "Historical private infrastructure context",
+      "disposition": "excluded",
+      "reason": "Exclude private infrastructure navigation and operational context. Current sanitized platform requirements replace only its boundary role.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "components/platform/specs/native-monitoring.md"
+      ],
+      "obligations": {
+        "replacement": "Use the listed current target; the historical navigation destination is retained privately for review only."
+      }
+    },
+    {
+      "id": "X07",
+      "source_section": "coordination",
+      "title": "Historical reports are not current proof",
+      "disposition": "adapted",
+      "reason": "Rewritten as current Runspindle requirements; original expression and legacy architecture are not imported.",
+      "owners": [
+        "core",
+        "platform"
+      ],
+      "targets": [
+        "docs/IMPLEMENTATION.md"
+      ],
+      "obligations": {
+        "currency": "Verify current exact revisions and evidence before changing a completion claim. Preserve earlier failures and limitations even when later work improves the implementation."
+      }
+    }
+  ]
+}

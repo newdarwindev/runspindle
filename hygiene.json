@@ -46,6 +46,19 @@
       "timeout_seconds": 300
     },
     {
+      "id": "check-core-product",
+      "command": [
+        "python3",
+        "tools/check_core_product.py"
+      ],
+      "required_files": [
+        "tools/check_core_product.py",
+        "docs/core-product/coverage.json",
+        "docs/core-product/artifact-manifest.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
       "id": "python-tests",
       "command": [
         "python3",
