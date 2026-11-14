@@ -5,49 +5,49 @@
       "component": "core",
       "repository": "newdarwindev/runspindle-core",
       "path": "components/core",
-      "commit": "2acb4d4e2b54eed4a0d94765f5684ce0122de58d",
+      "commit": "c73dcc2a4cb527400c45efe2877af6a58cacacf5",
       "url": "https://github.com/newdarwindev/runspindle-core.git"
     },
     {
       "component": "host",
       "repository": "newdarwindev/runspindle-host",
       "path": "components/host",
-      "commit": "6caf08d3f642691ceecffc76c5aa378fbdd7a352",
+      "commit": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
       "url": "https://github.com/newdarwindev/runspindle-host.git"
     },
     {
       "component": "browser",
       "repository": "newdarwindev/runspindle-browser",
       "path": "components/browser",
-      "commit": "a311af0dda713e2b9b2a90e8828bb78d08758ab5",
+      "commit": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
       "url": "https://github.com/newdarwindev/runspindle-browser.git"
     },
     {
       "component": "tether",
       "repository": "newdarwindev/runspindle-tether",
       "path": "components/tether",
-      "commit": "6003f2315146d05d77918024d1bc81049a78a312",
+      "commit": "ef4c99a8eea8918350666948a32868e3763e1dbe",
       "url": "https://github.com/newdarwindev/runspindle-tether.git"
     },
     {
       "component": "refinery",
       "repository": "newdarwindev/runspindle-refinery",
       "path": "components/refinery",
-      "commit": "355ad581e79f4cfce37e3d82192adb55da9b7669",
+      "commit": "f3964f613edc90a0affd4a9e9059408da54f121e",
       "url": "https://github.com/newdarwindev/runspindle-refinery.git"
     },
     {
       "component": "console",
       "repository": "newdarwindev/runspindle-console",
       "path": "components/console",
-      "commit": "dd4753aa05fe5af398573c8d841e68ff44b1eec9",
+      "commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
       "url": "https://github.com/newdarwindev/runspindle-console.git"
     },
     {
       "component": "platform",
       "repository": "newdarwindev/runspindle-platform",
       "path": "components/platform",
-      "commit": "96eb567ef32c68c52c19ea8fd77f11e5340e291b",
+      "commit": "9cb7530ee9084c2d2843961c7da9ba979d828b0a",
       "url": "https://github.com/newdarwindev/runspindle-platform.git"
     }
   ],
