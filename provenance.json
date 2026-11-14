@@ -15,12 +15,15 @@
   "sources": [
     {
       "destination": "specs/system.md",
-      "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
-      "modifications": "Adapted requirements and documented prototype gaps; no executable source port or original Git history imported.",
+      "license_review": "Selected requirement ideas reviewed for owner-directed rewriting. Historical expression and private navigation are not republished. No third-party dependency or binary imported; original rights remain unchanged.",
+      "modifications": "Complete requirement-level adaptation and explicit safe exclusions for the selected artifact. No original expression, executable source or history imported; component implementation and full-system acceptance remain separate.",
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-001",
-      "status": "adapted_spec"
+      "status": "adapted_spec",
+      "migration_status": "selected_artifact_accounted",
+      "artifact_manifest": "docs/core-product/artifact-manifest.json",
+      "coverage": "docs/core-product/coverage.json"
     },
     {
       "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
