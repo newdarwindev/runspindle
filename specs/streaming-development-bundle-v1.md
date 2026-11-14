@@ -15,6 +15,11 @@ included license bytes and executable entrypoints. Its digest identifies a
 candidate; checksums do not authenticate a third-party publisher or grant
 execution authority. Unknown formats reject before installation.
 
+Regular dependency filenames may contain punctuation or leading dots. They are
+handled as paths, never shell text. Canonical relative paths exclude traversal,
+absolute paths, backslashes, control characters and drive prefixes. Metadata v1
+retains its original stricter filename validation.
+
 Only owned disposable Linux arm64 targets support this implementation. Installers
 retain a verified archive separately from a schema-versioned SQLite journal.
 They commit immutable manifest/predecessor intent and advance an ownership
