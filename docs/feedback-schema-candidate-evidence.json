@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "evidence_class": "candidate_schema_admission_synthetic_external_adapters",
+  "base_revision": "a54b379cc0ae7ab6cdb7330d07bf4e47176c704c",
+  "composition_pins": "unchanged",
+  "historical_evidence": "unchanged_no_transferred_qualification",
+  "result": {
+    "deliberate_mutation_detected": true,
+    "fresh_process_replay": "passed",
+    "independent_object_digest": "a94143e4146610737af7e85cd9aaedd69b9d93f8590960ec4ae9ca23ce70a82a",
+    "lane": "H10.retained_feedback_collection",
+    "negative_cases": 3,
+    "precommit_process_crash_recovery": "passed",
+    "repeat_runs": 2,
+    "schema_reopen_denials": 4,
+    "sources": {
+      "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "tether": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "status": "passed",
+    "system_acceptance": "blocked"
+  },
+  "source_sha256": {
+    "tools/feedback_hero.py": "06ad14a60a288fa77d7349b18d32e2d5c3a81100bcbd751b29a0e3f6bc5041ec",
+    "tests/test_feedback_hero.py": "c7934ca43ccab1c43f6c9a9a17079a38bc44eae7848fc0698211586adafda586",
+    "scenarios/feedback-collection-v1.json": "58b8b2c82033f32d01e4963cb1419d997d0afd82e8c41b61b5e409829db4fe0d",
+    ".github/workflows/validation.yml": "50b3d3f994b4591b847b3eca23b68c58498967551f48c8fa4d1abae92449b828",
+    "docs/FEEDBACK_HERO.md": "77394a15022b1590e44eba01ab14ef9a16451774d1f720b907db9cf5ee031ef5"
+  },
+  "validation": {
+    "normal_tests": 73,
+    "optimized_tests": 73,
+    "focused_feedback_tests": 8,
+    "full_applicable_validation": "passed",
+    "strict_mypy_and_ruff": "passed_changed_python",
+    "independent_review": "pending",
+    "exact_head_CI": "not_run"
+  },
+  "toolchain": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1"
+  },
+  "boundaries": [
+    "real pinned components and SQLite; synthetic authority/provider fixtures",
+    "four fresh-process corrupt-schema rejection cases; no silent repair or lineage writes",
+    "existing precommit crash/restart and deliberate consent mutation observed",
+    "ignored root bytecode/package shadow tests retained",
+    "no full H10/H12 requalification, native suite, live collection or deployment",
+    "no hostile SQLite/WAL safety or distributed atomicity guarantee"
+  ]
+}
