@@ -102,7 +102,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "5690ddd600f5d7b237eed2dac63fc573292a29a1",
+                    "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
                 ],
                 check=True,
                 capture_output=True,
@@ -172,7 +172,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "5690ddd600f5d7b237eed2dac63fc573292a29a1",
+                    "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
                 ],
                 check=True,
                 capture_output=True,
@@ -202,6 +202,7 @@ class FeedbackHeroTests(unittest.TestCase):
             Path(os.environ["RUNSPINDLE_FEEDBACK_HERO_REFINERY"]),
         )
         self.assertEqual(result["repeat_runs"], 2)
+        self.assertEqual(result["schema_reopen_denials"], 4)
         self.assertEqual(result["precommit_process_crash_recovery"], "passed")
         self.assertTrue(result["deliberate_mutation_detected"])
         self.assertEqual(result["system_acceptance"], "blocked")

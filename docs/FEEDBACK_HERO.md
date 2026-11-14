@@ -22,9 +22,9 @@ A clean authorized checkout can prepare the same inputs explicitly:
 ```
 git submodule update --init --recursive
 git clone https://github.com/newdarwindev/runspindle-tether.git local/feedback-sources/tether
-git -C local/feedback-sources/tether checkout --detach 17c4e8490eabe8876de8c4508ab6aa4d54af8c78
+git -C local/feedback-sources/tether checkout --detach 670989839a0fccbcf2014d01609778ae6e4df424
 git clone https://github.com/newdarwindev/runspindle-refinery.git local/feedback-sources/refinery
-git -C local/feedback-sources/refinery checkout --detach 5690ddd600f5d7b237eed2dac63fc573292a29a1
+git -C local/feedback-sources/refinery checkout --detach b68ba9d77d51ca453b3f0fa3a9fa31573d065250
 python3 tools/feedback_hero.py --tether local/feedback-sources/tether --refinery local/feedback-sources/refinery
 ```
 
@@ -106,3 +106,6 @@ resolution. All root checkouts fetch full history. Aggregate receipt checks,
 other partition entries and existing composition pins are unchanged. Local full
 hygiene validation requires the same ignored `local/feedback-sources` checkouts,
 `MYPYPATH` and both test source variables, plus the pinned quality-tool environment.
+## Schema-admitted candidate upgrade
+
+The candidate pins now include Tether schema admission (PR18) and Refinery structural storage admission plus its exact Tether pin integration (PR22/23). Both schema modules are included in the verified source inventories. Fresh worker processes reject missing admission, provider-journal, feedback and Refinery tables before collection, with independent SQLite observations of zero lineage writes and no silent schema repair. Existing replay, precommit crash recovery, consent-removal mutation and ignored source-shadow tests still run. The original `docs/feedback-hero-evidence.json` remains historical; current evidence is `docs/feedback-schema-candidate-evidence.json`. Release composition/gitlinks and older acceptance artifacts remain unchanged. This is still a synthetic adapter candidate lane, not full H10/H12 or deployment qualification.
