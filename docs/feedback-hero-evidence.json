@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "evidence_class": "candidate_component_integration_synthetic_external_adapters",
+  "composition_base": "f26dfbd5e2a5046733d670f759fbf8a01d5986d5",
+  "composition_pins": "unchanged",
+  "prior_hero_evidence": "unchanged_no_transferred_qualification",
+  "result": {
+    "deliberate_mutation_detected": true,
+    "fresh_process_replay": "passed",
+    "independent_object_digest": "abe10da6a146912ff7f317a96435340d59a132656ce35905a7b6fa6f25d0e1af",
+    "lane": "H10.retained_feedback_collection",
+    "negative_cases": 3,
+    "precommit_process_crash_recovery": "passed",
+    "repeat_runs": 2,
+    "sources": {
+      "refinery": "5690ddd600f5d7b237eed2dac63fc573292a29a1",
+      "tether": "17c4e8490eabe8876de8c4508ab6aa4d54af8c78"
+    },
+    "status": "passed",
+    "system_acceptance": "blocked"
+  },
+  "sources_manifest_sha256": "b89f951fb5b6cb6322b18f16b8de177c99b2959e84d9aa99272781a9ebef2437",
+  "source_sha256": {
+    "tools/feedback_hero.py": "be5f6105c493bc8a2d933df03b8e34482d8060b6feada7f798427a3b7a044eb9",
+    "tests/test_feedback_hero.py": "566061679efaa33d944650db1d83c9c6980047e1a9af56576d38b7c40d28d37a",
+    "docs/FEEDBACK_HERO.md": "2f0d9500edf70ec27ad9f99d9c1fd458e4b52936b428d4d992cf0ed3ff7ca3d2",
+    ".github/workflows/validation.yml": "cab92c222d3e1688993a7e449e31123c6b12a2f8a8c4a62a7dbc91916a7134cc"
+  },
+  "tools": {
+    "python": "3.12.14",
+    "ruff": "0.14.5",
+    "mypy": "1.18.2",
+    "dependencies": "Python standard library and Git; no package installation"
+  },
+  "passed": {
+    "normal_tests": 73,
+    "optimized_tests": 73,
+    "new_source_ruff": true,
+    "new_source_strict_mypy": true,
+    "scaffold": true,
+    "workflow_yaml": true,
+    "repository_validate": true,
+    "ignored_sourceless_package_regression": true,
+    "ignored_root_bytecode_actual_worker_regression": true,
+    "root_shadow_marker_detects_old_subtree_verifier": true
+  },
+  "failed": [],
+  "earlier_failures_resolved": [
+    "Initial empty composition worktrees caused3 existing inventory tests to fail; exact unchanged pinned component worktrees were materialized and final suites passed.",
+    "Independent review found ignored sourceless-package shadowing; verifier now rejects all untracked package bytes before imports, tested using a real ignored __init__.pyc in a disposable clone.",
+    "Independent review found shallow root checkout missing composition ancestry; existing CI root checkout now explicitly requests full history.",
+    "Further independent review found ignored root-level html.pyc could shadow stdlib; verifier now rejects every untracked/ignored file across each complete source import root. Actual worker regression confirms fixed rejection before SQLite creation.",
+    "Independent review found sanitized exit/no-database regression lacked sensitivity. Payload now writes an independent marker before raising; repaired test passes current verifier and fails a disposable clone with old subtree-only verifier at the marker assertion."
+  ],
+  "blocked": [
+    "full H10/system acceptance",
+    "Core authenticated producer/validator authority",
+    "Host/native integration",
+    "live provider transport/authentication",
+    "production serving"
+  ],
+  "not_run": [
+    "remote CI checkout/qualification",
+    "independent review",
+    "native component suites",
+    "old H10-H12 full bundle requalification",
+    "live data/provider/deployment"
+  ],
+  "unknown": [
+    "isolated runner checkout availability for explicit candidate sources"
+  ],
+  "reproduction": "docs/FEEDBACK_HERO.md",
+  "cleanup": "All synthetic stores and throwaway mutant modules are temporary; success/failure and handled cancellation clean up. Process kill at final precommit boundary observed zero objects before successful fresh-process recovery."
+}
