@@ -62,6 +62,19 @@
       "timeout_seconds": 600
     },
     {
+      "id": "evidence-mutations",
+      "command": [
+        "python3",
+        "tools/check_evidence_mutations.py"
+      ],
+      "required_files": [
+        "tools/check_evidence_mutations.py",
+        "tools/reconcile_evidence.py",
+        "tests/test_evidence_reconciliation.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
       "id": "distributable-build",
       "not_applicable": "No distributable build command exists in this repository validation contract; this does not claim release acceptance."
     }

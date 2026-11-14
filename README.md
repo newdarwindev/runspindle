@@ -74,3 +74,11 @@ upgrade/rollback recovery and denied external egress. This manual offline lane i
 separate from fleet architecture qualification. [Exact evidence](docs/offline-finish-evidence.json)
 retains blocked Langfuse/native/Tether/full-system gates and the user-waived
 independent review; no review or production activation is implied.
+
+## Bounded evidence reconciliation
+
+The composition includes an offline [exact-source evidence reconciler](docs/EVIDENCE_RECONCILIATION.md)
+for issue criteria, component pins, capabilities, receipts and README/STATUS claim
+mappings. Local synthetic tests cover invalid evidence and independent effect
+observations. Private campaign packet reconciliation returned non-success for draft, historical,
+dirty and incomplete observations. Isolated runner qualification remains blocked. Integrated system implementation and live acceptance remain absent.
