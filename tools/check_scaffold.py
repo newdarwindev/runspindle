@@ -8,7 +8,12 @@ for name in required:
 c = json.loads((root/'component.json').read_text())
 s = json.loads((root/'STATUS.json').read_text())
 assert c['stage'] == 'scaffold'
-assert s['implementation'] == 'not_implemented'
+assert s['implementation'] in {'not_implemented', 'bounded_implementation'}
+if s['implementation'] == 'bounded_implementation':
+    assert s['implementation_scope'] == 'composition_evidence_reconciliation'
+    assert s['integrated_system'] == 'not_implemented'
+    assert (root/'tools/reconcile_evidence.py').is_file()
+    assert s['evidence_reconciliation']['system_acceptance'] == 'not_inferred'
 assert s['live_acceptance'] == 'not_run'
 p = json.loads((root/'provenance.json').read_text())
 for item in p['sources']:
