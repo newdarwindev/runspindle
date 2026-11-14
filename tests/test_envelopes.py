@@ -5,28 +5,31 @@ import pathlib
 import subprocess
 import sys
 import unittest
+from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location(
     "envelope_codec", ROOT / "conformance/envelope-v1/codec.py"
 )
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("envelope codec module could not be loaded")
 codec = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(codec)
 
 
 class Envelopes(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.vectors = json.loads(
             (ROOT / "conformance/envelope-v1/vectors.json").read_text()
         )
 
-    def test_vectors_and_independent_component_mappings(self):
+    def test_vectors_and_independent_component_mappings(self) -> None:
         for v in self.vectors:
             e = codec.decode(codec.encode(v["envelope"]))
             self.assertEqual(codec.component(e), v["component"])
 
-    def test_invalid_before_adapter(self):
-        observed = []
+    def test_invalid_before_adapter(self) -> None:
+        observed: list[dict[str, Any]] = []
         e = self.vectors[0]["envelope"]
         invalid = []
         for key, value in [
@@ -44,9 +47,9 @@ class Envelopes(unittest.TestCase):
         x = copy.deepcopy(e)
         x["payload"]["binding"] = e["binding"]
         invalid.append(json.dumps(x))
-        for value in [0, -1, 1.0, True, 2**64]:
+        for invalid_counter in [0, -1, 1.0, True, 2**64]:
             x = copy.deepcopy(e)
-            x["binding"]["lease_epoch"] = value
+            x["binding"]["lease_epoch"] = invalid_counter
             invalid.append(json.dumps(x))
         invalid += [
             json.dumps(e)[:-1] + ',"version":"runspindle.envelope.v1"}',
@@ -57,8 +60,10 @@ class Envelopes(unittest.TestCase):
                 codec.consume(raw, e["binding"], observed.append)
         self.assertEqual(observed, [])
 
-    def test_stale_epoch_session_sequence_and_wrong_destination_zero_calls(self):
-        calls = []
+    def test_stale_epoch_session_sequence_and_wrong_destination_zero_calls(
+        self,
+    ) -> None:
+        calls: list[dict[str, Any]] = []
         for v in self.vectors:
             e = v["envelope"]
             expected = dict(e["binding"], lease_epoch=2)
@@ -81,7 +86,7 @@ class Envelopes(unittest.TestCase):
 
 
 class LexicalCounters(unittest.TestCase):
-    def test_negative_zero_and_bom_are_rejected(self):
+    def test_negative_zero_and_bom_are_rejected(self) -> None:
         e = json.loads((ROOT / "conformance/envelope-v1/vectors.json").read_text())[1][
             "envelope"
         ]
@@ -95,7 +100,7 @@ class LexicalCounters(unittest.TestCase):
 
 
 class OptimizedInterpreter(unittest.TestCase):
-    def test_validation_and_context_checks_survive_optimization(self):
+    def test_validation_and_context_checks_survive_optimization(self) -> None:
         # Run existing negative and positive cases under -O without recursively
         # invoking this subprocess test. unittest assertions remain active.
         result = subprocess.run(

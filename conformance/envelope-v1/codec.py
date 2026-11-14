@@ -5,6 +5,9 @@ Validation uses explicit exceptions so optimized Python cannot skip rejection.
 
 import json
 import re
+from typing import Any, Callable, Iterable, TypeVar, cast
+
+T = TypeVar("T")
 
 VERSION = "runspindle.envelope.v1"
 BINDING = "task_id revision operation_id policy_revision host_id workspace_id lease_epoch".split()
@@ -13,30 +16,29 @@ OBSERVATION = "native_session_id sequence observed_at_ms state".split()
 DELIVERY = "artifact_id artifact_revision sha256 validator_revision account_id destination_id delivery_operation_id".split()
 
 
-def fields(value, names):
+def fields(value: Any, names: Iterable[str]) -> None:
     if not (type(value) is dict and set(value) == set(names)):
         raise AssertionError("fields")
 
 
-def identifier(value):
+def identifier(value: Any) -> None:
     if not (
-        type(value) is str
-        and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}", value)
+        type(value) is str and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:-]{0,127}", value)
     ):
         raise AssertionError("identifier")
 
 
-def counter(value, positive=False):
+def counter(value: Any, positive: bool = False) -> None:
     if not (type(value) is int and int(positive) <= value <= 2**64 - 1):
         raise AssertionError("counter")
 
 
-def digest(value):
+def digest(value: Any) -> None:
     if not (type(value) is str and re.fullmatch("[0-9a-f]{64}", value)):
         raise AssertionError("digest")
 
 
-def pairs(rows):
+def pairs(rows: list[tuple[str, Any]]) -> dict[str, Any]:
     result = {}
     for key, value in rows:
         if key in result:
@@ -45,13 +47,13 @@ def pairs(rows):
     return result
 
 
-def unsigned_token(token):
+def unsigned_token(token: str) -> int:
     if token.startswith("-"):
         raise AssertionError("negative integer token")
     return int(token)
 
 
-def decode(data):
+def decode(data: bytes | str) -> dict[str, Any]:
     if len(data) > 1048576:
         raise AssertionError("size")
     value = json.loads(
@@ -61,17 +63,17 @@ def decode(data):
         parse_constant=lambda _: (_ for _ in ()).throw(AssertionError("constant")),
     )
     validate(value)
-    return value
+    return cast(dict[str, Any], value)
 
 
-def encode(value):
+def encode(value: dict[str, Any]) -> bytes:
     validate(value)
     return json.dumps(
         value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     ).encode()
 
 
-def validate(e):
+def validate(e: dict[str, Any]) -> None:
     fields(e, ["version", "message_type", "message_id", "binding", "payload"])
     if e["version"] != VERSION:
         raise AssertionError("version")
@@ -128,7 +130,7 @@ def validate(e):
         raise AssertionError("message_type")
 
 
-def component(e):
+def component(e: dict[str, Any]) -> dict[str, Any]:
     validate(e)
     p, b = e["payload"], e["binding"]
     if e["message_type"] == "admission_request":
@@ -142,7 +144,7 @@ def component(e):
             terminal=None if p["state"] == "running" else p["state"].capitalize(),
         )
 
-    def delivery(p):
+    def delivery(p: dict[str, Any]) -> dict[str, Any]:
         artifact = {k: p[k] for k in ["artifact_id", "artifact_revision", "sha256"]}
         artifact["binding"] = b
         return dict(
@@ -158,7 +160,7 @@ def component(e):
             **{
                 k: p[k]
                 for k in ["account_id", "destination_id", "delivery_operation_id"]
-            }
+            },
         )
 
     if e["message_type"] == "delivery_request":
@@ -167,8 +169,13 @@ def component(e):
 
 
 def consume(
-    data, expected_binding, adapter, session=None, last_sequence=0, destination=None
-):
+    data: bytes | str,
+    expected_binding: dict[str, Any],
+    adapter: Callable[[dict[str, Any]], T],
+    session: str | None = None,
+    last_sequence: int = 0,
+    destination: tuple[str, str] | None = None,
+) -> T:
     e = decode(data)
     if e["binding"] != expected_binding:
         raise AssertionError("binding mismatch")
