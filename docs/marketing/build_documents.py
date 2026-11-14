@@ -1,8 +1,67 @@
-from pathlib import Path
+import hashlib
 import html
-from reportlab import rl_config
+import json
+import re
+from importlib import import_module
+from pathlib import Path
+from typing import Any
+
+
+def verify_vision_mirror(folder: Path) -> None:
+    """Verify recorded canonical bytes before any generator writes.
+
+    This checks local integrity against reviewed Console pins, not remote
+    availability, visual acceptance, or runtime behavior.
+    """
+    entries = json.loads((folder / "artifacts.json").read_text())["artifacts"]
+    commits: set[str] = set()
+    for name in (
+        "vision.html",
+        "LICENSE-SRC-010.txt",
+        "SRC-010-lift.json",
+        "SRC-010-validation.md",
+    ):
+        matches = [item for item in entries if item["path"] == "docs/marketing/" + name]
+        if len(matches) != 1:
+            raise ValueError("Missing or duplicate SRC-010 mirror entry: " + name)
+        item = matches[0]
+        canonical = item.get("canonical", {})
+        path = folder / name
+        if path.is_symlink() or not path.is_file():
+            raise ValueError("Missing or symlink SRC-010 mirror: " + name)
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if (
+            "SRC-010" not in item["source_ids"]
+            or canonical.get("repository") != "newdarwindev/runspindle-console"
+            or canonical.get("path") != "docs/product/" + name
+            or not re.fullmatch(r"[0-9a-f]{40}", canonical.get("commit", ""))
+            or digest != item.get("sha256")
+            or digest != canonical.get("sha256")
+        ):
+            raise ValueError("SRC-010 canonical mirror mismatch: " + name)
+        commits.add(canonical["commit"])
+        if name == "vision.html" and item.get("verification") != {
+            "static_integrity": "passed",
+            "visual_keyboard_zoom": "blocked",
+            "runtime": "not_implemented",
+        }:
+            raise ValueError("SRC-010 visual acceptance remains blocked")
+        if (
+            name == "LICENSE-SRC-010.txt"
+            and digest
+            != "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895"
+        ):
+            raise ValueError("SRC-010 MIT notice changed")
+    if len(commits) != 1:
+        raise ValueError("SRC-010 mirrors must share one canonical revision")
+
+
+P = Path(__file__).resolve().parent
+verify_vision_mirror(P)
+# ReportLab exposes a dynamic configuration module without bundled types.
+rl_config: Any = import_module("reportlab.rl_config")
 rl_config.invariant = 1
-P=Path(__file__).resolve().parent; P.mkdir(exist_ok=True)
+P.mkdir(exist_ok=True)
 sections=[
 ('A bounded system for authorized work', '''Runspindle is a proposed distribution of cooperating components for agent-assisted work. Its aim is to make task boundaries, human control, evidence, and recovery explicit. The current deliverable is a scaffold and design specification. It is not an operating service, a production deployment, or a measured improvement over a native agent product.
 A task begins with a defined outcome, accountable owner, permitted sources and actions, and stop conditions. An agent's ability to perform an action is not authority to perform it. Scope changes and consequential actions require the applicable approval. Product policy and legal constraints remain in force; the architecture is not a mechanism for bypassing them.'''),
@@ -47,7 +106,7 @@ def page(name,title,parts):
  (P/name).write_text(b)
 page('index.html','Runspindle',[sections[i] for i in [0,2,6,7,8]])
 page('browser.html','Runspindle Browser',[sections[i] for i in [0,3,6,7]])
-page('vision.html','Runspindle Refinery',[sections[i] for i in [4,5,7,8]])
+# vision.html is Console-owned and must not be regenerated here.
 def deck(name,title,parts):
  b=r'''\documentclass[aspectratio=169,11pt]{beamer}
 \usepackage[T1]{fontenc}\usepackage{lmodern}
@@ -76,7 +135,7 @@ deck('fleet','Runspindle: Fleet Evidence and Control',[
 
 Runspindle names Rust, Temporal, Codex, OpenBao, PinchTab, KasmVNC, Slack, Python, DSPy, and Langfuse only to identify proposed integrations. No endorsement is implied, and this document does not relicense those products.
 
-SRC-013 selected source material carries the MIT notice: Copyright (c) 2026 newdarwindev. The complete original notice is retained in LICENSE-SRC-013.txt. The permission notice applies to that source material and its adapted portions, not automatically to this entire distribution.
+SRC-010 and SRC-013 selected source material carries the MIT notice: Copyright (c) 2026 newdarwindev. The complete original notice is retained separately in LICENSE-SRC-010.txt and LICENSE-SRC-013.txt. SRC-010 is the selected standalone vision page; its inline styles and adapted narrative require no additional rendering assets, scripts, fonts, or packages. Linked historical documents are navigation, not dependencies, and are not imported by this lift. The permission notice applies to that source material and its adapted portions, not automatically to this entire distribution.
 
 No project license was found for SRC-002 or SRC-009 during source review. No license is invented or assigned to them here. Detailed provenance and original artifacts remain in restricted migration records outside this public candidate. A publisher must resolve the rights to any retained expression before release.
 
@@ -87,7 +146,6 @@ from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,PageBreak
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
-import re
 S=getSampleStyleSheet();S.add(ParagraphStyle(name='Copy',fontName='Helvetica',fontSize=10.5,leading=15,spaceAfter=10,textColor=colors.HexColor('#183247')))
 S['Heading1'].textColor=colors.HexColor('#075985');S['Title'].textColor=colors.HexColor('#183247')
 def foot(c,d):

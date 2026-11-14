@@ -93,18 +93,29 @@
       "status": "adapted_document"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "adaptation_limits": "Complete selected-page section, style and navigation disposition; no original rendering, runtime, provider or live acceptance claim. Visual acceptance remains blocked.",
       "destination": "docs/marketing/vision.html",
-      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "license_review": "Selected standalone page and dependency closure reviewed. MIT Copyright (c) 2026 newdarwindev; exact notice in docs/marketing/LICENSE-SRC-010.txt. No external rendering dependencies.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Adapted all selected page sections and seven workflow stages; preserved hypothesis and simulation warnings; replaced demo link with local design overview; historical white paper unavailable and unselected presentation excluded. Added immutable-output, gold/serving, evidence and freshness boundaries.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
       "source_description": "Selected legacy design source; exact source mapping retained privately.",
       "source_id": "SRC-010",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "artifact_acceptance": "blocked_visual_review",
+      "executable_implementation": "none",
+      "scope_accounting": "complete",
+      "verified_behavior": "static_integrity_only",
+      "disposition_map": "docs/marketing/SRC-010-lift.json",
+      "notice": "docs/marketing/LICENSE-SRC-010.txt",
+      "validation_record": "docs/marketing/SRC-010-validation.md",
+      "canonical_repository": "newdarwindev/runspindle-console",
+      "canonical_path": "docs/product/vision.html",
+      "canonical_commit": "4737f8a37d5cd837ec52377adefd687ebd597383",
+      "canonical_sha256": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7"
     },
     {
       "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
