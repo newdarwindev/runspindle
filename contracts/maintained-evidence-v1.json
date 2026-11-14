@@ -1,0 +1,18 @@
+{
+  "version": "runspindle.maintained-evidence.v1",
+  "extends": "runspindle.integration.v1",
+  "format": "bounded native Python library mapping; not runtime wire conformance",
+  "authority_default": "deny",
+  "interfaces": {
+    "lineage": {"owner": "refinery", "bindings": ["source_revision", "output_revision", "source_sha256", "output_sha256", "feedback_observation_sha256", "collection_evidence", "family_id", "dataset_sha256", "split_sha256"]},
+    "experiment": {"owner": "refinery", "bindings": ["experiment_id", "dataset_sha256", "split_sha256", "baseline_sha256", "candidate_sha256", "config_sha256", "budget_id", "attempt_id"]},
+    "serving": {"owner": "refinery", "bindings": ["candidate_sha256", "evaluation_sha256", "policy_sha256", "approval_evidence", "environment", "generation", "activation_id", "predecessor_sha256", "observed_sha256"]},
+    "telemetry": {"owner": "platform", "bindings": ["producer", "config_sha256", "policy_sha256", "task_id", "session_id", "event_id", "trace_id", "span_id", "envelope_sha256", "backend_record_id"]},
+    "development_bundle": {"owner": "platform", "bindings": ["composition_commit", "component_commits", "dependency_digests", "toolchain_digests", "licenses", "target", "manifest_sha256", "installed_sha256", "generation"]}
+  },
+  "limits": {"records_per_kind": 1000, "bytes_per_record": 1048576, "total_payload_bytes": 67108864, "attempts": 4096},
+  "unknown": "retain intent and reservation; reconcile independently before retry; never refund unknown usage",
+  "reconciliation": {"serving": "adapter active digest and activation identity readback", "telemetry": "backend readback of same correlated envelope", "development_bundle": "installed byte verification in disposable target"},
+  "unsupported_versions": "reject before any effect",
+  "scope": "synthetic offline component evidence; no provider transmission, execution grant, production activation or full-system acceptance"
+}
