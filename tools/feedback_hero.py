@@ -143,6 +143,17 @@ def fixture(
     from refinery.tether_dependency import TetherDependency
 
     dep = TetherDependency(tether)
+    # The real constructors must resolve the verified new schema snapshot.
+    for family in ("admission", "journal", "feedback"):
+        require(
+            dep.modules["tether." + family].open_store
+            is dep.modules["tether.schema"].open_store
+        )
+    from refinery import schema
+
+    require(
+        Path(schema.__file__).resolve() == (refinery / "refinery/schema.py").resolve()
+    )
     a, j, f, t = (
         dep.modules["tether." + n]
         for n in ("admission", "journal", "feedback", "testing")
@@ -471,7 +482,7 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
     with tempfile.TemporaryDirectory(prefix="feedback-hero-") as directory:
         root = Path(directory)
 
-        def invoke(case: Path, mode: str) -> None:
+        def invoke(case: Path, mode: str, expected_exit: int | None = None) -> None:
             case.mkdir(exist_ok=True)
             cache = root / "empty-cache"
             environment = dict(
@@ -494,7 +505,14 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
             completed = subprocess.run(
                 command, env=environment, capture_output=True, timeout=40
             )
-            require(completed.returncode == (70 if mode == "crash" else 0))
+            require(
+                completed.returncode
+                == (
+                    expected_exit
+                    if expected_exit is not None
+                    else (70 if mode == "crash" else 0)
+                )
+            )
 
         for repeat in range(2):
             case = root / f"positive-{repeat}"
@@ -530,6 +548,30 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
         )
         invoke(crash, "collect")
         require(observe(crash)["object_digest"] == outcomes[0])
+        for filename, table in (
+            ("admission.sqlite", "mirrors"),
+            ("journal.sqlite", "provider_attempts"),
+            ("feedback.sqlite", "feedback_heads"),
+            ("refinery.sqlite", "families"),
+        ):
+            case = root / ("schema-" + table)
+            invoke(case, "prepare")
+            with closing(sqlite3.connect(case / filename)) as db:
+                db.execute(f'DROP TABLE "{table}"')
+                db.commit()
+            invoke(case, "collect", expected_exit=2)
+            require(
+                rows(case / "refinery.sqlite", "SELECT count(*) FROM objects")[0][0]
+                == 0
+            )
+            require(
+                rows(
+                    case / filename,
+                    f"SELECT count(*) FROM sqlite_master WHERE name='{table}'",
+                )[0][0]
+                == 0
+            )
+            require(not (case / "result.json").exists())
         for mode in ("duplicate", "revoked", "stale", "mutant"):
             case = root / mode
             invoke(case, "prepare")
@@ -548,6 +590,7 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
         "fresh_process_replay": "passed",
         "precommit_process_crash_recovery": "passed",
         "negative_cases": 3,
+        "schema_reopen_denials": 4,
         "deliberate_mutation_detected": True,
         "independent_object_digest": outcomes[0],
         "sources": {n: i["commit"] for n, i in manifest["sources"].items()},

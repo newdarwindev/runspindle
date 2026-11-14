@@ -72,8 +72,8 @@ class FeedbackInventoryTests(unittest.TestCase):
                 "  " + following + ":\n", 1
             )[0]
             self.assertEqual(section.count("fetch-depth: 0"), 3)
-            self.assertIn("ref: 17c4e8490eabe8876de8c4508ab6aa4d54af8c78", section)
-            self.assertIn("ref: 5690ddd600f5d7b237eed2dac63fc573292a29a1", section)
+            self.assertIn("ref: 670989839a0fccbcf2014d01609778ae6e4df424", section)
+            self.assertIn("ref: b68ba9d77d51ca453b3f0fa3a9fa31573d065250", section)
             self.assertIn("RUNSPINDLE_FEEDBACK_HERO_TETHER:", section)
             self.assertIn("RUNSPINDLE_FEEDBACK_HERO_REFINERY:", section)
             self.assertIn("MYPYPATH:", section)
