@@ -18,5 +18,30 @@ jobs:
         with:
           persist-credentials: false
           submodules: recursive
+          fetch-depth: 0
+      - name: Prepare exact Tether feedback candidate
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: newdarwindev/runspindle-tether
+          ref: 17c4e8490eabe8876de8c4508ab6aa4d54af8c78
+          path: local/feedback-sources/tether
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Prepare exact Refinery feedback candidate
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          repository: newdarwindev/runspindle-refinery
+          ref: 5690ddd600f5d7b237eed2dac63fc573292a29a1
+          path: local/feedback-sources/refinery
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run required candidate feedback lane
+        run: >-
+          python3 tools/feedback_hero.py
+          --tether local/feedback-sources/tether
+          --refinery local/feedback-sources/refinery
       - name: Run implemented validation
+        env:
+          RUNSPINDLE_FEEDBACK_HERO_TETHER: ${{ github.workspace }}/local/feedback-sources/tether
+          RUNSPINDLE_FEEDBACK_HERO_REFINERY: ${{ github.workspace }}/local/feedback-sources/refinery
         run: python3 tools/validate.py
