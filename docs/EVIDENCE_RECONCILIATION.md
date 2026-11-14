@@ -111,3 +111,12 @@ dirty, skipped and missing independent-observation reasons preventing promotion
 to current-main acceptance. The synthetic test suite is qualification of the
 checker, not acceptance of the campaign being checked. Hygiene and required
 Strix checks must qualify before dependent merges; no pin update is included.
+
+The foundation campaign exercised three actual private manifests: Wave 1 hygiene
+receipts, historical evidence and dirty authority sources. All returned exit 1
+and `non_success`, retaining live acceptance as `not_run`. The draft manifest
+retains platform's skipped tests as blocked. Original local receipt outcomes
+are preserved alongside missing reconciler input closure and independent
+observations; adapters do not synthesize missing observations. These are actual
+relationship checks on campaign receipts, not campaign or current-main
+acceptance. Raw evidence, source paths and manifests remain outside Git.

@@ -80,5 +80,5 @@ independent review; no review or production activation is implied.
 The composition includes an offline [exact-source evidence reconciler](docs/EVIDENCE_RECONCILIATION.md)
 for issue criteria, component pins, capabilities, receipts and README/STATUS claim
 mappings. Local synthetic tests cover invalid evidence and independent effect
-observations. Current campaign packet reconciliation and isolated runner qualification
-remain not run. Integrated system implementation and live acceptance remain absent.
+observations. Private campaign packet reconciliation returned non-success for draft, historical,
+dirty and incomplete observations. Isolated runner qualification remains blocked. Integrated system implementation and live acceptance remain absent.

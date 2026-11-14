@@ -10,13 +10,14 @@
   },
   "dev_deployment": "not_run",
   "evidence_reconciliation": {
-    "actual_campaign_packet_reconciliation": "not_run",
+    "actual_campaign_packet_reconciliation": "performed_private_manifest_non_success",
     "contract": "runspindle.evidence-reconciliation.v1",
     "entrypoint": "tools/reconcile_evidence.py",
     "isolated_runner_qualification": "not_run",
     "specification": "docs/EVIDENCE_RECONCILIATION.md",
     "status": "locally_tested_synthetic_receipt_reconciliation",
-    "system_acceptance": "not_inferred"
+    "system_acceptance": "not_inferred",
+    "campaign_acceptance": "blocked_draft_historical_dirty_skipped_and_incomplete_observations"
   },
   "implementation": "bounded_implementation",
   "implementation_scope": "composition_evidence_reconciliation",
