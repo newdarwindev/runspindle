@@ -76,7 +76,7 @@
       "implementation_evidence": false,
       "kind": "new_renderer",
       "path": "docs/marketing/build_documents.py",
-      "sha256": "73def9dba3cda8742f48bb5c85a1a83909d23b70ddf652725e890ab8709e040a",
+      "sha256": "c1274f295a3836b71b05d2651ab8a6a8861a66192f33ca993ee3d87063899a73",
       "source_ids": [
         "SRC-002",
         "SRC-003",
@@ -93,11 +93,12 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/economics.md",
-      "sha256": "49b5f314523565c077081b7dd3899f86b6faf8bd9099e6e6fe024a393ac4c717",
+      "sha256": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
       "source_ids": [
         "SRC-005"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render",
+      "SRC-005_classification": "original_concept_adaptation_with_explicit_expression_exclusions"
     },
     {
       "historical_original": false,
@@ -145,7 +146,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/overview.md",
-      "sha256": "e0a40a4ed5b0b200367c9235bfd8d3f5e090fd53307bed6be83035846cc9ee65",
+      "sha256": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
       "source_ids": [
         "SRC-002",
         "SRC-005",
@@ -153,14 +154,15 @@
         "SRC-010",
         "SRC-013"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render",
+      "SRC-005_classification": "original_concept_adaptation_with_explicit_expression_exclusions"
     },
     {
       "historical_original": false,
       "implementation_evidence": false,
       "kind": "new_reportlab_pdf",
       "path": "docs/marketing/runspindle-paper.pdf",
-      "sha256": "148c975ade24c29c236545bcbc6c167ad5301717176cd9164603556e98b32ec2",
+      "sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
       "source_ids": [
         "SRC-002",
         "SRC-005",
@@ -168,14 +170,15 @@
         "SRC-010",
         "SRC-013"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render",
+      "SRC-005_classification": "original_concept_adaptation_with_explicit_expression_exclusions"
     },
     {
       "historical_original": false,
       "implementation_evidence": false,
       "kind": "uncompiled_editable_tex",
       "path": "docs/marketing/runspindle-paper.tex",
-      "sha256": "4dbc79a726686d8ff64e853b84dbd887114633228530e69cbeb9025e33477db8",
+      "sha256": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
       "source_ids": [
         "SRC-002",
         "SRC-005",
@@ -183,7 +186,8 @@
         "SRC-010",
         "SRC-013"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render",
+      "SRC-005_classification": "original_concept_adaptation_with_explicit_expression_exclusions"
     },
     {
       "canonical": {
@@ -214,7 +218,7 @@
       "implementation_evidence": false,
       "kind": "original_accounting_specification",
       "path": "docs/marketing/economics-model.md",
-      "sha256": "2a3389e64e1c68ff3977ddff192590d4da48900b3fde395cd1eef3978669b617",
+      "sha256": "ff1cbbe3ad5610f42b2a82c4ce1fae1d2948f4b76a3c844605fc12681a8296c8",
       "source_ids": [],
       "source_relationship": "Original synthetic accounting model; no historical source import"
     },
@@ -573,6 +577,39 @@
       "implementation_evidence": false,
       "kind": "final_document_integration_receipt",
       "source_relationship": "Final zero-skip local validation; historical source and earlier integration receipts preserved"
+    },
+    {
+      "path": "docs/marketing/SRC-005-disposition.json",
+      "sha256": "357efd8bb6524af8c9f0b49350d9b081e9647e20ebd6fea6773a6592c1b9be51",
+      "source_ids": [
+        "SRC-005"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "original_source_scope_and_review",
+      "source_relationship": "Selected concepts accounted for; original expression excluded, not historical rebuild or live evidence"
+    },
+    {
+      "path": "docs/marketing/SRC-005-review.md",
+      "sha256": "66fd9b23fc69f44f7f41cfd608895b1c4ae30412ce1fda1c36c98311d7db70d4",
+      "source_ids": [
+        "SRC-005"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "original_source_scope_and_review",
+      "source_relationship": "Selected concepts accounted for; original expression excluded, not historical rebuild or live evidence"
+    },
+    {
+      "path": "docs/marketing/SRC-005-validation.json",
+      "sha256": "84984789615c8e00d85a8d1560a86bca813650b64cf918a8cfaacad006a6cff1",
+      "source_ids": [
+        "SRC-005"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "local_adaptation_validation_receipt",
+      "source_relationship": "Exact local tested-content identity and bounded checks; not remote CI, historical rebuild or measured economics"
     }
   ],
   "migration_status": "partial",
@@ -590,6 +627,13 @@
       "static_integrity": "passed",
       "root_integration": "local_checks_passed_remote_pending",
       "runtime": "not_claimed"
+    },
+    "SRC-005": {
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "measurement": "not_run",
+      "native_historical_render": "not_run",
+      "independent_review": "pending",
+      "source_expression": "excluded_no_verified_reuse_license"
     }
   }
 }

@@ -65,18 +65,25 @@
       "status": "adapted_document"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "adaptation_limits": "Selected concepts and citations accounted for with explicit safe exclusions. Original expression rights and historical native rendering remain unresolved; no live economics.",
       "destination": "docs/marketing/economics.md",
-      "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
+      "license_review": "No project-wide license established for selected section or diagrams. Owner-directed original adaptation of concepts only; no blanket relicense. Source diagrams and copied expression excluded. Bibliographic attribution does not grant reuse rights.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Expanded original definitions, accounting identity, fixed-cost allocation, assumptions, sensitivity, comparisons, pricing incentives, obsolescence and complementary-investment limits. Source prose/figures not reproduced.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-005",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+      "disposition_map": "docs/marketing/SRC-005-disposition.json",
+      "review_record": "docs/marketing/SRC-005-review.md",
+      "bundle_source_id": "SRC-002",
+      "executable_implementation": "preexisting_original_tools/economics.py_not_historical_import",
+      "verified_behavior": "synthetic_arithmetic_and_document_integrity_only"
     },
     {
       "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
@@ -202,7 +209,10 @@
     "specification": "docs/marketing/economics-model.md",
     "historical_source_import": "none",
     "measurement": "not_run",
-    "migration_completion": false
+    "migration_completion": false,
+    "source_concept": "SRC-005 within SRC-002; exact expression not imported",
+    "source_disposition": "docs/marketing/SRC-005-disposition.json",
+    "verified_behavior": "synthetic_arithmetic_only_no_measurements"
   },
   "retained_feedback_candidate_lane": {
     "implementation": "Original synthetic composition fixture and read-only SQL oracle calling reviewed actual Tether/Refinery source; no historical import.",
