@@ -37,6 +37,7 @@ def main():
         if shutil.which(tool):
             run([tool, "--version"])
     run([sys.executable, "tools/check_scaffold.py"])
+    run([sys.executable, "tools/check_core_product.py"])
     # Each implemented repository checker runs as a real process. Acceptance
     # gates are deliberately excluded and retain their own failing workflows.
     for name in ("check_artifacts.py", "check_references.py", "check_shared_fixtures.py",

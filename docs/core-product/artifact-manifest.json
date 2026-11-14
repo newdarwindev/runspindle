@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-001",
+  "artifact_status": "accounted_adaptation",
+  "overall_migration_status": "partial",
+  "runtime_acceptance": "not_run",
+  "revision_binding": "The exact Git commit/tree and this manifest hash are recorded in the post-freeze candidate/publication receipt; each run emits tested_commit and tracked_changes.",
+  "provenance_record_sha256": "9d4c94c5de665a260f025e75655b8749feb39b97a99d5984832b9f901d794b52",
+  "file_sha256": {
+    "docs/core-product/README.md": "d23149ccd34c2fd8c204c46047b2b4c765831d14cb7191e2f4859166781de780",
+    "docs/core-product/coverage.json": "171ab3b8242d6eda516d04051f4a866a6c2b5a64e9c87b7d36576f5546356be1",
+    "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
+    "tests/test_core_product.py": "59ddbbb3470724cc5c2014859ba85f6271799aa0fdff57e026c1d3497852ffe0",
+    "tools/check_core_product.py": "8ab8d07e496d466ed4af425bfabcd9e46539c52d0e8bb1a6c1a3c4138bac9f65",
+    "tools/validate.py": "c20b38ac40d5fcd7d51f3df5b582159117caaee1595e7fd5e2c7ef5b26ad3c0b"
+  }
+}
