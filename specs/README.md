@@ -46,3 +46,8 @@ existing acceptance results or operational permissions.
 [Runtime integration v1](runtime-integration-v1.md) defines the explicitly versioned
 core/host library, durable artifact acceptance and delivery outbox extension.
 It leaves Runtime v1 and synthetic fixture semantics unchanged.
+
+[Runtime envelopes v1](runtime-envelopes-v1.md) defines four separate JSON wire
+mappings. Initial Python synthetic conformance is bounded; Rust and authenticated
+runtime qualification are recorded separately. No independent review occurred
+(user waiver for this tranche).

@@ -83,5 +83,12 @@
     "status": "locally_tested_provisional_bundle",
     "upstream_qualification": "blocked",
     "version": "runspindle.fixture.v1"
+  },
+  "runtime_envelopes": {
+    "version": "runspindle.envelope.v1",
+    "status": "specified_python_synthetic_mappings_tested",
+    "rust_conformance": "not_run",
+    "authority": "not_run",
+    "independent_review": "user_waived_no_review_occurred"
   }
 }

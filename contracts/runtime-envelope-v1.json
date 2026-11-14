@@ -1,0 +1,14 @@
+{
+  "version": "runspindle.envelope.v1",
+  "status": "bounded_wire_contract",
+  "specification": "specs/runtime-envelopes-v1.md",
+  "fields": ["version", "message_type", "message_id", "binding", "payload"],
+  "message_types": ["admission_request", "host_observation", "delivery_request", "delivery_receipt"],
+  "max_bytes": 1048576,
+  "counter_max": 18446744073709551615,
+  "authority_default": "deny",
+  "unknown_fields": "reject",
+  "duplicate_keys": "reject_recursively",
+  "version_negotiation": "exact_only",
+  "independent_review": "user_waived_no_review_occurred"
+}
