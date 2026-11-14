@@ -173,5 +173,10 @@
     "source_pins": "specs/maintained-scenarios-v1.json",
     "notices": "exact component/dependency notices included in ignored prepared bundle; no executable payload or legacy history committed",
     "remaining": "Langfuse original notice closure and all retained selected-source/native/Tether/production gaps"
+  },
+  "runtime_envelope_source": {
+    "classification": "original_contract_independent_python_codec_synthetic_vectors",
+    "specification": "specs/runtime-envelopes-v1.md",
+    "legacy_source_import": "none"
   }
 }
