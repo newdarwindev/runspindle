@@ -62,6 +62,26 @@
       "timeout_seconds": 600
     },
     {
+      "id": "feedback-hero",
+      "command": [
+        "python3",
+        "tools/feedback_hero.py",
+        "--tether",
+        "local/feedback-sources/tether",
+        "--refinery",
+        "local/feedback-sources/refinery"
+      ],
+      "required_files": [
+        "tools/feedback_hero.py",
+        "tests/test_feedback_hero.py",
+        "scenarios/feedback-collection-v1.json",
+        "local/feedback-sources/tether/tether/feedback.py",
+        "local/feedback-sources/refinery/refinery/feedback_collection.py",
+        "local/feedback-sources/refinery/dependencies/tether-feedback.json"
+      ],
+      "timeout_seconds": 180
+    },
+    {
       "id": "distributable-build",
       "not_applicable": "No distributable build command exists in this repository validation contract; this does not claim release acceptance."
     }

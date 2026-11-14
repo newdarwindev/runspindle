@@ -185,5 +185,10 @@
     "historical_source_import": "none",
     "measurement": "not_run",
     "migration_completion": false
+  },
+  "retained_feedback_candidate_lane": {
+    "implementation": "Original synthetic composition fixture and read-only SQL oracle calling reviewed actual Tether/Refinery source; no historical import.",
+    "sources": "scenarios/feedback-collection-v1.json",
+    "scope": "Candidate H10 component seam only; deployed composition and full hero acceptance remain blocked."
   }
 }

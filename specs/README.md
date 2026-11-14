@@ -51,3 +51,7 @@ It leaves Runtime v1 and synthetic fixture semantics unchanged.
 mappings. Initial Python synthetic conformance is bounded; Rust and authenticated
 runtime qualification are recorded separately. No independent review occurred
 (user waiver for this tranche).
+
+[Retained-feedback candidate integration](../docs/FEEDBACK_HERO.md) qualifies one
+bounded H10 seam using actual pinned Tether and Refinery stores. Composition pins
+and existing maintained-scenario acceptance remain unchanged.

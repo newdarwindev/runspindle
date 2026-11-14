@@ -19,7 +19,8 @@
     "component": [
       "check-artifacts",
       "python-tests",
-      "distributable-build"
+      "distributable-build",
+      "feedback-hero"
     ],
     "rust": [],
     "mutation_1": [],
