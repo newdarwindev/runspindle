@@ -5,7 +5,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/BUILD.md",
-      "sha256": "e82151670feb886a13363e93234eaf6ecc37caeb994dbc55147c02604ce6c3ea",
+      "sha256": "49aee9f4f92ef3622cda5880823f81d101fe74655e15ac3166cc267c47579231",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -14,7 +14,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/README.md",
-      "sha256": "70684275141846bf53eee6edd2108d2cce3f6d1545d439658dcd817a6c2d671a",
+      "sha256": "8cae22b8a604bcacb6442001b40257ae508c642a92f5a1e76fc837f3f20c97ad",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -61,20 +61,35 @@
     {
       "historical_original": false,
       "implementation_evidence": false,
-      "kind": "new_static_html",
+      "kind": "normalized_canonical_html",
       "path": "docs/marketing/browser.html",
-      "sha256": "cfa1744917d2088f430e588c489590f1b3c3adf25bf15b277012345d6a2245c5",
+      "sha256": "29e95738298a933c28de6ba1d9e38be6f5b330c2c6b920fce7d75c2668fb717e",
       "source_ids": [
         "SRC-009"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "Reviewed Browser canonical HTML with ten reversible link/location substitutions; not byte-identical and not rendered acceptance.",
+      "canonical": {
+        "repository": "newdarwindev/runspindle-browser",
+        "commit": "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b",
+        "tree": "03f5e9d2f0388ea8f948de2b0c85e065eef877ba",
+        "path": "docs/product/browser.html",
+        "sha256": "afab98f2e8fab8ac27ef29e9ee2499ae2a2fffd9e2aa09fbdcb877bbb1ef2f9e"
+      },
+      "transformation": "docs/marketing/SRC-009-mirror.json",
+      "verification": {
+        "source_mapping": "checked_separately",
+        "rendered_desktop_mobile": "not_run",
+        "keyboard_navigation": "not_run",
+        "root_independent_review": "required_before_publication",
+        "runtime": "not_run"
+      }
     },
     {
       "historical_original": false,
       "implementation_evidence": false,
       "kind": "new_renderer",
       "path": "docs/marketing/build_documents.py",
-      "sha256": "9da4c67e8f640a334534390a34c3d779b54bff76f60e5a8a492fc46de0d9228e",
+      "sha256": "799c5e6ae43eceaedbaf6bacd9cca2f52d72c95de7968347bdb705312ea7a7ef",
       "source_ids": [
         "SRC-002",
         "SRC-003",
@@ -1110,6 +1125,39 @@
       "source_relationship": "Explicit current canonical mapping; previous mirror receipts and compiled bytes preserved"
     },
     {
+      "path": "docs/marketing/SRC-009-mirror.json",
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "browser_mirror_accounting",
+      "source_ids": [
+        "SRC-009"
+      ],
+      "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
+      "sha256": "2d2bcf66f300127f62725d53f2c5a8b72e2bfacb4330150134a66bbe0e477df7"
+    },
+    {
+      "path": "docs/marketing/SRC-009-mirror.md",
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "browser_mirror_accounting",
+      "source_ids": [
+        "SRC-009"
+      ],
+      "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
+      "sha256": "82eb3200a074f57636630fbd85b0f58c007cc7040f635e3d02ae14b0dfd2be58"
+    },
+    {
+      "path": "docs/marketing/browser_mirror.py",
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_guard",
+      "source_ids": [
+        "SRC-009"
+      ],
+      "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
+      "sha256": "3e44a87491af69abf49b0f71a27a07cc07e16fb7839c5b520ede3c16003ebccb"
+    },
+    {
       "historical_original": false,
       "implementation_evidence": false,
       "kind": "new_support_document",
@@ -1200,6 +1248,13 @@
       "pdf_matches_authored_source": false,
       "all_pages_text_links": "not_run",
       "runtime": "not_claimed"
+    },
+    "SRC-009": {
+      "source_mapping": "checked_separately",
+      "rendered_desktop_mobile": "not_run",
+      "keyboard_navigation": "not_run",
+      "root_independent_review": "required_before_publication",
+      "runtime": "not_run"
     }
   }
 }

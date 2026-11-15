@@ -116,18 +116,28 @@
       "verified_behavior": "synthetic_arithmetic_and_document_integrity_only"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
+      "adaptation_limits": "Single reviewed canonical Browser page with explicit link and location normalization; not byte-identical. Actual rendered/mobile/keyboard and live runtime acceptance remain not run; issue5 stays open.",
       "destination": "docs/marketing/browser.html",
-      "license_review": "No new blanket license; applicable MIT notice included with adapted material.",
+      "license_review": "Owner-directed reuse of original Runspindle Browser prose, HTML and CSS. Historical expression and all historical dependencies remain excluded upstream. No blanket license or applicability of unrelated MIT notices is inferred.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Adopt canonical Browser source and account for ten exact reversible substitutions: eight immutable document links and two location/status sentences. Retire obsolete Browser output only; preserve every other marketing generator output and existing source guards.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-selected adaptation; original rights and notices retained.",
       "source_description": "Selected legacy design source; exact source mapping retained privately.",
       "source_id": "SRC-009",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "canonical": {
+        "repository": "newdarwindev/runspindle-browser",
+        "commit": "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b",
+        "tree": "03f5e9d2f0388ea8f948de2b0c85e065eef877ba",
+        "path": "docs/product/browser.html",
+        "sha256": "afab98f2e8fab8ac27ef29e9ee2499ae2a2fffd9e2aa09fbdcb877bbb1ef2f9e"
+      },
+      "mirror_mapping": "docs/marketing/SRC-009-mirror.json",
+      "source_relationship": "link_and_location_normalized_derivative_not_byte_identical",
+      "runtime_acceptance": "not_run"
     },
     {
       "adaptation_limits": "Complete selected-page section, style and navigation disposition; no original rendering, runtime, provider or live acceptance claim. Visual acceptance remains blocked.",
