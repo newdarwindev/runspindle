@@ -3,7 +3,7 @@
 This is an original accounting implementation supporting issue #7, not a lift of
 historical equations, measured prices, performance, savings or financial advice.
 It supplements the existing paper/economics narrative without changing its claims.
-The historical source-section disposition and full SRC-005 migration remain open.
+The selected SRC-005 concepts and safe exclusions are recorded in [the disposition map](SRC-005-disposition.json). Original prose/diagram rights and native historical rendering remain unresolved, so the overall migration remains partial. The generated [economics note](economics.md) and the paper use the same accounting identity and citations.
 
 ## Units and assumptions
 
@@ -52,3 +52,18 @@ command with `python3 -O`. Tests cover dimensional conversion, every cost catego
 zero outcomes, acceptance-vs-attempt denominator, invalid types/counts, exact
 fractions, rounding and synthetic sensitivity. Full composition/native/live
 acceptance is independent of these arithmetic checks.
+
+## Source concept versus original executable behavior
+
+SRC-005 supplied the reviewed accepted-work accounting concept within the SRC-002
+paper bundle. No source code or source expression was imported into this model.
+The original implementation makes fixed integration an explicit seventh category
+in the numerator rather than leaving setup cost only in surrounding prose. It
+also defines the zero-completion result and integer-to-currency conversion.
+The regrouping U = F / A + (C - F) / A is valid only for A > 0 and does not assume
+that variable costs or acceptance remain constant as workload volume changes.
+
+The current twelve arithmetic tests are synthetic verification of this bounded
+implementation, not evidence of authentic authorization, inputs, deployment,
+savings or a completed historical rebuild. Publication and independent review
+are separately recorded.

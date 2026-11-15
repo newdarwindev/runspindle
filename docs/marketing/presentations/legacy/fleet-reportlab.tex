@@ -1,0 +1,39 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[T1]{fontenc}\usepackage{lmodern}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamercolor{structure}{fg=blue!55!black}
+\title{Runspindle: Fleet Evidence and Control}\subtitle{Design scaffold; no live deployment or measured savings}\author{Runspindle}\date{November 2026}\begin{document}\begin{frame}\titlepage\end{frame}
+\begin{frame}{State must be observable}\begin{itemize}
+\item A process observation is not a managed session or a completed task.
+\item Every record needs identity, timestamp, source, and freshness.
+\item Missing updates mean unknown, not permission to restart.
+\end{itemize}\end{frame}
+\begin{frame}{Bind control to identity}\begin{itemize}
+\item Verify host, repository, process, session, and task before an action.
+\item Native Codex is the planned host boundary.
+\item Tether routes bounded requests; delivery alone proves no outcome.
+\end{itemize}\end{frame}
+\begin{frame}{One browser, one controller}\begin{itemize}
+\item Authorized passive KasmVNC viewing grants no input control.
+\item Interactive takeover needs a fenced lease on the same browser as PinchTab.
+\item Fence stale lease epochs and revoke streams on handoff.
+\item OpenBao secret references must stay out of logs and evaluation data.
+\end{itemize}\end{frame}
+\begin{frame}{Durability is not external certainty}\begin{itemize}
+\item Temporal stores durable intent and approval waits.
+\item An uncertain submission requires reconciliation before retry.
+\item Browser-side fencing and account isolation need separate tests.
+\end{itemize}\end{frame}
+\begin{frame}{Console and release evidence}\begin{itemize}
+\item Planned console views must use actual fleet observations with age.
+\item Collectors/Langfuse identity and readback are proposed; masking coverage remains unresolved.
+\item No live fleet is connected in this scaffold.
+\item Platform packaging, development integration, and production acceptance remain planned.
+\end{itemize}\end{frame}
+\begin{frame}{A bounded validation plan}\begin{itemize}
+\item Test stale routes, recycled process IDs, cancellation, restart, and duplicate requests.
+\item Use permissioned environments; do not inherit historical success claims.
+\item No implementation, deployment, or savings result is claimed. Source: SRC-002, SRC-009.
+\end{itemize}\end{frame}
+\end{document}

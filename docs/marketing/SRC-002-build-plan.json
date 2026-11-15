@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "status": "proposed_native_build_requires_independent_review",
+  "native_compile": "not_run",
+  "installation": "none_requested_or_performed",
+  "dependency_closure_complete": false,
+  "engine": "pdfTeX 1.40.29 / TeX Live 2026 Debian",
+  "document_class": "article 11pt letterpaper",
+  "direct_packages": [
+    "geometry",
+    "fontenc",
+    "lmodern",
+    "amsmath",
+    "amssymb",
+    "graphicx",
+    "hyperref"
+  ],
+  "figures": "five_original_editable_tabular_schematics; no historical figures or binary dependencies",
+  "bibliography": "thebibliography; no BibTeX or natbib",
+  "observed_toolchain_files": [
+    {
+      "path": "/usr/bin/pdftex",
+      "sha256": "f7bb494a2df8c8f877f782ddc623bde451a66d1d7ab89a2eba168070d4c56344"
+    },
+    {
+      "path": "/usr/bin/kpsewhich",
+      "sha256": "d832b9f11b2e70a87e06606b92bddda66b8ae66ec413955c2a872894de297838"
+    },
+    {
+      "path": "/usr/bin/bwrap",
+      "sha256": "263a40b4dca7b24d47c05bf2f64d05093dbefa8577c556c9a185040a173bf7b8"
+    },
+    {
+      "path": "/usr/bin/timeout",
+      "sha256": "9cd6f7a935624ed29b130f922f4a829fc1ca300463d47c1e4892ec17926d9ed9"
+    },
+    {
+      "path": "/usr/bin/pdfinfo",
+      "sha256": "73f71a3c9a18ad48f6d5f8ad8b782e047ca1cc1bbedc22d5004e732169cd4a2b"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls",
+      "sha256": "c09f5982893f8a092e69435caa151eef0d3cb4d7495abf23f08b640191cf81f6"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo",
+      "sha256": "b8c6f5233985add1f64d4dd6665fc30d894ae4b8da6d8e9f0ce40bdb7c7032df"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty",
+      "sha256": "d541ce56a3f45e2462be958ec62a50404213f26b241c7d7ad3e812685d38f5d8"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty",
+      "sha256": "ac8ca5b250f2b6b545d0d82a10a2fc17e36fe95e2e0c48eba5626cf8af877263"
+    },
+    {
+      "path": "/usr/share/texmf/tex/latex/lm/lmodern.sty",
+      "sha256": "d2877369dcb4bfe7b1b6bba1a3d96c46e93366459c9b46576f1b221009bbe359"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty",
+      "sha256": "8bf35130be39e123cbd0e4f0c09d3806d745d4c08ee391a543a8b9675191e6a7"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty",
+      "sha256": "70838b061b56569dd3ed9f339b1bdd1c78ba185de49f27ceae331c97f48b5986"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty",
+      "sha256": "ed13d7b0b9b619804d9dc97030aa7d121b542a04174da1a59a8e5f43c6e834da"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty",
+      "sha256": "da65dca8a44a4946284e6344ed731c9c1c6629bf7bd636b176a0cb2ea50af0cb"
+    },
+    {
+      "path": "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty",
+      "sha256": "d5af41ea0faa3385c90b7dd7c6ccd464fe9a047488d4c517df3a5e824cc75b35"
+    },
+    {
+      "path": "/var/lib/texmf/web2c/pdftex/pdflatex.fmt",
+      "sha256": "029a94059816821c5da51a3a7e3873f9512a74f3204e5cf0ec05e1e72db6732d"
+    }
+  ],
+  "inventory_limit": "Read-only availability and hashes only. Not a loaded-input closure, execution qualification or a build. The earlier SRC-013 lock is retained unchanged and cannot certify this source.",
+  "font_dependency": {
+    "name": "Latin Modern",
+    "status": "planned_not_newly_embedded",
+    "license": "GUST Font License / applicable LPPL 1.3c or later terms",
+    "sources": [
+      "https://ctan.org/texarchive/fonts/lm",
+      "https://ctan.org/license/gfl"
+    ]
+  },
+  "proposed_command": [
+    "pdflatex",
+    "-no-shell-escape",
+    "-no-parse-first-line",
+    "-no-mktex=tex",
+    "-no-mktex=tfm",
+    "-no-mktex=pk",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-file-line-error",
+    "-recorder",
+    "-output-directory=/out",
+    "runspindle-paper.tex"
+  ],
+  "passes_maximum": 2,
+  "proposed_environment": {
+    "PATH": "/usr/bin:/bin",
+    "HOME": "/tmp",
+    "LANG": "C.UTF-8",
+    "SOURCE_DATE_EPOCH": "1794614400",
+    "FORCE_SOURCE_DATE": "1",
+    "TEXMFHOME": "/tmp/empty",
+    "TEXMFLOCAL": "/tmp/empty",
+    "TEXMFCONFIG": "/tmp/empty",
+    "TEXMFVAR": "/out/texmf-var",
+    "TEXMFOUTPUT": "/out",
+    "TEXMFCACHE": "/out/cache",
+    "TEXMF": "{/usr/share/texmf,/usr/share/texlive/texmf-dist,/var/lib/texmf}",
+    "TEXFORMATS": "/var/lib/texmf/web2c/pdftex",
+    "TEXINPUTS": ".:/usr/share/texlive/texmf-dist/tex//:/usr/share/texmf/tex//",
+    "openin_any": "p",
+    "openout_any": "p",
+    "shell_escape": "0",
+    "MKTEXFMT": "0",
+    "MKTEXTFM": "0",
+    "MKTEXPK": "0",
+    "MKTEXMF": "0",
+    "MKTEXTEX": "0",
+    "MKTEXOFM": "0",
+    "TZ": "UTC",
+    "LC_ALL": "C.UTF-8"
+  },
+  "required_pre_execution_review": [
+    "Exact authored source and input hashes",
+    "Installed toolchain hashes and dependency/notice review",
+    "Read-only source/toolchain mounts, isolated writable output, no network and no account/private-source access",
+    "Finite wall time, CPU, process, memory and output limits",
+    "No shell escape, automatic package generation or installation",
+    "Exact wrapper, environment and destination reviewed before execution"
+  ],
+  "required_post_build_checks": [
+    "Record every loaded dependency and its hash from the recorder output",
+    "Fail on missing citations/references or source/package errors",
+    "Inspect all page images and extracted text for clipping, overflow, wrong glyphs and stale claims",
+    "Check every citation destination and PDF link annotation",
+    "Verify font licensing/embedding, output hashes and reproducibility scope",
+    "Record exact source commit, full wrapper and command/environment in a new receipt",
+    "Keep issue open until actual acceptance criteria pass; never overwrite preserved earlier evidence"
+  ],
+  "timeout_seconds_per_pass": 120,
+  "timeout_kill_grace_seconds": 5,
+  "proposed_command_support": "Read-only installed pdflatex --help returned exit 0 and lists no-mktex types tex/tfm/pk, no-parse-first-line and no-shell-escape. No TeX input, build, write or installation was performed by that help check.",
+  "proposed_confinement": "Prior SRC-013 bwrap/timeout shape only as a starting point: isolated network namespace, read-only reviewed source and stock toolchain, fresh writable /out and private temporary storage. Exact SRC-002 wrapper, resource limits, mounts and input closure require independent approval before execution.",
+  "read_only_help_verification": {
+    "command": "/usr/bin/pdflatex --help",
+    "exit_code": 0,
+    "supported_no_mktex_types": [
+      "tex",
+      "tfm",
+      "pk"
+    ],
+    "parse_first_line_toggle": true,
+    "shell_escape_toggle": true,
+    "exact_output_record": "retained privately as supplemental read-only inventory; not execution qualification"
+  },
+  "authored_tex_inputs": [
+    "runspindle-paper.tex",
+    "paper/diagrams/comparison-contract.tex",
+    "paper/diagrams/effort-ledger.tex",
+    "paper/diagrams/evaluation-register.tex",
+    "paper/diagrams/stop-triage.tex",
+    "paper/diagrams/workflow-boundaries.tex"
+  ]
+}

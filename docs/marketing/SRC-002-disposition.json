@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "migration_status": "partial",
+  "scope_accounting": "accounted_with_safe_exclusions",
+  "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+  "source_expression": "excluded_no_verified_reuse_license",
+  "paper_recursive_dependencies": 18,
+  "retained_bundle_files": 28,
+  "source_expression_imported": false,
+  "rights_basis": "Owner-directed original adaptation of concepts only; no blanket relicense.",
+  "units": [
+    {
+      "id": "P00",
+      "topic": "Paper wrapper and abstract",
+      "in_paper_closure": true,
+      "disposition": "original_replacement",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex"
+      ],
+      "reason": "Original title, abstract, minimal template and truthful status; historical expression/style excluded without a verified reuse license."
+    },
+    {
+      "id": "S01",
+      "topic": "Research question, accepted-work definition and bounded comparative claim",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-1"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S02",
+      "topic": "Evidence-led stop diagnosis, correct prohibitions and authorized recovery",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-2"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S03",
+      "topic": "Tactical labor, governance, waiting and separately permissioned dataset use",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-3"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S04",
+      "topic": "Bounded lifecycle, seven component responsibilities, session identity and separate release authority",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-4"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S05",
+      "topic": "Workload screening, non-operational illustrations and credible native/deterministic substitutes",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-5"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S06",
+      "topic": "Frozen canonical SRC-005 accounting, incentives, sensitivity and limits",
+      "in_paper_closure": true,
+      "disposition": "frozen_canonical_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-6"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. The canonical SRC-005 narrative is reused unchanged; no conflicting accounting or diagram import."
+    },
+    {
+      "id": "S07",
+      "topic": "Paired arms, independent verification, heldouts, budgets and uncertainty",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-7"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S08",
+      "topic": "Four falsifiable hypotheses, phased study and commercial operating envelope",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-8"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "S09",
+      "topic": "Provider, deterministic, judgment and empirical counterarguments; conditional conclusion",
+      "in_paper_closure": true,
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-9"
+      ],
+      "reason": "Original prose accounts for selected concepts and limitations; historical prose is excluded. No historical measurement, deployment or market claim transfers."
+    },
+    {
+      "id": "B01",
+      "topic": "Eighteen bibliography entries",
+      "in_paper_closure": true,
+      "disposition": "metadata_and_bounded_attribution",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-citations.json",
+        "runspindle-paper.tex#references"
+      ],
+      "reason": "Primary reference metadata and limited contextual citation only; citation is not reuse permission. Dates and the METR title corrected explicitly."
+    },
+    {
+      "id": "F01",
+      "topic": "Comparison hypothesis",
+      "in_paper_closure": true,
+      "disposition": "excluded_expression_original_schematic",
+      "source_expression_copied": false,
+      "destinations": [
+        "paper/diagrams/comparison-contract.tex"
+      ],
+      "reason": "Quantitative-looking completion curves excluded; an original invariant comparison table asserts no ordering or gain."
+    },
+    {
+      "id": "F02",
+      "topic": "Stop classification",
+      "in_paper_closure": true,
+      "disposition": "excluded_expression_original_schematic",
+      "source_expression_copied": false,
+      "destinations": [
+        "paper/diagrams/stop-triage.tex"
+      ],
+      "reason": "Historical tree expression excluded; original observation/evidence/response matrix preserves correct prohibitions."
+    },
+    {
+      "id": "F03",
+      "topic": "Human effort categories",
+      "in_paper_closure": true,
+      "disposition": "excluded_expression_original_schematic",
+      "source_expression_copied": false,
+      "destinations": [
+        "paper/diagrams/effort-ledger.tex"
+      ],
+      "reason": "Historical event-trace expression excluded; original ledger categories contain no measured intervals."
+    },
+    {
+      "id": "F04",
+      "topic": "Harness obligations",
+      "in_paper_closure": true,
+      "disposition": "excluded_expression_original_schematic",
+      "source_expression_copied": false,
+      "destinations": [
+        "paper/diagrams/workflow-boundaries.tex"
+      ],
+      "reason": "Historical four-band expression excluded; original execution/evidence matrix maps Runspindle and separates learning authority."
+    },
+    {
+      "id": "F05",
+      "topic": "Fixed-cost amortization concept",
+      "in_paper_closure": true,
+      "disposition": "excluded_diagram_concept_in_frozen_text",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-6",
+        "SRC-005-disposition.json"
+      ],
+      "reason": "No verified source-figure reuse license. Frozen economics text handles the concept; no curve, coordinates, style or graphical reconstruction imported."
+    },
+    {
+      "id": "F06",
+      "topic": "Specialist durability scenarios",
+      "in_paper_closure": true,
+      "disposition": "excluded_diagram_concept_in_frozen_text",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex#section-6",
+        "SRC-005-disposition.json"
+      ],
+      "reason": "No verified source-figure reuse license. Frozen economics text handles the concept; no curve, coordinates, style or graphical reconstruction imported."
+    },
+    {
+      "id": "F07",
+      "topic": "Paired comparison study",
+      "in_paper_closure": true,
+      "disposition": "excluded_expression_original_schematic",
+      "source_expression_copied": false,
+      "destinations": [
+        "paper/diagrams/evaluation-register.tex"
+      ],
+      "reason": "Historical graphical expression excluded; original study register distinguishes product comparisons from model-matched mechanism tests."
+    },
+    {
+      "id": "X01",
+      "topic": "Argument presentation wrapper",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X02",
+      "topic": "Fleet presentation wrapper",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X03",
+      "topic": "Historical argument PDF",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X04",
+      "topic": "Historical fleet PDF",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X05",
+      "topic": "Argument experiment slide",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X06",
+      "topic": "Argument mechanism slide",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X07",
+      "topic": "Diagnosis slide",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X08",
+      "topic": "Fleet experiment slide",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X09",
+      "topic": "Fleet mechanism slide",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    },
+    {
+      "id": "X10",
+      "topic": "Fleet-only evaluation figure",
+      "in_paper_closure": false,
+      "disposition": "excluded_outside_recursive_paper_scope",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-review.md#boundaries-and-remaining-work"
+      ],
+      "reason": "Not recursively required by the selected paper. Presentation/binary/fleet-only expression excluded; separate artifact obligations are not closed by this source-only lift."
+    }
+  ],
+  "executable_implementation": "none_in_paper; existing bounded repository evidence is separate",
+  "verified_behavior": "source_integrity_only_native_compile_and_live_acceptance_not_run",
+  "exclusion_review": "resolved_safe_exclusions_not_pending_original_reuse_rights",
+  "remaining_artifact_gates": [
+    "reviewed native source build",
+    "all-page visual/text review",
+    "compiled citation/link checks",
+    "exact output evidence and publication checks"
+  ]
+}

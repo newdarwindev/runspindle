@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "evidence_class": "source_preparation_validation_not_native_build",
+  "status": "source_prepared_local_checks_passed_native_build_not_run",
+  "content_commit": "7f8921c2482da80dc764bcdf4ba54901064aa88d",
+  "content_tree": "5003d6e08630e64a6b6ac20810fe28a7add35061",
+  "content_commit_scope": "Local review identity only, not a published or fetchable GitHub ref. Reproduce from the containing checkout; no publication performed.",
+  "base_commit": "ce7143962c341d81f07aa1217832c39c0996283b",
+  "source_preparation_files": [
+    "docs/marketing/BUILD.md",
+    "docs/marketing/README.md",
+    "docs/marketing/SRC-002-build-plan.json",
+    "docs/marketing/SRC-002-citations.json",
+    "docs/marketing/SRC-002-disposition.json",
+    "docs/marketing/SRC-002-review.md",
+    "docs/marketing/SRC-002-source-receipt.json",
+    "docs/marketing/SRC-002-validation.json",
+    "docs/marketing/SRC-005-disposition.json",
+    "docs/marketing/THIRD_PARTY_NOTICES.md",
+    "docs/marketing/artifacts.json",
+    "docs/marketing/build_documents.py",
+    "docs/marketing/paper/diagrams/comparison-contract.tex",
+    "docs/marketing/paper/diagrams/effort-ledger.tex",
+    "docs/marketing/paper/diagrams/evaluation-register.tex",
+    "docs/marketing/paper/diagrams/stop-triage.tex",
+    "docs/marketing/paper/diagrams/workflow-boundaries.tex",
+    "docs/marketing/paper/history/source-receipt-7fca776.json",
+    "docs/marketing/paper/history/validation-7fca776.json",
+    "docs/marketing/paper/legacy/reportlab-paper.tex",
+    "docs/marketing/paper_source.py",
+    "docs/marketing/runspindle-paper.tex",
+    "provenance.json",
+    "tests/test_marketing_paper.py",
+    "tools/check_paper_source.py"
+  ],
+  "new_original_files": [
+    "docs/marketing/SRC-002-build-plan.json",
+    "docs/marketing/SRC-002-citations.json",
+    "docs/marketing/SRC-002-disposition.json",
+    "docs/marketing/SRC-002-review.md",
+    "docs/marketing/SRC-002-source-receipt.json",
+    "docs/marketing/SRC-002-validation.json",
+    "docs/marketing/paper/diagrams/comparison-contract.tex",
+    "docs/marketing/paper/diagrams/effort-ledger.tex",
+    "docs/marketing/paper/diagrams/evaluation-register.tex",
+    "docs/marketing/paper/diagrams/stop-triage.tex",
+    "docs/marketing/paper/diagrams/workflow-boundaries.tex",
+    "docs/marketing/paper_source.py",
+    "tests/test_marketing_paper.py",
+    "tools/check_paper_source.py"
+  ],
+  "preserved_prior_public_file": "docs/marketing/paper/legacy/reportlab-paper.tex",
+  "modified_files": [
+    "docs/marketing/BUILD.md",
+    "docs/marketing/README.md",
+    "docs/marketing/SRC-005-disposition.json",
+    "docs/marketing/THIRD_PARTY_NOTICES.md",
+    "docs/marketing/artifacts.json",
+    "docs/marketing/build_documents.py",
+    "docs/marketing/runspindle-paper.tex",
+    "provenance.json"
+  ],
+  "authored_python_files": [
+    "docs/marketing/build_documents.py",
+    "docs/marketing/paper_source.py",
+    "tools/check_paper_source.py",
+    "tests/test_marketing_paper.py"
+  ],
+  "authored_tex_inputs": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "7c7a4e79fe2ee1120826505eebaee7ba8cdde0935ffa49d7b7d99a0ffb5cdf03"
+  },
+  "counts": {
+    "historical_recursive_paper_dependencies": 18,
+    "historical_retained_bundle_files": 28,
+    "authored_tex_inputs": 6,
+    "original_schematics": 5,
+    "sections": 9,
+    "reviewed_citations": 18,
+    "full_unit_tests_per_mode": 117,
+    "skips": 0,
+    "canonical_mirror_files_unchanged": 20,
+    "artifact_files_at_content_commit": 57
+  },
+  "tool_versions": {
+    "python": "3.12.14",
+    "ReportLab": "4.4.9",
+    "ruff": "0.14.5",
+    "mypy": "1.18.2"
+  },
+  "strict_checks": {
+    "ruff": "passed",
+    "format": "passed",
+    "mypy": "passed",
+    "baseline_or_suppressions": "none"
+  },
+  "strict_commands": [
+    {
+      "cwd": "repository root",
+      "command": "ruff check --no-cache --isolated --select E4,E7,E9,F,I docs/marketing/build_documents.py docs/marketing/paper_source.py tools/check_paper_source.py tests/test_marketing_paper.py"
+    },
+    {
+      "cwd": "repository root",
+      "command": "ruff format --no-cache --isolated --check docs/marketing/build_documents.py docs/marketing/paper_source.py tools/check_paper_source.py tests/test_marketing_paper.py"
+    },
+    {
+      "cwd": "repository root",
+      "command": "mypy --strict --no-incremental --cache-dir=/dev/null --explicit-package-bases tools/check_paper_source.py tests/test_marketing_paper.py"
+    },
+    {
+      "cwd": "docs/marketing",
+      "command": "mypy --strict --no-incremental --cache-dir=/dev/null build_documents.py paper_source.py"
+    }
+  ],
+  "unit_tests": {
+    "normal": {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "result": "passed",
+      "tests": 117,
+      "skipped": 0,
+      "private_log_sha256": "7fc54b66dfca27c2d087fa5d55c3dd56069eaa4d2334f26e8b8d1155cf3041c4"
+    },
+    "optimized": {
+      "command": "python3 -B -O -m unittest discover -s tests -v",
+      "result": "passed",
+      "tests": 117,
+      "skipped": 0,
+      "private_log_sha256": "3d1c056ad1ce78d45332a373b3dda2339712aff871723297a397a3a1adbd454d"
+    }
+  },
+  "unit_test_environment": {
+    "RUNSPINDLE_FEEDBACK_HERO_REFINERY": {
+      "source": "operator-supplied existing local schema checkout",
+      "commit": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250"
+    },
+    "RUNSPINDLE_FEEDBACK_HERO_TETHER": {
+      "source": "operator-supplied existing local schema checkout",
+      "commit": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "component_sources": "Seven unchanged composition.lock.json revisions, materialized from existing local checkouts; no service or install."
+  },
+  "static_commands": [
+    "python3 tools/check_paper_source.py",
+    "python3 -O tools/check_paper_source.py",
+    "python3 tools/check_economics_source.py",
+    "python3 tools/check_scaffold.py",
+    "python3 tools/check_artifacts.py",
+    "git diff --check"
+  ],
+  "static_results": "passed; static source/document integrity only",
+  "preserved_files": {
+    "runspindle-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "paper/legacy/reportlab-paper.tex": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
+    "economics.md": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
+    "overview.md": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
+    "SRC-005-review.md": "66fd9b23fc69f44f7f41cfd608895b1c4ae30412ce1fda1c36c98311d7db70d4",
+    "SRC-005-validation.json": "84984789615c8e00d85a8d1560a86bca813650b64cf918a8cfaacad006a6cff1",
+    "economics-model.md": "ff1cbbe3ad5610f42b2a82c4ce1fae1d2948f4b76a3c844605fc12681a8296c8",
+    "paper/history/source-receipt-7fca776.json": "2ebb63e91c91ec68ca7eae5601fff7265328975ecb3015b050b4b91fa55f52e0",
+    "paper/history/validation-7fca776.json": "c839ecc173b13430150b75aae897ee42f07f1eb44ad9ba765c9aefddb9f74d43"
+  },
+  "unchanged_canonical_files": {
+    "docs/marketing/vision.html": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7",
+    "docs/marketing/LICENSE-SRC-010.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-010-lift.json": "80e4fbae10af2b29b9712cfc3c4754bda32266f5597940244ed9b998afa40e0d",
+    "docs/marketing/SRC-010-validation.md": "d551d121efb1525d8a73ef2f73099935ad9092c4f3ec38cb20a438debe20bb6b",
+    "docs/marketing/LICENSE-SRC-013.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-013-NOTICES.md": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3",
+    "docs/marketing/build-evidence.json": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960",
+    "docs/marketing/build-paper.py": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+    "docs/marketing/figures/01-identity.pdf": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245",
+    "docs/marketing/figures/02-lifecycle.pdf": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75",
+    "docs/marketing/figures/03-approval.pdf": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704",
+    "docs/marketing/figures/04-golden-data.pdf": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07",
+    "docs/marketing/figures/05-control-planes.pdf": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4",
+    "docs/marketing/figures/06-constellation.pdf": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a",
+    "docs/marketing/figures/07-provenance.pdf": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab",
+    "docs/marketing/figures/08-observation.pdf": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3",
+    "docs/marketing/source-disposition.json": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec",
+    "docs/marketing/toolchain-lock.json": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c",
+    "docs/marketing/workflow-refinery.pdf": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
+    "docs/marketing/workflow-refinery.tex": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7"
+  },
+  "economics_transition": "Only current containing TeX hash changes in SRC-005-disposition.json. Frozen narrative and prior validation receipt remain unchanged.",
+  "privacy_review": "Changed/new artifacts contain no selected private repository identity, original commit/hash/path, operational snapshot or private source link. Exact 28-file original mapping remains private.",
+  "preliminary_failures": [
+    {
+      "stage": "first full-unit attempt before component checkouts were populated",
+      "result": "114 tests, 3 missing-component-file errors; no skip or product success claimed",
+      "private_log_sha256": "b8253d9e42b25e9d3ee021deec767f6b7d28075b985eae177a2db736de4f05d4",
+      "resolution": "Materialized exactly the unchanged seven pinned local component revisions and reran full suites."
+    },
+    {
+      "stage": "initial strict-mypy invocation",
+      "result": "Module path resolution errors; no code defect suppressed",
+      "resolution": "Ran sibling script modules from docs/marketing and tools/tests with explicit-package-bases; final strict no-cache checks passed."
+    },
+    {
+      "stage": "initial Ruff invocation in read-only mode",
+      "result": "Cache-write failure; no lint pass claimed from that invocation",
+      "resolution": "Disabled Ruff cache and reran unchanged isolated rules successfully."
+    }
+  ],
+  "remaining_gates": [
+    "Independent frozen source/build-proposal review",
+    "Exact bounded native action approval and complete dependency/confinement qualification",
+    "Actual edited-source compile, all-page visual/text checks and citation/link annotation verification",
+    "Publication and remote checks if separately directed; issue 4 stays open"
+  ],
+  "native_compile": "not_run",
+  "native_page_review": "not_run",
+  "pdf_matches_authored_source": false,
+  "runtime_or_live_acceptance": "not_run",
+  "migration_status": "partial",
+  "independent_review": "replacement_source_pending_reviewer_check",
+  "record_scope": "Checks bind the additive correction content commit. Earlier receipts remain byte-preserved historical evidence; this additive record does not change the manuscript or claim native execution.",
+  "supersedes_frozen_commit": "7fca77691a9f1c4a7d11a0a492cac668b821e8c9",
+  "preserved_prior_adaptation_receipts": [
+    "docs/marketing/paper/history/source-receipt-7fca776.json",
+    "docs/marketing/paper/history/validation-7fca776.json"
+  ],
+  "corrections": {
+    "primitive_preflight": "TeX control-word boundary (?![A-Za-z]) catches digit-suffixed primitives. Also directly rejects openin, immediate, directlua and special. Narrow filter, not a complete parser or sandbox.",
+    "mutation_checks": "Seven rehashed mutation forms, each generator subprocess explicitly executed normally and with -O, all rejected by the primitive check before writes. No mutation sent to any TeX engine.",
+    "chatgptagent": "Current primary Help overview retirement notice and conflicting retained older instructions are classified historical/transitional. No currently available comparator or replacement capability is inferred.",
+    "safe_exclusions": "Original-expression exclusions are resolved adaptation choices, not pending original reuse-rights blockers."
+  }
+}

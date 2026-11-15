@@ -10,14 +10,14 @@
     "docs/core-product/README.md": "a8f2765268f3b12840f323700aaa72c0e980af8a3a3f4a087538bfd9f47e83df",
     "docs/core-product/coverage.json": "171ab3b8242d6eda516d04051f4a866a6c2b5a64e9c87b7d36576f5546356be1",
     "docs/core-product/original-artifact-manifest.json": "d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba",
-    "hygiene.json": "71c723f78d14222d9a850fce09e1cd8063e8abba7d986bff9bbd2e68fd8da42b",
+    "hygiene.json": "af88c792e4b784efc83744ecd59bf24bcf35700ab6f114f28d76d7fe9f1716a7",
     "requirements-quality.txt": "9cbe1331549216b953f2922f1e8321357ca82bb985e1ea595c87fcee8a8fdc84",
     "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
     "tests/test_core_product.py": "f554d1a577dab4b7af60c03b42c5f2463c8984506d0b6f23615079fd1224e822",
     "tools/check_core_product.py": "87fe62fb4caae5c7e0da004992fd7b9c09c479d46fde607c4f6269f5df8a45c1",
     "tools/quality-baseline.json": "881d43516723da1b3ae4d55a828909d2fcf3997102334db81ad6f69ab4b1e7e9",
     "tools/validate.py": "b29f49b6ae71b4427328df21ee855f9ac809ea452af9729a3d1f5ada5695118a",
-    "validation-partitions.json": "1ec8c30e6c02a53fd5a5851e198133dec830c154715c9b928e9da7b44188833b"
+    "validation-partitions.json": "5689dd8739ed9f28aa9edeeed2106fe9720aacd08a1355f34b88c2f489e3cdce"
   },
   "historical_original": {
     "path": "docs/core-product/original-artifact-manifest.json",
