@@ -1,0 +1,605 @@
+{
+  "schema_version": 1,
+  "source_ids": [
+    "SRC-003",
+    "SRC-004"
+  ],
+  "migration_status": "partial",
+  "scope_accounting": "accounted_with_safe_exclusions",
+  "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+  "rights_basis": "Owner-directed original concept adaptation only; no blanket relicense.",
+  "source_expression_imported": false,
+  "source_bundle_units": [
+    {
+      "id": "P00",
+      "topic": "Paper wrapper and abstract",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S01",
+      "topic": "Research question, accepted-work definition and bounded comparative claim",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S02",
+      "topic": "Evidence-led stop diagnosis, correct prohibitions and authorized recovery",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S03",
+      "topic": "Tactical labor, governance, waiting and separately permissioned dataset use",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S04",
+      "topic": "Bounded lifecycle, seven component responsibilities, session identity and separate release authority",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S05",
+      "topic": "Workload screening, non-operational illustrations and credible native/deterministic substitutes",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S06",
+      "topic": "Frozen canonical SRC-005 accounting, incentives, sensitivity and limits",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S07",
+      "topic": "Paired arms, independent verification, heldouts, budgets and uncertainty",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S08",
+      "topic": "Four falsifiable hypotheses, phased study and commercial operating envelope",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "S09",
+      "topic": "Provider, deterministic, judgment and empirical counterarguments; conditional conclusion",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "runspindle-paper.tex",
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "B01",
+      "topic": "Eighteen bibliography entries",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/references.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F01",
+      "topic": "Comparison hypothesis",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/accepted-work.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F02",
+      "topic": "Stop classification",
+      "disposition": "outside_deck_input_closure_no_import",
+      "source_expression_copied": false,
+      "destinations": [
+        "SRC-002-disposition.json"
+      ],
+      "reason": "Selected paper-only material is accounted for by the separate SRC-002 source lift, not copied into these decks."
+    },
+    {
+      "id": "F03",
+      "topic": "Human effort categories",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/effort.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F04",
+      "topic": "Harness obligations",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/argument/mechanism.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F05",
+      "topic": "Fixed-cost amortization concept",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/durability.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F06",
+      "topic": "Specialist durability scenarios",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/durability.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "F07",
+      "topic": "Paired comparison study",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/argument/comparison.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X01",
+      "topic": "Argument presentation wrapper",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "argument.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X02",
+      "topic": "Fleet presentation wrapper",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "fleet.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X03",
+      "topic": "Historical argument PDF",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "argument.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X04",
+      "topic": "Historical fleet PDF",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "fleet.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X05",
+      "topic": "Argument experiment slide",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/argument/comparison.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X06",
+      "topic": "Argument mechanism slide",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/argument/mechanism.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X07",
+      "topic": "Diagnosis slide",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/shared/diagnosis.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X08",
+      "topic": "Fleet experiment slide",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/fleet/comparison.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X09",
+      "topic": "Fleet mechanism slide",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/fleet/mechanism.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    },
+    {
+      "id": "X10",
+      "topic": "Fleet-only evaluation figure",
+      "disposition": "original_concept_adaptation_with_expression_excluded",
+      "source_expression_copied": false,
+      "destinations": [
+        "presentations/fleet/mechanism.tex"
+      ],
+      "reason": "Original public prose, native editable tables or plain scenario descriptions replace historical prose, charts, coordinates, template and binaries. No private source expression or links are imported."
+    }
+  ],
+  "source_slides": [
+    {
+      "source_id": "SRC-003",
+      "original_page": 1,
+      "topic": "Title and research-only claim",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "opening"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 2,
+      "topic": "Accepted outcomes and hypothesized benefit",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "accepted-work"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 3,
+      "topic": "Boundary, ability, product and authority diagnoses",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "diagnosis"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 4,
+      "topic": "Human preparation, state transfer, approval and verification",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "effort"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 5,
+      "topic": "Harness obligations or authorized fleet placement",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "argument-mechanism"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 6,
+      "topic": "Candidate tasks and conventional alternatives",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "market"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded. Historical credential, enrollment and authorized-defense illustrations are safely excluded; they did not establish demand or authority."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 7,
+      "topic": "Matched study design and metric denominators",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "argument-comparison"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 8,
+      "topic": "Accepted-work accounting and zero-denominator caveat",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "economics"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 9,
+      "topic": "Amortization and changing-provider scenarios",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "durability"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-003",
+      "original_page": 10,
+      "topic": "Research agenda and evidence limitations",
+      "destination": "argument.tex",
+      "frame_labels": [
+        "argument-evidence"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 1,
+      "topic": "Title and research-only claim",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "opening"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 2,
+      "topic": "Accepted outcomes and hypothesized benefit",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "accepted-work"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 3,
+      "topic": "Boundary, ability, product and authority diagnoses",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "diagnosis"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 4,
+      "topic": "Human preparation, state transfer, approval and verification",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "effort"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 5,
+      "topic": "Harness obligations or authorized fleet placement",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "fleet-identity",
+        "fleet-observation",
+        "fleet-control"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 6,
+      "topic": "Candidate tasks and conventional alternatives",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "market"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded. Historical credential, enrollment and authorized-defense illustrations are safely excluded; they did not establish demand or authority."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 7,
+      "topic": "Matched study design and metric denominators",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "fleet-comparison"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 8,
+      "topic": "Accepted-work accounting and zero-denominator caveat",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "economics"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 9,
+      "topic": "Amortization and changing-provider scenarios",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "durability"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    },
+    {
+      "source_id": "SRC-004",
+      "original_page": 10,
+      "topic": "Research agenda and evidence limitations",
+      "destination": "fleet.tex",
+      "frame_labels": [
+        "fleet-evidence"
+      ],
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "reason": "Retains the substantive claim and its limits in original wording and editable layout; historical expression and private navigation excluded."
+    }
+  ],
+  "bibliography_disposition": {
+    "cited_primary_keys": [
+      "webarena",
+      "workarena",
+      "xstest",
+      "orbench",
+      "taubench",
+      "agentsmatter"
+    ],
+    "unused_paper_only_keys": [
+      "anthropic2026",
+      "jcurve",
+      "react",
+      "sweagent",
+      "agentcompany",
+      "compound",
+      "anthropiceffective",
+      "anthropiclong",
+      "chatgptagent",
+      "openaiagents",
+      "genaiwork",
+      "metr2026"
+    ],
+    "reason": "Bibliographic facts and source links are attributed, not permission to reproduce text or diagrams. All six original deck method references remain; fleet additionally uses the shared reliability reference."
+  },
+  "explicit_exclusions": [
+    {
+      "material": "Historical prose, custom style, diagram code and coordinates",
+      "reason": "No verified source reuse license; replaced by original expression."
+    },
+    {
+      "material": "Both original PDF binaries and embedded historical fonts",
+      "reason": "Reference inspection only; no binary or font import."
+    },
+    {
+      "material": "Private repository/site/navigation links, identity and operational details",
+      "reason": "Excluded; one public Runspindle status link replaces historical artifact navigation."
+    },
+    {
+      "material": "Historical plotted completion, amortization and opportunity curves",
+      "reason": "Hand-authored conceptual shapes, not observations. Replaced by test questions and scenario tables rather than misleading measured-looking curves."
+    },
+    {
+      "material": "Historical credential, enrollment and authorized-defense task illustrations",
+      "reason": "These illustrations did not establish a market or operational permission. The decks retain general permitted-access and exception criteria without reproducing task-specific historical examples."
+    }
+  ],
+  "intentional_consolidation": "No original substantive slide omitted. Argument has 12 authored frames. Fleet expands original mechanism page into 3 frames and has 14 authored frames. Both add 2 visible reference frames. These are source counts, not a contractual rendered-page count or acceptance gate.",
+  "remaining_artifact_gates": [
+    "independent exact-source/build-plan review",
+    "installed Beamer/transitive dependency and notice inventory",
+    "separately reviewed confined native build",
+    "all output pages visual/text and link inspection",
+    "exact source/output/toolchain receipts and publication checks"
+  ],
+  "executable_implementation": "none_in_decks",
+  "verified_behavior": "static_source_only",
+  "live_acceptance": "not_run"
+}

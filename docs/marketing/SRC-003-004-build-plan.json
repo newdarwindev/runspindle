@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "source_ids": [
+    "SRC-003",
+    "SRC-004"
+  ],
+  "status": "source_only_future_native_plan_requires_review",
+  "native_compile": "not_run",
+  "installation": "none_requested_or_performed",
+  "dependency_closure_complete": false,
+  "document_class": "beamer 11pt aspectratio=169",
+  "direct_packages": [
+    "fontenc",
+    "lmodern"
+  ],
+  "indirect_dependencies": "Beamer loads PGF, hyperref and other packages; installed closure and exact hashes not yet inventoried for these decks.",
+  "engine": "not_selected_or_qualified_for_decks",
+  "observed_toolchain_files": [],
+  "dependency_licenses": [
+    {
+      "name": "Beamer",
+      "url": "https://ctan.org/pkg/beamer",
+      "status": "CTAN lists GPLv2-or-newer, LPPL 1.3c and Free Documentation License for the package; verify installed files and applicable notices before build."
+    },
+    {
+      "name": "Latin Modern",
+      "url": "https://ctan.org/pkg/lm",
+      "status": "GUST Font License; no new font embedding. Verify installed license/embedded font closure."
+    }
+  ],
+  "binary_assets": [],
+  "bibliography": "Direct attributed hyperlinks and visible reference frames; no BibTeX or natbib.",
+  "authored_tex_inputs": [
+    "presentations/argument/comparison.tex",
+    "presentations/argument/evidence.tex",
+    "presentations/argument/mechanism.tex",
+    "presentations/fleet/comparison.tex",
+    "presentations/fleet/evidence.tex",
+    "presentations/fleet/mechanism.tex",
+    "presentations/shared/accepted-work.tex",
+    "presentations/shared/diagnosis.tex",
+    "presentations/shared/durability.tex",
+    "presentations/shared/economics.tex",
+    "presentations/shared/effort.tex",
+    "presentations/shared/market.tex",
+    "presentations/shared/references.tex",
+    "presentations/style.tex",
+    "argument.tex",
+    "fleet.tex"
+  ],
+  "required_pre_execution_review": [
+    "Exact frozen source and closure hashes",
+    "Read-only installed Beamer/toolchain/dependency availability and license inventory",
+    "Exact isolated wrapper, read-only reviewed source/toolchain mounts, fresh bounded writable output and no private account/source access",
+    "No network, shell escape, automatic package generation, installation or services",
+    "Finite time, CPU, memory, process and output limits"
+  ],
+  "required_post_build_checks": [
+    "Record all loaded files and hashes with recorder output",
+    "Reject missing references, malformed links, source errors and overflow/clipping",
+    "Inspect every page image and extracted text, link annotations and font embedding",
+    "Record observed page count and exact source commit, command, environment and output hashes",
+    "Use new receipts; preserve old PDF/source and previous receipts"
+  ],
+  "authorization": "This plan is not an instruction or grant to execute. Independent review and bounded native authorization remain separate."
+}

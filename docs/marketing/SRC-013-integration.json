@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "evidence_class": "local_document_mirror_integration_not_runtime_acceptance",
+  "base_commit": "27e6cf71c686ba6111ff74d9f7dbda97860d9841",
+  "base_tree": "88d41bd1422f829e6bd82c2802cce2746372efc2",
+  "canonical_repository": "newdarwindev/runspindle-refinery",
+  "canonical_commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+  "canonical_tree": "af28c2693a11925ab60bf595fbbaae210100de14",
+  "canonical_merge": "80a87f4569f1dfef14b141e141a89f30a9aaf7cd",
+  "preserved_closure": [
+    {
+      "root_path": "docs/marketing/LICENSE-SRC-013.txt",
+      "canonical_path": "docs/design/LICENSE-SRC-013.txt",
+      "sha256": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895"
+    },
+    {
+      "root_path": "docs/marketing/SRC-013-NOTICES.md",
+      "canonical_path": "docs/design/THIRD_PARTY_NOTICES.md",
+      "sha256": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3"
+    },
+    {
+      "root_path": "docs/marketing/build-evidence.json",
+      "canonical_path": "docs/design/build-evidence.json",
+      "sha256": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960"
+    },
+    {
+      "root_path": "docs/marketing/build-paper.py",
+      "canonical_path": "docs/design/build-paper.py",
+      "sha256": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891"
+    },
+    {
+      "root_path": "docs/marketing/figures/01-identity.pdf",
+      "canonical_path": "docs/design/figures/01-identity.pdf",
+      "sha256": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245"
+    },
+    {
+      "root_path": "docs/marketing/figures/02-lifecycle.pdf",
+      "canonical_path": "docs/design/figures/02-lifecycle.pdf",
+      "sha256": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75"
+    },
+    {
+      "root_path": "docs/marketing/figures/03-approval.pdf",
+      "canonical_path": "docs/design/figures/03-approval.pdf",
+      "sha256": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704"
+    },
+    {
+      "root_path": "docs/marketing/figures/04-golden-data.pdf",
+      "canonical_path": "docs/design/figures/04-golden-data.pdf",
+      "sha256": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07"
+    },
+    {
+      "root_path": "docs/marketing/figures/05-control-planes.pdf",
+      "canonical_path": "docs/design/figures/05-control-planes.pdf",
+      "sha256": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4"
+    },
+    {
+      "root_path": "docs/marketing/figures/06-constellation.pdf",
+      "canonical_path": "docs/design/figures/06-constellation.pdf",
+      "sha256": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a"
+    },
+    {
+      "root_path": "docs/marketing/figures/07-provenance.pdf",
+      "canonical_path": "docs/design/figures/07-provenance.pdf",
+      "sha256": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab"
+    },
+    {
+      "root_path": "docs/marketing/figures/08-observation.pdf",
+      "canonical_path": "docs/design/figures/08-observation.pdf",
+      "sha256": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3"
+    },
+    {
+      "root_path": "docs/marketing/source-disposition.json",
+      "canonical_path": "docs/design/source-disposition.json",
+      "sha256": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec"
+    },
+    {
+      "root_path": "docs/marketing/toolchain-lock.json",
+      "canonical_path": "docs/design/toolchain-lock.json",
+      "sha256": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c"
+    },
+    {
+      "root_path": "docs/marketing/workflow-refinery.pdf",
+      "canonical_path": "docs/design/workflow-refinery.pdf",
+      "sha256": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf"
+    },
+    {
+      "root_path": "docs/marketing/workflow-refinery.tex",
+      "canonical_path": "docs/design/workflow-refinery.tex",
+      "sha256": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7"
+    }
+  ],
+  "source_path_mapping": "Original mirrored receipts/disposition retain component-relative docs/design paths. Resolve them via preserved_closure canonical_path to root_path; original evidence was not rewritten.",
+  "SRC010": "All four exact pinned manifest entries and artifact bytes unchanged. Existing preflight and negative tests retained. Visual acceptance remains blocked.",
+  "native_compilation": "not_run_no_additional_runs",
+  "build_wrapper": "Copied canonical CLI wrapper not executed; command/environment equals recorded native wrapper. document_content_commit is a local review identity, not a public ref.",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_marketing_*.py' -q",
+      "result": "18 passed; includes both source guards and twice-run preservation"
+    },
+    {
+      "command": "python3 tools/check_scaffold.py",
+      "result": "passed; 37 artifact hashes verified"
+    },
+    {
+      "command": "python3 tools/validate.py",
+      "result": "passed; 91 tests, 3 existing candidate-source-dependent skips"
+    },
+    {
+      "command": "python3 -O -m unittest discover -s tests -v",
+      "result": "passed; 91 tests, same 3 candidate-source-dependent skips"
+    },
+    {
+      "command": "ruff check docs/marketing/build-paper.py docs/marketing/build_documents.py docs/marketing/refinery_mirror.py tests/test_marketing_refinery.py",
+      "version": "0.14.5",
+      "result": "passed"
+    },
+    {
+      "command": "mypy --strict docs/marketing/build-paper.py docs/marketing/build_documents.py docs/marketing/refinery_mirror.py tests/test_marketing_refinery.py",
+      "version": "1.18.2",
+      "result": "passed; no suppressions or baseline expansion"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "skips": {
+    "reason": "Candidate source checkouts must be explicitly prepared; no fetch/fallback",
+    "tests": [
+      "test_actual_pinned_stores_twice_restart_negatives_and_mutation",
+      "test_ignored_root_bytecode_rejected_by_actual_worker",
+      "test_ignored_sourceless_package_rejected_before_import"
+    ]
+  },
+  "limits": [
+    "Local Python 3.12.14 / ReportLab 4.4.9; no runner provisioning or workflow changes.",
+    "PR53 remains dependent gate: runner ReportLab prerequisite unresolved.",
+    "No root publication, remote CI, merge, runtime, benchmark or live acceptance claimed.",
+    "Component Gitlinks, locks, baselines and acceptance gates unchanged. Issue 3 stays open until dependent root integration passes and lands."
+  ]
+}
