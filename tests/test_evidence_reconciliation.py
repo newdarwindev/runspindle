@@ -8,6 +8,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import types
 import unittest
 from pathlib import Path
 from typing import Any
@@ -387,6 +388,38 @@ class ReconciliationTests(unittest.TestCase):
                 self.assert_rejected("non_finite_json_number")
                 # Restore valid bytes before constructing the next case.
                 self.write(path, dict(observation, expected=[], observed=[]))
+
+    def test_invalid_producer_identity_rejected(self) -> None:
+        producer: Any
+        for producer in (None, False, True, 0, 1, 1.0, [], {}, ""):
+            with self.subTest(producer=producer):
+                self.receipt["producer"] = producer
+                self.assert_rejected("invalid_producer_identity")
+        self.receipt.pop("producer")
+        self.assert_rejected("missing_or_malformed_evidence")
+
+    def test_valid_distinct_and_equal_producer_identity(self) -> None:
+        self.receipt["producer"] = "separate-producer"
+        self.assertEqual(self.run_engine()["status"], "passed")
+        self.receipt["producer"] = "separate-ledger-observer"
+        self.assert_rejected("not_independent_observer")
+
+    def test_producer_identity_guard_mutation_detected(self) -> None:
+        self.receipt["producer"] = None
+        self.assert_rejected("invalid_producer_identity")
+        source = TOOL.read_text()
+        guard = 'isinstance(receipt["producer"], str) and bool(receipt["producer"])'
+        self.assertEqual(source.count(guard), 1)
+        mutant = types.ModuleType("invalid_producer_mutant")
+        exec(
+            compile(source.replace(guard, "True"), "synthetic-mutant", "exec"),
+            mutant.__dict__,
+        )
+        result = mutant.reconcile(self.manifest, self.base)
+        # Removing producer identity validation reproduces the original false pass.
+        self.assertEqual(result["status"], "passed")
+        with self.assertRaises(AssertionError):
+            self.assertNotEqual(result["status"], "passed")
 
     def test_scope_identity_and_input_hashes(self) -> None:
         self.receipt["inputs"].pop("fixtures")

@@ -234,6 +234,10 @@ def reconcile(manifest: dict[str, Any], base: Path) -> dict[str, Any]:
                 "observation_criterion_mismatch",
             )
             require(
+                isinstance(receipt["producer"], str) and bool(receipt["producer"]),
+                "invalid_producer_identity",
+            )
+            require(
                 isinstance(observation["observer"], str)
                 and observation["observer"]
                 and observation["observer"] != receipt["producer"],

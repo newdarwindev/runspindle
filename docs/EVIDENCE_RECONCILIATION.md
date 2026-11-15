@@ -61,7 +61,7 @@ A manifest contains:
   Unmapped prose is outside the tool's scope.
 
 A receipt contains `source_sha`, `source_clean` (true), `criterion`,
-`evidence_class`, `status`, `producer` (stable identity), `command` (argv list),
+`evidence_class`, `status`, `producer` (nonempty string stable identity), `command` (argv list),
 `inputs`, `artifacts` (nonempty file-reference list), `observation` (file reference).
 `inputs` maps `toolchain`, `config`, `fixtures`, `dependencies` to file references
 for the exact inventories/locks used. Referenced bytes must exist and match.
@@ -75,8 +75,10 @@ producer), integer `forbidden_calls`, integer `forbidden_effects`, `expected` an
 `observed`. Passing requires zero forbidden counts and exact expected/observed
 agreement. Boolean values are distinct from numbers, including inside lists and
 objects; JSON numbers retain numeric equality (for example, `1` and `1.0`).
-Object key ordering does not affect comparison. The independent verifier must actually acquire those observations;
-a distinct identity string is an attribution check, not cryptographic proof of
+Object key ordering does not affect comparison. The independent verifier must
+actually acquire those observations. The producer must be a nonempty string before this comparison; malformed,
+missing or empty producer attribution cannot establish an independent observation.
+A distinct identity string is an attribution check, not cryptographic proof of
 independence. The tool checks recorded evidence relationships, never substitutes
 self-reported status for an external effect observation.
 
@@ -91,8 +93,10 @@ calls/effects, wrong observers, missing input identities, path escape, duplicate
 JSON keys, non-finite numbers, nested boolean/number observation mismatches and
 gitlink/lock disagreement. A deliberate Python-equality mutation must fail the
 boolean/number rejection assertion; matching booleans and numeric equality have
-positive regressions. A fresh CLI process checks the positive
-case; process spies verify recorded command strings are not executed. Temporary
+positive regressions. Producer-attribution cases reject non-string and empty
+identities, accept distinct identities and reject equal producer/observer names.
+A producer-guard mutation deliberately reproduces the original false pass.
+A fresh CLI process checks the positive case; process spies verify recorded command strings are not executed. Temporary
 stores are cleaned on success/failure by the test harness.
 
 `python3 tools/check_evidence_mutations.py` deliberately removes the artifact
