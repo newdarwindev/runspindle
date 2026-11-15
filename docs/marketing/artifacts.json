@@ -1142,6 +1142,17 @@
         "SRC-005"
       ],
       "source_relationship": "Additive source-only wrapping transition; historical adaptation evidence is not an original historical source or accepted native build."
+    },
+    {
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "new_support_document",
+      "path": "docs/marketing/SRC-002-wrap-validation.json",
+      "sha256": "24ff7e350da2e679d9e25a5738a1119a4b9fb7ca1840b63b00d6728311c4094f",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "source_relationship": "Additive integrated source-only wrapping validation; no native build or accepted corrected PDF."
     }
   ],
   "migration_status": "partial",
