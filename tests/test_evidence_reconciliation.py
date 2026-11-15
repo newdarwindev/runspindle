@@ -389,6 +389,88 @@ class ReconciliationTests(unittest.TestCase):
                 # Restore valid bytes before constructing the next case.
                 self.write(path, dict(observation, expected=[], observed=[]))
 
+    def set_raw_observation(self, expected: str, observed: str) -> None:
+        # Construct from literal JSON, not already-rounded Python floats.
+        path = self.artifacts / "observation.json"
+        value = {
+            "source_sha": self.sha,
+            "criterion": "C1",
+            "observer": "separate-ledger-observer",
+            "forbidden_calls": 0,
+            "forbidden_effects": 0,
+            "expected": "EXPECTED_TOKEN",
+            "observed": "OBSERVED_TOKEN",
+        }
+        path.write_text(
+            json.dumps(value)
+            .replace('"EXPECTED_TOKEN"', expected)
+            .replace('"OBSERVED_TOKEN"', observed)
+        )
+        self.receipt["observation"] = self.ref(path)
+
+    def test_exact_numeric_observation_mismatches(self) -> None:
+        for expected, observed in (
+            ("9007199254740992.0", "9007199254740993.0"),
+            ("9007199254740993", "9007199254740992.0"),
+            ("0.1", "0.10000000000000001"),
+            ("0", "1e-400"),
+            ("-1e-400", "0.0"),
+            ("1e-400", "2e-400"),
+            ('{"effects": [0.1]}', '{"effects": [0.10000000000000001]}'),
+            ("true", "1e0"),
+            ("false", "0.0"),
+        ):
+            with self.subTest(expected=expected, observed=observed):
+                self.set_raw_observation(expected, observed)
+                self.assert_rejected("effect_observation_mismatch")
+
+    def test_exact_numeric_equivalent_representations(self) -> None:
+        for expected, observed in (
+            ("1", "1.0"),
+            ("100", "1e2"),
+            ("0.1", "0.10000000000000000"),
+            ("9007199254740993", "9007199254740993.0"),
+            ("1e-400", "10e-401"),
+            ("-0.0", "0"),
+            ('{"effects": [1, 1e-400]}', '{"effects": [1.0, 10e-401]}'),
+            ("1e-999999999", "10e-1000000000"),
+        ):
+            with self.subTest(expected=expected, observed=observed):
+                self.set_raw_observation(expected, observed)
+                result = self.run_engine()
+                self.assertEqual(result["status"], "passed")
+                json.dumps(result)  # Exact observation values never leak into reports.
+
+    def test_exact_numeric_parser_boundaries_and_compatibility(self) -> None:
+        self.assertIs(type(engine.decode_json(b"1.25")), float)
+        self.assertIs(type(engine.decode_json(b"1", exact_numbers=True)), int)
+        for number in ("NaN", "Infinity", "-Infinity", "1e9999", "-1e9999"):
+            with self.subTest(number=number):
+                self.set_raw_observation("0", '{"nested": [' + number + "]}")
+                self.assert_rejected("non_finite_json_number")
+        # A huge negative exponent stays compact, never expanding to a giant int.
+        self.set_raw_observation("0", "1e-999999999")
+        self.assert_rejected("effect_observation_mismatch")
+        # Beyond Decimal's representable exponent range fails closed, not a crash.
+        self.set_raw_observation("0", "1e-999999999999999999999999999999")
+        self.assert_rejected("invalid_json_number")
+        # Keep the standard JSON integer conversion guard; do not replace parse_int.
+        with self.assertRaises(ValueError):
+            engine.decode_json(("9" * 5000).encode(), exact_numbers=True)
+
+    def test_float_decoder_mutation_detected(self) -> None:
+        self.set_raw_observation("0.1", "0.10000000000000001")
+        self.assert_rejected("effect_observation_mismatch")
+        original = engine.decode_json
+
+        def rounded(data: bytes, *, exact_numbers: bool = False) -> Any:
+            return original(data)
+
+        with mock.patch.object(engine, "decode_json", side_effect=rounded):
+            self.assertEqual(self.run_engine()["status"], "passed")
+            with self.assertRaises(AssertionError):
+                self.assert_rejected("effect_observation_mismatch")
+
     def test_invalid_producer_identity_rejected(self) -> None:
         producer: Any
         for producer in (None, False, True, 0, 1, 1.0, [], {}, ""):

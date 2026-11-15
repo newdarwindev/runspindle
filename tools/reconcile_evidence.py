@@ -7,6 +7,7 @@ import json
 import math
 import re
 import subprocess
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -63,7 +64,7 @@ def digest_file(root: Path, record: dict[str, Any]) -> bytes:
     return data
 
 
-def decode_json(data: bytes) -> Any:
+def decode_json(data: bytes, *, exact_numbers: bool = False) -> Any:
     def unique(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         result = {}
         for key, value in pairs:
@@ -71,9 +72,16 @@ def decode_json(data: bytes) -> Any:
             result[key] = value
         return result
 
-    def finite_float(value: str) -> float:
+    def finite_float(value: str) -> float | Decimal:
         number = float(value)
         require(math.isfinite(number), "non_finite_json_number")
+        if exact_numbers:
+            # Compact coefficient/exponent storage: never expand powers of ten,
+            # normalize under a rounding context, or convert decimals to ints.
+            try:
+                return Decimal(value)
+            except InvalidOperation as exc:
+                raise ValueError("invalid_json_number") from exc
         return number
 
     def reject_constant(value: str) -> Any:
@@ -226,7 +234,7 @@ def reconcile(manifest: dict[str, Any], base: Path) -> dict[str, Any]:
             for artifact in receipt["artifacts"]:
                 digest_file(artifact_root, artifact)
             observation = decode_json(
-                digest_file(artifact_root, receipt["observation"])
+                digest_file(artifact_root, receipt["observation"]), exact_numbers=True
             )
             require(observation["source_sha"] == source["sha"], "stale_observation_sha")
             require(
