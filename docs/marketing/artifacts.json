@@ -5,7 +5,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/BUILD.md",
-      "sha256": "991b4f6873ad138817d51af997bd961767c42a8fbbe93bb45cd39c72a13279e5",
+      "sha256": "e82151670feb886a13363e93234eaf6ecc37caeb994dbc55147c02604ce6c3ea",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -14,7 +14,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/README.md",
-      "sha256": "2cd86562385defa5a0fe01b3ac4a650c0f10f9d3fbc4ee30d707d008dd10f467",
+      "sha256": "70684275141846bf53eee6edd2108d2cce3f6d1545d439658dcd817a6c2d671a",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -280,7 +280,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/LICENSE-SRC-013.txt",
         "sha256": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895"
       }
@@ -297,7 +297,7 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/THIRD_PARTY_NOTICES.md",
         "sha256": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3"
       }
@@ -314,14 +314,14 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/build-evidence.json",
         "sha256": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960"
       }
     },
     {
       "path": "docs/marketing/build-paper.py",
-      "sha256": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+      "sha256": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
       "source_ids": [
         "SRC-013"
       ],
@@ -331,9 +331,9 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/build-paper.py",
-        "sha256": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891"
+        "sha256": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff"
       }
     },
     {
@@ -348,7 +348,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/01-identity.pdf",
         "sha256": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245"
       }
@@ -365,7 +365,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/02-lifecycle.pdf",
         "sha256": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75"
       }
@@ -382,7 +382,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/03-approval.pdf",
         "sha256": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704"
       }
@@ -399,7 +399,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/04-golden-data.pdf",
         "sha256": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07"
       }
@@ -416,7 +416,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/05-control-planes.pdf",
         "sha256": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4"
       }
@@ -433,7 +433,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/06-constellation.pdf",
         "sha256": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a"
       }
@@ -450,7 +450,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/07-provenance.pdf",
         "sha256": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab"
       }
@@ -467,7 +467,7 @@
       "source_relationship": "cleared selected historical asset, not newly measured evidence",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/figures/08-observation.pdf",
         "sha256": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3"
       }
@@ -484,7 +484,7 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/source-disposition.json",
         "sha256": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec"
       }
@@ -501,7 +501,7 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/toolchain-lock.json",
         "sha256": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c"
       }
@@ -518,7 +518,7 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/workflow-refinery.pdf",
         "sha256": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf"
       }
@@ -535,7 +535,7 @@
       "source_relationship": "full-scope reviewed adaptation or supporting validation, not historical re-render or runtime acceptance",
       "canonical": {
         "repository": "newdarwindev/runspindle-refinery",
-        "commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
         "path": "docs/design/workflow-refinery.tex",
         "sha256": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7"
       }
@@ -549,7 +549,7 @@
       "implementation_evidence": false,
       "kind": "original_mirror_validator",
       "source_relationship": "Local pinned byte preflight; not runtime evidence",
-      "sha256": "f1b102b75fa935969ad8330cf172d09540e3d52c03c8fe9f355bd82b3d5d200a"
+      "sha256": "78166b3804f6ebae1b8d1c812f3d454a03e2e52de1fa826db68f55dece14310a"
     },
     {
       "path": "docs/marketing/SRC-013-integration.json",
@@ -863,7 +863,7 @@
       "implementation_evidence": false,
       "kind": "source_preparation_support",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "a38a3a26d45cfa89d1055a0b76998d52a127af6872c8dbfcf24170ec0dabb849"
+      "sha256": "dd858e81d461443617be9761321e996dc483ed8786d457fb021e199b7bc6a710"
     },
     {
       "path": "docs/marketing/presentations/argument/comparison.tex",
@@ -1080,6 +1080,34 @@
       "implementation_evidence": false,
       "kind": "preserved_prior_source_validation_receipt",
       "source_relationship": "Immutable earlier receipt; its aggregate child site-package claim is corrected explicitly in current SRC-003-004-validation.json"
+    },
+    {
+      "path": "docs/marketing/source-wrapper-change-evidence.json",
+      "sha256": "b0f4a8cecd52500d91a99b5057dca5d08f4d5c69055412e46f91eae3f3638c69",
+      "source_ids": [
+        "SRC-013"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "canonical_source_wrapper_change_receipt",
+      "source_relationship": "Byte-preserved upstream import-order evidence; no new paper build",
+      "canonical": {
+        "repository": "newdarwindev/runspindle-refinery",
+        "commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
+        "path": "docs/design/source-wrapper-change-evidence.json",
+        "sha256": "b0f4a8cecd52500d91a99b5057dca5d08f4d5c69055412e46f91eae3f3638c69"
+      }
+    },
+    {
+      "path": "docs/marketing/SRC-013-wrapper-mirror.json",
+      "sha256": "30ab23df45d3b698bcdbe10ca521c684196ae912c5b036efae5b66bf17a515f9",
+      "source_ids": [
+        "SRC-013"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "canonical_wrapper_mirror_transition_receipt",
+      "source_relationship": "Explicit current canonical mapping; previous mirror receipts and compiled bytes preserved"
     },
     {
       "historical_original": false,

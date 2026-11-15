@@ -100,9 +100,18 @@ PRESERVED: dict[str, str] = {
     "presentations/legacy/argument-reportlab.tex": "f82e8cbd628f8595a2e30e0003019575ad11ea560daef4e9fb84b56185c5b26c",
     "presentations/legacy/fleet-reportlab.tex": "9cfee958c6700005e2ffce8595697b6bd12785f206c3d63ccd9e447123ae2316",
 }
+# Preserve the historical receipt inventory above. This exact reviewed transition
+# replaces two current byte identities, never accepts their older hashes, and
+# binds both supporting receipts. All unrelated inherited pins stay unchanged.
+CURRENT_PROTECTED = PRESERVED | {
+    "build-paper.py": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
+    "refinery_mirror.py": "78166b3804f6ebae1b8d1c812f3d454a03e2e52de1fa826db68f55dece14310a",
+    "source-wrapper-change-evidence.json": "b0f4a8cecd52500d91a99b5057dca5d08f4d5c69055412e46f91eae3f3638c69",
+    "SRC-013-wrapper-mirror.json": "30ab23df45d3b698bcdbe10ca521c684196ae912c5b036efae5b66bf17a515f9",
+}
 
 
-# Current paper-only correction; immutable presentation-era PRESERVED stays historical.
+# Compose current paper and current mirror protection; keep PRESERVED historical.
 CURRENT_PAPER_PROTECTED: dict[str, str] = {
     "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
     "paper_source.py": "94d3401e4f4da40ba21173cf0c8e4799d112323ec4de3ce395e276fc196b05a7",
@@ -218,7 +227,7 @@ def verify_presentation_source(folder: Path) -> dict[str, object]:
     }.items():
         require(receipt[key] == expected, "unperformed evidence: " + key)
     require(receipt["preserved_files"] == PRESERVED, "preserved file identities")
-    for name, expected_hash in (PRESERVED | CURRENT_PAPER_PROTECTED).items():
+    for name, expected_hash in (CURRENT_PROTECTED | CURRENT_PAPER_PROTECTED).items():
         require(
             digest(folder, name) == expected_hash, "preserved bytes changed: " + name
         )

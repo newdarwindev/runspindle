@@ -69,6 +69,109 @@ class RefineryMirrorTests(unittest.TestCase):
         manifest_path.write_text(json.dumps(manifest))
         self.reject()
 
+    def test_wrapper_and_receipts_cannot_be_repinned(self) -> None:
+        manifest_path = self.folder / "artifacts.json"
+        original_manifest = manifest_path.read_bytes()
+        for name in (
+            "build-paper.py",
+            "source-wrapper-change-evidence.json",
+            "SRC-013-wrapper-mirror.json",
+            "SRC-013-integration.json",
+            "SRC-013-final-validation.json",
+        ):
+            path = self.folder / name
+            original = path.read_bytes()
+            with self.subTest(name=name):
+                path.write_bytes(original + b"\n")
+                manifest = json.loads(original_manifest)
+                item = next(
+                    x
+                    for x in manifest["artifacts"]
+                    if x["path"] == "docs/marketing/" + name
+                )
+                item["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+                if "canonical" in item:
+                    item["canonical"]["sha256"] = item["sha256"]
+                manifest_path.write_text(json.dumps(manifest))
+                self.reject()
+                path.write_bytes(original)
+                manifest_path.write_bytes(original_manifest)
+
+    def test_mirror_receipts_are_required_regular_files(self) -> None:
+        for name in (
+            "SRC-013-wrapper-mirror.json",
+            "SRC-013-integration.json",
+            "SRC-013-final-validation.json",
+        ):
+            path = self.folder / name
+            original = path.read_bytes()
+            with self.subTest(name=name, mutation="missing"):
+                path.unlink()
+                self.reject()
+                path.write_bytes(original)
+            with self.subTest(name=name, mutation="symlink"):
+                target = self.folder / "synthetic-receipt-target"
+                target.write_bytes(original)
+                path.unlink()
+                path.symlink_to(target)
+                self.reject()
+                path.unlink()
+                path.write_bytes(original)
+                target.unlink()
+
+    def test_receipt_manifest_binding_is_mandatory(self) -> None:
+        path = self.folder / "artifacts.json"
+        original = path.read_bytes()
+        for mutation in ("missing", "duplicate", "source", "canonical"):
+            with self.subTest(mutation=mutation):
+                manifest = json.loads(original)
+                item = next(
+                    x
+                    for x in manifest["artifacts"]
+                    if x["path"].endswith("/SRC-013-wrapper-mirror.json")
+                )
+                if mutation == "missing":
+                    manifest["artifacts"].remove(item)
+                elif mutation == "duplicate":
+                    manifest["artifacts"].append(item)
+                elif mutation == "source":
+                    item["source_ids"] = ["SRC-003"]
+                else:
+                    item["canonical"] = {"commit": "0" * 40}
+                path.write_text(json.dumps(manifest))
+                self.reject()
+        path.write_bytes(original)
+
+    def test_stale_canonical_commit_rejected(self) -> None:
+        path = self.folder / "artifacts.json"
+        manifest = json.loads(path.read_text())
+        for item in manifest["artifacts"]:
+            if (
+                item.get("canonical", {}).get("repository")
+                == "newdarwindev/runspindle-refinery"
+            ):
+                item["canonical"]["commit"] = "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b"
+        path.write_text(json.dumps(manifest))
+        self.reject()
+
+    def test_current_mapping_preserves_historical_identity(self) -> None:
+        current = json.loads((self.folder / "SRC-013-wrapper-mirror.json").read_text())
+        previous = json.loads((self.folder / "SRC-013-integration.json").read_text())
+        self.assertEqual(
+            current["canonical_commit"], "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209"
+        )
+        self.assertEqual(
+            current["previous_canonical_commit"], previous["canonical_commit"]
+        )
+        self.assertEqual(
+            current["canonical_tree"], "23ac8ce5d5d8f1b53023e640a90ab38a52cff339"
+        )
+        self.assertEqual(len(current["current_closure_sha256"]), 17)
+        for name, digest in current["historical_mirror_receipts"].items():
+            self.assertEqual(
+                hashlib.sha256((self.folder / name).read_bytes()).hexdigest(), digest
+            )
+
     def test_symlink_figure_directory_rejected(self) -> None:
         figures = self.folder / "figures"
         target = self.folder / "elsewhere"

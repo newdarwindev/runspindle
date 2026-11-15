@@ -53,9 +53,15 @@ described in `SRC-010-validation.md`; Console issue 2 remains open.
 ## Canonical SRC-013 paper
 
 [workflow-refinery.pdf](workflow-refinery.pdf) and its [TeX source](workflow-refinery.tex)
-mirror the independently reviewed Refinery paper at commit
-`bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b` (merged in
-`80a87f4569f1dfef14b141e141a89f30a9aaf7cd`). All eight historical figure PDFs,
+mirror the independently reviewed Refinery closure at commit
+`1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209` (tree
+`23ac8ce5d5d8f1b53023e640a90ab38a52cff339`, merged in
+`fc79d78f3eed3423da901b1c5b623e76ce08e7c4`). Only the builder import order
+changed from the prior canonical snapshot. [Current mirror mapping](SRC-013-wrapper-mirror.json)
+and [upstream wrapper evidence](source-wrapper-change-evidence.json) record this
+transition; [original integration](SRC-013-integration.json) and
+[original validation](SRC-013-final-validation.json) retain the historical mapping.
+All eight historical figure PDFs,
 the exact MIT notice, [separate font notice](SRC-013-NOTICES.md),
 [source disposition](source-disposition.json), [toolchain lock](toolchain-lock.json)
 and [original build receipt](build-evidence.json) are preserved byte-for-byte.
@@ -69,8 +75,8 @@ recorded native build; its command/environment matches the executed native wrapp
 The receipt's `document_content_commit` is a local review identity, not a
 fetchable public ref. Preserve original evidence; use separate integration evidence.
 No runtime, benchmark, measured gains or live acceptance follows from this paper.
-No component Gitlink changed. Root integration remains dependent on PR 53 passing
-and landing; issue 3 remains open until dependent integration passes and lands.
+No component Gitlink or acceptance gate changed. This wrapper mirror transition
+requires root review and validation; it does not claim new paper or runtime acceptance.
 
 ## Original SRC-002 paper protection
 
