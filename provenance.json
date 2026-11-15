@@ -155,7 +155,7 @@
       "canonical_sha256": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7"
     },
     {
-      "adaptation_limits": "Full selected SRC-013 narrative and eight cleared figures; no runtime, benchmark or live acceptance claim. Root integration pending.",
+      "adaptation_limits": "Full selected SRC-013 narrative and eight cleared figures; no runtime, benchmark or live acceptance claim. Current wrapper mirror update remains subject to root review and validation.",
       "destination": "docs/marketing/workflow-refinery.pdf",
       "license_review": "Exact selected MIT notice and separate Latin Modern font notice retained.",
       "migration_status": "partial",
@@ -168,12 +168,16 @@
       "source_id": "SRC-013",
       "status": "adapted_document",
       "canonical_repository": "newdarwindev/runspindle-refinery",
-      "canonical_commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+      "canonical_commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
+      "canonical_tree": "23ac8ce5d5d8f1b53023e640a90ab38a52cff339",
+      "canonical_merge": "fc79d78f3eed3423da901b1c5b623e76ce08e7c4",
+      "historical_canonical_commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+      "mirror_update": "docs/marketing/SRC-013-wrapper-mirror.json",
       "canonical_path": "docs/design/workflow-refinery.pdf",
       "canonical_sha256": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
       "disposition_map": "docs/marketing/source-disposition.json",
       "notice": "docs/marketing/SRC-013-NOTICES.md",
-      "integration_status": "prepared_dependent_on_PR53_and_root_validation"
+      "integration_status": "canonical_wrapper_update_prepared_for_root_review_and_validation"
     },
     {
       "destination": "docs/migration/technical-coverage.md",
