@@ -11,7 +11,10 @@ These are adaptations of selected historical material, not faithful re-renders o
 - `presentations/legacy`: preserved old generated companion TeX.
 - `workflow-refinery.pdf` and `.tex`: proposed DSPy evaluation and serving boundaries.
 - `economics.md`: accepted-work cost accounting with no claimed savings.
-- `index.html`, `browser.html`: standalone product/design narratives generated here.
+- `index.html`: standalone product/design narrative generated here.
+- `browser.html`: reviewed Browser SRC-009 source with explicit link/location
+  normalization, not byte-identical and never regenerated here. See
+  [mirror mapping](SRC-009-mirror.md) and [exact transformations](SRC-009-mirror.json).
 - `vision.html`: byte-preserved canonical Console SRC-010 adaptation, edited in
   `newdarwindev/runspindle-console` at `docs/product/vision.html`. Its exact Console
   revision and hashes are pinned in `artifacts.json`, with the same MIT notice,
@@ -78,3 +81,15 @@ separate the original edited sources from the unchanged older PDFs. No PDF
 currently renders these new decks. The generator now uses only the Python standard
 library and cannot rebuild any PDF or authored TeX. Native Beamer dependency
 inventory, separate build review and all-page acceptance remain pending.
+
+## Canonical Browser SRC-009 source
+
+The canonical Browser page is pinned to merged Browser commit
+`a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b`. Its six specification links, source
+review and notices link to verified immutable Browser files. Product navigation
+stays local; two location/status sentences disclose this derivative. Reversing
+only the documented substitutions recovers the exact canonical content hash.
+The generator validates this mapping after all existing source guards and before
+any write. It now writes four outputs and cannot overwrite the Browser page.
+Browser issue 5 remains open for genuine rendered/mobile/keyboard acceptance.
+This source synchronization does not establish live runtime behavior.

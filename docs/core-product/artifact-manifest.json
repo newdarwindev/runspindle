@@ -12,6 +12,6 @@
     "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
     "tests/test_core_product.py": "59ddbbb3470724cc5c2014859ba85f6271799aa0fdff57e026c1d3497852ffe0",
     "tools/check_core_product.py": "8ab8d07e496d466ed4af425bfabcd9e46539c52d0e8bb1a6c1a3c4138bac9f65",
-    "tools/validate.py": "c20b38ac40d5fcd7d51f3df5b582159117caaee1595e7fd5e2c7ef5b26ad3c0b"
+    "tools/validate.py": "60d21ed74d0873f3c11a5ec45fceaa9cb99eb556d4872cd625c62653ba7e785b"
   }
 }
