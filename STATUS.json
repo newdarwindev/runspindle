@@ -103,5 +103,18 @@
     "independent_review": "user_waived_no_review_occurred",
     "python_component_producer": "locally_tested_synthetic_inverse_mappings",
     "producer_evidence": "docs/ENVELOPE_PRODUCER.md"
+  },
+  "native_turn_contract": {
+    "version": "runspindle.native-turn.v1",
+    "specification": "specs/native-turn-v1.md",
+    "descriptor": "contracts/native-turn-v1.json",
+    "evidence": "docs/NATIVE_TURN_CONFORMANCE.md",
+    "status": "independent_python_synthetic_request_mapping_tested",
+    "host_cross_language_conformance": "not_run",
+    "runtime_authority": "not_implemented",
+    "native_input_store": "not_implemented",
+    "runtime_activation": "not_run",
+    "composition_pins": "unchanged",
+    "system_acceptance": "not_inferred"
   }
 }

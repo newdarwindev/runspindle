@@ -1,0 +1,143 @@
+[
+  {
+    "name": "ascii",
+    "input_utf8": "Summarize the synthetic fixture.\n",
+    "request": {
+      "version": "runspindle.native-turn.v1",
+      "binding": {
+        "task_id": "task-fixture",
+        "revision": 1,
+        "operation_id": "operation-fixture",
+        "policy_revision": "policy-1",
+        "host_id": "host-fixture",
+        "workspace_id": "workspace-fixture",
+        "lease_epoch": 7
+      },
+      "thread_id": "thread-fixture",
+      "input": {
+        "sha256": "d61e8bc43217a305a258a6004232a2161522e562911227a7722b93b6219b79c4",
+        "byte_length": 33
+      },
+      "profile": {
+        "kind": "read_only_text_v1",
+        "model": "model-fixture"
+      }
+    },
+    "canonical_request": "{\"binding\":{\"host_id\":\"host-fixture\",\"lease_epoch\":7,\"operation_id\":\"operation-fixture\",\"policy_revision\":\"policy-1\",\"revision\":1,\"task_id\":\"task-fixture\",\"workspace_id\":\"workspace-fixture\"},\"input\":{\"byte_length\":33,\"sha256\":\"d61e8bc43217a305a258a6004232a2161522e562911227a7722b93b6219b79c4\"},\"profile\":{\"kind\":\"read_only_text_v1\",\"model\":\"model-fixture\"},\"thread_id\":\"thread-fixture\",\"version\":\"runspindle.native-turn.v1\"}",
+    "request_sha256": "f11fddef7ea2197d4b45f2b1de449f3d9d9fdbaa2078c115f21f5d64e3b8b910",
+    "upstream_rpc": {
+      "id": 7,
+      "method": "turn/start",
+      "params": {
+        "threadId": "thread-fixture",
+        "input": [
+          {
+            "type": "text",
+            "text": "Summarize the synthetic fixture.\n",
+            "text_elements": []
+          }
+        ],
+        "model": "model-fixture",
+        "approvalPolicy": "never",
+        "sandboxPolicy": {
+          "type": "readOnly",
+          "networkAccess": false
+        }
+      }
+    }
+  },
+  {
+    "name": "unicode",
+    "input_utf8": "Caf\u00e9 e\u0301 \ud83d\ude42\n\"quoted\" \\ text",
+    "request": {
+      "version": "runspindle.native-turn.v1",
+      "binding": {
+        "task_id": "task-fixture",
+        "revision": 2,
+        "operation_id": "operation-fixture",
+        "policy_revision": "policy-1",
+        "host_id": "host-fixture",
+        "workspace_id": "workspace-fixture",
+        "lease_epoch": 18446744073709551615
+      },
+      "thread_id": "thread-fixture",
+      "input": {
+        "sha256": "8e5df80bd8a6b0548df1d17657627d2c71066176875bb833913cb6b5d5ab5312",
+        "byte_length": 30
+      },
+      "profile": {
+        "kind": "read_only_text_v1",
+        "model": "model-fixture"
+      }
+    },
+    "canonical_request": "{\"binding\":{\"host_id\":\"host-fixture\",\"lease_epoch\":18446744073709551615,\"operation_id\":\"operation-fixture\",\"policy_revision\":\"policy-1\",\"revision\":2,\"task_id\":\"task-fixture\",\"workspace_id\":\"workspace-fixture\"},\"input\":{\"byte_length\":30,\"sha256\":\"8e5df80bd8a6b0548df1d17657627d2c71066176875bb833913cb6b5d5ab5312\"},\"profile\":{\"kind\":\"read_only_text_v1\",\"model\":\"model-fixture\"},\"thread_id\":\"thread-fixture\",\"version\":\"runspindle.native-turn.v1\"}",
+    "request_sha256": "0cf6f1246be6ae82644d8c977500723a14bee74fd0295b7cd1d9b34735175765",
+    "upstream_rpc": {
+      "id": 7,
+      "method": "turn/start",
+      "params": {
+        "threadId": "thread-fixture",
+        "input": [
+          {
+            "type": "text",
+            "text": "Caf\u00e9 e\u0301 \ud83d\ude42\n\"quoted\" \\ text",
+            "text_elements": []
+          }
+        ],
+        "model": "model-fixture",
+        "approvalPolicy": "never",
+        "sandboxPolicy": {
+          "type": "readOnly",
+          "networkAccess": false
+        }
+      }
+    }
+  },
+  {
+    "name": "controls",
+    "input_utf8": "\u0000\t\r\n synthetic only",
+    "request": {
+      "version": "runspindle.native-turn.v1",
+      "binding": {
+        "task_id": "task-fixture",
+        "revision": 18446744073709551615,
+        "operation_id": "operation-fixture",
+        "policy_revision": "policy-1",
+        "host_id": "host-fixture",
+        "workspace_id": "workspace-fixture",
+        "lease_epoch": 9
+      },
+      "thread_id": "thread-fixture",
+      "input": {
+        "sha256": "7bcb0c413633daf216fb598a2408105a128a0b6ef1c3340052fbbcce5b5af6fc",
+        "byte_length": 19
+      },
+      "profile": {
+        "kind": "read_only_text_v1",
+        "model": "model-fixture"
+      }
+    },
+    "canonical_request": "{\"binding\":{\"host_id\":\"host-fixture\",\"lease_epoch\":9,\"operation_id\":\"operation-fixture\",\"policy_revision\":\"policy-1\",\"revision\":18446744073709551615,\"task_id\":\"task-fixture\",\"workspace_id\":\"workspace-fixture\"},\"input\":{\"byte_length\":19,\"sha256\":\"7bcb0c413633daf216fb598a2408105a128a0b6ef1c3340052fbbcce5b5af6fc\"},\"profile\":{\"kind\":\"read_only_text_v1\",\"model\":\"model-fixture\"},\"thread_id\":\"thread-fixture\",\"version\":\"runspindle.native-turn.v1\"}",
+    "request_sha256": "323689606bd40e3aaa92ef6785325d75ab9089a2471353e9d9cecf216a20af5b",
+    "upstream_rpc": {
+      "id": 7,
+      "method": "turn/start",
+      "params": {
+        "threadId": "thread-fixture",
+        "input": [
+          {
+            "type": "text",
+            "text": "\u0000\t\r\n synthetic only",
+            "text_elements": []
+          }
+        ],
+        "model": "model-fixture",
+        "approvalPolicy": "never",
+        "sandboxPolicy": {
+          "type": "readOnly",
+          "networkAccess": false
+        }
+      }
+    }
+  }
+]

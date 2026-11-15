@@ -55,3 +55,8 @@ runtime qualification are recorded separately. No independent review occurred
 [Retained-feedback candidate integration](../docs/FEEDBACK_HERO.md) qualifies one
 bounded H10 seam using actual pinned Tether and Refinery stores. Composition pins
 and existing maintained-scenario acceptance remain unchanged.
+
+[Native-turn request v1](native-turn-v1.md) adds a separate content-addressed,
+closed-profile request and independent Python synthetic mapping vectors. It does
+not alter Admission/grant semantics, advance component pins or activate native
+task execution; durable Host and real-native qualification remain separate.
