@@ -10,7 +10,7 @@ import os
 import subprocess
 import sys
 import unittest
-from contextlib import ExitStack, redirect_stdout
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from pathlib import Path
 from typing import Any
 from unittest.mock import patch
@@ -18,6 +18,13 @@ from unittest.mock import patch
 from tools import partition_validation as gate
 
 CANARY = "PRIVATE_CANARY_URL_TOKEN"
+BINDING_FIELDS = (
+    "image_sha256",
+    "image_source_sha",
+    "controller_sha256",
+    "recipe_sha256",
+    "tool_closure_sha256",
+)
 
 
 class PartitionDiagnosticsTests(unittest.TestCase):
@@ -38,11 +45,18 @@ class PartitionDiagnosticsTests(unittest.TestCase):
         }
 
     def invoke(
-        self, *, failure: str = "", category: str = "invalid_value"
+        self,
+        *,
+        failure: str = "",
+        category: str = "invalid_value",
+        observed: dict[str, Any] | None = None,
+        binding_failures: list[str] | None = None,
     ) -> tuple[dict[str, Any], Any]:
-        instance, guest = copy.deepcopy(self.instance), copy.deepcopy(self.guest)
-        if failure == "image_binding":
+        instance = copy.deepcopy(self.instance if observed is None else observed)
+        guest = copy.deepcopy(self.guest)
+        if failure == "image_binding" and observed is None:
             instance["image_sha256"] = CANARY
+            binding_failures = ["image_sha256:mismatched"]
         if failure == "rust_closure":
             guest["rust_closure_sha256"] = CANARY
         if failure == "builder_archive":
@@ -97,23 +111,165 @@ class PartitionDiagnosticsTests(unittest.TestCase):
             check = stack.enter_context(
                 patch.object(gate, "receipt", side_effect=ValueError(CANARY))
             )
-            with redirect_stdout(output):
+            with redirect_stdout(output), redirect_stderr(io.StringIO()) as stderr:
                 code = gate.cli()
         self.assertEqual(code, 2)
+        self.assertEqual(stderr.getvalue(), "")
         raw = output.getvalue()
         self.assertNotIn(CANARY, raw)
         self.assertNotIn("receipt=", raw)
         result = json.loads(raw)
-        self.assertEqual(
-            result,
-            {
-                "status": "failed",
-                "reason": "validation_error",
-                "stage": failure,
-                "category": category,
-            },
-        )
+        expected: dict[str, Any] = {
+            "status": "failed",
+            "reason": "validation_error",
+            "stage": failure,
+            "category": category,
+        }
+        if binding_failures is not None:
+            expected["binding_failures"] = binding_failures
+        self.assertEqual(result, expected)
+        self.assertLessEqual(len(raw), 512)
         return result, check
+
+    def test_each_binding_field_missing_mismatched_or_invalid_still_fails(self) -> None:
+        for field in BINDING_FIELDS:
+            observed = self.instance.copy()
+            del observed[field]
+            with self.subTest(field=field, problem="missing"):
+                _, check = self.invoke(
+                    failure="image_binding",
+                    observed=observed,
+                    binding_failures=[field + ":missing"],
+                )
+                check.assert_not_called()
+            for actual in (
+                "0" * len(self.instance[field]),
+                "",
+                CANARY * 1000,
+                None,
+                True,
+                17,
+                1.25,
+                [CANARY],
+                {CANARY: CANARY},
+            ):
+                with self.subTest(field=field, actual_type=type(actual).__name__):
+                    _, check = self.invoke(
+                        failure="image_binding",
+                        observed={**self.instance, field: actual, CANARY: CANARY},
+                        binding_failures=[field + ":mismatched"],
+                    )
+                    check.assert_not_called()
+
+    def test_multiple_binding_failures_have_fixed_field_order(self) -> None:
+        observed: dict[str, Any] = {CANARY: {CANARY: CANARY}}
+        for field in reversed(BINDING_FIELDS):
+            if field in ("image_source_sha", "recipe_sha256"):
+                observed[field] = CANARY
+        _, check = self.invoke(
+            failure="image_binding",
+            observed=observed,
+            binding_failures=[
+                "image_sha256:missing",
+                "image_source_sha:mismatched",
+                "controller_sha256:missing",
+                "recipe_sha256:mismatched",
+                "tool_closure_sha256:missing",
+            ],
+        )
+        check.assert_not_called()
+        _, check = self.invoke(
+            failure="image_binding",
+            observed={},
+            binding_failures=[field + ":missing" for field in BINDING_FIELDS],
+        )
+        check.assert_not_called()
+
+    def test_matching_binding_ignores_unrelated_metadata(self) -> None:
+        observed = {**self.instance, CANARY: {CANARY: [CANARY]}}
+        gate.validate_instance_binding(observed, self.image)
+        with (
+            patch.object(
+                Path,
+                "read_text",
+                side_effect=[json.dumps(observed), json.dumps(self.guest)],
+            ),
+            patch.object(
+                gate, "digest", return_value=self.image["quality_closure_sha256"]
+            ),
+        ):
+            self.assertEqual(gate.guest_identity(self.image), observed)
+
+    def test_binding_exception_retains_no_metadata_or_values(self) -> None:
+        with self.assertRaises(gate.ImageBindingFailure) as caught:
+            gate.validate_instance_binding(
+                {field: CANARY for field in BINDING_FIELDS} | {CANARY: CANARY},
+                self.image,
+            )
+        error = caught.exception
+        self.assertEqual(str(error), "wrong or missing qualified image binding")
+        self.assertEqual(
+            error.__dict__,
+            {"binding_failures": tuple(f + ":mismatched" for f in BINDING_FIELDS)},
+        )
+        self.assertNotIn(CANARY, repr(error) + repr(error.__dict__))
+
+    def test_tampered_binding_hints_are_omitted_without_changing_failure(self) -> None:
+        class HostileString(str):
+            def __eq__(self, other: object) -> bool:
+                raise AssertionError(CANARY)
+
+            __hash__ = str.__hash__
+
+        class HostileTuple(tuple[str, ...]):
+            def __iter__(self) -> Any:
+                raise AssertionError(CANARY)
+
+        valid = ("image_sha256:missing",)
+        for hint in (
+            None,
+            (),
+            list(valid),
+            {CANARY: CANARY},
+            CANARY,
+            valid * 6,
+            (CANARY,),
+            ("image_sha256:" + CANARY,),
+            (CANARY + ":missing",),
+            (HostileString(valid[0]),),
+            HostileTuple(valid),
+            (17,),
+            valid * 2,
+            ("image_sha256:missing", "image_sha256:mismatched"),
+            ("recipe_sha256:missing", "image_sha256:missing"),
+            (valid[0], CANARY),
+        ):
+            error = gate.PartitionFailure(gate.Stage.IMAGE_BINDING, ValueError(CANARY))
+            error.__dict__["binding_failures"] = hint
+            with (
+                patch.object(gate, "main", side_effect=error),
+                redirect_stdout(io.StringIO()) as output,
+                redirect_stderr(io.StringIO()) as stderr,
+            ):
+                self.assertEqual(gate.cli(), 2)
+            self.assertEqual(
+                json.loads(output.getvalue()),
+                {
+                    "status": "failed",
+                    "reason": "validation_error",
+                    "stage": "image_binding",
+                    "category": "invalid_value",
+                },
+            )
+            self.assertNotIn(CANARY, output.getvalue())
+            self.assertEqual(stderr.getvalue(), "")
+        for stage, cause in (
+            (gate.Stage.MANIFEST, ValueError(CANARY)),
+            (gate.Stage.IMAGE_BINDING, KeyError(CANARY)),
+        ):
+            error = gate.PartitionFailure(stage, cause)
+            error.__dict__["binding_failures"] = valid
+            self.assertNotIn("binding_failures", gate.failure_record(error))
 
     def test_each_precheck_failure_is_specific_and_never_runs_checks(self) -> None:
         for stage in (
