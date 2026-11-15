@@ -69,11 +69,21 @@ def failure_category(error: BaseException) -> str:
     return "invalid_value"
 
 
+class ImageBindingFailure(ValueError):
+    def __init__(self, failures: tuple[str, ...]) -> None:
+        super().__init__("wrong or missing qualified image binding")
+        self.binding_failures = failures
+
+
 class PartitionFailure(ValueError):
     def __init__(self, stage: Stage, error: BaseException) -> None:
         super().__init__("partition validation failed")
         self.stage = stage
         self.category = failure_category(error)
+        if type(error) is ImageBindingFailure:
+            self.binding_failures = object.__getattribute__(error, "__dict__").get(
+                "binding_failures"
+            )
 
 
 @contextmanager
@@ -149,7 +159,15 @@ def validate_instance_binding(instance: dict[str, Any], image: dict[str, str]) -
         "tool_closure_sha256": image["tool_closure_sha256"],
     }
     if any(instance.get(key) != value for key, value in expected.items()):
-        raise ValueError("wrong or missing qualified image binding")
+        # The gate above is unchanged. Only these fixed field names, never
+        # observed/expected values or unrelated metadata keys, become hints.
+        raise ImageBindingFailure(
+            tuple(
+                key + (":mismatched" if key in instance else ":missing")
+                for key, value in expected.items()
+                if instance.get(key) != value
+            )
+        )
 
 
 def guest_identity(image: dict[str, str]) -> dict[str, Any]:
@@ -403,10 +421,10 @@ def main() -> int:
     return 0 if value["status"] == "passed" else 1
 
 
-def failure_record(error: BaseException) -> dict[str, str]:
+def failure_record(error: BaseException) -> dict[str, Any]:
     # Validate again at the final output boundary. Exception attributes are
     # mutable and must not be treated as already-sanitized diagnostic evidence.
-    result = {
+    result: dict[str, Any] = {
         "status": "failed",
         "reason": "validation_error",
         "stage": "unclassified",
@@ -456,6 +474,33 @@ def failure_record(error: BaseException) -> dict[str, str]:
     if stage_name is None:
         return result
     result.update(stage=stage_name, category=category)
+    failures = attributes.get("binding_failures")
+    if (
+        stage is Stage.IMAGE_BINDING
+        and category == "invalid_value"
+        and type(failures) is tuple
+        and 1 <= len(failures) <= 5
+        and all(type(item) is str for item in failures)
+    ):
+        # Revalidate the whole optional hint at the output boundary, including
+        # length, exact string types, unique fields and deterministic order.
+        allowed = {
+            field + ":" + reason: index
+            for index, field in enumerate(
+                (
+                    "image_sha256",
+                    "image_source_sha",
+                    "controller_sha256",
+                    "recipe_sha256",
+                    "tool_closure_sha256",
+                )
+            )
+            for reason in ("missing", "mismatched")
+        }
+        if all(item in allowed for item in failures):
+            order = [allowed[item] for item in failures]
+            if order == sorted(set(order)):
+                result["binding_failures"] = list(failures)
     return result
 
 

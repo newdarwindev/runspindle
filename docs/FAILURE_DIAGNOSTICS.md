@@ -44,3 +44,16 @@ remain unchanged. Successful receipt schema/encoding is unchanged; failed
 pre-checks emit no success receipt and never run child checks. Synthetic injection
 tests cover every pre-check boundary, canary non-disclosure and receipt stability.
 This does not establish the cause of an older run that lacked these diagnostics.
+
+Image-binding failures retain `stage=image_binding`, `category=invalid_value` and
+exit code 2. Their optional `binding_failures` list contains at most five fixed
+`field:missing` or `field:mismatched` strings, ordered as `image_sha256`,
+`image_source_sha`, `controller_sha256`, `recipe_sha256`, `tool_closure_sha256`.
+Missing means the key is absent. Present nulls, invalid types and unequal values
+are mismatches under the unchanged exact-equality gate. Unrelated metadata does
+not affect that gate or appear in the hint. No value, arbitrary key, path or
+exception chain is emitted. The output boundary rejects malformed, duplicate,
+out-of-order or unknown hints while preserving the failed status. Synthetic
+normal and optimized tests cover each field, hostile metadata, multiple failures,
+final-boundary tampering and unchanged success behavior. These diagnostics do not
+qualify a runner, alter image pins or explain historical failures without them.
