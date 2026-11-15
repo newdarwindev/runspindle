@@ -59,6 +59,66 @@
       "timeout_seconds": 300
     },
     {
+      "id": "check-economics-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_economics_source.py"
+      ],
+      "required_files": [
+        "tools/check_economics_source.py",
+        "docs/marketing/SRC-005-disposition.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-paper-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_paper_source.py"
+      ],
+      "required_files": [
+        "tools/check_paper_source.py",
+        "docs/marketing/paper_source.py",
+        "docs/marketing/SRC-002-source-receipt.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-presentation-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_presentation_source.py"
+      ],
+      "required_files": [
+        "tools/check_presentation_source.py",
+        "docs/marketing/presentation_source.py",
+        "docs/marketing/SRC-003-004-source-receipt.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-source-registration",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_source_registration.py"
+      ],
+      "required_files": [
+        "tools/check_source_registration.py",
+        "tests/test_source_registration.py",
+        "hygiene.json",
+        "validation-partitions.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
       "id": "python-tests",
       "command": [
         "python3",
@@ -70,7 +130,13 @@
         "-v"
       ],
       "required_files": [
-        "tests"
+        "tests",
+        "tests/test_marketing_economics.py",
+        "tests/test_marketing_paper.py",
+        "tests/test_marketing_presentations.py",
+        "tests/test_marketing_refinery.py",
+        "tests/test_marketing_vision.py",
+        "tests/test_source_registration.py"
       ],
       "timeout_seconds": 600
     },

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "source_ids": [
+    "SRC-003",
+    "SRC-004"
+  ],
+  "citations": [
+    {
+      "key": "webarena",
+      "authors": "Shuyan Zhou et al.",
+      "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+      "date_and_version": "2023; arXiv v4 April 16, 2024",
+      "url": "https://arxiv.org/abs/2307.13854",
+      "supported_use": "Reproducible website tasks and functional end-state evaluation.",
+      "applicability_limit": "Not current consumer demand, refusal rate or production authorization.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    },
+    {
+      "key": "workarena",
+      "authors": "Alexandre Drouin et al.",
+      "title": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+      "date_and_version": "2024; arXiv v5 July 23, 2024",
+      "url": "https://arxiv.org/abs/2403.07718",
+      "supported_use": "Enterprise-web task evaluation and BrowserGym observations.",
+      "applicability_limit": "Controlled ServiceNow setting, not broad enterprise productivity.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    },
+    {
+      "key": "xstest",
+      "authors": "Paul R\u00f6ttger, Hannah Rose Kirk, Bertie Vidgen, Giuseppe Attanasio, Federico Bianchi and Dirk Hovy",
+      "title": "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models",
+      "date_and_version": "2023 preprint; NAACL 2024; arXiv v3 April 1, 2024",
+      "url": "https://arxiv.org/abs/2308.01263",
+      "supported_use": "Safe-prompt refusal calibration contrasted with unsafe prompts.",
+      "applicability_limit": "Not current consumer-workflow prevalence or permission to bypass safeguards.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    },
+    {
+      "key": "orbench",
+      "authors": "Justin Cui, Wei-Lin Chiang, Ion Stoica and Cho-Jui Hsieh",
+      "title": "OR-Bench: An Over-Refusal Benchmark for Large Language Models",
+      "date_and_version": "2024 preprint; ICML 2025; arXiv v5 June 15, 2025",
+      "url": "https://arxiv.org/abs/2405.20947",
+      "supported_use": "Broad benign-over-refusal testing with a toxic contrast set.",
+      "applicability_limit": "Dataset- and model-bound; no commercial prevalence estimate or new authority.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    },
+    {
+      "key": "taubench",
+      "authors": "Shunyu Yao, Noah Shinn, Pedram Razavi and Karthik Narasimhan",
+      "title": "\u03c4-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "date_and_version": "2024; arXiv v1 June 17, 2024",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "supported_use": "End database-state checking and repeated-trial reliability.",
+      "applicability_limit": "Simulated users and selected domains, not live reliability or authorization guarantees.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    },
+    {
+      "key": "agentsmatter",
+      "authors": "Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir and Arvind Narayanan",
+      "title": "AI Agents That Matter",
+      "date_and_version": "2024",
+      "url": "https://arxiv.org/abs/2407.01502",
+      "supported_use": "Joint cost and accuracy evaluation, reproducibility and holdout discipline.",
+      "applicability_limit": "No Runspindle return-on-investment or workflow performance estimate.",
+      "reviewed_date": "2026-11-14",
+      "source_type": "primary",
+      "disposition": "attribution_and_bounded_context_only",
+      "source_expression_imported": false,
+      "deck_review": "Primary abstract/metadata opened during presentation review; no numerical results imported."
+    }
+  ],
+  "rights": "Attribution and bounded methodological context only. No source prose or figure license inferred."
+}

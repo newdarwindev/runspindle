@@ -1,0 +1,20 @@
+\begin{frame}[label=fleet-comparison]{A separately authorized fleet study}
+Compare feasible tasks on one native computer with the same tasks using a
+separately authorized fleet layer. Within that layer, test placement and recovery
+as separate interventions; hold model and task conditions fixed where feasible.
+\medskip
+{\small\begin{tabular}{p{.28\linewidth}p{.63\linewidth}}
+\textbf{Proposed measure} & \textbf{Record and denominator} \\
+Accepted outcomes & Independent acceptance / all scheduled trials \\
+Placement & Correct authorized host / all placement decisions \\
+Human effort / latency & Active minutes / request-to-terminal seconds \\
+Recovery / cost & Reconciled failures / disjoint spend and labor ledger \\
+\end{tabular}}
+\medskip
+Report tasks unavailable to the baseline separately. Wrong host or missing grant
+requires a stop. Lost receipts remain unknown. Include failures, repeats and uncertainty.
+\vfill
+{\footnotesize No fleet superiority result. Reliability and cost methodology:
+\href{https://arxiv.org/abs/2406.12045}{Yao et al. (2024)} and
+\href{https://arxiv.org/abs/2407.01502}{Kapoor et al. (2024)}; neither tests this fleet.}
+\end{frame}

@@ -19,6 +19,10 @@
     "component": [
       "check-artifacts",
       "check-core-product",
+      "check-economics-source",
+      "check-paper-source",
+      "check-presentation-source",
+      "check-source-registration",
       "python-tests",
       "distributable-build",
       "feedback-hero"

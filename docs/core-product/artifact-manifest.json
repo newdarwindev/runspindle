@@ -10,14 +10,14 @@
     "docs/core-product/README.md": "dbc36ffb62cec68e6e78ad8482b3ec2270a176b111550422529337e2bbbec8de",
     "docs/core-product/coverage.json": "171ab3b8242d6eda516d04051f4a866a6c2b5a64e9c87b7d36576f5546356be1",
     "docs/core-product/original-artifact-manifest.json": "d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba",
-    "hygiene.json": "76cd808dbc0d82239aabc657e17e773d2402de433094da220bb05f13f8646c9c",
+    "hygiene.json": "5df4bd24a86494fb7212f564a2cdcaab32eaa13fcbc6c724e559213c481047bb",
     "requirements-quality.txt": "9cbe1331549216b953f2922f1e8321357ca82bb985e1ea595c87fcee8a8fdc84",
     "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
     "tests/test_core_product.py": "eba634f1ba7f1143a6070f135cb734054992a9f4be65081a4dbbc881a1565f00",
     "tools/check_core_product.py": "f1fdd179ce2de54dd3aa1186544ae51ff836b1197e163af50489799c55603dfa",
     "tools/quality-baseline.json": "881d43516723da1b3ae4d55a828909d2fcf3997102334db81ad6f69ab4b1e7e9",
     "tools/validate.py": "b29f49b6ae71b4427328df21ee855f9ac809ea452af9729a3d1f5ada5695118a",
-    "validation-partitions.json": "3614f234db06de1b1dcf1bf7b112d162ba92eb295832c7744bbbd82953c2caf1"
+    "validation-partitions.json": "6259037b3859f63d00eec69b8b2a327314d37bea1529d52d20c3169d3580925d"
   },
   "historical_original": {
     "path": "docs/core-product/original-artifact-manifest.json",
