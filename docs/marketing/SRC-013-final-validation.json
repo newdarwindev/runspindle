@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "evidence_class": "final_local_document_integration_validation",
+  "supersedes_validation_summary_of": "1f86dfbc20324bfd83c5e9435aa0c65a419cc7c0",
+  "base_commit": "27e6cf71c686ba6111ff74d9f7dbda97860d9841",
+  "previous_receipt": "SRC-013-integration.json",
+  "previous_receipt_status": "Preserved unchanged; its three skips describe the earlier run, not final validation.",
+  "candidate_sources": {
+    "RUNSPINDLE_FEEDBACK_HERO_REFINERY": {
+      "commit": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "clean_including_ignored": true
+    },
+    "RUNSPINDLE_FEEDBACK_HERO_TETHER": {
+      "commit": "670989839a0fccbcf2014d01609778ae6e4df424",
+      "clean_including_ignored": true
+    }
+  },
+  "H10": {
+    "deliberate_mutation_detected": true,
+    "fresh_process_replay": "passed",
+    "independent_object_digest": "a94143e4146610737af7e85cd9aaedd69b9d93f8590960ec4ae9ca23ce70a82a",
+    "lane": "H10.retained_feedback_collection",
+    "negative_cases": 3,
+    "precommit_process_crash_recovery": "passed",
+    "repeat_runs": 2,
+    "schema_reopen_denials": 4,
+    "sources": {
+      "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "tether": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "status": "passed",
+    "system_acceptance": "blocked"
+  },
+  "checks": [
+    {
+      "command": "python3 tools/validate.py",
+      "tests": 91,
+      "skipped": 0,
+      "status": "passed"
+    },
+    {
+      "command": "python3 -O -m unittest discover -s tests -v",
+      "tests": 91,
+      "skipped": 0,
+      "status": "passed"
+    },
+    {
+      "command": "ruff check --isolated --select E4,E7,E9,F,I docs/marketing/build_documents.py docs/marketing/refinery_mirror.py tests/test_marketing_refinery.py",
+      "version": "0.14.5",
+      "status": "passed"
+    },
+    {
+      "command": "ruff format --check docs/marketing/build_documents.py docs/marketing/refinery_mirror.py tests/test_marketing_refinery.py",
+      "version": "0.14.5",
+      "status": "passed"
+    },
+    {
+      "command": "mypy --strict docs/marketing/build-paper.py docs/marketing/build_documents.py docs/marketing/refinery_mirror.py tests/test_marketing_refinery.py",
+      "version": "1.18.2",
+      "status": "passed"
+    }
+  ],
+  "canonical_wrapper_lint": "Unmodified byte-preserved build-paper.py has pre-existing I001 under isolated import-order checks; not suppressed or rewritten. Default Ruff and strict mypy pass.",
+  "tested_python_sha256": {
+    "docs/marketing/build_documents.py": "73def9dba3cda8742f48bb5c85a1a83909d23b70ddf652725e890ab8709e040a",
+    "docs/marketing/refinery_mirror.py": "f1b102b75fa935969ad8330cf172d09540e3d52c03c8fe9f355bd82b3d5d200a",
+    "tests/test_marketing_refinery.py": "0ac9c72ee17720526745df100b96cc16909576eb949a2026cc4f519f4e8c5a81"
+  },
+  "limits": [
+    "No installation, compilation, workflow bypass, component pin or runtime changes.",
+    "Unpublished; dependent on PR53 passing and landing and independent root review/CI.",
+    "Issue 3 remains open until dependent integration passes and lands. No new runtime, benchmark or live acceptance claim."
+  ]
+}

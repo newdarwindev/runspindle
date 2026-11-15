@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "evidence_class": "bounded_local_SRC005_adaptation_validation_not_economic_measurement",
+  "source_id": "SRC-005",
+  "bundle_source_id": "SRC-002",
+  "base_commit": "595c650ebf2c5e18295fadb1c7ebf76d52e6d79d",
+  "base_tree": "8fe855b2e7990fea6f4952504a148441b1523481",
+  "document_content_commit": "941aba6b43f80686ec0e5a6cd5bc99ff8fedda59",
+  "document_content_tree": "69e986ffa6293fb19b7797652e9ae0dbd131d609",
+  "identity_scope": "The document_content_commit is a local review identity, not a promised fetchable GitHub ref. A later publication must bind this content to its exact public head/tree. This additive receipt and its manifest registration follow that content commit.",
+  "tested_file_sha256": {
+    "docs/marketing/SRC-005-disposition.json": "357efd8bb6524af8c9f0b49350d9b081e9647e20ebd6fea6773a6592c1b9be51",
+    "docs/marketing/SRC-005-review.md": "66fd9b23fc69f44f7f41cfd608895b1c4ae30412ce1fda1c36c98311d7db70d4",
+    "docs/marketing/build_documents.py": "c1274f295a3836b71b05d2651ab8a6a8861a66192f33ca993ee3d87063899a73",
+    "docs/marketing/economics-model.md": "ff1cbbe3ad5610f42b2a82c4ce1fae1d2948f4b76a3c844605fc12681a8296c8",
+    "docs/marketing/economics.md": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
+    "docs/marketing/overview.md": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
+    "docs/marketing/runspindle-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "docs/marketing/runspindle-paper.tex": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
+    "provenance.json": "df0cc7a71a9cb50bf6a5c41a3f6be0b2d12c00242f05f4159a30d49a0b3b057c",
+    "tests/test_economics.py": "38235c3d5dd0cb46d48502414fa6c4ff54a7a57d6a39b6bf9948892ea4f82643",
+    "tests/test_marketing_economics.py": "7a84a7ba5520ea3fc180b667dbc2c14f709f7bbac7ba8f21ff2688d1beefe540",
+    "tools/check_economics_source.py": "9023060636414915fd4b6bc3e957ed09e2403c0eeaab7c8369d9fb1548aa0b9a",
+    "tools/economics.py": "c68cce9a54a6dfae93bbc4fd5dfcc33bcffb4e133f6e51404897a93547b44585"
+  },
+  "preserved_existing_artifact_sha256": {
+    "docs/marketing/BUILD.md": "e669725c4812b107ec50b6bc74dd86638d7da2bc1e609ce6f116ea6609724ec5",
+    "docs/marketing/README.md": "abdd586d44142195c79b4e9af06fab2ff239f145cbfb6f88c7260870b2ad4db5",
+    "docs/marketing/THIRD_PARTY_NOTICES.md": "58619d84da6a4d218bc0433920533b9f3ac20e64d4f276af81d03e0fcdd63367",
+    "docs/marketing/argument.pdf": "b1727d0db5cb9568e91f4beb90a0b38a496299eb17379e6443a92cc1b17cdcac",
+    "docs/marketing/argument.tex": "f82e8cbd628f8595a2e30e0003019575ad11ea560daef4e9fb84b56185c5b26c",
+    "docs/marketing/browser.html": "cfa1744917d2088f430e588c489590f1b3c3adf25bf15b277012345d6a2245c5",
+    "docs/marketing/fleet.pdf": "8fc9565bc3f992fdb58f82bbcffa6d03aa33c2e1ae1e0143bbf69384ae4b5978",
+    "docs/marketing/fleet.tex": "9cfee958c6700005e2ffce8595697b6bd12785f206c3d63ccd9e447123ae2316",
+    "docs/marketing/index.html": "81a27aba679a08c0db9547adada4b925c5631991f3708801a5fb0e9a8d8ebed4",
+    "docs/marketing/vision.html": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7",
+    "docs/marketing/LICENSE-SRC-010.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-010-lift.json": "80e4fbae10af2b29b9712cfc3c4754bda32266f5597940244ed9b998afa40e0d",
+    "docs/marketing/SRC-010-validation.md": "d551d121efb1525d8a73ef2f73099935ad9092c4f3ec38cb20a438debe20bb6b",
+    "docs/marketing/LICENSE-SRC-013.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-013-NOTICES.md": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3",
+    "docs/marketing/build-evidence.json": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960",
+    "docs/marketing/build-paper.py": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+    "docs/marketing/figures/01-identity.pdf": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245",
+    "docs/marketing/figures/02-lifecycle.pdf": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75",
+    "docs/marketing/figures/03-approval.pdf": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704",
+    "docs/marketing/figures/04-golden-data.pdf": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07",
+    "docs/marketing/figures/05-control-planes.pdf": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4",
+    "docs/marketing/figures/06-constellation.pdf": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a",
+    "docs/marketing/figures/07-provenance.pdf": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab",
+    "docs/marketing/figures/08-observation.pdf": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3",
+    "docs/marketing/source-disposition.json": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec",
+    "docs/marketing/toolchain-lock.json": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c",
+    "docs/marketing/workflow-refinery.pdf": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
+    "docs/marketing/workflow-refinery.tex": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7",
+    "docs/marketing/refinery_mirror.py": "f1b102b75fa935969ad8330cf172d09540e3d52c03c8fe9f355bd82b3d5d200a",
+    "docs/marketing/SRC-013-integration.json": "8254c45fa3e39ea5a2f4b3bc4ae0cb50994f0a522241fc252222dc3129021bf0",
+    "docs/marketing/SRC-013-final-validation.json": "66dd681eb9e363446bf2150567edaaf8babd772247de2561d77e6093bccf40cc"
+  },
+  "canonical_mirrors": {
+    "SRC010": 4,
+    "SRC013": 16,
+    "status": "byte_identical_to_base_including_guards_pins_and_prior_receipts"
+  },
+  "generator": {
+    "command": "python3 -B docs/marketing/build_documents.py",
+    "python": "3.12.14",
+    "reportlab": "4.4.9",
+    "repeat_runs": 2,
+    "byte_stability": "passed",
+    "changed_generated_outputs": [
+      "docs/marketing/economics.md",
+      "docs/marketing/overview.md",
+      "docs/marketing/runspindle-paper.tex",
+      "docs/marketing/runspindle-paper.pdf"
+    ],
+    "other_narrative_sections": "byte_identical",
+    "unrelated_generated_artifacts": "byte_identical"
+  },
+  "pdf_review": {
+    "pdf_sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "pages": 4,
+    "renderer": "system Poppler pdftoppm 25.03.0",
+    "command": "/usr/bin/pdftoppm -scale-to 1300 -png docs/marketing/runspindle-paper.pdf OUTPUT_PREFIX",
+    "page_png_sha256": {
+      "1": "6ce643a6968fdd97b08cdd85b9f754c9eddeee64240e44ced6721457b930b725",
+      "2": "912e5d9a1d69987ad28ba4d36f6e97088106100fd8bcccedf2f29206ba5e37d8",
+      "3": "9ba532a5b408d78aacbd56ab5d5a3e70611a7c4cea2db7ef1dfb0f5fe28e9152",
+      "4": "c1a38db5a66b94e0ec1ede551b61f7003749dced07f99c0ca663ed22e1bf95d0"
+    },
+    "author_visual_review": "all_four_pages_readable_no_clipping_or_overlap",
+    "independent_visual_review": "all_four_final_page_renders_reviewed_no_clipping_or_overlap",
+    "text_extraction": "source identity, equation and all three primary citation URLs retained",
+    "active_pdf_link_annotations": 0,
+    "link_limit": "URLs are readable citation text; active PDF hyperlink annotations were not generated.",
+    "renderer_note": "Initial runtime wrapper produced font-substitution artifacts; final visual review used the existing system Poppler executable. No font or software installation occurred."
+  },
+  "candidate_sources": {
+    "RUNSPINDLE_FEEDBACK_HERO_REFINERY": {
+      "commit": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "clean_including_ignored": true
+    },
+    "RUNSPINDLE_FEEDBACK_HERO_TETHER": {
+      "commit": "670989839a0fccbcf2014d01609778ae6e4df424",
+      "clean_including_ignored": true
+    }
+  },
+  "H10": {
+    "command": "python3 tools/feedback_hero.py --tether \"$RUNSPINDLE_FEEDBACK_HERO_TETHER\" --refinery \"$RUNSPINDLE_FEEDBACK_HERO_REFINERY\"",
+    "result": {
+      "deliberate_mutation_detected": true,
+      "fresh_process_replay": "passed",
+      "independent_object_digest": "a94143e4146610737af7e85cd9aaedd69b9d93f8590960ec4ae9ca23ce70a82a",
+      "lane": "H10.retained_feedback_collection",
+      "negative_cases": 3,
+      "precommit_process_crash_recovery": "passed",
+      "repeat_runs": 2,
+      "schema_reopen_denials": 4,
+      "sources": {
+        "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+        "tether": "670989839a0fccbcf2014d01609778ae6e4df424"
+      },
+      "status": "passed",
+      "system_acceptance": "blocked"
+    }
+  },
+  "checks": [
+    {
+      "command": "python3 tools/check_economics_source.py",
+      "status": "passed",
+      "units": 12
+    },
+    {
+      "command": "python3 -O tools/check_economics_source.py",
+      "status": "passed",
+      "units": 12
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_economics.py' -v",
+      "status": "passed",
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "command": "python3 -O -m unittest discover -s tests -p 'test_economics.py' -v",
+      "status": "passed",
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_marketing_*.py' -v",
+      "status": "passed",
+      "tests": 28,
+      "skipped": 0
+    },
+    {
+      "command": "python3 -O -m unittest discover -s tests -p 'test_marketing_*.py' -v",
+      "status": "passed",
+      "tests": 28,
+      "skipped": 0
+    },
+    {
+      "command": "python3 tools/validate.py",
+      "status": "passed",
+      "tests": 101,
+      "skipped": 0,
+      "execution_identity": "941aba6b43f80686ec0e5a6cd5bc99ff8fedda59"
+    },
+    {
+      "command": "python3 -O -m unittest discover -s tests -v",
+      "status": "passed",
+      "tests": 101,
+      "skipped": 0,
+      "execution_identity": "941aba6b43f80686ec0e5a6cd5bc99ff8fedda59"
+    },
+    {
+      "command": "python3 tools/check_scaffold.py",
+      "status": "passed"
+    },
+    {
+      "command": "python3 tools/check_artifacts.py",
+      "status": "passed"
+    },
+    {
+      "command": "ruff check --isolated --select E4,E7,E9,F,I docs/marketing/build_documents.py tools/check_economics_source.py tests/test_marketing_economics.py",
+      "status": "passed",
+      "version": "0.14.5"
+    },
+    {
+      "command": "ruff format --isolated --check docs/marketing/build_documents.py tools/check_economics_source.py tests/test_marketing_economics.py",
+      "status": "passed",
+      "version": "0.14.5"
+    },
+    {
+      "command": "mypy --strict docs/marketing/build_documents.py",
+      "status": "passed",
+      "version": "1.18.2"
+    },
+    {
+      "command": "mypy --strict --explicit-package-bases tools/check_economics_source.py tests/test_marketing_economics.py",
+      "status": "passed",
+      "version": "1.18.2"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "quality_notes": "Initial combined mypy invocation found a duplicate module name due to namespace-package resolution; separate generator check plus --explicit-package-bases for checker/tests passed strict typing. No ignores, suppressions or baseline changes.",
+  "privacy_review": "Changed text and extracted PDF checked against selected private identity, original revision/hash and source paths; none disclosed. Exact original section and dependency hashes remain privately retained.",
+  "historical_reference": "preserved_privately_not_republished",
+  "source_expression": "excluded_no_verified_reuse_license",
+  "executable_implementation": "unchanged_original_synthetic_accounting_not_historical_import",
+  "verified_behavior": "synthetic_arithmetic_document_consistency_and_local_validation_only",
+  "migration_status": "partial",
+  "independent_candidate_review": "pending_after_this_local_freeze",
+  "publication": "not_performed",
+  "remote_ci": "not_run_for_this_candidate",
+  "native_compilation": "not_run",
+  "issue7": "open",
+  "limits": [
+    "Depends on unmerged PR54 and PR53; their runner renderer prerequisite is separate and unresolved here.",
+    "No component Gitlink, workflow, runtime, service, security, acceptance gate or hygiene policy changed.",
+    "No installation, provisioning, historical binary import, provider call, live measurement, deployment or savings claim.",
+    "Original-expression permissions and historical native rendering remain unresolved; safe exclusions are explicit, not migration completion."
+  ]
+}

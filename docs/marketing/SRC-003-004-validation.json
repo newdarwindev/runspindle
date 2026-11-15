@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "source_ids": [
+    "SRC-003",
+    "SRC-004"
+  ],
+  "status": "source_prepared_validation_passed_native_build_not_run",
+  "evidence_class": "cloud_static_source_and_synthetic_tests_only",
+  "authored_content_commit": "58bb888e88d45aba9e214d88e830578e083c1cba",
+  "authored_content_tree": "79a8ae070ccf4c819c7c1b70c756ed6c4b1be8f4",
+  "published_parent_commit": "bbc3b06fd0528ae604687dc84683a10b4304eede",
+  "base_tree": "ed428ef02b9d3be35bced3a5c305def22dccdba1",
+  "authored_files_sha256": {
+    "docs/marketing/argument.tex": "969ef99adb7d0778933f3ff75c4e56ebc118a250b570deff1a855cc3d1120535",
+    "docs/marketing/fleet.tex": "bf8605782be64ccc629a09240ceba9b4631cb897922dade7f3a63653474f56d4",
+    "docs/marketing/presentation_source.py": "b15eba3ca7165c7b0dcceefba66ec0219ecdbf9b0133c3a55263e3ba885abfe9",
+    "docs/marketing/build_documents.py": "9da4c67e8f640a334534390a34c3d779b54bff76f60e5a8a492fc46de0d9228e",
+    "tools/check_presentation_source.py": "a2b29f9b2df5d4fe8a8957a12981599d4d2a116a99d8ba5dbe15cf20347bb957",
+    "tests/test_marketing_presentations.py": "61a618476bc668264305204068369e0752b38f721d3aa03004e9cdd452d475f7",
+    "tests/test_marketing_vision.py": "ce641751ec93820858e43f227641e45cbbde394a0594a0df41ea7f6a9f0ce4f9",
+    "docs/marketing/presentations/style.tex": "bec877d14a7f114e6b476dd0497ca4793f2bb5b22a25ec2f3a5165e28a36ef62",
+    "docs/marketing/presentations/fleet/evidence.tex": "afb7aa24d3e03ae80d6a2dd263f44dc56493ed0eea31f3de75e8b3b86238644e",
+    "docs/marketing/presentations/fleet/comparison.tex": "2d876c9f4efc2b3fbdacc8579e4abde9a14323000ab6f9595e61c1305621baea",
+    "docs/marketing/presentations/fleet/mechanism.tex": "ba23e4cfbcf77da25c4617be184b3ee3e406b892ca652ddac980cdb76652363f",
+    "docs/marketing/presentations/argument/evidence.tex": "73a27dfa6f5169b25f8b4b4a7b64ce71e5e0d22edd309872e5e7bd58365c11e3",
+    "docs/marketing/presentations/argument/comparison.tex": "05bd4162714b66b70b5107d728c97eb394c5b1d22ae490a3b2713e4f0c5a3961",
+    "docs/marketing/presentations/argument/mechanism.tex": "0c55bafbab3c319dd2c3d6820d406188c68e6fbab99390c344d2c2d9e7a0cc44",
+    "docs/marketing/presentations/shared/references.tex": "4da9a858f8aa98e427225ce845cd1dda4a2a9128385191ce6c51f2359e6ee20f",
+    "docs/marketing/presentations/shared/durability.tex": "07a31590d8885f8ff8f327d76737082867aa85491c3e0d6513301cf5d2881b8d",
+    "docs/marketing/presentations/shared/economics.tex": "e5cd55b9247bc086823c2091a9b913380ae79b4afbd622a9cd865de22df8fc62",
+    "docs/marketing/presentations/shared/market.tex": "b9c10cd4482f5e6822b6d4d06ededfb6d3351ba74c7293991984efa2cee597f5",
+    "docs/marketing/presentations/shared/effort.tex": "f945d41497706b48ade769eaa3c58750411ca07776d27c24e1b4fc35c2a4ec90",
+    "docs/marketing/presentations/shared/diagnosis.tex": "7a0edd9b900c980ec3c648a8f6eb83b71dbc6af348e93e3b0f5d5c2bbdf7fa08",
+    "docs/marketing/presentations/shared/accepted-work.tex": "8847263358d0ec3d93df073a5309bb93fd5a1fc9f161081d773c8129721da566",
+    "docs/marketing/presentations/legacy/fleet-reportlab.tex": "9cfee958c6700005e2ffce8595697b6bd12785f206c3d63ccd9e447123ae2316",
+    "docs/marketing/presentations/legacy/argument-reportlab.tex": "f82e8cbd628f8595a2e30e0003019575ad11ea560daef4e9fb84b56185c5b26c"
+  },
+  "tests": {
+    "marketing_normal": {
+      "count": 61,
+      "skipped": 0,
+      "status": "passed",
+      "python_site_packages": "disabled"
+    },
+    "marketing_optimized": {
+      "count": 61,
+      "skipped": 0,
+      "status": "passed",
+      "python_site_packages": "disabled"
+    },
+    "aggregate": {
+      "count": 134,
+      "skipped": 0,
+      "status": "passed",
+      "python_site_packages": "outer_process_disabled; unittest_child_not_forced_disabled",
+      "test_child_argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "flag_limit": "The outer -S and -B flags do not propagate to subprocesses. This is the inherited aggregate behavior; no flag change was made."
+    },
+    "all_optimized": {
+      "count": 134,
+      "skipped": 0,
+      "status": "passed",
+      "python_site_packages": "disabled"
+    },
+    "generator_preservation": "Actual two-run execution under -S in normal and optimized modes, with an import-failure trap for ReportLab; all files unchanged.",
+    "negative_mutations": "Original slide/file mapping, source/hash/manifest drift, stale PDF pairing, false completion/native inventory, citation/link identity, TeX package/input/primitive changes, symlinks and economics drift reject before writes.",
+    "preservation": "All52 protected inherited/source-companion files compare byte-for-byte to dependent base, including all20 canonical SRC010/SRC013 mirror files.",
+    "quality": "Five authored/edited Python files pass isolated Ruff check/format and strict mypy; mypy checks generator/test imports with explicit source base separately from presentation_source.py.",
+    "checks": [
+      "tools/check_scaffold.py",
+      "tools/check_artifacts.py",
+      "tools/check_presentation_source.py",
+      "tools/check_paper_source.py",
+      "tools/check_economics_source.py",
+      "git diff --check"
+    ],
+    "all_normal_site_disabled": {
+      "count": 134,
+      "skipped": 0,
+      "status": "passed",
+      "python_site_packages": "disabled",
+      "command": "python3 -B -S -m unittest discover -s tests -v",
+      "execution": "independent reviewer direct test process; exact inherited source and pinned H10 inputs",
+      "log_sha256": "e65c7f45ebec647233b30953f1a805112ae7ed0833067fc34fceae68bc5dd80e"
+    }
+  },
+  "test_input_commits": {
+    "tether": "670989839a0fccbcf2014d01609778ae6e4df424",
+    "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250"
+  },
+  "toolchain": {
+    "python": "3.12.14",
+    "stdlib_only_generator": true,
+    "reportlab_import_or_pdf_generation": "none",
+    "native_tex_engine": "not_executed"
+  },
+  "generator_delta": "Removed all ReportLab imports, generated-deck writers and PDF-producing calls. Five generated text outputs remain. Existing paper/mirror guards preserved; no skipped tests or fallback renderer. Does not retroactively validate earlier CI heads.",
+  "native_compile": "not_run",
+  "dependency_closure_complete": false,
+  "pdf_matches_authored_source": false,
+  "all_new_output_pages_review": "not_run",
+  "live_acceptance": "not_run",
+  "migration_status": "partial",
+  "remaining": [
+    "Independent exact-source review",
+    "Installed Beamer/transitive dependency and notice inventory",
+    "Separately reviewed confined native build",
+    "All-page visual/text/font/link inspection and exact new output receipts",
+    "Publication and exact-head CI/integration checks"
+  ],
+  "commands": [
+    "python3 -B -S tools/check_presentation_source.py",
+    "python3 -B -S tools/check_paper_source.py",
+    "python3 -B -S tools/check_economics_source.py",
+    "python3 -B -S -m unittest discover -s tests -p 'test_marketing_*.py' -v",
+    "python3 -B -S -O -m unittest discover -s tests -p 'test_marketing_*.py' -v",
+    "python3 -B -S tools/validate.py",
+    "python3 -B -S -m unittest discover -s tests -v",
+    "python3 -B -S -O -m unittest discover -s tests -v"
+  ],
+  "command_context": "Aggregate/all-suite commands used the exact test_input_commits through existing candidate-source environment variables and seven clean composition.lock component checkouts; all prepared from existing local public-repository clones without network or installation.",
+  "log_sha256": {
+    "aggregate.log": "14ddee9beaaaee724e380c8b0c73ca826575fdc01bb7a39af4e0a66dc681eb6f",
+    "all-optimized.log": "00b0387a0a4fcf29056bedbe2682491956bda58264056dc95cdd446e1d62aea6",
+    "marketing-normal.log": "0d596a3838453803f366a7ddb1f6fcf2bb8976ccbc7ea4955c2d768d2ea42fa6",
+    "marketing-optimized.log": "75791fd58579f104ba14790adb48d13587274d53c435321b2ecaed58c305c3de"
+  },
+  "evidence_correction": {
+    "superseded_receipt": "presentations/history/validation-216ce150.json",
+    "superseded_sha256": "ad0d9f4af57bf972bb42a1b02a347cccf134a5fb2ed78f8ff98caee256568092",
+    "correction": "The earlier receipt incorrectly described the aggregate unittest child as site-disabled. Only the outer aggregate process was -S. This receipt records its actual child flags and the separate direct normal -S full suite. No source, checker, test, generator or aggregate execution behavior changed."
+  }
+}
