@@ -27,7 +27,8 @@ source inventory and private paths belong outside Git.
 All hashes are lowercase SHA-256 of actual file bytes, all commit SHAs are full
 lowercase Git SHA-1s. File references have shape
 `{"path":"relative/path","sha256":"<64 hex>"}`. Paths and symlinks must remain
-inside their declared root. Duplicate JSON keys are rejected. Receipt/observation/claim JSON or text is parsed from the same bytes whose
+inside their declared root. Duplicate JSON keys and non-finite numbers (including
+overflowing numeric literals) are rejected at every JSON nesting depth. Receipt/observation/claim JSON or text is parsed from the same bytes whose
 digest was checked; it is never reopened for interpretation. Artifact bytes are
 read, never executed. Sources, pins and dirty state are checked again after
 claim reads. These are optimistic before/after observations, not an immutable
@@ -72,7 +73,9 @@ the Git dirty check.
 An observation contains `source_sha`, `criterion`, `observer` (distinct from
 producer), integer `forbidden_calls`, integer `forbidden_effects`, `expected` and
 `observed`. Passing requires zero forbidden counts and exact expected/observed
-agreement. The independent verifier must actually acquire those observations;
+agreement. Boolean values are distinct from numbers, including inside lists and
+objects; JSON numbers retain numeric equality (for example, `1` and `1.0`).
+Object key ordering does not affect comparison. The independent verifier must actually acquire those observations;
 a distinct identity string is an attribution check, not cryptographic proof of
 independence. The tool checks recorded evidence relationships, never substitutes
 self-reported status for an external effect observation.
@@ -85,7 +88,10 @@ process reads a separate effect ledger. Tests cover stale main/receipt SHAs,
 missing/changed bytes, dirty/untracked sources, draft/historical evidence, stale
 README/STATUS mappings, all result states, evidence-class substitution, forbidden
 calls/effects, wrong observers, missing input identities, path escape, duplicate
-JSON keys and gitlink/lock disagreement. A fresh CLI process checks the positive
+JSON keys, non-finite numbers, nested boolean/number observation mismatches and
+gitlink/lock disagreement. A deliberate Python-equality mutation must fail the
+boolean/number rejection assertion; matching booleans and numeric equality have
+positive regressions. A fresh CLI process checks the positive
 case; process spies verify recorded command strings are not executed. Temporary
 stores are cleaned on success/failure by the test harness.
 

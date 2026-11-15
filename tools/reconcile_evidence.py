@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import json
+import math
 import re
 import subprocess
 from pathlib import Path
@@ -70,7 +71,35 @@ def decode_json(data: bytes) -> Any:
             result[key] = value
         return result
 
-    return json.loads(data, object_pairs_hook=unique)
+    def finite_float(value: str) -> float:
+        number = float(value)
+        require(math.isfinite(number), "non_finite_json_number")
+        return number
+
+    def reject_constant(value: str) -> Any:
+        raise ValueError("non_finite_json_number")
+
+    return json.loads(
+        data,
+        object_pairs_hook=unique,
+        parse_float=finite_float,
+        parse_constant=reject_constant,
+    )
+
+
+def observations_equal(expected: Any, observed: Any) -> bool:
+    """Compare JSON values without treating booleans as numeric observations."""
+    if isinstance(expected, bool) or isinstance(observed, bool):
+        return type(expected) is type(observed) and expected == observed
+    if isinstance(expected, dict) and isinstance(observed, dict):
+        return expected.keys() == observed.keys() and all(
+            observations_equal(value, observed[key]) for key, value in expected.items()
+        )
+    if isinstance(expected, list) and isinstance(observed, list):
+        return len(expected) == len(observed) and all(
+            observations_equal(left, right) for left, right in zip(expected, observed)
+        )
+    return bool(expected == observed)
 
 
 def load_json(path: Path) -> Any:
@@ -221,7 +250,7 @@ def reconcile(manifest: dict[str, Any], base: Path) -> dict[str, Any]:
                 "forbidden_effects_observed",
             )
             require(
-                observation["expected"] == observation["observed"],
+                observations_equal(observation["expected"], observation["observed"]),
                 "effect_observation_mismatch",
             )
         except (KeyError, TypeError, ValueError, OSError) as error:
