@@ -15,8 +15,15 @@ tests execute with site packages disabled in both normal and optimized Python,
 including an import-failure trap for ReportLab. The generator remains standard
 library only and cannot produce a PDF or overwrite authored TeX.
 
-All 20 canonical mirror files and the 52 protected files identified in the
-presentation source receipt retain their merged bytes. Original source receipts,
+The initial integration preserved all 20 canonical mirrors and the historical
+52-file protected inventory. The follow-up adopts the explicit wrapper transition
+merged in main commit `db53cd76d049d6cce94e134e5e60695d0fe6b2ad` (tree
+`93c1c95c65ac395d8a8a9b82b467c7d8af64429a`). Its current closure has 17 Refinery
+files plus four Console files. The current protected map has 54 files: 50 inherited
+files retain their bytes, the wrapper and its guard have reviewed replacements,
+and two transition evidence files are added. The historical 52-file inventory
+and source receipt remain unchanged. See `marketing/SRC-013-wrapper-mirror.json`
+for the exact canonical identities and allowed replacements. Original source receipts,
 validation reports, native build history and their commit identities remain
 unchanged. The earlier SRC-001 hygiene manifest is retained in
 `core-product/history/artifact-manifest-aea05d4.json`; the evidence draft also retains its previous manifest in
@@ -32,18 +39,26 @@ artifact manifest updates only the generator hash.
 
 ## Remaining gates
 
-The strict static gate currently rejects the import order of the unchanged
-canonical SRC-013 `build-paper.py`. Its immutable hash is
-`6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891`.
-Neither an exclusion nor new baseline debt is added. The correction must be
-reviewed in the canonical Refinery repository and then explicitly mirrored with
-new current hashes and preserved historical receipts. Until then, the strict
-aggregate is blocked, regardless of passing independent component checks.
+The initial frozen candidates `3f6e19063185c999f4250664ed2880deb1da1001` and
+`62b13557014125feba7cfaa4acaede82806a041f` correctly failed the strict static gate
+on the canonical wrapper's import order. Their original receipt remains unchanged
+with SHA-256 `64a11b3872313a8184b4c994c58d6bf13a1c468751cd641d8330db2db827d24e`.
+Those failed results are not relabeled as passes.
+
+The wrapper correction was reviewed and published in canonical Refinery commit
+`1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209`, merged as
+`fc79d78f3eed3423da901b1c5b623e76ce08e7c4`. Root PR 60 then adopted its exact
+17-file closure and explicit guard transition. This integration imports those
+already merged bytes without additional source changes. No exclusion or baseline
+debt is added. Fresh checks and a separate exact-commit receipt are required for
+this candidate; the earlier failed receipts and all original build evidence stay
+historical. The wrapper has not been executed and this transition is not a new
+native build.
 
 The workflow, image identity, strict runner, quality baseline, component pins and
 STATUS claims are unchanged. The evidence draft also preserves its reconciler
 and mutation controls. No remote execution, image operation, dispatch, service,
-publication or merge is performed by this code-only preparation. New paper and
+remote publication or pull-request merge is performed by this code-only preparation. New paper and
 presentation sources remain uncompiled; their older ReportLab PDFs remain
 historical outputs, not renderings of those new sources. Existing browser review,
 native builds, page review, runtime and image-bound gates remain open.

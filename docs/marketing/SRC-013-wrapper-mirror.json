@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "evidence_class": "explicit_canonical_wrapper_mirror_transition_not_a_new_build",
+  "base_commit": "2f37dc9329a72d00bd1c1506b1c29aeb5375fcb7",
+  "base_tree": "e454d8fd2e3045ddf23f8c153acae5ccc0312a26",
+  "canonical_repository": "newdarwindev/runspindle-refinery",
+  "canonical_commit": "1aa0a4b0ed1494f88f9e3137ff1e2b73b7a25209",
+  "canonical_tree": "23ac8ce5d5d8f1b53023e640a90ab38a52cff339",
+  "canonical_merge": "fc79d78f3eed3423da901b1c5b623e76ce08e7c4",
+  "previous_canonical_commit": "bfa8f760c1d56ec1c2ce07ea49e4d37ce4c01e5b",
+  "previous_canonical_tree": "af28c2693a11925ab60bf595fbbaae210100de14",
+  "historical_mirror_receipts": {
+    "SRC-013-integration.json": "8254c45fa3e39ea5a2f4b3bc4ae0cb50994f0a522241fc252222dc3129021bf0",
+    "SRC-013-final-validation.json": "66dd681eb9e363446bf2150567edaaf8babd772247de2561d77e6093bccf40cc"
+  },
+  "historical_receipt_policy": "Earlier receipts retain their original commit mappings, hashes, test results and limitations byte-for-byte; they describe prior snapshots, not this transition.",
+  "source_wrapper_change": {
+    "path": "build-paper.py",
+    "before_sha256": "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+    "after_sha256": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
+    "change": "Standard-library import ordering only; all non-import AST nodes, body bytes, command and environment assignments unchanged.",
+    "canonical_evidence": "source-wrapper-change-evidence.json"
+  },
+  "canonical_path_prefix": "docs/design/",
+  "root_path_prefix": "docs/marketing/",
+  "renamed_files": {
+    "THIRD_PARTY_NOTICES.md": "SRC-013-NOTICES.md"
+  },
+  "current_closure_sha256": {
+    "LICENSE-SRC-013.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "SRC-013-NOTICES.md": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3",
+    "build-evidence.json": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960",
+    "build-paper.py": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
+    "figures/01-identity.pdf": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245",
+    "figures/02-lifecycle.pdf": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75",
+    "figures/03-approval.pdf": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704",
+    "figures/04-golden-data.pdf": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07",
+    "figures/05-control-planes.pdf": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4",
+    "figures/06-constellation.pdf": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a",
+    "figures/07-provenance.pdf": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab",
+    "figures/08-observation.pdf": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3",
+    "source-disposition.json": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec",
+    "toolchain-lock.json": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c",
+    "workflow-refinery.pdf": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
+    "workflow-refinery.tex": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7",
+    "source-wrapper-change-evidence.json": "b0f4a8cecd52500d91a99b5057dca5d08f4d5c69055412e46f91eae3f3638c69"
+  },
+  "source_path_mapping": "Resolve unchanged component-relative paths in original receipts and the new source-wrapper evidence through these prefixes and the explicit notice rename. Historical before-hashes belong to the prior canonical identity.",
+  "guard_transition": {
+    "refinery_mirror.py": "Current canonical commit and exact digests updated; source-wrapper evidence and old/new mirror receipts are mandatory pinned inputs.",
+    "presentation_source.py": "Historical presentation receipt and inherited inventory remain unchanged. Only the current builder and refinery guard hashes use explicit reviewed replacements; both new evidence files are pinned separately."
+  },
+  "checks": {
+    "canonical_closure": "Every mapped file compared byte-for-byte with the exact published canonical commit.",
+    "unchanged_artifacts": "All 15 previously mirrored files other than the builder are unchanged, including PDF, TeX, eight figures, licenses, disposition, toolchain and original build evidence.",
+    "new_build": "not_run",
+    "committed_wrapper_execution": "not_run"
+  },
+  "limits": [
+    "Source mapping and byte integrity only; aggregate tests and remote CI are separate evidence.",
+    "No authored paper or presentation source, preserved source receipt, economics or acceptance gate is changed.",
+    "No component Gitlink, composition lock, quality baseline, workflow, native build, image, provider or runtime change.",
+    "Overall migration remains partial and integrated acceptance remains blocked."
+  ]
+}
