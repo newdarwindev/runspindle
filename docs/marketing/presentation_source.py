@@ -102,6 +102,18 @@ PRESERVED: dict[str, str] = {
 }
 
 
+# Current paper-only correction; immutable presentation-era PRESERVED stays historical.
+CURRENT_PAPER_PROTECTED: dict[str, str] = {
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
+    "paper_source.py": "94d3401e4f4da40ba21173cf0c8e4799d112323ec4de3ce395e276fc196b05a7",
+    "SRC-002-source-receipt.json": "6a7cb0013eaa7371852834a8b3a9b42b03b07bd4c7d78632d03a328dc7335cb5",
+    "SRC-005-disposition.json": "e694f8731573e057ab32ea52d3e07871ef35b3dcefc67ab24d42f6d27c6d294c",
+    "SRC-002-wrap-correction.json": "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4",
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+}
+
+
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise ValueError("SRC-003/004: " + message)
@@ -206,7 +218,7 @@ def verify_presentation_source(folder: Path) -> dict[str, object]:
     }.items():
         require(receipt[key] == expected, "unperformed evidence: " + key)
     require(receipt["preserved_files"] == PRESERVED, "preserved file identities")
-    for name, expected_hash in PRESERVED.items():
+    for name, expected_hash in (PRESERVED | CURRENT_PAPER_PROTECTED).items():
         require(
             digest(folder, name) == expected_hash, "preserved bytes changed: " + name
         )

@@ -26,6 +26,12 @@ PRESERVED = {
     "paper/history/source-receipt-b1b4f9c.json": "a852429eff5ed57cb15ba740bfd7348ef8cf150a3e83a7ea4624f263d27a0ccc",
     "paper/history/validation-b1b4f9c.json": "9b4d833cac3114d4373147645794a3fe0458104bdc87260f1a879054420a7d09",
 }
+CURRENT_PRESERVED = PRESERVED | {
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+    "SRC-002-validation.json": "da8194979c1bd1ea43bde1990254cbe1e1ff2594127afced23631d139c512335",
+}
+WRAP_CORRECTION_SHA = "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4"
 DIAGRAMS = {
     "paper/diagrams/comparison-contract.tex",
     "paper/diagrams/stop-triage.tex",
@@ -160,8 +166,8 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
     require(receipt["pdf_matches_authored_source"] is False, "stale PDF pairing")
     require(receipt["migration_status"] == "partial", "migration gate")
     require(receipt["live_acceptance"] == "not_run", "live evidence gate")
-    require(receipt["preserved_files"] == PRESERVED, "preserved identities")
-    for name, expected in PRESERVED.items():
+    require(receipt["preserved_files"] == CURRENT_PRESERVED, "preserved identities")
+    for name, expected in CURRENT_PRESERVED.items():
         require(digest(folder, name) == expected, "preserved bytes changed: " + name)
     old = receipt["preserved_pdf"]
     require(
@@ -346,6 +352,38 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
         receipt["source_files"]["SRC-002-build-plan.json"]
         == digest(folder, "SRC-002-build-plan.json"),
         "build proposal hash",
+    )
+    require(
+        digest(folder, "SRC-002-wrap-correction.json") == WRAP_CORRECTION_SHA,
+        "wrapping transition receipt changed",
+    )
+    change = document(folder, "SRC-002-wrap-correction.json")
+    require(
+        change["corrected_source_native_compile"] == "not_run"
+        and change["prior_diagnostic_output"]["accepted"] is False,
+        "wrapping transition acceptance claim",
+    )
+    require(
+        master.count(change["new_phrase"]) == 1 and change["old_phrase"] not in master,
+        "wrapping correction occurrence",
+    )
+    require(
+        hashlib.sha256(
+            master.replace(change["new_phrase"], change["old_phrase"]).encode()
+        ).hexdigest()
+        == change["prior_source_sha256"]
+        == "7c7a4e79fe2ee1120826505eebaee7ba8cdde0935ffa49d7b7d99a0ffb5cdf03"
+        and digest(folder, "runspindle-paper.tex") == change["corrected_source_sha256"],
+        "change exceeds the single reviewed wrapping correction",
+    )
+    revision = receipt["current_source_revision"]
+    require(
+        revision["base_commit"] == change["base_commit"]
+        and revision["base_tree"] == change["base_tree"]
+        and revision["change_receipt_sha256"] == WRAP_CORRECTION_SHA
+        and revision["publication"] == "not_performed"
+        and revision["native_compile"] == "not_run",
+        "current source transition mapping",
     )
     return {
         "source_id": "SRC-002",

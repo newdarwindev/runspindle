@@ -1,0 +1,42 @@
+{
+  "base_commit": "2f37dc9329a72d00bd1c1506b1c29aeb5375fcb7",
+  "base_tree": "e454d8fd2e3045ddf23f8c153acae5ccc0312a26",
+  "citations_changed": false,
+  "claim": "Source-only correction; effectiveness must be checked by a separately authorized exact-source build and full document review.",
+  "corrected_source_native_compile": "not_run",
+  "corrected_source_publication": "not_performed",
+  "corrected_source_sha256": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
+  "diagrams_changed": false,
+  "economics_changed": false,
+  "new_phrase": "host, workspace, account and lease bindings",
+  "occurrences": 1,
+  "old_phrase": "host/workspace/account/lease bindings",
+  "preserved_history": {
+    "SRC-002-validation.json": "da8194979c1bd1ea43bde1990254cbe1e1ff2594127afced23631d139c512335",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f"
+  },
+  "prior_diagnostic_output": {
+    "accepted": false,
+    "evidence_detail": "Original output, logs, rendered pages and exact receipts retained privately; no prior artifact overwritten.",
+    "font_link_citation_acceptance": "not_passed",
+    "inspection": "All 12 pages visually inspected; five schematics readable. No other clipping/overlap/missing glyphs observed; unresolved first-pass citations and figure reference remain.",
+    "overfull_pt": 58.08897,
+    "page4_render_sha256": "0704282d9ee06bbcd975bd3327190981efd760a5776b29d02fcb78b51c7aad43",
+    "pages": 12,
+    "pass2": "not_run",
+    "pdf_sha256": "30f31c011ac9b33bd4ef3e58a6dbff158273edda2f4e8e19eb7934d3077889a2",
+    "source_sha256": "7c7a4e79fe2ee1120826505eebaee7ba8cdde0935ffa49d7b7d99a0ffb5cdf03",
+    "visual_location": "Page 4 lifecycle paragraph slash-joined bindings"
+  },
+  "prior_published_manuscript_commit": "bbc3b06fd0528ae604687dc84683a10b4304eede",
+  "prior_source_sha256": "7c7a4e79fe2ee1120826505eebaee7ba8cdde0935ffa49d7b7d99a0ffb5cdf03",
+  "repository_pdf": {
+    "classification": "unchanged historical ReportLab output, not a rendering of the corrected source",
+    "sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb"
+  },
+  "schema_version": 1,
+  "scope": "single_original_prose_wrapping_correction_not_native_build",
+  "semantic_scope": "Same four lifecycle binding targets; slash chain replaced with ordinary list punctuation for line wrapping. No other manuscript bytes changed.",
+  "source_id": "SRC-002"
+}

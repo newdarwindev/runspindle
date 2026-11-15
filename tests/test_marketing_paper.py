@@ -88,6 +88,44 @@ class PaperSourceTests(unittest.TestCase):
         self.assertEqual(result["historical_paper_dependencies"], 18)
         self.assertEqual(result["authored_tex_inputs"], 6)
 
+    def test_single_wrapping_change_retains_historical_evidence(self) -> None:
+        change = json.loads((self.folder / "SRC-002-wrap-correction.json").read_text())
+        master = (self.folder / "runspindle-paper.tex").read_text()
+        original = master.replace(change["new_phrase"], change["old_phrase"])
+        self.assertEqual(master.count(change["new_phrase"]), 1)
+        self.assertEqual(
+            hashlib.sha256(original.encode()).hexdigest(), change["prior_source_sha256"]
+        )
+        self.assertFalse(change["prior_diagnostic_output"]["accepted"])
+        self.assertEqual(change["corrected_source_native_compile"], "not_run")
+        historical = json.loads(
+            (self.folder / "paper/history/source-receipt-2f37dc9.json").read_text()
+        )
+        self.assertEqual(
+            historical["source_files"]["runspindle-paper.tex"],
+            change["prior_source_sha256"],
+        )
+
+    def test_wrap_receipt_mutation_rejected_in_both_generator_modes(self) -> None:
+        target = self.folder / "SRC-002-wrap-correction.json"
+        original = target.read_bytes()
+        for optimized in (False, True):
+            self.mutate(
+                target.name,
+                lambda data: data.update(corrected_source_native_compile="passed"),
+            )
+            error = self.reject_without_writes(optimized)
+            self.assertIn("wrapping transition receipt changed", error)
+            target.write_bytes(original)
+
+    def test_extra_rehashed_prose_change_is_not_the_reviewed_wrap_fix(self) -> None:
+        target = self.folder / "runspindle-paper.tex"
+        target.write_text(target.read_text() + "\n% synthetic unreviewed comment\n")
+        self.repin(target.name)
+        for optimized in (False, True):
+            error = self.reject_without_writes(optimized)
+            self.assertIn("single reviewed wrapping correction", error)
+
     def test_generator_preserves_all_files_twice(self) -> None:
         before = self.snapshot()
         for _ in range(2):

@@ -176,7 +176,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "path": "docs/marketing/runspindle-paper.tex",
-      "sha256": "7c7a4e79fe2ee1120826505eebaee7ba8cdde0935ffa49d7b7d99a0ffb5cdf03",
+      "sha256": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
       "source_ids": [
         "SRC-002",
         "SRC-005"
@@ -575,7 +575,7 @@
     },
     {
       "path": "docs/marketing/SRC-005-disposition.json",
-      "sha256": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+      "sha256": "e694f8731573e057ab32ea52d3e07871ef35b3dcefc67ab24d42f6d27c6d294c",
       "source_ids": [
         "SRC-005"
       ],
@@ -659,7 +659,7 @@
       "implementation_evidence": false,
       "kind": "source_preparation_support",
       "source_relationship": "Original concept adaptation/source validation only; no historical expression import or native build",
-      "sha256": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f"
+      "sha256": "6a7cb0013eaa7371852834a8b3a9b42b03b07bd4c7d78632d03a328dc7335cb5"
     },
     {
       "path": "docs/marketing/paper/diagrams/comparison-contract.tex",
@@ -736,7 +736,7 @@
       "implementation_evidence": false,
       "kind": "source_preparation_support",
       "source_relationship": "Original concept adaptation/source validation only; no historical expression import or native build",
-      "sha256": "5cdd765843f4a13328d78a9db40a01b599cafcb68c695ec1493feb37a210bb34"
+      "sha256": "94d3401e4f4da40ba21173cf0c8e4799d112323ec4de3ce395e276fc196b05a7"
     },
     {
       "path": "docs/marketing/SRC-002-validation.json",
@@ -863,7 +863,7 @@
       "implementation_evidence": false,
       "kind": "source_preparation_support",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "b15eba3ca7165c7b0dcceefba66ec0219ecdbf9b0133c3a55263e3ba885abfe9"
+      "sha256": "a38a3a26d45cfa89d1055a0b76998d52a127af6872c8dbfcf24170ec0dabb849"
     },
     {
       "path": "docs/marketing/presentations/argument/comparison.tex",
@@ -1080,6 +1080,40 @@
       "implementation_evidence": false,
       "kind": "preserved_prior_source_validation_receipt",
       "source_relationship": "Immutable earlier receipt; its aggregate child site-package claim is corrected explicitly in current SRC-003-004-validation.json"
+    },
+    {
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "new_support_document",
+      "path": "docs/marketing/SRC-002-wrap-correction.json",
+      "sha256": "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "source_relationship": "Additive source-only wrapping transition; historical adaptation evidence is not an original historical source or accepted native build."
+    },
+    {
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "preserved_prior_adaptation_receipt",
+      "path": "docs/marketing/paper/history/source-receipt-2f37dc9.json",
+      "sha256": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "source_relationship": "Additive source-only wrapping transition; historical adaptation evidence is not an original historical source or accepted native build."
+    },
+    {
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "preserved_prior_adaptation_receipt",
+      "path": "docs/marketing/paper/history/economics-disposition-2f37dc9.json",
+      "sha256": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+      "source_ids": [
+        "SRC-002",
+        "SRC-005"
+      ],
+      "source_relationship": "Additive source-only wrapping transition; historical adaptation evidence is not an original historical source or accepted native build."
     }
   ],
   "migration_status": "partial",
