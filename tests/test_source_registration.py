@@ -17,7 +17,7 @@ class SourceRegistrationTests(unittest.TestCase):
         self.partitions = json.loads((ROOT / "validation-partitions.json").read_text())
 
     def test_all_guards_registered_once(self) -> None:
-        self.assertEqual(audit.check(ROOT)["mandatory_source_checks"], 4)
+        self.assertEqual(audit.check(ROOT)["mandatory_source_checks"], 5)
 
     def test_each_guard_is_mandatory(self) -> None:
         for identifier in audit.SOURCE_CHECKS:

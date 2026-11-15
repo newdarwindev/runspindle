@@ -19,6 +19,7 @@
     "component": [
       "check-artifacts",
       "check-core-product",
+      "check-browser-mirror",
       "check-economics-source",
       "check-paper-source",
       "check-presentation-source",

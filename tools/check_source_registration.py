@@ -8,6 +8,13 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_CHECKS = {
+    "check-browser-mirror": [
+        "tools/check_browser_mirror.py",
+        "docs/marketing/browser_mirror.py",
+        "docs/marketing/browser.html",
+        "docs/marketing/SRC-009-mirror.json",
+        "docs/marketing/SRC-009-mirror.md",
+    ],
     "check-economics-source": [
         "tools/check_economics_source.py",
         "docs/marketing/SRC-005-disposition.json",
@@ -30,6 +37,7 @@ SOURCE_CHECKS = {
     ],
 }
 PRESERVATION_TESTS = [
+    "tests/test_marketing_browser.py",
     "tests/test_marketing_economics.py",
     "tests/test_marketing_paper.py",
     "tests/test_marketing_presentations.py",

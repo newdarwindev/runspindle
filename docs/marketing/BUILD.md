@@ -4,7 +4,7 @@ Status: newly authored Runspindle design documents, not implemented services.
 
 The old argument and fleet PDFs were rendered with ReportLab from concise generated narratives, now preserved in presentations/legacy. They do not render the new authored argument.tex or fleet.tex. The preserved older runspindle-paper.pdf also remains ReportLab output, with its old uncompiled companion at paper/legacy/reportlab-paper.tex. It **does not render the new authored runspindle-paper.tex**. None of these three PDFs is TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
 
-To reproduce the five remaining generated Markdown, HTML and notice outputs, use Python 3 and run `python -B -S build_documents.py` in this directory. No site package or ReportLab dependency is used. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
+To reproduce the four remaining generated Markdown, HTML and notice outputs, use Python 3 and run `python -B -S build_documents.py` in this directory. No site package or ReportLab dependency is used. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
 
 The new SRC-002 paper has a separate source-only build proposal in
 `SRC-002-build-plan.json`. Its minimal installed toolchain inventory is not a
@@ -20,7 +20,7 @@ Prior concise-derivative verification (before replacing workflow-refinery.pdf): 
 
 ## Reproducibility and migration status
 
-Historical PDF renderer: Python 3.12.14, ReportLab 4.4.9, with invariant metadata. Those preserved output receipts remain unchanged. The current five-output text generator uses only the Python standard library; it does not render PDFs. Cross-version PDF byte identity is not asserted.
+Historical PDF renderer: Python 3.12.14, ReportLab 4.4.9, with invariant metadata. Those preserved output receipts remain unchanged. The current four-output text generator uses only the Python standard library; it does not render PDFs. Cross-version PDF byte identity is not asserted.
 
 All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The three other PDFs are ReportLab outputs, not compiled TeX/Beamer.
 
@@ -107,7 +107,7 @@ Beamer/dependency inventory, license and native build gates. All original slides
 and both variants are mapped in SRC-003-004-disposition.json; source frame counts
 are not a new PDF page-count gate.
 
-The generator now makes five stdlib-only text outputs. Its ReportLab imports,
+The generator now makes four stdlib-only text outputs. Its ReportLab imports,
 PDF-producing calls and generated-deck writer are retired. It verifies the prior
 canonical mirrors and full SRC-002 paper closure, then verifies the new deck
 sources and preserved prior PDFs before any writes. It cannot produce a replacement
@@ -121,3 +121,15 @@ SRC-003-004-review.md. After exact-tree review, a separately approved confined b
 must pin the actual loaded inputs and inspect every output page, text and link.
 New compiled artifacts require new receipts and a deliberate guard transition.
 Issues 5 and 6 remain open until those actual acceptance stages pass.
+
+## Canonical Browser source protection
+
+The obsolete Browser page writer is retired. The generator checks the
+[SRC-009 mirror](SRC-009-mirror.md) after existing Console, Refinery, paper and
+presentation checks and before any output write. The Browser document is a
+link/location-normalized derivative of the recorded immutable Browser source,
+not a byte-identical copy. Its entire unchanged CSS and explanatory content are
+covered by reconstructing the original source hash. Other generated outputs
+remain byte-identical. Run `python3 -B -S tools/check_browser_mirror.py` from the
+repository root, plus normal and optimized `test_marketing_browser.py` tests.
+These checks do not execute a browser or advance rendered/mobile/keyboard gates.

@@ -59,6 +59,23 @@
       "timeout_seconds": 300
     },
     {
+      "id": "check-browser-mirror",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_browser_mirror.py"
+      ],
+      "required_files": [
+        "tools/check_browser_mirror.py",
+        "docs/marketing/browser_mirror.py",
+        "docs/marketing/browser.html",
+        "docs/marketing/SRC-009-mirror.json",
+        "docs/marketing/SRC-009-mirror.md"
+      ],
+      "timeout_seconds": 300
+    },
+    {
       "id": "check-economics-source",
       "command": [
         "python3",
@@ -131,6 +148,7 @@
       ],
       "required_files": [
         "tests",
+        "tests/test_marketing_browser.py",
         "tests/test_marketing_economics.py",
         "tests/test_marketing_paper.py",
         "tests/test_marketing_presentations.py",
