@@ -61,3 +61,37 @@ remote publication or pull-request merge is performed by this code-only preparat
 presentation sources remain uncompiled; their older ReportLab PDFs remain
 historical outputs, not renderings of those new sources. Existing browser review,
 native builds, page review, runtime and image-bound gates remain open.
+
+
+## Merged Browser mirror integration
+
+This follow-up imports only the Browser mirror merged at main commit
+`60759ff3564ed1e61d6596edfe4a864d7989d2ab` (tree
+`41b7941f9e008f869b5ca0ec0f219c946eff9f11`). The complete marketing directory
+matches that merged tree. Its 21 Console/Refinery canonical files remain
+byte-identical. The Browser page is one additional link-and-location-normalized
+derivative, not a twenty-second byte-identical mirror. Its ten explicit reversible
+substitutions reconstruct the pinned Browser canonical SHA-256. Existing source
+receipts and all 54 currently protected files retain their bytes.
+
+The strict runner remains unchanged. `check-browser-mirror` is a mandatory
+component check exactly once, with its guard, page and mapping records required.
+Full test discovery also requires `test_marketing_browser.py`. Existing negative
+registration tests now exercise all five source check entries, including removal,
+duplication, relocation, changed commands, changed inputs and optional bypasses.
+The Browser source tests preserve every marketing byte across two real generator
+runs without site packages and reject forged source identity or completion claims.
+The generator now writes four remaining text outputs and never writes browser.html.
+
+The prior hygiene artifact manifest is retained at
+`core-product/history/artifact-manifest-deca0ea.json`; the current manifest records
+the new mandatory inventories. Earlier local/public commit mappings and validation
+receipts remain historical and unchanged. The final integration requires a fresh
+receipt bound to its exact commit, tree and ordered parents. Existing baseline,
+image gates, workflow, component pins, STATUS and evidence-reconciliation controls
+are unchanged.
+
+No unpublished paper source or compiled candidate is included. Existing paper and
+presentation compilation limits remain unchanged. Source checks do not establish
+rendered Browser, keyboard, native, runtime or image-bound acceptance. No browser,
+server, image, fleet, dispatch or remote merge action is part of this integration.

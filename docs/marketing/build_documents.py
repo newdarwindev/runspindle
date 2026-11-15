@@ -6,11 +6,13 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from docs.marketing.browser_mirror import verify_browser_mirror
     from docs.marketing.paper_source import verify_paper_source
     from docs.marketing.presentation_source import verify_presentation_source
     from docs.marketing.refinery_mirror import verify_refinery_mirror
 else:
     # Resolve the guards beside this script, including in isolated test copies.
+    from browser_mirror import verify_browser_mirror
     from paper_source import verify_paper_source
     from presentation_source import verify_presentation_source
     from refinery_mirror import verify_refinery_mirror
@@ -70,6 +72,7 @@ verify_vision_mirror(P)
 verify_refinery_mirror(P)
 verify_paper_source(P)
 verify_presentation_source(P)
+verify_browser_mirror(P)
 P.mkdir(exist_ok=True)
 sections = [
     (
@@ -176,7 +179,8 @@ def page(name: str, title: str, parts: list[tuple[str, str]]) -> None:
 
 
 page("index.html", "Runspindle", [sections[i] for i in [0, 2, 6, 7, 8]])
-page("browser.html", "Runspindle Browser", [sections[i] for i in [0, 3, 6, 7]])
+
+# Canonical Browser HTML is a checked link-normalized derivative, never generated.
 
 
 # Authored decks and all three preserved old PDFs are read-only to this generator.
