@@ -128,6 +128,7 @@ def fixture(
     # Each worker starts with an empty temporary pycache prefix and -B. No test
     # modules or fake collection implementations are imported.
     sys.path.insert(0, str(refinery))
+    from refinery import storage
     from refinery.feedback_collection import Material, SelectedFeedback
     from refinery.lineage import (
         Feedback,
@@ -136,7 +137,6 @@ def fixture(
         SourceRevision,
         digest,
     )
-    from refinery import storage
 
     legacy: Any = storage
     pack = legacy.pack

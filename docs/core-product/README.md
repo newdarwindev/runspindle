@@ -104,14 +104,19 @@ ruff format --check tools/check_core_product.py tests/test_core_product.py
 mypy --strict --explicit-package-bases tools/check_core_product.py tests/test_core_product.py
 ```
 
-The aggregate runs the dedicated checker unconditionally and includes the tests.
+The strict manifest-driven aggregate runs the dedicated checker as mandatory
+check-core-product, assigned exactly once to the component partition, and includes
+the tests. The registration and required input files are checked fail-closed.
 Its optimized driver does not make child interpreters optimized: the separate
-`python3 -O -m unittest` command is necessary. Existing main has no strict whole-repo
-hygiene gate; strict checks above apply to the new checker and tests without altering
-the separate hygiene proposal, baselines or workflow/image gates.
+`python3 -O -m unittest` command is necessary. The original artifact landed before the strict whole-repository hygiene proposal.
+This integrated candidate additionally runs its existing pinned static-quality and
+repository-hygiene checks. Provisioned tool versions are required; missing tools
+fail rather than trigger installation. Baselines and workflow/image gates remain
+unchanged. No image-bound CI qualification follows from local aggregate success.
 
 [Artifact manifest](artifact-manifest.json) binds every new artifact/checker/test and
-the aggregate registration by SHA-256, plus only the SRC-001 provenance record.
+the strict aggregate registration, hygiene/partition inventories and existing
+quality pins/baseline by SHA-256, plus only the SRC-001 provenance record.
 It intentionally excludes itself to avoid a self-hash cycle. The checker emits the
 actual tested Git commit and whether tracked/untracked changes exist. Freeze first,
 then record exact resulting commit, tree, manifest hash, commands, environment,
@@ -120,3 +125,33 @@ receipt can bind that exact commit without embedding a self-referential commit i
 its own tree. Original source identity/hash remains private and is never replaced
 by the resulting public commit/hash. Hash refresh alone does not validate semantic
 changes; rerun affected tests and source review for changed content.
+
+## Historical artifact record and fresh integration evidence
+
+[Original artifact manifest](original-artifact-manifest.json) is the exact immutable
+record from the selected artifact merge d0a82c2a47a8c5b05da1f6ada99b7258171c4aa1
+(source 51256df4189dd6645fa300f785c1c63f9628460b, tree
+a8d4543d25a978d348fc6e5ff800b585e6608452). Its SHA-256 remains
+d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba.
+Those file hashes describe that original source, not the integrated strict runner.
+The current manifest explicitly identifies this historical record and prohibits
+transferring its results to changed bytes. Its preserved revision-binding wording
+refers to its original source commit, not the current integration.
+
+The source requirements, opaque dispositions, component specification hashes and
+runtime claims are unchanged. Integration changes validation wiring, its checker,
+tests, documentation and current file hashes only. Rerun all relevant checks and
+bind their results to each exact integration commit/tree before publication. The
+new historical-integrity and mandatory-partition tests reject attempts to bless
+old evidence or disable the checker even after current hashes are refreshed.
+
+### Bounded evidence-reconciliation status compatibility
+
+The evidence-reconciliation proposal separately labels its own bounded synthetic
+implementation. This artifact checker accepts that existing status shape only with
+its exact composition_evidence_reconciliation scope, integrated_system explicitly
+not_implemented, the versioned evidence-reconciliation contract, system acceptance
+not_inferred and isolated runner qualification not_run. A missing or broader claim
+fails closed. This recognizes the pre-existing bounded component classification;
+it does not qualify that component or relax any artifact/full-system/live gate.
+The integration does not modify STATUS.json or its campaign acceptance controls.

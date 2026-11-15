@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "checks": [
+    {
+      "id": "scaffold",
+      "command": [
+        "python3",
+        "tools/check_scaffold.py"
+      ],
+      "required_files": [
+        "tools/check_scaffold.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "static-quality",
+      "command": [
+        "python3",
+        "tools/static_quality.py"
+      ],
+      "required_files": [
+        "tools/static_quality.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "repository-hygiene",
+      "command": [
+        "python3",
+        "tools/check_repo_hygiene.py"
+      ],
+      "required_files": [
+        "tools/check_repo_hygiene.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-artifacts",
+      "command": [
+        "python3",
+        "tools/check_artifacts.py"
+      ],
+      "required_files": [
+        "tools/check_artifacts.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-core-product",
+      "command": [
+        "python3",
+        "tools/check_core_product.py"
+      ],
+      "required_files": [
+        "tools/check_core_product.py",
+        "docs/core-product/coverage.json",
+        "docs/core-product/artifact-manifest.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-browser-mirror",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_browser_mirror.py"
+      ],
+      "required_files": [
+        "tools/check_browser_mirror.py",
+        "docs/marketing/browser_mirror.py",
+        "docs/marketing/browser.html",
+        "docs/marketing/SRC-009-mirror.json",
+        "docs/marketing/SRC-009-mirror.md"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-economics-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_economics_source.py"
+      ],
+      "required_files": [
+        "tools/check_economics_source.py",
+        "docs/marketing/SRC-005-disposition.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-paper-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_paper_source.py"
+      ],
+      "required_files": [
+        "tools/check_paper_source.py",
+        "docs/marketing/paper_source.py",
+        "docs/marketing/SRC-002-source-receipt.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-presentation-source",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_presentation_source.py"
+      ],
+      "required_files": [
+        "tools/check_presentation_source.py",
+        "docs/marketing/presentation_source.py",
+        "docs/marketing/SRC-003-004-source-receipt.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "check-source-registration",
+      "command": [
+        "python3",
+        "-B",
+        "-S",
+        "tools/check_source_registration.py"
+      ],
+      "required_files": [
+        "tools/check_source_registration.py",
+        "tests/test_source_registration.py",
+        "hygiene.json",
+        "validation-partitions.json"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "python-tests",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "required_files": [
+        "tests",
+        "tests/test_marketing_browser.py",
+        "tests/test_marketing_economics.py",
+        "tests/test_marketing_paper.py",
+        "tests/test_marketing_presentations.py",
+        "tests/test_marketing_refinery.py",
+        "tests/test_marketing_vision.py",
+        "tests/test_source_registration.py"
+      ],
+      "timeout_seconds": 600
+    },
+    {
+      "id": "evidence-mutations",
+      "command": [
+        "python3",
+        "tools/check_evidence_mutations.py"
+      ],
+      "required_files": [
+        "tools/check_evidence_mutations.py",
+        "tools/reconcile_evidence.py",
+        "tests/test_evidence_reconciliation.py"
+      ],
+      "timeout_seconds": 300
+    },
+    {
+      "id": "feedback-hero",
+      "command": [
+        "python3",
+        "tools/feedback_hero.py",
+        "--tether",
+        "local/feedback-sources/tether",
+        "--refinery",
+        "local/feedback-sources/refinery"
+      ],
+      "required_files": [
+        "tools/feedback_hero.py",
+        "tests/test_feedback_hero.py",
+        "scenarios/feedback-collection-v1.json",
+        "local/feedback-sources/tether/tether/feedback.py",
+        "local/feedback-sources/refinery/refinery/feedback_collection.py",
+        "local/feedback-sources/refinery/dependencies/tether-feedback.json"
+      ],
+      "timeout_seconds": 180
+    },
+    {
+      "id": "distributable-build",
+      "not_applicable": "No distributable build command exists in this repository validation contract; this does not claim release acceptance."
+    }
+  ],
+  "lockfiles": [
+    "requirements-quality.txt",
+    "tools/quality-baseline.json",
+    "composition.lock.json"
+  ],
+  "artifact_paths": [
+    "docs/marketing/argument.pdf",
+    "docs/marketing/fleet.pdf",
+    "docs/marketing/runspindle-paper.pdf",
+    "docs/marketing/workflow-refinery.pdf"
+  ],
+  "profiling": {
+    "workloads": [
+      {
+        "id": "python-validation-duration",
+        "command": [
+          "python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "required_files": [
+          "tests"
+        ],
+        "timeout_seconds": 600,
+        "kind": "validation"
+      }
+    ]
+  },
+  "limitations": [
+    "Profiling measures deterministic validation workloads, not native/provider performance.",
+    "No evidence upload or retention policy is enabled.",
+    "Native/live acceptance gates remain in their existing separate workflows.",
+    "Raw child output is not included in sanitized verification reports."
+  ]
+}

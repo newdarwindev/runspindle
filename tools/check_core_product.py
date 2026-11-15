@@ -15,6 +15,16 @@ ROOT = Path(__file__).resolve().parents[1]
 COVERAGE = "docs/core-product/coverage.json"
 MANIFEST = "docs/core-product/artifact-manifest.json"
 README = "docs/core-product/README.md"
+HISTORICAL_MANIFEST = "docs/core-product/original-artifact-manifest.json"
+HISTORICAL_IDENTITY = {
+    "path": HISTORICAL_MANIFEST,
+    "sha256": "d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba",
+    "source_commit": "51256df4189dd6645fa300f785c1c63f9628460b",
+    "merge_commit": "d0a82c2a47a8c5b05da1f6ada99b7258171c4aa1",
+    "tree": "a8d4543d25a978d348fc6e5ff800b585e6608452",
+    "classification": "immutable_historical_artifact_record",
+    "result_transfer": False,
+}
 COMPOSITION_ISSUE = "https://github.com/newdarwindev/runspindle/issues/1"
 COMPONENTS = {"core", "host", "browser", "tether", "refinery", "console", "platform"}
 SECTION_COUNTS = {
@@ -33,6 +43,11 @@ FILES = {
     "tools/check_core_product.py",
     "tests/test_core_product.py",
     "tools/validate.py",
+    "hygiene.json",
+    "validation-partitions.json",
+    "tools/quality-baseline.json",
+    "requirements-quality.txt",
+    HISTORICAL_MANIFEST,
 }
 GATE_LANES = {
     "G01": "H02",
@@ -620,17 +635,76 @@ def validate(root: Path) -> dict[str, object]:
     require(
         status.get("selected_source_migration") == "partial", "global migration status"
     )
-    require(
-        status.get("implementation") == "not_implemented",
-        "integrated implementation claim",
-    )
+    implementation = status.get("implementation")
+    if implementation == "not_implemented":
+        require(
+            status.get("implementation_scope") == "integrated_system"
+            and status.get("integrated_system", "not_implemented") == "not_implemented",
+            "integrated implementation scope",
+        )
+    elif implementation == "bounded_implementation":
+        require(
+            status.get("implementation_scope") == "composition_evidence_reconciliation"
+            and status.get("integrated_system") == "not_implemented",
+            "bounded implementation must not imply integrated acceptance",
+        )
+        evidence = mapping(
+            status.get("evidence_reconciliation"), "bounded evidence status"
+        )
+        require(
+            evidence.get("contract") == "runspindle.evidence-reconciliation.v1"
+            and evidence.get("system_acceptance") == "not_inferred"
+            and evidence.get("isolated_runner_qualification") == "not_run",
+            "bounded evidence cannot qualify system or runner acceptance",
+        )
+    else:
+        raise CoverageError("integrated implementation claim")
     require(status.get("live_acceptance") == "not_run", "live acceptance claim")
+    require(
+        manifest.get("historical_original") == HISTORICAL_IDENTITY,
+        "historical original identity",
+    )
+    require(
+        digest(safe_file(root, HISTORICAL_MANIFEST)) == HISTORICAL_IDENTITY["sha256"],
+        "historical original hash",
+    )
     aggregate = safe_file(root, "tools/validate.py").read_text()
     require(
-        'run([sys.executable, "tools/check_core_product.py"])' in aggregate,
-        "artifact checker must be mandatory in aggregate",
+        "from tools.hygiene import main" in aggregate
+        and "raise SystemExit(main())" in aggregate,
+        "strict hygiene aggregate required",
     )
-    for name in (COVERAGE, MANIFEST, README, "specs/system.md"):
+    checks = sequence(document(root, "hygiene.json").get("checks"), "hygiene checks")
+    selected = [
+        mapping(v, "check")
+        for v in checks
+        if mapping(v, "check").get("id") == "check-core-product"
+    ]
+    require(len(selected) == 1, "artifact checker must be mandatory exactly once")
+    require(
+        selected[0]
+        == {
+            "id": "check-core-product",
+            "command": ["python3", "tools/check_core_product.py"],
+            "required_files": ["tools/check_core_product.py", COVERAGE, MANIFEST],
+            "timeout_seconds": 300,
+        },
+        "mandatory artifact checker command and inputs",
+    )
+    partitions = mapping(
+        document(root, "validation-partitions.json").get("partitions"), "partitions"
+    )
+    require(
+        sum(
+            sequence(v, "partition").count("check-core-product")
+            for v in partitions.values()
+        )
+        == 1
+        and "check-core-product"
+        in sequence(partitions.get("component"), "component partition"),
+        "artifact checker must be mandatory in component partition exactly once",
+    )
+    for name in (COVERAGE, MANIFEST, README, HISTORICAL_MANIFEST, "specs/system.md"):
         check_privacy(safe_file(root, name).read_text())
     check_privacy(json.dumps(source))
     return {

@@ -6,7 +6,7 @@
     "tests/test_economics.py": "38235c3d5dd0cb46d48502414fa6c4ff54a7a57d6a39b6bf9948892ea4f82643",
     "docs/marketing/economics-model.md": "2a3389e64e1c68ff3977ddff192590d4da48900b3fde395cd1eef3978669b617",
     "docs/marketing/economics.md": "49b5f314523565c077081b7dd3899f86b6faf8bd9099e6e6fe024a393ac4c717",
-    "docs/marketing/build_documents.py": "9c2e39dcf9f4ec881413dc85ad96a75be27960601dae27ec155dea6a9055eeb8"
+    "docs/marketing/build_documents.py": "633e56b6a073743e6a4559e124036bea3e793421fee4919344702ab553145cc7"
   },
   "tests": {
     "normal": 12,
@@ -42,5 +42,18 @@
   "external_calls": "none",
   "dependency_revisions": {
     "scenario_optimization_fix": "ad1814f00834fba2f4a9969ec421ea438e48d2b4"
+  },
+  "generator_integration_validation": {
+    "scope": "Output-preserving typed renderer integration; not visual, native, or live acceptance. Historical evidence above is retained.",
+    "comparison_base": "7a306d0",
+    "reportlab_version": "4.4.9",
+    "method": "Executed clean-merge and typed generators in separate temporary directories with existing dependencies; all 14 generated files were byte-identical to one another and to checked-in artifacts, including four PDFs.",
+    "full_root_python_tests": {
+      "normal": 114,
+      "optimized": 114,
+      "status": "passed"
+    },
+    "static_quality": "zero new diagnostics; baseline unchanged",
+    "rendered_visual_review": "not_run"
   }
 }

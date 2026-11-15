@@ -21,10 +21,10 @@
   },
   "sources_manifest_sha256": "b89f951fb5b6cb6322b18f16b8de177c99b2959e84d9aa99272781a9ebef2437",
   "source_sha256": {
-    "tools/feedback_hero.py": "be5f6105c493bc8a2d933df03b8e34482d8060b6feada7f798427a3b7a044eb9",
+    "tools/feedback_hero.py": "9245f9716f22585cbb7ed0ed39264f5a85b44a5f659312ccc2108ab7abd8f03c",
     "tests/test_feedback_hero.py": "566061679efaa33d944650db1d83c9c6980047e1a9af56576d38b7c40d28d37a",
-    "docs/FEEDBACK_HERO.md": "2f0d9500edf70ec27ad9f99d9c1fd458e4b52936b428d4d992cf0ed3ff7ca3d2",
-    ".github/workflows/validation.yml": "cab92c222d3e1688993a7e449e31123c6b12a2f8a8c4a62a7dbc91916a7134cc"
+    "docs/FEEDBACK_HERO.md": "1148c7da08c4eb9bd5e804d40f67ba6cb664090c9810c293f0c4ad2c6109fd09",
+    ".github/workflows/validation.yml": "16e119c82c482ce50ab2d615457ce5c0e0bbf8a0201277bc1f10844d0d7fe50a"
   },
   "tools": {
     "python": "3.12.14",
@@ -70,5 +70,11 @@
     "isolated runner checkout availability for explicit candidate sources"
   ],
   "reproduction": "docs/FEEDBACK_HERO.md",
-  "cleanup": "All synthetic stores and throwaway mutant modules are temporary; success/failure and handled cancellation clean up. Process kill at final precommit boundary observed zero objects before successful fresh-process recovery."
+  "cleanup": "All synthetic stores and throwaway mutant modules are temporary; success/failure and handled cancellation clean up. Process kill at final precommit boundary observed zero objects before successful fresh-process recovery.",
+  "hygiene_integration": {
+    "mandatory_entry": "feedback-hero",
+    "partition": "component",
+    "gate_semantics": "Existing aggregate predicates unchanged; new standalone entry required exactly once.",
+    "qualification": "pending_exact_integration_head_review"
+  }
 }

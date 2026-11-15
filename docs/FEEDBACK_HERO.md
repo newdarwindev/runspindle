@@ -95,6 +95,17 @@ Passed local candidate integration is not full-system acceptance. No live provid
 OS-native fencing, production identity, running service, deployment or serving
 adapter is established. All broader issue #45 dependencies remain independent.
 
+## Mandatory partition inventory
+
+The hygiene integration assigns `feedback-hero` exactly once to the component
+partition, with the standalone command and all source inputs required. Missing
+inputs fail before child execution; optional local unittest skips cannot satisfy
+this mandatory entry. Quality and component CI jobs prepare exact candidate sources;
+the quality job sets `MYPYPATH` to the prepared Refinery checkout for strict type
+resolution. All root checkouts fetch full history. Aggregate receipt checks,
+other partition entries and existing composition pins are unchanged. Local full
+hygiene validation requires the same ignored `local/feedback-sources` checkouts,
+`MYPYPATH` and both test source variables, plus the pinned quality-tool environment.
 ## Schema-admitted candidate upgrade
 
 The candidate pins now include Tether schema admission (PR18) and Refinery structural storage admission plus its exact Tether pin integration (PR22/23). Both schema modules are included in the verified source inventories. Fresh worker processes reject missing admission, provider-journal, feedback and Refinery tables before collection, with independent SQLite observations of zero lineage writes and no silent schema repair. Existing replay, precommit crash recovery, consent-removal mutation and ignored source-shadow tests still run. The original `docs/feedback-hero-evidence.json` remains historical; current evidence is `docs/feedback-schema-candidate-evidence.json`. Release composition/gitlinks and older acceptance artifacts remain unchanged. This is still a synthetic adapter candidate lane, not full H10/H12 or deployment qualification.

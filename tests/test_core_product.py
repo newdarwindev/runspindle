@@ -204,6 +204,32 @@ class CoreProductCoverage(unittest.TestCase):
         with self.assertRaisesRegex(audit.CoverageError, "migration scope"):
             audit.validate(self.root)
 
+    def test_bounded_reconciliation_status_does_not_grant_system_acceptance(
+        self,
+    ) -> None:
+        original = audit.document(ROOT, "STATUS.json")
+        for mutation in (
+            "integrated_system",
+            "implementation_scope",
+            "system_acceptance",
+            "contract",
+            "isolated_runner_qualification",
+            "missing_evidence",
+        ):
+            with self.subTest(mutation=mutation):
+                status = copy.deepcopy(original)
+                if mutation in ("integrated_system", "implementation_scope"):
+                    status[mutation] = "implemented"
+                elif mutation == "missing_evidence":
+                    del status["evidence_reconciliation"]
+                else:
+                    status["evidence_reconciliation"][mutation] = "passed"
+                self.save("STATUS.json", status)
+                with self.assertRaises(audit.CoverageError):
+                    audit.validate(self.root)
+        self.save("STATUS.json", original)
+        self.assertEqual(audit.validate(self.root)["runtime_acceptance"], "not_run")
+
     def test_public_privacy_guards_survive_hash_refresh(self) -> None:
         examples = [
             "/workspace/private-input/source.md",
@@ -221,14 +247,59 @@ class CoreProductCoverage(unittest.TestCase):
                     audit.validate(self.root)
 
     def test_missing_mandatory_aggregate_registration_fails_after_rehash(self) -> None:
-        path = self.root / "tools/validate.py"
-        path.write_text(
-            path.read_text().replace(
-                '    run([sys.executable, "tools/check_core_product.py"])\n', ""
-            )
-        )
+        manifest = audit.document(self.root, "hygiene.json")
+        manifest["checks"] = [
+            row for row in manifest["checks"] if row["id"] != "check-core-product"
+        ]
+        self.save("hygiene.json", manifest)
         self.refresh()
         with self.assertRaisesRegex(audit.CoverageError, "mandatory"):
+            audit.validate(self.root)
+
+    def test_artifact_checker_must_have_exact_command_and_partition(self) -> None:
+        for mutation in (
+            "command",
+            "not_applicable",
+            "missing_partition",
+            "duplicate_partition",
+        ):
+            with self.subTest(mutation=mutation):
+                checks = audit.document(ROOT, "hygiene.json")
+                partitions = audit.document(ROOT, "validation-partitions.json")
+                entry = next(
+                    row for row in checks["checks"] if row["id"] == "check-core-product"
+                )
+                if mutation == "command":
+                    entry["command"] = ["python3", "-c", "pass"]
+                elif mutation == "not_applicable":
+                    entry.clear()
+                    entry.update(
+                        id="check-core-product", not_applicable="Skipped artifact"
+                    )
+                elif mutation == "missing_partition":
+                    partitions["partitions"]["component"].remove("check-core-product")
+                else:
+                    partitions["partitions"]["quality"].append("check-core-product")
+                self.save("hygiene.json", checks)
+                self.save("validation-partitions.json", partitions)
+                self.refresh()
+                with self.assertRaisesRegex(audit.CoverageError, "mandatory"):
+                    audit.validate(self.root)
+
+    def test_historical_manifest_cannot_be_rehashed_as_current_evidence(self) -> None:
+        path = self.root / audit.HISTORICAL_MANIFEST
+        path.write_text(path.read_text() + "\n")
+        self.refresh()
+        with self.assertRaisesRegex(audit.CoverageError, "historical original hash"):
+            audit.validate(self.root)
+        shutil.copyfile(ROOT / audit.HISTORICAL_MANIFEST, path)
+        self.refresh()
+        manifest = audit.document(self.root, audit.MANIFEST)
+        manifest["historical_original"]["result_transfer"] = True
+        self.save(audit.MANIFEST, manifest)
+        with self.assertRaisesRegex(
+            audit.CoverageError, "historical original identity"
+        ):
             audit.validate(self.root)
 
     def test_target_path_cannot_escape_or_be_symlinked(self) -> None:
