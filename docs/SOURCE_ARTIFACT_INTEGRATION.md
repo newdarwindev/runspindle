@@ -97,3 +97,41 @@ No unpublished paper source or compiled candidate is included. Existing paper an
 presentation compilation limits remain unchanged. Source checks do not establish
 rendered Browser, keyboard, native, runtime or image-bound acceptance. No browser,
 server, image, fleet, dispatch or remote merge action is part of this integration.
+
+## Merged compiled paper integration
+
+This follow-up imports the paper artifact already reviewed and merged in root
+PR 62 at main commit `4509fe4ae127b1097c1241b3bacc532cc06b7b8a` (tree
+`6350fc4c2a7ffb7ece229593c1ba183a58ba8c20`). It starts from draft 46 commit
+`967eba460d5947ac5551430ff91bff97421950d5`, which already contains the normal
+merge of the former evidence draft 48 into that feature branch. No separate
+evidence draft is recreated.
+
+The entire marketing directory and its paper tests are adopted byte-for-byte
+from that merged main. The current 12-page PDF is 248,153 bytes with SHA-256
+`e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23`.
+Its six authored inputs, source expressions, compiled evidence, toolchain record,
+notices and historical receipts retain their merged identities. The older
+ReportLab PDF remains at `marketing/paper/legacy/reportlab-paper.pdf`. The
+21 Console/Refinery canonical files remain byte-identical, alongside the one
+explicitly normalized Browser derivative.
+
+Earlier sections describe historical preparation stages. Their paper compile
+limitations do not replace the later completed build and review recorded by
+PR 62. Conversely, importing those exact reviewed bytes does not rerun the
+native build or transfer its evidence to a new source identity. Historical
+pending-review and publication fields remain historical rather than being
+rewritten. The presentation sources still have their separate unperformed build
+gates, and source migration remains partial.
+
+This merge preserves the strict runner, required check inventory, workflow and
+image gates, quality baseline, component pins, STATUS and evidence reconciliation
+controls. The existing source guards cover the new paper evidence closure;
+there is no additional checker registration or baseline exception. Original
+source and local/public publication receipts remain unchanged. Final local
+normal and optimized suites, exact H10 checks, strict quality and aggregate
+receipts must bind the final combined candidate separately.
+
+No compilation, PDF rendering, remote execution, service, image, fleet or dispatch
+action is part of this integration. Local checks do not qualify the required
+image-bound CI or establish runtime, live or integrated-system acceptance.

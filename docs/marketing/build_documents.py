@@ -143,7 +143,7 @@ Production readiness requires independently evidenced secrets management, authen
 The next useful evidence is a reproducible, permissioned end-to-end task that traverses the component boundaries and demonstrates recovery from an uncertain result. Until then, the materials describe a research and engineering plan. Open questions include native session integration, browser lifecycle compatibility, least-privilege secret delivery, evaluation validity, release reproducibility, and operational cost.""",
     ),
 ]
-# SRC-002 TeX is independently authored; its old PDF is preserved, not regenerated.
+# SRC-002 authored TeX/current PDF and its historical PDF are protected, never regenerated.
 (P / "economics.md").write_text(
     "# Runspindle economics\n\nStatus: proposed accounting model; no measured results.\n\n"
     + sections[5][1]
@@ -194,7 +194,7 @@ No project license was found for SRC-002 or SRC-009 during source review. No lic
 
 The SRC-013 paper is a byte-preserved, compiled adaptation with eight cleared historical figures. See [SRC-013 notices](SRC-013-NOTICES.md) for the separate Latin Modern font notice and [source disposition](source-disposition.json) for scope. The full historical paper, unselected code, Git history and private operational evidence are not republished. Other documents are original conceptual adaptations, not fresh verification of historical claims.
 
-SRC-002 now has a full nine-section original editable research proposal and five original schematic inputs. No historical prose, diagram expression, coordinates, style or binary is imported. Its unchanged older ReportLab PDF is not a rendering of the new source. Native compilation and page review remain unperformed. Citation attribution is not a license to reproduce source expression. See SRC-002-disposition.json and SRC-002-source-receipt.json. The planned Latin Modern font dependency is separately subject to its GUST Font License/LPPL terms; no new font embedding is claimed. The preserved SRC-013 font notice is not a license for the rest of this paper.
+SRC-002 has a full nine-section original research proposal, five original editable schematics and an actual two-pass compiled PDF. No historical prose, diagram expression, coordinates, style or binary is imported. The older ReportLab PDF remains separately preserved in paper/legacy. Native and independent all-page output review passed; final integrated-tree review and publication remain separate. Citation attribution is not a license to reproduce source expression. See SRC-002-disposition.json, SRC-002-source-receipt.json and SRC-002-build-evidence.json. Nine embedded/subset Latin Modern Type 1 fonts retain their separate GUST Font License/LPPL terms, detailed in SRC-002-NOTICES.md. No blanket project or MIT license is assigned to this paper.
 
 SRC-003 and SRC-004 have original editable Beamer sources with full original-slide and variant accounting. Historical prose, artwork, style, plotted coordinates, binaries and private navigation are excluded. No source reuse license is invented. Their older ReportLab PDFs remain unchanged and do not render the new sources. Beamer, its transitive packages and Latin Modern need an installed dependency/notice review before any separate native compile; no new font embedding has occurred. See SRC-003-004-disposition.json and SRC-003-004-source-receipt.json.
 """)

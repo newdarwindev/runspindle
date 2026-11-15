@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "evidence_class": "compiled_artifact_integration_validation_not_new_native_execution",
+  "status": "local_integrated_checks_passed_final_tree_review_and_publication_separate",
+  "content_commit": "64d931b51a272bfcd222a98888c6fc5158ac4f1b",
+  "content_tree": "f6638ee65c958abe46c6766d58ca1a5fac9c2fa5",
+  "content_identity_scope": "Local integrated content identity, not a published/fetchable ref. Use the containing checkout. The additive receipt commit changes only this receipt and its artifact registration.",
+  "integrated_public_base": {
+    "commit": "60759ff3564ed1e61d6596edfe4a864d7989d2ab",
+    "tree": "41b7941f9e008f869b5ca0ec0f219c946eff9f11"
+  },
+  "actual_compiled_source": {
+    "commit": "9844e5af51d03d7d1cd9e4284ce591ea2a00feff",
+    "tree": "5ce7fe57377918aeba09d3ac6dfcea873a6d5440",
+    "scope": "Six listed TeX inputs only. Later integration code/evidence tree was not compiled as a whole."
+  },
+  "compiled_inputs": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "current_pdf": {
+    "sha256": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23",
+    "bytes": 248153,
+    "pages": 12
+  },
+  "preserved_legacy_pdf": {
+    "path": "paper/legacy/reportlab-paper.pdf",
+    "sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb"
+  },
+  "native_build_evidence": {
+    "path": "SRC-002-build-evidence.json",
+    "sha256": "a40ca528eb4232e38ee9e18d594ad47ad06cdd6f7522be553d27b08bafc34064",
+    "scope": "Previously performed native two-pass build, native review and independent exact-PDF review; not re-executed by this integration."
+  },
+  "toolchain_evidence": {
+    "path": "SRC-002-toolchain.json",
+    "sha256": "12bd3e035745bc7596d899da1531531089a82052bee959486d151ddec67a7c3f",
+    "known_pins": 121,
+    "loaded_paths": 104,
+    "distinct_resolved_stock_files": 103
+  },
+  "counts": {
+    "full_unit_tests_per_mode": 178,
+    "skips": 0,
+    "targeted_paper_tests": 23,
+    "generator_preservation_runs": 4,
+    "normal_static_checks": 7,
+    "optimized_static_checks": 7
+  },
+  "checks": [
+    {
+      "command": "python3 -B -S tools/validate.py",
+      "result": "passed",
+      "log_name": "compiled-integration-aggregate.log",
+      "log_sha256": "59a8842587012ee79b82972b95fbc3c12302ef33e74da807dcc02323ebd3f2c5"
+    },
+    {
+      "command": "python3 -B -S -m unittest discover -s tests -v",
+      "result": "passed",
+      "log_name": "compiled-integration-normal.log",
+      "log_sha256": "f6f385e44872ff02a38418b2af8fd34e12db6fb2880b95141d689237a148ef8e"
+    },
+    {
+      "command": "python3 -B -S -O -m unittest discover -s tests -v",
+      "result": "passed",
+      "log_name": "compiled-integration-optimized.log",
+      "log_sha256": "2c3a42017cbd2736368824794cdad3765af517475693b2b21b4262746bb39917"
+    },
+    {
+      "command": "python3 -B -S tools/feedback_hero.py --tether <verified exact Tether checkout> --refinery <verified exact Refinery checkout>",
+      "result": "passed",
+      "log_name": "compiled-integration-h10-final.log",
+      "log_sha256": "b11e0ef04d3b9512c80aebee0cd14ebb29daac9b766d766230a6695419a28897"
+    },
+    {
+      "command": "Strict tool commands listed separately",
+      "result": "passed",
+      "log_name": "compiled-integration-strict-final.log",
+      "log_sha256": "cc81367ef17452c72de0e6f6e08b2028587f76043521337bb887ce4c928d1e32"
+    },
+    {
+      "command": "python3 -B -S [-O] docs/marketing/build_documents.py, twice per mode with before/after hashes of every marketing file",
+      "result": "passed",
+      "log_name": "compiled-integration-generator-preservation.log",
+      "log_sha256": "cefd0ec3da1bf1480dd3a742c91e22186ee01a4c81b4c958c64afe7aae86cefa"
+    },
+    {
+      "command": "python3 -B -S tools/check_scaffold.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_scaffold-normal.log",
+      "log_sha256": "b2d4f9b874b16246f80446dd21c2f3bae9ba46056c551320ab78e59530343aec"
+    },
+    {
+      "command": "python3 -B -S tools/check_artifacts.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_artifacts-normal.log",
+      "log_sha256": "3750d61b0f92d72fbd990acb8fb3bada1ea33c4c8fd935f0a2b34a9773203616"
+    },
+    {
+      "command": "python3 -B -S tools/check_core_product.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_core_product-normal.log",
+      "log_sha256": "9941c1482968a989baa135a77aff64df429dcfbe99267abcf0596f9d5243a1f4"
+    },
+    {
+      "command": "python3 -B -S tools/check_browser_mirror.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_browser_mirror-normal.log",
+      "log_sha256": "1a4591b01785d418b519c1ea82341403655a6deb94716ec6de79de1743b92c66"
+    },
+    {
+      "command": "python3 -B -S tools/check_paper_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_paper_source-normal.log",
+      "log_sha256": "404fd086ef6454347a1f5507abd1eb94198d7f379205afbd965877b3f73403d0"
+    },
+    {
+      "command": "python3 -B -S tools/check_presentation_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_presentation_source-normal.log",
+      "log_sha256": "3c9989e340a1cedda4f1c2bd1cb8607f0497e254b29ce786ea04b9d10d933078"
+    },
+    {
+      "command": "python3 -B -S tools/check_economics_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_economics_source-normal.log",
+      "log_sha256": "4ccff3b35041f8362506010dd710c2132e8b8cb888d8eb1cca7398f3ba505296"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_scaffold.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_scaffold-optimized.log",
+      "log_sha256": "b2d4f9b874b16246f80446dd21c2f3bae9ba46056c551320ab78e59530343aec"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_artifacts.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_artifacts-optimized.log",
+      "log_sha256": "3750d61b0f92d72fbd990acb8fb3bada1ea33c4c8fd935f0a2b34a9773203616"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_core_product.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_core_product-optimized.log",
+      "log_sha256": "9941c1482968a989baa135a77aff64df429dcfbe99267abcf0596f9d5243a1f4"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_browser_mirror.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_browser_mirror-optimized.log",
+      "log_sha256": "1a4591b01785d418b519c1ea82341403655a6deb94716ec6de79de1743b92c66"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_paper_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_paper_source-optimized.log",
+      "log_sha256": "404fd086ef6454347a1f5507abd1eb94198d7f379205afbd965877b3f73403d0"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_presentation_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_presentation_source-optimized.log",
+      "log_sha256": "3c9989e340a1cedda4f1c2bd1cb8607f0497e254b29ce786ea04b9d10d933078"
+    },
+    {
+      "command": "python3 -B -S -O tools/check_economics_source.py",
+      "result": "passed",
+      "log_name": "compiled-integration-check_economics_source-optimized.log",
+      "log_sha256": "4ccff3b35041f8362506010dd710c2132e8b8cb888d8eb1cca7398f3ba505296"
+    }
+  ],
+  "strict_commands": [
+    "ruff check --no-cache --isolated --select E4,E7,E9,F,I docs/marketing/paper_source.py docs/marketing/presentation_source.py docs/marketing/build_documents.py tests/test_marketing_paper.py",
+    "ruff format --no-cache --isolated --check docs/marketing/paper_source.py docs/marketing/presentation_source.py docs/marketing/build_documents.py tests/test_marketing_paper.py",
+    "mypy --strict --no-incremental --cache-dir=/dev/null --explicit-package-bases docs/marketing/paper_source.py docs/marketing/presentation_source.py docs/marketing/build_documents.py tests/test_marketing_paper.py tools/check_paper_source.py"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "ruff": "0.14.5",
+    "mypy": "1.18.2",
+    "installation": "none"
+  },
+  "test_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "RUNSPINDLE_FEEDBACK_HERO_REFINERY": "existing exact checkout at b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+    "RUNSPINDLE_FEEDBACK_HERO_TETHER": "existing exact checkout at 670989839a0fccbcf2014d01609778ae6e4df424",
+    "path_disclosure": "Local checkout and tool locations are omitted; command flags and exact source revisions retained."
+  },
+  "H10": {
+    "deliberate_mutation_detected": true,
+    "fresh_process_replay": "passed",
+    "independent_object_digest": "a94143e4146610737af7e85cd9aaedd69b9d93f8590960ec4ae9ca23ce70a82a",
+    "lane": "H10.retained_feedback_collection",
+    "negative_cases": 3,
+    "precommit_process_crash_recovery": "passed",
+    "repeat_runs": 2,
+    "schema_reopen_denials": 4,
+    "sources": {
+      "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "tether": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "status": "passed",
+    "system_acceptance": "blocked"
+  },
+  "canonical_preservation": {
+    "byte_identical_upstream_files": 21,
+    "normalized_reversible_browser_derivatives": 1,
+    "total_records": 22,
+    "all_current_records_and_bytes_equal_integrated_public_base": true,
+    "interpretation": "Browser is an explicitly normalized derivative, not a byte-identical upstream mirror. All 22 current bytes and records are unchanged relative to public main."
+  },
+  "historical_preservation": {
+    "source_only_receipt": "paper/history/source-receipt-9844e5a.json",
+    "prior_economics_map": "paper/history/economics-disposition-9844e5a.json",
+    "unchanged_prior_records": [
+      "STATUS.json",
+      ".gitmodules",
+      "docs/marketing/SRC-002-wrap-correction.json",
+      "docs/marketing/SRC-002-wrap-validation.json",
+      "docs/marketing/SRC-002-validation.json",
+      "docs/marketing/SRC-003-004-source-receipt.json",
+      "docs/marketing/SRC-005-validation.json"
+    ],
+    "earlier_unaccepted_build": "V3 failed fork and V4 one-pass overflow output/raw evidence remain privately retained; no failed output is substituted for the current exact PDF.",
+    "economics": "Canonical narrative and accepted-work accounting unchanged. Only the current PDF container mapping changes."
+  },
+  "review": {
+    "native_output": "passed_attributed",
+    "independent_exact_pdf": "passed",
+    "final_integrated_tree": "separate_review_required",
+    "publication": "not_performed",
+    "issue_closure": "not_performed",
+    "runtime_or_live_acceptance": "not_claimed"
+  },
+  "historical_local_invocation_failures": [
+    {
+      "action": "First mypy invocation from docs/marketing",
+      "result": "Four root namespace import-not-found errors; corrected repository-root explicit-package-bases invocation passes without code suppression.",
+      "log_sha256": "33a84341d0b992017fd5c09cf69c1e27828b991b2787779955cd6a862d23ff00"
+    },
+    {
+      "action": "Extra H10 invocation using nonexistent tools/check_feedback_collection.py after both full suites passed",
+      "result": "File-not-found exit; documented tools/feedback_hero.py command passed with exact pins.",
+      "log_sha256": "1ee895b347f5a92e2364cb862c05a04bf2b2dcef74283d7ab16f5552977b5470"
+    }
+  ],
+  "changed_paths_relative_to_public_base": [
+    "docs/marketing/BUILD.md",
+    "docs/marketing/README.md",
+    "docs/marketing/SRC-002-COMPILED.md",
+    "docs/marketing/SRC-002-NOTICES.md",
+    "docs/marketing/SRC-002-build-evidence.json",
+    "docs/marketing/SRC-002-source-receipt.json",
+    "docs/marketing/SRC-002-toolchain.json",
+    "docs/marketing/SRC-002-wrap-correction.json",
+    "docs/marketing/SRC-002-wrap-validation.json",
+    "docs/marketing/SRC-005-disposition.json",
+    "docs/marketing/THIRD_PARTY_NOTICES.md",
+    "docs/marketing/artifacts.json",
+    "docs/marketing/build_documents.py",
+    "docs/marketing/paper/history/economics-disposition-2f37dc9.json",
+    "docs/marketing/paper/history/economics-disposition-9844e5a.json",
+    "docs/marketing/paper/history/source-receipt-2f37dc9.json",
+    "docs/marketing/paper/history/source-receipt-9844e5a.json",
+    "docs/marketing/paper/legacy/reportlab-paper.pdf",
+    "docs/marketing/paper_source.py",
+    "docs/marketing/presentation_source.py",
+    "docs/marketing/runspindle-paper.pdf",
+    "docs/marketing/runspindle-paper.tex",
+    "provenance.json",
+    "tests/test_marketing_paper.py",
+    "docs/marketing/SRC-002-compiled-validation.json"
+  ]
+}

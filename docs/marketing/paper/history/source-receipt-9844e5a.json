@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "status": "source_prepared_native_compile_not_run",
+  "base_commit": "ce7143962c341d81f07aa1217832c39c0996283b",
+  "base_tree": "76c86e16e65b19d54547e84946e323ef87c12da1",
+  "migration_status": "partial",
+  "native_compile": "not_run",
+  "native_pdf_page_review": "not_run",
+  "compiled_citation_and_link_review": "not_run",
+  "pdf_matches_authored_source": false,
+  "live_acceptance": "not_run",
+  "source_files": {
+    "SRC-002-build-plan.json": "b8edd23ebd32f8eeb96a5e0b4be0f1b57480c81bf953c73d5db10171596a8927",
+    "SRC-002-citations.json": "fcd1bd0f80b3dd614afbde386743c84dc0a6d2dd83c3733cfc4c11d26986a3c6",
+    "SRC-002-disposition.json": "f94f360dd605645970c48e778e11d22369be9259ffd4219548e8f644d1968bee",
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "preserved_files": {
+    "runspindle-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "paper/legacy/reportlab-paper.tex": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
+    "economics.md": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
+    "overview.md": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
+    "SRC-005-review.md": "66fd9b23fc69f44f7f41cfd608895b1c4ae30412ce1fda1c36c98311d7db70d4",
+    "SRC-005-validation.json": "84984789615c8e00d85a8d1560a86bca813650b64cf918a8cfaacad006a6cff1",
+    "economics-model.md": "ff1cbbe3ad5610f42b2a82c4ce1fae1d2948f4b76a3c844605fc12681a8296c8",
+    "paper/history/source-receipt-7fca776.json": "2ebb63e91c91ec68ca7eae5601fff7265328975ecb3015b050b4b91fa55f52e0",
+    "paper/history/validation-7fca776.json": "c839ecc173b13430150b75aae897ee42f07f1eb44ad9ba765c9aefddb9f74d43",
+    "paper/history/source-receipt-b1b4f9c.json": "a852429eff5ed57cb15ba740bfd7348ef8cf150a3e83a7ea4624f263d27a0ccc",
+    "paper/history/validation-b1b4f9c.json": "9b4d833cac3114d4373147645794a3fe0458104bdc87260f1a879054420a7d09",
+    "SRC-002-validation.json": "da8194979c1bd1ea43bde1990254cbe1e1ff2594127afced23631d139c512335",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f"
+  },
+  "preserved_pdf": {
+    "path": "docs/marketing/runspindle-paper.pdf",
+    "renderer": "ReportLab 4.4.9 / Python 3.12.14",
+    "source_commit": "ce7143962c341d81f07aa1217832c39c0996283b",
+    "renderer_path": "docs/marketing/build_documents.py",
+    "renderer_sha256": "c1274f295a3836b71b05d2651ab8a6a8861a66192f33ca993ee3d87063899a73",
+    "generated_tex_path": "docs/marketing/paper/legacy/reportlab-paper.tex",
+    "generated_tex_sha256": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
+    "pdf_sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "tex_compiled": false,
+    "relationship": "Old PDF and old generated TeX share the prior renderer narrative; neither old nor new TeX was compiled to produce it. Not a rendering of the newly authored paper."
+  },
+  "economics_integration": {
+    "canonical_body_sha256": "aaf6527918e8d73d35e3340cfec0c7615dba715531f97cc2422305b4d3f66a72",
+    "narrative_changed": false,
+    "old_container_sha256": "f2ec1b5bc4e4c85357dad8617a284294d970619828786f456f08bca58e0a5cff",
+    "new_container_sha256": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
+    "current_mapping": "SRC-005-disposition.json",
+    "mapping_change": "Only current paper TeX container hash changes. Original SRC-005 validation receipt stays unchanged as evidence for the prior tree.",
+    "economic_reference_keys_in_number_order": [
+      "agentsmatter",
+      "anthropic2026",
+      "jcurve"
+    ],
+    "economic_diagram_expression": "excluded"
+  },
+  "historical_reference": "Exact original source and dependency identities/hashes remain privately preserved; no private original identity is published.",
+  "generator_behavior": "All canonical and source preflights precede ReportLab import/writes; no paper source or PDF generation call remains.",
+  "independent_review": "pending",
+  "publication": "not_performed_by_source_preparation",
+  "validation": "See additive SRC-002-wrap-validation.json for corrected-source checks; SRC-002-validation.json remains historical. Corrected source has not been compiled.",
+  "historical_paper_dependencies": 18,
+  "retained_bundle_files": 28,
+  "authored_tex_inputs": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "supersedes_source_review": {
+    "commit": "b1b4f9c35bcafe4d693391d0e3a119bb57523c2b",
+    "historical_source_receipt": "paper/history/source-receipt-b1b4f9c.json",
+    "historical_validation_receipt": "paper/history/validation-b1b4f9c.json",
+    "reason": "Extend the same TeX control-word boundary to input counting across all six authored files; native source bytes unchanged."
+  },
+  "current_source_revision": {
+    "base_commit": "2f37dc9329a72d00bd1c1506b1c29aeb5375fcb7",
+    "base_tree": "e454d8fd2e3045ddf23f8c153acae5ccc0312a26",
+    "change_receipt": "SRC-002-wrap-correction.json",
+    "change_receipt_sha256": "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4",
+    "current_validation": "SRC-002-wrap-validation.json",
+    "native_compile": "not_run",
+    "prior_manuscript_commit": "bbc3b06fd0528ae604687dc84683a10b4304eede",
+    "prior_source_receipt": "paper/history/source-receipt-2f37dc9.json",
+    "prior_validation_retained": "SRC-002-validation.json",
+    "publication": "not_performed"
+  }
+}
