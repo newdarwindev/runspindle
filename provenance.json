@@ -26,9 +26,9 @@
       "coverage": "docs/core-product/coverage.json"
     },
     {
-      "adaptation_limits": "Original full-scope concept adaptation with explicit expression exclusions; authored source is not compiled. Preserved old ReportLab PDF is not its rendering.",
-      "destination": "docs/marketing/runspindle-paper.tex",
-      "license_review": "No verified project-wide reuse license for historical prose/figures. Concepts adapted in original expression; citation attribution grants no reproduction rights. Planned font dependency separately recorded; no blanket relicense.",
+      "adaptation_limits": "Original full-scope concept adaptation with safe expression exclusions; actual six-input native PDF compiled and reviewed, pending independent final artifact review. No runtime evidence.",
+      "destination": "docs/marketing/runspindle-paper.pdf",
+      "license_review": "Historical expression excluded, no blanket relicense. Actual Latin Modern embedding separately noticed in SRC-002-NOTICES.md.",
       "migration_status": "partial",
       "modifications": "Prepared nine-section original paper, five original editable schematics and all 18 primary citations. Historical prose/diagram expression and binaries excluded. Frozen canonical economics retained unchanged.",
       "published_adaptations": [
@@ -44,9 +44,11 @@
       "review_record": "docs/marketing/SRC-002-review.md",
       "source_receipt": "docs/marketing/SRC-002-source-receipt.json",
       "executable_implementation": "none_in_paper",
-      "verified_behavior": "static_source_integrity_only_native_compile_and_live_acceptance_not_run",
-      "artifact_acceptance": "blocked_native_compile_and_all_pages_review",
-      "preserved_pdf": "older_ReportLab_derivative_not_authored_source_rendering"
+      "verified_behavior": "actual_two_pass_native_compile_and_document_review_attributed_separately_from_runtime",
+      "artifact_acceptance": "exact_output_independently_reviewed_final_tree_review_and_publication_pending",
+      "preserved_pdf": "paper/legacy/reportlab-paper.pdf",
+      "compiled_evidence": "docs/marketing/SRC-002-build-evidence.json",
+      "font_notice": "docs/marketing/SRC-002-NOTICES.md"
     },
     {
       "adaptation_limits": "Original full-scope concept adaptation with safe expression exclusions; native compilation not run. Preserved old PDF does not render this authored source.",

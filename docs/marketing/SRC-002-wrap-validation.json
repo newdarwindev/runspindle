@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "evidence_class": "integrated_source_correction_validation_not_native_build",
+  "status": "local_integrated_checks_passed_corrected_source_uncompiled",
+  "content_commit": "e3c6d3ecbc446ac664ce2767654b8d38d9a02d8f",
+  "content_tree": "9ae7a7ebd284314e6106a1b993ea2a35582a63c4",
+  "content_identity_scope": "Local reviewed content identity, not a published or fetchable GitHub ref. Use the containing checkout to reproduce. The additive receipt commit changes evidence/manifest only.",
+  "integrated_public_base": {
+    "commit": "db53cd76d049d6cce94e134e5e60695d0fe6b2ad",
+    "tree": "93c1c95c65ac395d8a8a9b82b467c7d8af64429a"
+  },
+  "pre_integration_content": {
+    "commit": "8d3cb890d3736e9a71d7bf7a65f1ae9aee1504fb",
+    "tree": "ed37c104ea649a13424e5d9f4af263cb87a03a46",
+    "base_commit": "2f37dc9329a72d00bd1c1506b1c29aeb5375fcb7",
+    "tests_per_mode": 152,
+    "classification": "Historical pre-integration checks, not integrated validation."
+  },
+  "correction_receipt_sha256": "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4",
+  "authored_tex_inputs": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "source_delta": "Exactly one lifecycle binding phrase; five diagrams, economics and citations unchanged.",
+  "changed_paths_relative_to_public_base": [
+    "docs/marketing/SRC-002-source-receipt.json",
+    "docs/marketing/SRC-002-wrap-correction.json",
+    "docs/marketing/SRC-005-disposition.json",
+    "docs/marketing/artifacts.json",
+    "docs/marketing/paper/history/economics-disposition-2f37dc9.json",
+    "docs/marketing/paper/history/source-receipt-2f37dc9.json",
+    "docs/marketing/paper_source.py",
+    "docs/marketing/presentation_source.py",
+    "docs/marketing/runspindle-paper.tex",
+    "tests/test_marketing_paper.py",
+    "docs/marketing/SRC-002-wrap-validation.json"
+  ],
+  "counts": {
+    "full_unit_tests_per_mode": 161,
+    "skips": 0,
+    "canonical_mirror_files_preserved_from_current_public_base": 21,
+    "authored_tex_inputs": 6,
+    "historical_paper_dependencies": 18,
+    "artifact_records_at_content_commit": 87
+  },
+  "checks": {
+    "aggregate": {
+      "command": "python3 -B -S tools/validate.py",
+      "status": "passed",
+      "private_log_sha256": "9ba83893d8f37c35b54e5618921ee2c5cf6a4bd41ff9a948994898394ac0bc77"
+    },
+    "normal": {
+      "command": "python3 -B -S -m unittest discover -s tests -v",
+      "status": "passed",
+      "private_log_sha256": "e6a57a66bbb7e88d807a5a238d3bc854dde5a39e6097edfbc0f98e9256b321f7"
+    },
+    "optimized": {
+      "command": "python3 -B -S -O -m unittest discover -s tests -v",
+      "status": "passed",
+      "private_log_sha256": "c930afa09bc1160f52ad256d4257a30af4f3a7f220245ef44f4c0bec3fc3f6bf"
+    },
+    "h10": {
+      "command": "python3 -B -S tools/feedback_hero.py --tether <existing exact pinned Tether checkout> --refinery <existing exact pinned Refinery checkout>",
+      "status": "passed",
+      "private_log_sha256": "b11e0ef04d3b9512c80aebee0cd14ebb29daac9b766d766230a6695419a28897"
+    }
+  },
+  "h10_result": {
+    "deliberate_mutation_detected": true,
+    "fresh_process_replay": "passed",
+    "independent_object_digest": "a94143e4146610737af7e85cd9aaedd69b9d93f8590960ec4ae9ca23ce70a82a",
+    "lane": "H10.retained_feedback_collection",
+    "negative_cases": 3,
+    "precommit_process_crash_recovery": "passed",
+    "repeat_runs": 2,
+    "schema_reopen_denials": 4,
+    "sources": {
+      "refinery": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+      "tether": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "status": "passed",
+    "system_acceptance": "blocked"
+  },
+  "test_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "RUNSPINDLE_FEEDBACK_HERO_REFINERY": {
+      "source": "existing explicitly selected local checkout",
+      "commit": "b68ba9d77d51ca453b3f0fa3a9fa31573d065250"
+    },
+    "RUNSPINDLE_FEEDBACK_HERO_TETHER": {
+      "source": "existing explicitly selected local checkout",
+      "commit": "670989839a0fccbcf2014d01609778ae6e4df424"
+    },
+    "components": "Seven exact unchanged composition.lock.json pins, materialized from existing local checkouts."
+  },
+  "strict": {
+    "files": [
+      "docs/marketing/build-paper.py",
+      "docs/marketing/refinery_mirror.py",
+      "docs/marketing/presentation_source.py",
+      "docs/marketing/paper_source.py",
+      "tests/test_marketing_refinery.py",
+      "tests/test_marketing_presentations.py",
+      "tests/test_marketing_paper.py"
+    ],
+    "ruff": "passed isolated E4,E7,E9,F,I, no cache",
+    "format": "passed isolated check, no cache",
+    "mypy": "passed strict no-incremental with cache-dir=/dev/null; five merged mirror files from root, paper tools/tests with explicit-package-bases, paper_source from its directory",
+    "log_sha256": "cf51dc7665a8e745e07b00d373d52398affe7a03176c80b803410a210599f962",
+    "suppression_or_baseline": "none"
+  },
+  "static_checks": {
+    "normal_and_optimized": [
+      "check_scaffold",
+      "check_artifacts",
+      "check_core_product",
+      "check_paper_source",
+      "check_presentation_source",
+      "check_economics_source"
+    ],
+    "result": "passed; static integrity only"
+  },
+  "preserved_current_canonical_files": {
+    "docs/marketing/vision.html": "39a546f71fce360129b06e4978c589769d79b19a05d14917066dadf0816d41e7",
+    "docs/marketing/LICENSE-SRC-010.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-010-lift.json": "80e4fbae10af2b29b9712cfc3c4754bda32266f5597940244ed9b998afa40e0d",
+    "docs/marketing/SRC-010-validation.md": "d551d121efb1525d8a73ef2f73099935ad9092c4f3ec38cb20a438debe20bb6b",
+    "docs/marketing/LICENSE-SRC-013.txt": "fcf64df3e04554728cc4f082f244fa3dc672c2c6368f22360e6491a113204895",
+    "docs/marketing/SRC-013-NOTICES.md": "f37a72d29b7054b180f65f5b1c99e13c3128ac2237d2cc15e725804910efeed3",
+    "docs/marketing/build-evidence.json": "6155bf4ffe8652163e4927ea2623cfea141666edb96811fddaf524badd740960",
+    "docs/marketing/build-paper.py": "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
+    "docs/marketing/figures/01-identity.pdf": "1e2a2783b9aa72e6c8b7061dce2c7bc34d437d27c31902d560880770f3b85245",
+    "docs/marketing/figures/02-lifecycle.pdf": "aacfb658176506f7ccba445d6445ca13df85d71afcee155ea5a98bb4ee9a7e75",
+    "docs/marketing/figures/03-approval.pdf": "b8b6b7721e0933a08604c611da96bf5b3e6d57053c7bf88ecefcc5fac5b91704",
+    "docs/marketing/figures/04-golden-data.pdf": "1697092f98162f7959cc001d722285ff250d9121dd7789cf35e5f90f1f3c4f07",
+    "docs/marketing/figures/05-control-planes.pdf": "489ae57fb48e81a27021ff2011fe9ecb4681965a4dd0bf12a0c79260983616d4",
+    "docs/marketing/figures/06-constellation.pdf": "4f171412f6e0aa17507a2797aaf9f1e0b4ddb0e1240804901966bdd66440716a",
+    "docs/marketing/figures/07-provenance.pdf": "908563c718c4db8623c55db0b42a8f83f09f8815d956295d0eb683e93fd317ab",
+    "docs/marketing/figures/08-observation.pdf": "e3d956582e24f75146ec897111676730a5d35856966035ac89bca9974dd2fac3",
+    "docs/marketing/source-disposition.json": "bf013b827882cd6f04cd9b69a6cf2b4446fbae6765947aea9ea8d7453e14bcec",
+    "docs/marketing/toolchain-lock.json": "973aa9d445df8cbbf33ce2261905ab6e6e26f4930d5e2c01bcb66d88c60afb7c",
+    "docs/marketing/workflow-refinery.pdf": "e02963543d6fda11432a34b1fc625aae0baeb3022b67c91b4fb636e27daecbcf",
+    "docs/marketing/workflow-refinery.tex": "47b03a76a2a2c83d163297928920a708d26badff3595867b408da0f8a145ffb7",
+    "docs/marketing/source-wrapper-change-evidence.json": "b0f4a8cecd52500d91a99b5057dca5d08f4d5c69055412e46f91eae3f3638c69"
+  },
+  "preserved_repository_pdf": {
+    "sha256": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "classification": "Historical ReportLab output, not the corrected source rendering"
+  },
+  "historical_records": {
+    "SRC-002-validation.json": "da8194979c1bd1ea43bde1990254cbe1e1ff2594127afced23631d139c512335",
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+    "policy": "Prior receipts and historical PRESERVED maps remain byte/value-preserved; current protection is explicitly composed."
+  },
+  "prior_diagnostic_output": {
+    "pdf_sha256": "30f31c011ac9b33bd4ef3e58a6dbff158273edda2f4e8e19eb7934d3077889a2",
+    "accepted": false,
+    "relationship": "Prior source one-pass output; page4 wrapping diagnosis only, not corrected-source build or document acceptance."
+  },
+  "native_compile": "not_run_for_corrected_source",
+  "native_document_acceptance": "not_run_for_corrected_source",
+  "publication": "not_performed",
+  "independent_review": "pending",
+  "live_acceptance": "not_run"
+}

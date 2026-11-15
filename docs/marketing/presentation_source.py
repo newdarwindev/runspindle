@@ -111,6 +111,27 @@ CURRENT_PROTECTED = PRESERVED | {
 }
 
 
+# Compose current paper and current mirror protection; keep PRESERVED historical.
+CURRENT_PAPER_PROTECTED: dict[str, str] = {
+    "SRC-002-COMPILED.md": "3803ed4c59920d6f3ec5a503a513dc6d6e9c90b730c56310cfba9dc4cc30e624",
+    "SRC-002-NOTICES.md": "0d90ef26cf884d8be5bd47e92541b0828dfa208a5f23573f8444f240e2efc581",
+    "SRC-002-build-evidence.json": "a40ca528eb4232e38ee9e18d594ad47ad06cdd6f7522be553d27b08bafc34064",
+    "SRC-002-source-receipt.json": "a6786d5ec724354bada520c2798811180865b67e7d244b0051e32a184520be22",
+    "SRC-002-toolchain.json": "12bd3e035745bc7596d899da1531531089a82052bee959486d151ddec67a7c3f",
+    "SRC-002-wrap-correction.json": "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4",
+    "SRC-002-wrap-validation.json": "24ff7e350da2e679d9e25a5738a1119a4b9fb7ca1840b63b00d6728311c4094f",
+    "SRC-005-disposition.json": "480645fb5659b526a6d93e633926e8630055fbeb11cc9e1c331dc6d445f89ec5",
+    "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
+    "paper/history/economics-disposition-9844e5a.json": "e694f8731573e057ab32ea52d3e07871ef35b3dcefc67ab24d42f6d27c6d294c",
+    "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
+    "paper/history/source-receipt-9844e5a.json": "6a7cb0013eaa7371852834a8b3a9b42b03b07bd4c7d78632d03a328dc7335cb5",
+    "paper/legacy/reportlab-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb",
+    "paper_source.py": "633f4245f0cb566e3a64a5226a021aa69592d056ef17ec46f1aa43aa465ae022",
+    "runspindle-paper.pdf": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
+}
+
+
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise ValueError("SRC-003/004: " + message)
@@ -215,7 +236,7 @@ def verify_presentation_source(folder: Path) -> dict[str, object]:
     }.items():
         require(receipt[key] == expected, "unperformed evidence: " + key)
     require(receipt["preserved_files"] == PRESERVED, "preserved file identities")
-    for name, expected_hash in CURRENT_PROTECTED.items():
+    for name, expected_hash in (CURRENT_PROTECTED | CURRENT_PAPER_PROTECTED).items():
         require(
             digest(folder, name) == expected_hash, "preserved bytes changed: " + name
         )

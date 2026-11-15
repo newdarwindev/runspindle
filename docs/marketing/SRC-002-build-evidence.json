@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-002",
+  "status": "compiled_candidate_pending_independent_review",
+  "evidence_class": "sanitized_attributed_native_build_and_document_review",
+  "attribution": "Native build/inspection worker observations, exact transferred PDF bytes independently checked during cloud integration. This new summary is not a raw FLS, native log or re-execution.",
+  "compiled_source": {
+    "commit": "9844e5af51d03d7d1cd9e4284ce591ea2a00feff",
+    "tree": "5ce7fe57377918aeba09d3ac6dfcea873a6d5440",
+    "identity_scope": "Local reviewed source checkout, not a published/fetchable GitHub ref. Only the six listed TeX inputs were compiled."
+  },
+  "compiled_inputs": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "integration_public_base": "60759ff3564ed1e61d6596edfe4a864d7989d2ab",
+  "whole_integration_tree_compiled": false,
+  "integration_mapping": "The later containing checkout preserves every compiled input hash. Unrelated Browser/mirror registration and evidence changes were not part of native TeX execution.",
+  "output": {
+    "path": "docs/marketing/runspindle-paper.pdf",
+    "sha256": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23",
+    "bytes": 248153,
+    "pages": 12
+  },
+  "native_execution": {
+    "passes": 2,
+    "wrapper_exit_code": 0,
+    "pass_results": [
+      {
+        "console_sha256": "e2a394002d7886ec853f7a4d159b0eda0bd0999fdcb62b03fbc608f0d7edd307",
+        "exit_code": 0,
+        "pass": 1,
+        "status": "compiled_pending_document_review"
+      },
+      {
+        "console_sha256": "5cf2131d40d8efe317eed5175743c40f51d9d1af86d3c44cadff19e7801d2a2b",
+        "exit_code": 0,
+        "pass": 2,
+        "status": "compiled_pending_document_review"
+      }
+    ],
+    "engine": "pdfTeX 1.40.29 / TeX Live 2026 Debian",
+    "engine_arguments_in_sandbox": [
+      "/usr/bin/pdflatex",
+      "-no-shell-escape",
+      "-no-parse-first-line",
+      "-no-mktex=tex",
+      "-no-mktex=tfm",
+      "-no-mktex=pk",
+      "-interaction=nonstopmode",
+      "-halt-on-error",
+      "-file-line-error",
+      "-recorder",
+      "-output-directory=/out",
+      "runspindle-paper.tex"
+    ],
+    "wrapper_scope": "The exact private wrapper was executed. Public reproduction commands are documentation, not an executed end-to-end public wrapper.",
+    "shell_escape": false,
+    "parse_first_line": false,
+    "automatic_generation": false,
+    "network_access": false,
+    "installation": false,
+    "output_preservation": "Per-pass raw logs, FLS and output evidence remain retained privately; no automatic artifact acceptance."
+  },
+  "native_review": {
+    "pages": 12,
+    "sections": 9,
+    "schematics": 5,
+    "visual_text_structure": "passed; no clipping, overlap or missing glyphs observed at the reviewed scale",
+    "render_tool": "Poppler 26.07.0",
+    "render_dpi": 110,
+    "render_sha256": {
+      "page-01.png": "6c63e6d9ccd29764c426c1624554db09b06065c8de52a80cb7faba4f0711e2bd",
+      "page-02.png": "e1dc8ba127c4b581d3304502b0492ef2438127bff00ef146f51827d9206d9d8d",
+      "page-03.png": "0fbdd026c0a0ab283b4d90935542c30302acad746eb56d4c7d47bca49cd3957c",
+      "page-04.png": "4a76c780f4a3ce04d9cdf041a430626d0421ff50a63c25eeced326f04d8795d1",
+      "page-05.png": "271e0ae6b588c931623045571f23f20ace1a6b9829f088be3e842f531b5f454e",
+      "page-06.png": "13c4a6ce031d291a36956fa17d3546ce3bbe5cdb49dbecbdf9d9070455e2f095",
+      "page-07.png": "408593233e24c92442001c0db514403da0ddb0f0b7a9d8367c114fd71b391b63",
+      "page-08.png": "4233b2780bf9215490c5023cc8222b013a046269373a89179aef78c98f80c0c5",
+      "page-09.png": "7b49daeacbfa833bf7ba31a367a79a6a296b29ccc295700fe88a9bb57e93f1d6",
+      "page-10.png": "6356bb7e570b8719986e2af6037c0ad0b5cb2ef82eee9a01ca7c5e43a134af86",
+      "page-11.png": "ada9fd52b0484736d4f7501edcef7a337f0d7148b5c3083cb999ae2226a7b5da",
+      "page-12.png": "39d848f5ecf1b8a718515f3b14755bdf32539a266e8463f5407df20425f551c5"
+    },
+    "citations_and_figure_references": "resolved",
+    "annotations": {
+      "total": 54,
+      "uri_rectangles": 22,
+      "unique_uri_targets": 18,
+      "internal_goto": 32
+    },
+    "uri_targets": [
+      "https://arxiv.org/abs/2407.01502",
+      "https://www.anthropic.com/research/harness-design-long-running-apps",
+      "https://www.nber.org/papers/w25148",
+      "https://arxiv.org/abs/2210.03629",
+      "https://arxiv.org/abs/2405.15793",
+      "https://arxiv.org/abs/2308.01263",
+      "https://arxiv.org/abs/2405.20947",
+      "https://arxiv.org/abs/2307.13854",
+      "https://arxiv.org/abs/2403.07718",
+      "https://arxiv.org/abs/2406.12045",
+      "https://arxiv.org/abs/2412.14161",
+      "https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/",
+      "https://www.anthropic.com/research/building-effective-agents",
+      "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+      "https://help.openai.com/en/articles/11752874-chatgpt-agent",
+      "https://openai.github.io/openai-agents-python/",
+      "https://academic.oup.com/qje/article/140/2/889/7990658",
+      "https://metr.org/blog/2026-02-24-uplift-update/"
+    ],
+    "fonts": {
+      "/BJTQLX+LMMathSymbols10-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 3353
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/HHKZJG+LMRoman12-Bold": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 27962
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/ICHSVU+LMRoman10-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 37871
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/IJELYF+LMRoman10-Bold": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 28435
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/KESBAR+LMRoman12-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 24404
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/PMODOD+LMMono10-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 26973
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/TAXQCW+LMRoman10-Italic": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 23462
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/WDZLUO+LMMathItalic10-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 2941
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      },
+      "/YQEFKO+LMRoman17-Regular": {
+        "ToUnicode": true,
+        "embedded_streams": [
+          "/FontFile"
+        ],
+        "font_stream_bytes": {
+          "/FontFile": 27059
+        },
+        "subset_name": true,
+        "subtype": "/Type1"
+      }
+    },
+    "active_content": "No flagged active-content keys found by the recorded object checks; ordinary page-navigation OpenAction retained. Not a malware or PDF conformance certification.",
+    "warnings": [
+      "Package epstopdf Warning: Shell escape feature is not enabled.",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 10--10",
+      "Underfull \\hbox (badness 4608) in paragraph at lines 12--13",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 16--17",
+      "Underfull \\hbox (badness 4699) in paragraph at lines 10--11",
+      "Underfull \\hbox (badness 2435) in paragraph at lines 516--519"
+    ],
+    "warning_disposition": "Five Underfull boxes are visually readable in page 3/4 tables and reference 13 on page 11. Shell-escape-disabled warning is expected. No Overfull or unresolved final reference warnings.",
+    "new_dependencies": 0,
+    "review_limits": [
+      "No network link reachability or renewed factual bibliography research; every link target compared exactly to reviewed sources.",
+      "Indexed-object dictionary/array checks and Poppler JavaScript report are not malware or PDF/A certification.",
+      "PDF is untagged and blank Title/Author metadata remains, despite visible title/author. Not PDF/UA certified.",
+      "All-page visual and text-structure review, not byte-identical source-text proof. Independent acceptance and publication remain separate."
+    ]
+  },
+  "toolchain_receipt": "SRC-002-toolchain.json",
+  "toolchain_sha256": "12bd3e035745bc7596d899da1531531089a82052bee959486d151ddec67a7c3f",
+  "private_evidence_hashes": {
+    "build_result": "be7259e93f1b5d1866457112ad92471002e8431df5c728f919503c7011fd39a7",
+    "final_review": "9ff08f1d23fcb71fc870f6e429214680c6f1648461bf1a41a860aba0dc5f504b",
+    "outputs": {
+      "runspindle-paper.aux": "958c8f241bf2456c7e6323715e97bf376ebc4de264d23fba41eb5d6e96c65087",
+      "runspindle-paper.fls": "ebc49f2729a338b16ab3433ed6edd902c479f3f6702c092f6847e12f566e0a94",
+      "runspindle-paper.log": "1e885014c32a33439b8a3517a4bb1e19eae303a4484c889cb349f0ae86d50272",
+      "runspindle-paper.out": "13cd4c8dca4fbadc7b0a28df41560a10b62620bd6e2677bb469f4a12f8018787",
+      "runspindle-paper.pdf": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23"
+    },
+    "review_items": {
+      "document-layout.txt": "b71d539a7ce602e2f3e06801934159de887db5519be2e955e8b95ae8a6245c60",
+      "inspection-tools-receipt.json": "87ec54e26a55c3118bf328aea6fb87746ff5d8cbf03b84c242756644af6629e8",
+      "pdf-destinations.txt": "bae84906abd6c30dc46cac256370fbda61b431d2a61a797579020c85e6d3313a",
+      "pdf-object-source-audit.json": "0b6ecb3c6e9549f4c92a525bf29934c0ae88f89938d1d2900fb3e1a6ab20b64b",
+      "pdf-urls.txt": "cc2eb65d3b74f5c613828e9a12c2657c9733d79a5249841b56733684e8ef44cf",
+      "pdffonts.txt": "7650e6ac27f905ac5291c2fcfd9597185283fbf6862ad9369ffd22955cdd4881",
+      "pdfinfo-standard.txt": "c6a659c854170f4d91fce187363e21a69052200927e3db8d478c3ede6ac0ce4a"
+    },
+    "executed_wrapper": "504b16337eef9e01bd359cd4bf1f10a065e332f1945ea81ce6aa58e518c0cf57",
+    "reviewed_packet_manifest": "7a8138c5a0be36d64be676452982e623de7c13440895fe41f896bb78b9f82a5e",
+    "source_input_manifest": "c586596c524d69a83903b1472cbd98068484586ec3ce7058246f8825cd39c617"
+  },
+  "history": {
+    "source_only_receipt": "paper/history/source-receipt-9844e5a.json",
+    "old_pdf": "paper/legacy/reportlab-paper.pdf",
+    "failed_prior_attempt": "The prior one-pass PDF identified in SRC-002-wrap-correction.json remains unaccepted historical diagnosis; its raw artifacts were not overwritten.",
+    "original_expression": "Excluded historical expression and binaries remain excluded; original private provenance remains private."
+  },
+  "independent_final_review": "exact_output_passed_final_integrated_tree_pending",
+  "publication": "not_performed",
+  "runtime_or_live_acceptance": "not_claimed",
+  "overall_migration_status": "partial",
+  "independent_output_review": {
+    "status": "passed",
+    "attribution": "Independent cloud review of the exact transferred PDF, separate from the native build worker.",
+    "receipt_sha256": "4baaa505ce774dab72d7a41af7c16db8c1fda77738b03f4b10f92f9c048bb7ed",
+    "pages": 12,
+    "annotations": 54,
+    "uri_rectangles": 22,
+    "unique_uri_targets": 18,
+    "visual_result": "All 12 rendered pages inspected; no clipping, overlap, missing text or unreadable schematics observed. Corrected page 4 wraps; five schematics and bibliography are legible.",
+    "render_sha256": {
+      "page-01.png": "7b436eec680b3cf844e048dcbcfbf2923ee2cdba464be5d0853880fdf2ee486d",
+      "page-02.png": "9beae627f4373f5d3dd097bcccc790dc50945cfb194523275f16677c51a47a9c",
+      "page-03.png": "d8e51ba204b746bfff27824695433859778d64b146710ae5db4d9ccaa1de7b2a",
+      "page-04.png": "5f0e0d443205b87fb29a87760ad474c3ca8db7339247290eb43c82782a8428c6",
+      "page-05.png": "97ddc4dd9287ae321ad8b30d83290bfdad4dc928ae9a53de05f306df45c245d6",
+      "page-06.png": "566daef95160c1d552c3a5997270fdbc376b8c4f92d40bef0541811043f83d7b",
+      "page-07.png": "8ef6b37fe25331c5ac96335973c211e9c255b2eded880b952b536f4857a3b9a5",
+      "page-08.png": "d1db1082407e33ead2c5c1ee22715a2b1af05dbd3d1c18d3c29ecdb840ffa884",
+      "page-09.png": "c539e61eb94a26b3460106510d2000d4be55cabbfa7afd849b2711c3a7c7d617",
+      "page-10.png": "d8e6f85b36a817e6b4595f4d1fd6c7bb6bd484535c6fa922ee65b72ffbb466cb",
+      "page-11.png": "a63d6bef40f5271c6aef3b9c63f18b746cc075b14b0fbef4271be991d6fe2b6d",
+      "page-12.png": "a748e21f0ffe0a4437adb3f2d403ed682a068255d0eed7966679d04266b98c55"
+    },
+    "limitations": [
+      "External URLs not fetched in this review",
+      "No PDF/UA or PDF/A certification",
+      "Metadata Title/Author blank; untagged",
+      "Native detailed source/link/font audit separately attributed"
+    ]
+  }
+}
