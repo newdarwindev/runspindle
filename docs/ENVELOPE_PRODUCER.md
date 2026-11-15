@@ -69,3 +69,26 @@ The exact commit/tree is supplied with the review receipt.
 Independent final-tree review and remote CI remain pending at this evidence
 record's creation. Issue #43 and its parent remain open for their broader runtime
 and authority criteria; this local source result does not close them.
+
+
+## Typed consumer context follow-up
+
+The consumer now applies the existing seven-field binding validator to its
+expected binding before decoding the message or invoking an adapter. This closes
+Python equality aliases where boolean `true` or floating-point `1.0` previously
+matched the wire integer `1`. It does not add a new authority policy or change
+wire mappings. Expected revision and lease epoch must be positive u64 integers;
+all five expected identifiers retain the existing ASCII identifier rules.
+
+Consumer regressions exercise every mapping with malformed, missing and extra
+expected fields, boolean/float counter aliases and invalid identifiers. Each
+rejection independently observes zero adapter calls and unchanged caller context.
+Valid contexts preserve their component mappings. A deliberate in-memory mutation
+removes only the expected-binding guard and must trigger the forbidden-effect
+oracle. These cases also run through the existing optimized-interpreter suite.
+
+Run the focused command above to reproduce. This is synthetic stateless consumer
+conformance, not runtime authority, persistence, full aggregate or live acceptance.
+The retained-sequence comparison is unchanged; this fix does not introduce a new
+sequence-context schema. Historical producer hashes/results above identify their
+original candidate, not this follow-up's source tree.
