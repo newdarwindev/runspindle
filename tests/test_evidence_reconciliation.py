@@ -329,6 +329,65 @@ class ReconciliationTests(unittest.TestCase):
                 self.receipt["observation"] = self.ref(path)
                 self.assert_rejected(reason)
 
+    def set_observation_values(self, expected: Any, observed: Any) -> None:
+        path = self.artifacts / "observation.json"
+        observation = json.loads(path.read_text())
+        observation.update(expected=expected, observed=observed)
+        self.write(path, observation)
+        self.receipt["observation"] = self.ref(path)
+
+    def test_boolean_number_observations_rejected(self) -> None:
+        for expected, observed in (
+            (False, 0),
+            (0, False),
+            (True, 1),
+            (1.0, True),
+            ({"accepted": False}, {"accepted": 0}),
+            ([{"effects": [True]}], [{"effects": [1]}]),
+        ):
+            with self.subTest(expected=expected, observed=observed):
+                self.set_observation_values(expected, observed)
+                self.assert_rejected("effect_observation_mismatch")
+
+    def test_matching_json_observation_semantics(self) -> None:
+        for expected, observed in (
+            (False, False),
+            (True, True),
+            (None, None),
+            (1, 1.0),
+            ({"effects": [True, 1, None]}, {"effects": [True, 1.0, None]}),
+            ({"a": 1, "b": 2}, {"b": 2, "a": 1}),
+        ):
+            with self.subTest(expected=expected, observed=observed):
+                self.set_observation_values(expected, observed)
+                self.assertEqual(self.run_engine()["status"], "passed")
+
+    def test_python_equality_mutation_detected(self) -> None:
+        self.set_observation_values({"accepted": False}, {"accepted": 0})
+        self.assert_rejected("effect_observation_mismatch")
+        with mock.patch.object(
+            engine, "observations_equal", side_effect=lambda left, right: left == right
+        ):
+            # Reintroducing the original equality bug defeats the rejection
+            # assertion. This check requires that deliberate mutation to fail.
+            with self.assertRaises(AssertionError):
+                self.assert_rejected("effect_observation_mismatch")
+
+    def test_non_finite_json_numbers_rejected(self) -> None:
+        for number in ("NaN", "Infinity", "-Infinity", "1e9999", "-1e9999"):
+            with self.subTest(number=number):
+                for data in (number, '{"nested": [' + number + "]}"):
+                    with self.assertRaisesRegex(ValueError, "non_finite_json_number"):
+                        engine.decode_json(data.encode())
+                path = self.artifacts / "observation.json"
+                observation = json.loads(path.read_text())
+                observation.update(expected="NUMBER", observed="NUMBER")
+                path.write_text(json.dumps(observation).replace('"NUMBER"', number))
+                self.receipt["observation"] = self.ref(path)
+                self.assert_rejected("non_finite_json_number")
+                # Restore valid bytes before constructing the next case.
+                self.write(path, dict(observation, expected=[], observed=[]))
+
     def test_scope_identity_and_input_hashes(self) -> None:
         self.receipt["inputs"].pop("fixtures")
         self.assert_rejected("missing_or_malformed_evidence")
