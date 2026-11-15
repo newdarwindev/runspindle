@@ -7,17 +7,17 @@
   "revision_binding": "The exact Git commit/tree and this manifest hash are recorded in the post-freeze candidate/publication receipt; each run emits tested_commit and tracked_changes.",
   "provenance_record_sha256": "9d4c94c5de665a260f025e75655b8749feb39b97a99d5984832b9f901d794b52",
   "file_sha256": {
-    "docs/core-product/README.md": "a8f2765268f3b12840f323700aaa72c0e980af8a3a3f4a087538bfd9f47e83df",
+    "docs/core-product/README.md": "dbc36ffb62cec68e6e78ad8482b3ec2270a176b111550422529337e2bbbec8de",
     "docs/core-product/coverage.json": "171ab3b8242d6eda516d04051f4a866a6c2b5a64e9c87b7d36576f5546356be1",
     "docs/core-product/original-artifact-manifest.json": "d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba",
-    "hygiene.json": "976a6dbf40615a4e749172df3a3e619e09c468f8b29ee63d491e9f8f0125bbb4",
+    "hygiene.json": "bc5441670599b951bdc1ba5848c93c9c45b3f3c6a3acb6cd6e70016603f22892",
     "requirements-quality.txt": "9cbe1331549216b953f2922f1e8321357ca82bb985e1ea595c87fcee8a8fdc84",
     "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
-    "tests/test_core_product.py": "f554d1a577dab4b7af60c03b42c5f2463c8984506d0b6f23615079fd1224e822",
-    "tools/check_core_product.py": "87fe62fb4caae5c7e0da004992fd7b9c09c479d46fde607c4f6269f5df8a45c1",
+    "tests/test_core_product.py": "eba634f1ba7f1143a6070f135cb734054992a9f4be65081a4dbbc881a1565f00",
+    "tools/check_core_product.py": "f1fdd179ce2de54dd3aa1186544ae51ff836b1197e163af50489799c55603dfa",
     "tools/quality-baseline.json": "881d43516723da1b3ae4d55a828909d2fcf3997102334db81ad6f69ab4b1e7e9",
     "tools/validate.py": "b29f49b6ae71b4427328df21ee855f9ac809ea452af9729a3d1f5ada5695118a",
-    "validation-partitions.json": "79fdfae5512ea59b93ed5f40b8c07757c13b620e0d79fa38840f9ba21f72da5b"
+    "validation-partitions.json": "71b06d12093e86677971e6dcb642c5d19ec497d36296023fac9c69e55aed6332"
   },
   "historical_original": {
     "path": "docs/core-product/original-artifact-manifest.json",

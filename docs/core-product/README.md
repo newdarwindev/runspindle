@@ -144,3 +144,14 @@ tests, documentation and current file hashes only. Rerun all relevant checks and
 bind their results to each exact integration commit/tree before publication. The
 new historical-integrity and mandatory-partition tests reject attempts to bless
 old evidence or disable the checker even after current hashes are refreshed.
+
+### Bounded evidence-reconciliation status compatibility
+
+The evidence-reconciliation proposal separately labels its own bounded synthetic
+implementation. This artifact checker accepts that existing status shape only with
+its exact composition_evidence_reconciliation scope, integrated_system explicitly
+not_implemented, the versioned evidence-reconciliation contract, system acceptance
+not_inferred and isolated runner qualification not_run. A missing or broader claim
+fails closed. This recognizes the pre-existing bounded component classification;
+it does not qualify that component or relax any artifact/full-system/live gate.
+The integration does not modify STATUS.json or its campaign acceptance controls.

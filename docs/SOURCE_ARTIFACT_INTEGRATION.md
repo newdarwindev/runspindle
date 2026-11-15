@@ -26,7 +26,8 @@ and source receipt remain unchanged. See `marketing/SRC-013-wrapper-mirror.json`
 for the exact canonical identities and allowed replacements. Original source receipts,
 validation reports, native build history and their commit identities remain
 unchanged. The earlier SRC-001 hygiene manifest is retained in
-`core-product/history/artifact-manifest-aea05d4.json`; the current manifest records
+`core-product/history/artifact-manifest-aea05d4.json`; the evidence draft also retains its previous manifest in
+`core-product/history/artifact-manifest-e98081f.json`. The current manifest records
 the changed inventories. Historical checks do not transfer to these changed
 files. A new post-freeze receipt must identify the exact local commit, tree,
 ordered parents, commands and outcomes before any publication.
@@ -84,8 +85,9 @@ runs without site packages and reject forged source identity or completion claim
 The generator now writes four remaining text outputs and never writes browser.html.
 
 The prior hygiene artifact manifest is retained at
-`core-product/history/artifact-manifest-deca0ea.json`; the current manifest records
-the new mandatory inventories. Earlier local/public commit mappings and validation
+`core-product/history/artifact-manifest-deca0ea.json`. This evidence draft also
+retains its prior manifest at `core-product/history/artifact-manifest-1bbdf4e.json`.
+The current manifest records the new mandatory inventories. Earlier local/public commit mappings and validation
 receipts remain historical and unchanged. The final integration requires a fresh
 receipt bound to its exact commit, tree and ordered parents. Existing baseline,
 image gates, workflow, component pins, STATUS and evidence-reconciliation controls

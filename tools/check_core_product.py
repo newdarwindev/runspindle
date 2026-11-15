@@ -635,10 +635,30 @@ def validate(root: Path) -> dict[str, object]:
     require(
         status.get("selected_source_migration") == "partial", "global migration status"
     )
-    require(
-        status.get("implementation") == "not_implemented",
-        "integrated implementation claim",
-    )
+    implementation = status.get("implementation")
+    if implementation == "not_implemented":
+        require(
+            status.get("implementation_scope") == "integrated_system"
+            and status.get("integrated_system", "not_implemented") == "not_implemented",
+            "integrated implementation scope",
+        )
+    elif implementation == "bounded_implementation":
+        require(
+            status.get("implementation_scope") == "composition_evidence_reconciliation"
+            and status.get("integrated_system") == "not_implemented",
+            "bounded implementation must not imply integrated acceptance",
+        )
+        evidence = mapping(
+            status.get("evidence_reconciliation"), "bounded evidence status"
+        )
+        require(
+            evidence.get("contract") == "runspindle.evidence-reconciliation.v1"
+            and evidence.get("system_acceptance") == "not_inferred"
+            and evidence.get("isolated_runner_qualification") == "not_run",
+            "bounded evidence cannot qualify system or runner acceptance",
+        )
+    else:
+        raise CoverageError("integrated implementation claim")
     require(status.get("live_acceptance") == "not_run", "live acceptance claim")
     require(
         manifest.get("historical_original") == HISTORICAL_IDENTITY,

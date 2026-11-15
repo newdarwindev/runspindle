@@ -114,3 +114,14 @@ browser/console/visual/provider/paid/source-migration/production deferrals remai
 No issues or legacy repositories were closed or archived. The unrelated platform
 checkout was preserved. [Runnable bundle instructions](OFFLINE_BUNDLE.md) describe
 the exact disposable development scope and the saved offline launcher.
+
+## Exact-source evidence relationship checks
+
+The [offline reconciler](EVIDENCE_RECONCILIATION.md) now verifies supplied criterion
+and capability mappings against actual Git sources/pins, artifact/input byte hashes,
+separate observation records and explicit README/STATUS claim mappings. Synthetic
+negative tests include dirty/draft/stale/missing evidence, forbidden effects and
+a deliberately disabled hash invariant. It reads actual temporary Git stores and
+uses a separate synthetic observer process; it does not claim runtime transport,
+producer authentication, current campaign packet acceptance or isolated CI qualification.
+All earlier tranche evidence retains its historical scope.

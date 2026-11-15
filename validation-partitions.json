@@ -29,7 +29,9 @@
       "feedback-hero"
     ],
     "rust": [],
-    "mutation_1": [],
+    "mutation_1": [
+      "evidence-mutations"
+    ],
     "mutation_2": [],
     "mutation_3": [],
     "mutation_4": []

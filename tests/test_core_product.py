@@ -204,6 +204,32 @@ class CoreProductCoverage(unittest.TestCase):
         with self.assertRaisesRegex(audit.CoverageError, "migration scope"):
             audit.validate(self.root)
 
+    def test_bounded_reconciliation_status_does_not_grant_system_acceptance(
+        self,
+    ) -> None:
+        original = audit.document(ROOT, "STATUS.json")
+        for mutation in (
+            "integrated_system",
+            "implementation_scope",
+            "system_acceptance",
+            "contract",
+            "isolated_runner_qualification",
+            "missing_evidence",
+        ):
+            with self.subTest(mutation=mutation):
+                status = copy.deepcopy(original)
+                if mutation in ("integrated_system", "implementation_scope"):
+                    status[mutation] = "implemented"
+                elif mutation == "missing_evidence":
+                    del status["evidence_reconciliation"]
+                else:
+                    status["evidence_reconciliation"][mutation] = "passed"
+                self.save("STATUS.json", status)
+                with self.assertRaises(audit.CoverageError):
+                    audit.validate(self.root)
+        self.save("STATUS.json", original)
+        self.assertEqual(audit.validate(self.root)["runtime_acceptance"], "not_run")
+
     def test_public_privacy_guards_survive_hash_refresh(self) -> None:
         examples = [
             "/workspace/private-input/source.md",
