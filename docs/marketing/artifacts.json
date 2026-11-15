@@ -1280,6 +1280,17 @@
       "implementation_evidence": false,
       "kind": "preserved_prior_adaptation_artifact",
       "source_relationship": "Exact prior adaptation artifact retained as history, not an original historical-source import."
+    },
+    {
+      "path": "docs/marketing/SRC-002-compiled-validation.json",
+      "sha256": "2d21dbeca9cd2f0c0e78761c08731d22913b070b4ba814679727c09a93987b78",
+      "source_ids": [
+        "SRC-002"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "compiled_artifact_integration_validation",
+      "source_relationship": "Additive local integrated-tree validation; exact native output evidence is separate, no new native build or publication."
     }
   ],
   "migration_status": "partial",
