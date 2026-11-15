@@ -75,6 +75,12 @@ producer), integer `forbidden_calls`, integer `forbidden_effects`, `expected` an
 `observed`. Passing requires zero forbidden counts and exact expected/observed
 agreement. Boolean values are distinct from numbers, including inside lists and
 objects; JSON numbers retain numeric equality (for example, `1` and `1.0`).
+Independent observation decimals are compared losslessly, so rounding and underflow
+cannot erase a difference. Other JSON inputs and report serialization are unchanged.
+The existing non-finite/overflow rejection and standard integer parsing guard remain.
+Decimals use compact coefficient/exponent storage, with no power expansion or
+decimal-to-integer conversion; unrepresentable exponents fail closed. This does not
+add an overall artifact byte limit.
 Object key ordering does not affect comparison. The independent verifier must
 actually acquire those observations. The producer must be a nonempty string before this comparison; malformed,
 missing or empty producer attribution cannot establish an independent observation.
