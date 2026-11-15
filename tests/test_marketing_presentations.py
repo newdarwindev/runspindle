@@ -81,6 +81,66 @@ class PresentationTests(unittest.TestCase):
         self.assertEqual(result["native_compile"], "not_run")
         self.assertFalse(result["pdf_matches_authored_source"])
 
+    def test_historical_inventory_survives_exact_wrapper_transition(self) -> None:
+        receipt = json.loads(
+            (self.folder / "SRC-003-004-source-receipt.json").read_text()
+        )
+        self.assertEqual(
+            receipt["preserved_files"]["build-paper.py"],
+            "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+        )
+        self.assertEqual(
+            hashlib.sha256((self.folder / "build-paper.py").read_bytes()).hexdigest(),
+            "55aff60ec397e5e7be76f24b6cec60a8c3dc7966c4a32359004f0aaf7ebe7aff",
+        )
+        self.assertEqual(check(self.root)["native_compile"], "not_run")
+
+    def test_old_wrapper_is_not_an_accepted_fallback(self) -> None:
+        path = self.folder / "build-paper.py"
+        current = path.read_text()
+        old = current.replace("import argparse\n", "from pathlib import Path\n", 1)
+        old = old.replace(
+            "from pathlib import Path\n\nparser", "import argparse\n\nparser", 1
+        )
+        self.assertEqual(
+            hashlib.sha256(old.encode()).hexdigest(),
+            "6eee7d3513778e27e73a78bcb9424f5f5eae421c46324c3014239a4fae813891",
+        )
+        path.write_text(old)
+        with self.assertRaisesRegex(
+            ValueError, "preserved bytes changed: build-paper.py"
+        ):
+            check(self.root)
+
+    def test_current_guard_and_supplements_have_exact_pins(self) -> None:
+        for name in (
+            "refinery_mirror.py",
+            "source-wrapper-change-evidence.json",
+            "SRC-013-wrapper-mirror.json",
+        ):
+            path = self.folder / name
+            original = path.read_bytes()
+            with self.subTest(name=name):
+                path.write_bytes(original + b"\n")
+                with self.assertRaisesRegex(ValueError, "preserved bytes changed"):
+                    check(self.root)
+                path.write_bytes(original)
+
+    def test_unrelated_historical_files_cannot_change(self) -> None:
+        receipt = json.loads(
+            (self.folder / "SRC-003-004-source-receipt.json").read_text()
+        )
+        for name in receipt["preserved_files"]:
+            if name in {"build-paper.py", "refinery_mirror.py"}:
+                continue
+            path = self.folder / name
+            original = path.read_bytes()
+            with self.subTest(name=name):
+                path.write_bytes(original + b"\n")
+                with self.assertRaisesRegex(ValueError, "preserved bytes changed"):
+                    check(self.root)
+                path.write_bytes(original)
+
     def test_two_run_preservation_without_site_packages_or_reportlab(self) -> None:
         # Any attempted dependency import fails instead of silently using a fallback.
         (self.folder / "reportlab.py").write_text(
