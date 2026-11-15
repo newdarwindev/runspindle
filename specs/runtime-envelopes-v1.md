@@ -2,8 +2,9 @@
 
 This separate JSON wire contract is `runspindle.envelope.v1`. It does not alter
 Runtime v1, integration v1, fixture JSON, Rust library types or historical Temporal
-payloads. No implicit negotiation or fallback is permitted. Independent review
-is user-waived for this tranche; no independent review occurred.
+payloads. No implicit negotiation or fallback is permitted. The original contract
+tranche had user-waived independent review; later producer evidence is recorded
+separately.
 
 Every envelope contains exactly `version`, `message_type`, `message_id`, `binding`
 and `payload`. Message identity is an opaque stable producer ID, not authority.
@@ -39,6 +40,20 @@ expected existing component JSON representations. The independent Python codec
 and Rust codec share the contract/vectors, never implementation serializers.
 Conformance applies only to these four exercised mappings, not a native provider,
 Tether transport, browser, console or full system.
+
+The Python producer entrypoint is `produce(value, message_type, message_id) -> bytes`
+in `conformance/envelope-v1/codec.py`. `value` is the exact component JSON object
+shown in the vectors; message type and stable message identity are explicit caller
+inputs. It returns canonical UTF-8 envelope bytes without modifying the input.
+Every nested component object has an exact field set. Delivery validation requires
+`passed` to be the boolean `true` (not integer `1`) and the validation policy to
+equal the artifact binding policy. All other component-only versions and terminal
+values must be representable by the table above. The final wire validator also
+checks identifiers, counters, predecessor relationships and distinct operations.
+The producer accepts decoded component objects, not component JSON text: lexical
+negative integer tokens remain a wire-decoder check. Mapping `passed=true` is not
+proof of actual artifact validation, acceptance, signature or delivery authority.
+See [bounded producer evidence](../docs/ENVELOPE_PRODUCER.md).
 
 Canonical encoding for authenticated admission is UTF-8 JSON with object keys
 sorted lexicographically, no insignificant whitespace, no escapes for ASCII

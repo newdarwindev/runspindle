@@ -168,6 +168,107 @@ def component(e: dict[str, Any]) -> dict[str, Any]:
     return dict(request=delivery(p["request"]), receipt_id=p["receipt_id"])
 
 
+def produce(value: dict[str, Any], message_type: str, message_id: str) -> bytes:
+    """Encode a representable component value, with explicit producer metadata.
+
+    This is a structural mapping, not verification of validation or authority.
+    Never mutate the caller's value or retain references to its nested mappings.
+    """
+    if type(message_type) is not str:
+        raise AssertionError("message_type")
+    identifier(message_id)
+
+    def delivery(request: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+        fields(
+            request,
+            [
+                "version",
+                "accepted",
+                "account_id",
+                "destination_id",
+                "delivery_operation_id",
+            ],
+        )
+        if (
+            type(request["version"]) is not str
+            or request["version"] != "runspindle.integration.v1"
+        ):
+            raise AssertionError("component version")
+        fields(request["accepted"], ["validation"])
+        validation = request["accepted"]["validation"]
+        fields(
+            validation, ["artifact", "validator_revision", "policy_revision", "passed"]
+        )
+        if validation["passed"] is not True:
+            raise AssertionError("failed validation")
+        artifact = validation["artifact"]
+        fields(artifact, ["binding", "artifact_id", "artifact_revision", "sha256"])
+        fields(artifact["binding"], BINDING)
+        binding = dict(artifact["binding"])
+        identifier(validation["policy_revision"])
+        if validation["policy_revision"] != binding["policy_revision"]:
+            raise AssertionError("validation policy mismatch")
+        payload = {
+            key: artifact[key] for key in ["artifact_id", "artifact_revision", "sha256"]
+        }
+        payload["validator_revision"] = validation["validator_revision"]
+        payload.update(
+            {
+                key: request[key]
+                for key in ["account_id", "destination_id", "delivery_operation_id"]
+            }
+        )
+        return binding, payload
+
+    if message_type == "admission_request":
+        fields(value, ["version", *BINDING, *ADMISSION])
+        if (
+            type(value["version"]) is not str
+            or value["version"] != "runspindle.runtime.v1"
+        ):
+            raise AssertionError("component version")
+        binding = {key: value[key] for key in BINDING}
+        payload = {key: value[key] for key in ADMISSION}
+    elif message_type == "host_observation":
+        fields(
+            value,
+            ["binding", "native_session_id", "sequence", "observed_at_ms", "terminal"],
+        )
+        fields(value["binding"], BINDING)
+        binding = dict(value["binding"])
+        terminal = value["terminal"]
+        if terminal is None:
+            state = "running"
+        elif type(terminal) is str and terminal in ["Completed", "Failed", "Cancelled"]:
+            state = terminal.lower()
+        else:
+            raise AssertionError("terminal")
+        payload = {
+            key: value[key]
+            for key in ["native_session_id", "sequence", "observed_at_ms"]
+        }
+        payload["state"] = state
+    elif message_type == "delivery_request":
+        binding, payload = delivery(value)
+    elif message_type == "delivery_receipt":
+        fields(value, ["request", "receipt_id"])
+        binding, request = delivery(value["request"])
+        payload = dict(request=request, receipt_id=value["receipt_id"])
+    else:
+        raise AssertionError("message_type")
+    # Reuse the wire validator only after all component-only fields are checked.
+    # It checks every scalar, counter, predecessor and operation separation.
+    return encode(
+        dict(
+            version=VERSION,
+            message_type=message_type,
+            message_id=message_id,
+            binding=binding,
+            payload=payload,
+        )
+    )
+
+
 def consume(
     data: bytes | str,
     expected_binding: dict[str, Any],

@@ -89,6 +89,8 @@
     "status": "specified_python_synthetic_mappings_tested",
     "rust_conformance": "not_run",
     "authority": "not_run",
-    "independent_review": "user_waived_no_review_occurred"
+    "independent_review": "user_waived_no_review_occurred",
+    "python_component_producer": "locally_tested_synthetic_inverse_mappings",
+    "producer_evidence": "docs/ENVELOPE_PRODUCER.md"
   }
 }
