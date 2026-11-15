@@ -157,3 +157,23 @@ restart, upstream pins and bounded integration belong to subsequent component
 and composition work. This change therefore references #1 without closing it.
 It does not complete source migration, authorize legacy archival or establish
 live acceptance.
+
+
+## Typed independent-oracle identities
+
+The root fixture oracle now validates both the expected request identity and any
+required independent receipt identity using the same existing kind-specific
+rules as the envelope. A boolean or float cannot stand in for an integer counter
+through Python equality. Caller inputs remain unchanged. State, receipt shape,
+receipt detail and accepted/approved digest comparisons retain their existing
+fail-closed behavior; no new state or authority rule is introduced.
+
+`tests/test_fixture_oracle_context.py` covers all eight kinds, missing/extra and
+malformed identity fields, valid integer boundaries, the other oracle comparison
+contexts and two guard-removal mutations that reproduce false passes. Run it and
+the existing fixture tests with `python3 -m unittest discover -s tests -p
+"test_fixture*.py" -v`, also under `python3 -O`.
+
+The root bundle manifest is regenerated for these validator bytes. Existing
+component-vendored subsets and composition pins remain unchanged historical
+versions; no consumer upgrade or runtime/cross-language qualification is implied.
