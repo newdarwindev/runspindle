@@ -2,19 +2,22 @@
 
 Status: newly authored Runspindle design documents, not implemented services.
 
-The old argument and fleet PDFs were rendered with ReportLab from concise generated narratives, now preserved in presentations/legacy. They do not render the new authored argument.tex or fleet.tex. The preserved older runspindle-paper.pdf also remains ReportLab output, with its old uncompiled companion at paper/legacy/reportlab-paper.tex. It **does not render the new authored runspindle-paper.tex**. None of these three PDFs is TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
+The old argument and fleet PDFs were rendered with ReportLab and do not render
+the new Beamer sources. The old paper PDF is now preserved at
+paper/legacy/reportlab-paper.pdf with its generated, uncompiled companion TeX.
+The current runspindle-paper.pdf is the actual two-pass compiled SRC-002 paper.
+See [the compiled paper record](SRC-002-COMPILED.md) for source/output hashes,
+public reproduction instructions and the distinction from the private executed
+wrapper. The static HTML pages need no build service.
 
 To reproduce the four remaining generated Markdown, HTML and notice outputs, use Python 3 and run `python -B -S build_documents.py` in this directory. No site package or ReportLab dependency is used. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
 
-The new SRC-002 paper has a separate source-only build proposal in
-`SRC-002-build-plan.json`. Its minimal installed toolchain inventory is not a
-complete loaded-input closure and no native build has been run for this source.
-The proposed pdflatex command must not be treated as an instruction to execute
-before independent review of the exact source, dependencies, confinement and
-resource limits. No installation is needed or authorized by this document.
-Argument and fleet Beamer sources remain independently compile-unverified. The
-old environment's missing-format failure is historical and is not evidence
-about the newly inventoried native installation.
+SRC-002-build-plan.json remains an unchanged historical source-only proposal.
+The later executed build, loaded dependencies and output review are recorded in
+SRC-002-build-evidence.json and SRC-002-toolchain.json. No additional native build
+was performed for the subsequent Browser/mirror/evidence integration. The same
+six compiled inputs remain exact. Argument and fleet Beamer sources remain
+independently compile-unverified. No installation is authorized by these docs.
 
 Prior concise-derivative verification (before replacing workflow-refinery.pdf): all 19 ReportLab PDF pages were rendered with Poppler and visually reviewed; text/HTML/TeX candidates were scanned for legacy repository references and operational identifiers. The documents describe planned components and do not transfer historical test results to Runspindle. No original source application or build script was executed. No JavaScript framework install was required for the new static pages. HTML browser-level visual verification remains pending.
 
@@ -22,7 +25,7 @@ Prior concise-derivative verification (before replacing workflow-refinery.pdf): 
 
 Historical PDF renderer: Python 3.12.14, ReportLab 4.4.9, with invariant metadata. Those preserved output receipts remain unchanged. The current four-output text generator uses only the Python standard library; it does not render PDFs. Cross-version PDF byte identity is not asserted.
 
-All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The three other PDFs are ReportLab outputs, not compiled TeX/Beamer.
+All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The two presentation PDFs and the retained legacy paper PDF remain ReportLab outputs; the current SRC-002 and SRC-013 papers are compiled TeX.
 
 ## Console-owned SRC-010 mirror
 
@@ -80,24 +83,22 @@ requires root review and validation; it does not claim new paper or runtime acce
 
 ## Original SRC-002 paper protection
 
-`build_documents.py` validates the existing SRC-010 and SRC-013 canonical closures,
-then validates the independently authored SRC-002 source, old ReportLab pairing,
-18 citation records, 28 disposition units and frozen economics before writing outputs. It never writes runspindle-paper.tex or
-runspindle-paper.pdf. A changed receipt, source, required schematic, package,
-citation, preserved PDF or economics invariant fails closed. A future reviewed
-native PDF requires a deliberate receipt/guard transition; the legacy generator
-will still have no paper-writing call.
+The generator validates current canonical mirrors, the full original paper source,
+18 citation records, 28 disposition units, frozen economics, compiled PDF and
+sanitized evidence before any output writes. It then checks the separate
+presentation and Browser closures. It never writes authored TeX or any PDF.
 
-The current SRC-005 disposition updates only the containing TeX hash. Its original
-validation receipt remains byte-preserved and applies to the prior source tree.
-`SRC-002-source-receipt.json` separately binds the current authored inputs, old
-ReportLab PDF, old generated TeX and frozen economic body. Neither representation
-is mislabeled as a compiled output. Run `python3 tools/check_paper_source.py` and
-`python3 tools/check_economics_source.py` from the root for static consistency.
+The current SRC-005 map changes only the PDF container hash; the canonical
+accounting body and compiled TeX are unchanged. Its prior maps and original
+validation remain historical. The previous source-only paper receipt and old PDF
+are retained under paper/history and paper/legacy. Current evidence explicitly
+binds the local six-input compiled source to the later containing checkout; it
+does not claim the final integrated tree was compiled as a whole.
 
-Native acceptance still requires the actual edited-source build, complete loaded
-input hashes, all-page visual/text review and citation/link annotation checks.
-Do not close issue 4 or report that these stages passed from static tests alone.
+Run the checks in [SRC-002-COMPILED.md](SRC-002-COMPILED.md). Static consistency
+checks do not repeat the recorded native build, visual review or link inspection.
+Native and independent exact-PDF reviews passed; final integration review and
+publication remain separate. No issue is closed automatically.
 
 ## Original SRC-003 / SRC-004 presentation protection
 

@@ -1,11 +1,12 @@
 # Runspindle design adaptations
 
-These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed compiled paper adaptation. SRC-002 now has a full original nine-section editable proposal, not yet compiled; its old PDF is preserved separately from the new source. SRC-003 and SRC-004 now have full-scope original editable presentation sources; their older PDFs are preserved, not current renderings. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
+These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed compiled paper adaptation. SRC-002 now has a two-pass compiled original nine-section paper with all-page and citation/link review; final integrated-tree review and publication remain pending. Its old ReportLab PDF is preserved separately. SRC-003 and SRC-004 now have full-scope original editable presentation sources; their older PDFs are preserved, not current renderings. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
 
-- `runspindle-paper.tex`: full original research and evaluation proposal, uncompiled.
-- `runspindle-paper.pdf`: unchanged older ReportLab derivative, **not the new paper**.
+- `runspindle-paper.tex`: exact compiled original research and evaluation proposal.
+- `runspindle-paper.pdf`: actual 12-page native compiled candidate; see [build and review evidence](SRC-002-build-evidence.json).
+- `paper/legacy/reportlab-paper.pdf`: unchanged prior ReportLab derivative, not the current paper.
 - `paper/legacy/reportlab-paper.tex`: old generated, uncompiled companion source.
-- `SRC-002-source-receipt.json`: exact separation of old rendering and new source; native build remains not run.
+- `SRC-002-source-receipt.json`: exact compiled-input/output mapping and preserved historical evidence.
 - `argument.tex`, `fleet.tex`: original editable full-scope presentation adaptations, uncompiled.
 - `argument.pdf`, `fleet.pdf`: older ReportLab derivatives, **not the new presentation sources**.
 - `presentations/legacy`: preserved old generated companion TeX.
@@ -26,7 +27,13 @@ renderer verifies the recorded canonical mirror and notice before any writes; it
 does not overwrite the vision page. See [SRC-010-lift.json](SRC-010-lift.json) and
 [SRC-010-validation.md](SRC-010-validation.md).
 
-The argument and fleet PDFs, plus the preserved older runspindle-paper.pdf, were generated with ReportLab, not compiled from TeX/Beamer. The new runspindle-paper.tex does not match that older PDF. Its five original schematic inputs and all 18 citations are prepared for independent source/build review; no native compilation or page review has occurred. See [BUILD.md](BUILD.md) for exact tools, reproduction commands and limits, and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for source rights. None of these materials certifies a live implementation, runner, deployment or successful integration.
+The argument and fleet PDFs remain older ReportLab outputs, not renderings of the
+new Beamer sources. The current SRC-002 paper is compiled from six exact edited
+inputs and has passed native and independent all-page output review. See
+[SRC-002-COMPILED.md](SRC-002-COMPILED.md) for reproduction instructions, exact
+source/output mapping and review limits, and [font notices](SRC-002-NOTICES.md).
+Final integrated-tree review remains separate. No document certifies a live
+implementation, runner, deployment or successful integration.
 
 ## Technical grounding for future presentations
 
@@ -64,13 +71,16 @@ No runtime, benchmark, measured gains or live acceptance follows from this paper
 No component Gitlink or acceptance gate changed. This wrapper mirror transition
 requires root review and validation; it does not claim new paper or runtime acceptance.
 
-## Original SRC-002 source preparation
+## Original SRC-002 compiled paper
 
-See [source review](SRC-002-review.md), [complete disposition](SRC-002-disposition.json),
-[citation review](SRC-002-citations.json) and [proposed native build](SRC-002-build-plan.json).
-The generator verifies source, preserved PDF and frozen economics before any
-writes, then leaves both paper representations alone. It cannot be used to build
-the new paper. Issue 4 remains open and selected-source migration remains partial.
+The original [source review](SRC-002-review.md), [complete disposition](SRC-002-disposition.json)
+and [source-only build proposal](SRC-002-build-plan.json) remain historical stage
+records. Current [build evidence](SRC-002-build-evidence.json) records the native
+execution and bounded document review; [toolchain evidence](SRC-002-toolchain.json)
+separates known pins from observed loaded files. The generator protects the exact
+current PDF, six source inputs, historical receipts and frozen economics before
+any writes. It cannot build or overwrite a paper. Issue 4 remains open pending
+final review/publication decisions; selected-source migration remains partial.
 
 ## Full-scope presentation source preparation
 

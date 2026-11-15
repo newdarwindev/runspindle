@@ -207,7 +207,7 @@
     "docs/marketing/economics.md": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
     "docs/marketing/overview.md": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
     "docs/marketing/runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
-    "docs/marketing/runspindle-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb"
+    "docs/marketing/runspindle-paper.pdf": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23"
   },
   "executable_implementation": {
     "paths": [
@@ -220,10 +220,9 @@
   },
   "verified_behavior": "synthetic_arithmetic_and_document_integrity_only",
   "remaining": [
-    "Permission to reuse original prose/diagrams is unresolved; source expression remains excluded.",
-    "Historical native TeX rebuild not run; generated umbrella PDF is ReportLab output, not a TeX build.",
-    "Independent candidate review, publication and exact-head remote CI remain pending.",
+    "Historical prose and diagram expression remain safely excluded; no excluded-expression reuse permission is needed for this original adaptation.",
+    "Native compiled paper and document review evidence are recorded separately in SRC-002-build-evidence.json; independent final review/publication remain pending.",
     "No authentic workload, prices, provider effects, deployment, savings or break-even measured.",
-    "Overall migration remains partial and issue 7 stays open."
+    "Overall migration remains partial; no issue is automatically closed by this artifact transition."
   ]
 }

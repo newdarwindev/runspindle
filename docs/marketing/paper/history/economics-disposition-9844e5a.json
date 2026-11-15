@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "source_id": "SRC-005",
+  "bundle_source_id": "SRC-002",
+  "scope": "Six prose blocks, one equation, two diagrams with captions, three required citation entries.",
+  "scope_accounting": "accounted_with_safe_exclusions",
+  "migration_status": "partial",
+  "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+  "historical_expression": "excluded_no_verified_reuse_license",
+  "rights_review": "No project-wide license established for selected section or diagrams. Owner-directed original adaptation of concepts only; no blanket relicense. Source diagrams and copied expression excluded. Bibliographic attribution does not grant reuse rights.",
+  "dependency_review": "Selected section, both included diagram sources, and only the three cited bibliography entries reviewed. No original build scripts, packages, fonts, binaries or unselected history imported or executed.",
+  "independent_review": "pending",
+  "units": [
+    {
+      "id": "P01",
+      "source_locator": "First prose block, both sides of the displayed equation",
+      "adaptation_marker": "A is the count of distinct terminal outcomes",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Rewrite accepted/authorized terminal-outcome definition, all attempt costs and cost/quality comparison; add explicit zero/unknown behavior. Exact source prose excluded.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "E01",
+      "source_locator": "Only displayed equation",
+      "adaptation_marker": "Accounting identity: C = M + T + H + V + K + R + F; U = C / A",
+      "disposition": "original_accounting_restatement",
+      "source_expression_copied": false,
+      "review_decision": "Restate the accounting concept in original notation; include fixed integration explicitly and require disjoint period totals. Define A > 0 and millionths conversion; no source TeX expression copied.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "P02",
+      "source_locator": "Second prose block, before first diagram",
+      "adaptation_marker": "Fixed-cost sensitivity:",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Retain low-volume/manual comparison, setup/evaluation, assumptions and uncertain crossing in original wording; add algebraic regrouping without volume forecast.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "D01",
+      "source_locator": "First figure and caption",
+      "adaptation_marker": "A specialist may remain more expensive at every volume.",
+      "disposition": "excluded_diagram_replaced_by_text",
+      "source_expression_copied": false,
+      "review_decision": "Exclude source drawing, arbitrary coordinates, styling and caption due unresolved expression rights; preserve the conceptual comparison as text without inventing a graph or break-even.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "P03",
+      "source_locator": "Third prose block, after first diagram",
+      "adaptation_marker": "Customer value and vendor revenue are different quantities.",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Rewrite customer-level benefits, time-vs-cash, subscription/integration/outcome fees, attempt incentives, selection bias and contractual verification; no proposed price or commitment.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "P04",
+      "source_locator": "Fourth prose block, before second diagram",
+      "adaptation_marker": "Provider change can remove a specialist",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Rewrite model/platform/incumbent obsolescence mechanisms; use separately verified primary citation only as a bounded vendor observation.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "D02",
+      "source_locator": "Second figure and caption",
+      "adaptation_marker": "retain three qualitative scenarios instead:",
+      "disposition": "excluded_diagram_replaced_by_text",
+      "source_expression_copied": false,
+      "review_decision": "Exclude source drawing, arbitrary coordinates, styling and caption; preserve persistent domain value, complementary niche and erosion as non-probabilistic text, including access loss.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "P05",
+      "source_locator": "Fifth prose block, after second diagram",
+      "adaptation_marker": "Potential enduring assets include",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Rewrite corpus/test/integration/operations/distribution possibilities and repeated comparison after upgrades. No asset guarantees or transferred uplift.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "P06",
+      "source_locator": "Sixth and final prose block",
+      "adaptation_marker": "Complementary investment and delayed benefits:",
+      "disposition": "original_concept_adaptation",
+      "source_expression_copied": false,
+      "review_decision": "Rewrite complementary-investment and time-path caution; retain absence of measured prices/costs/refusal rates/market size and add explicit Runspindle savings boundary.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "C01",
+      "source_locator": "Citation key agentsmatter",
+      "adaptation_marker": "[1] Sayash Kapoor",
+      "disposition": "attributed_primary_reference",
+      "source_expression_copied": false,
+      "review_decision": "Retain bibliographic facts and primary URL with bounded paraphrase; no cited prose, code or figures copied, and no results transferred as Runspindle evidence.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "C02",
+      "source_locator": "Citation key anthropic2026",
+      "adaptation_marker": "[2] Prithvi Rajasekaran",
+      "disposition": "attributed_primary_reference",
+      "source_expression_copied": false,
+      "review_decision": "Retain bibliographic facts and primary URL with bounded paraphrase; no cited prose, code or figures copied, and no results transferred as Runspindle evidence.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    },
+    {
+      "id": "C03",
+      "source_locator": "Citation key jcurve",
+      "adaptation_marker": "[3] Erik Brynjolfsson",
+      "disposition": "attributed_primary_reference",
+      "source_expression_copied": false,
+      "review_decision": "Retain bibliographic facts and primary URL with bounded paraphrase; no cited prose, code or figures copied, and no results transferred as Runspindle evidence.",
+      "destinations": [
+        "docs/marketing/economics.md",
+        "docs/marketing/overview.md",
+        "docs/marketing/runspindle-paper.tex",
+        "docs/marketing/runspindle-paper.pdf"
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "key": "agentsmatter",
+      "url": "https://arxiv.org/abs/2407.01502",
+      "reference": "Kapoor, Stroebl, Siegel, Nadgir and Narayanan (2024), AI Agents That Matter",
+      "review": "Primary arXiv abstract verified; submitted July 1, 2024.",
+      "applicability_limit": "Joint cost/accuracy evaluation, not Runspindle ROI or savings."
+    },
+    {
+      "key": "anthropic2026",
+      "url": "https://www.anthropic.com/research/harness-design-long-running-apps",
+      "reference": "Prithvi Rajasekaran, Anthropic (March 24, 2026), Harness design for long-running application development",
+      "review": "Primary engineering article verified; describes dropping context resets between Sonnet 4.5 and Opus 4.5.",
+      "applicability_limit": "One vendor engineering observation, not a general forecast or benchmark transfer."
+    },
+    {
+      "key": "jcurve",
+      "url": "https://www.nber.org/papers/w25148",
+      "reference": "Brynjolfsson, Rock and Syverson, NBER Working Paper 25148 (October 2018; revised January 2020)",
+      "review": "Primary-domain indexed NBER metadata/abstract verified and corroborated by AEA DOI 10.1257/mac.20180386; direct NBER page returned HTTP 403, no restriction bypass.",
+      "applicability_limit": "Complementary investment and lag/mismeasurement, not guaranteed profitability."
+    }
+  ],
+  "result_files": {
+    "docs/marketing/economics.md": "207d9fa497c7196a890830f96eed7fd7f64e87f3f8c5133406d59b666a9132d4",
+    "docs/marketing/overview.md": "01292d82130d6eb9dac474b158b1234d14cb71d2c558239b9390e07375e92bb9",
+    "docs/marketing/runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29",
+    "docs/marketing/runspindle-paper.pdf": "71f08dce2ea2ae2682a4b2af306e6b1da54cdfd4863fd6297806ce5c5bf2e2fb"
+  },
+  "executable_implementation": {
+    "paths": [
+      "tools/economics.py",
+      "tests/test_economics.py"
+    ],
+    "classification": "preexisting_original_accounting_and_synthetic_tests",
+    "historical_code_import": "none",
+    "measurement": "not_run"
+  },
+  "verified_behavior": "synthetic_arithmetic_and_document_integrity_only",
+  "remaining": [
+    "Permission to reuse original prose/diagrams is unresolved; source expression remains excluded.",
+    "Historical native TeX rebuild not run; generated umbrella PDF is ReportLab output, not a TeX build.",
+    "Independent candidate review, publication and exact-head remote CI remain pending.",
+    "No authentic workload, prices, provider effects, deployment, savings or break-even measured.",
+    "Overall migration remains partial and issue 7 stays open."
+  ]
+}

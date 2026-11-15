@@ -1,7 +1,7 @@
 """Narrow source preflight, not a TeX parser or execution sandbox.
 
 Exact hash review and separately approved external confinement are the execution
-boundary. These checks never compile TeX or certify a PDF.
+boundary. These checks never compile TeX or repeat a PDF review; they bind reviewed evidence.
 """
 
 import ast
@@ -30,6 +30,24 @@ CURRENT_PRESERVED = PRESERVED | {
     "paper/history/source-receipt-2f37dc9.json": "a60b6cddf0c4c0a909188bb89b8580d60a213b35a3f6c6239b6029eed68b347f",
     "paper/history/economics-disposition-2f37dc9.json": "18572b9fae3282b5a207df3c18636674067c82883c05508685ac53f41e96fc71",
     "SRC-002-validation.json": "da8194979c1bd1ea43bde1990254cbe1e1ff2594127afced23631d139c512335",
+}
+# Current artifact transition; historical PRESERVED remains an immutable inventory.
+CURRENT_PRESERVED = {
+    name: value
+    for name, value in CURRENT_PRESERVED.items()
+    if name != "runspindle-paper.pdf"
+} | {
+    "paper/legacy/reportlab-paper.pdf": PRESERVED["runspindle-paper.pdf"],
+    "paper/history/source-receipt-9844e5a.json": "6a7cb0013eaa7371852834a8b3a9b42b03b07bd4c7d78632d03a328dc7335cb5",
+    "paper/history/economics-disposition-9844e5a.json": "e694f8731573e057ab32ea52d3e07871ef35b3dcefc67ab24d42f6d27c6d294c",
+    "SRC-002-wrap-validation.json": "24ff7e350da2e679d9e25a5738a1119a4b9fb7ca1840b63b00d6728311c4094f",
+}
+COMPILED_PDF_SHA = "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23"
+COMPILED_FILES: dict[str, str] = {
+    "SRC-002-build-evidence.json": "a40ca528eb4232e38ee9e18d594ad47ad06cdd6f7522be553d27b08bafc34064",
+    "SRC-002-toolchain.json": "12bd3e035745bc7596d899da1531531089a82052bee959486d151ddec67a7c3f",
+    "SRC-002-NOTICES.md": "0d90ef26cf884d8be5bd47e92541b0828dfa208a5f23573f8444f240e2efc581",
+    "SRC-002-COMPILED.md": "3803ed4c59920d6f3ec5a503a513dc6d6e9c90b730c56310cfba9dc4cc30e624",
 }
 WRAP_CORRECTION_SHA = "14f30abb0b745430cf408b5d14219d0943bb5a8bdec56f8027e98fcc45548ca4"
 DIAGRAMS = {
@@ -160,10 +178,11 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
     require(receipt["source_id"] == "SRC-002", "source identity")
     require(receipt["base_commit"] == PARENT, "unreviewed dependent parent")
     require(
-        receipt["status"] == "source_prepared_native_compile_not_run", "build status"
+        receipt["status"] == "compiled_candidate_pending_independent_review",
+        "build status",
     )
-    require(receipt["native_compile"] == "not_run", "unperformed native compile")
-    require(receipt["pdf_matches_authored_source"] is False, "stale PDF pairing")
+    require(receipt["native_compile"] == "passed", "recorded native compile")
+    require(receipt["pdf_matches_authored_source"] is True, "compiled PDF pairing")
     require(receipt["migration_status"] == "partial", "migration gate")
     require(receipt["live_acceptance"] == "not_run", "live evidence gate")
     require(receipt["preserved_files"] == CURRENT_PRESERVED, "preserved identities")
@@ -171,7 +190,8 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
         require(digest(folder, name) == expected, "preserved bytes changed: " + name)
     old = receipt["preserved_pdf"]
     require(
-        old["renderer"] == "ReportLab 4.4.9 / Python 3.12.14"
+        old["path"] == "docs/marketing/paper/legacy/reportlab-paper.pdf"
+        and old["renderer"] == "ReportLab 4.4.9 / Python 3.12.14"
         and old["source_commit"] == PARENT
         and old["generated_tex_sha256"] == PRESERVED["paper/legacy/reportlab-paper.tex"]
         and old["pdf_sha256"] == PRESERVED["runspindle-paper.pdf"]
@@ -286,9 +306,7 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
         == {name for name in UNITS if not name.startswith("X")},
         "paper closure membership",
     )
-    require(
-        scope["migration_status"] == "partial", "unresolved source rights and build"
-    )
+    require(scope["migration_status"] == "partial", "historical disposition gate")
     for unit in units:
         require(
             unit["source_expression_copied"] is False, "ambiguous expression imported"
@@ -382,19 +400,135 @@ def verify_paper_source(folder: Path) -> dict[str, object]:
         and revision["base_tree"] == change["base_tree"]
         and revision["change_receipt_sha256"] == WRAP_CORRECTION_SHA
         and revision["publication"] == "not_performed"
-        and revision["native_compile"] == "not_run",
+        and revision["native_compile"] == "passed",
         "current source transition mapping",
     )
+    verify_compiled_output(folder, receipt)
     return {
         "source_id": "SRC-002",
         "status": "passed",
-        "evidence_class": "static_source_integrity",
+        "evidence_class": "static_source_and_compiled_artifact_integrity",
         "scope_units": 28,
         "historical_paper_dependencies": 18,
         "authored_tex_inputs": 6,
         "citations": 18,
-        "native_compile": "not_run",
-        "pdf_matches_authored_source": False,
+        "native_compile": "passed",
+        "pdf_matches_authored_source": True,
+        "independent_final_review": "pending",
         "live_acceptance": "not_run",
         "migration_status": "partial",
     }
+
+
+def verify_compiled_output(folder: Path, receipt: dict[str, Any]) -> None:
+    """Bind exact output and sanitized records; do not execute or parse the PDF."""
+    expected_names = {
+        "SRC-002-build-evidence.json",
+        "SRC-002-toolchain.json",
+        "SRC-002-NOTICES.md",
+        "SRC-002-COMPILED.md",
+    }
+    require(set(COMPILED_FILES) == expected_names, "compiled receipt pin closure")
+    require(
+        receipt["compiled_evidence_files"] == COMPILED_FILES, "compiled receipt pins"
+    )
+    for name, value in COMPILED_FILES.items():
+        require(digest(folder, name) == value, "compiled evidence changed: " + name)
+    require(
+        digest(folder, "runspindle-paper.pdf") == COMPILED_PDF_SHA,
+        "unreviewed compiled PDF bytes",
+    )
+    require(
+        regular_file(folder, "runspindle-paper.pdf").stat().st_size == 248153,
+        "compiled PDF size",
+    )
+    evidence = document(folder, "SRC-002-build-evidence.json")
+    require(
+        evidence["status"] == "compiled_candidate_pending_independent_review"
+        and evidence["output"]
+        == {
+            "path": "docs/marketing/runspindle-paper.pdf",
+            "sha256": COMPILED_PDF_SHA,
+            "bytes": 248153,
+            "pages": 12,
+        },
+        "compiled output evidence",
+    )
+    require(
+        evidence["compiled_inputs"] == receipt["authored_tex_inputs"],
+        "compiled input binding",
+    )
+    require(
+        evidence["compiled_source"]["commit"]
+        == "9844e5af51d03d7d1cd9e4284ce591ea2a00feff"
+        and evidence["compiled_source"]["tree"]
+        == "5ce7fe57377918aeba09d3ac6dfcea873a6d5440",
+        "compiled local source identity",
+    )
+    require(
+        evidence["whole_integration_tree_compiled"] is False,
+        "unperformed integration-tree build claim",
+    )
+    require(
+        evidence["native_review"]["uri_targets"] == CITATION_URLS,
+        "compiled citation URL evidence",
+    )
+    require(
+        evidence["native_review"]["annotations"]
+        == {
+            "total": 54,
+            "uri_rectangles": 22,
+            "unique_uri_targets": 18,
+            "internal_goto": 32,
+        },
+        "compiled link counts",
+    )
+    toolchain = document(folder, "SRC-002-toolchain.json")
+    known = toolchain["known_pins"]
+    require(len(known) == 121, "known toolchain pin count")
+    loaded = toolchain["loaded_stock_records"]
+    require(
+        len(loaded) == 104
+        and len({row["loaded_path"] for row in loaded}) == 104
+        and len({row["resolved_path"] for row in loaded}) == 103
+        and all(known.get(row["resolved_path"]) == row["sha256"] for row in loaded),
+        "loaded stock hash mismatch",
+    )
+    require(
+        toolchain["pass_audits"]
+        == [
+            {
+                "pass": i,
+                "stock_loaded_paths": 104,
+                "authored_inputs": 6,
+                "expected_auxiliary_inputs": 2,
+                "unknown_stock_inputs": 0,
+            }
+            for i in (1, 2)
+        ],
+        "loaded pass closure",
+    )
+    entries = document(folder, "artifacts.json")["artifacts"]
+    for name, value in (
+        COMPILED_FILES | {"runspindle-paper.pdf": COMPILED_PDF_SHA}
+    ).items():
+        matches = [row for row in entries if row["path"] == "docs/marketing/" + name]
+        require(
+            len(matches) == 1
+            and matches[0]["sha256"] == value
+            and "SRC-002" in matches[0]["source_ids"],
+            "compiled artifact manifest binding: " + name,
+        )
+    pdf_record = next(
+        row for row in entries if row["path"] == "docs/marketing/runspindle-paper.pdf"
+    )
+    require(
+        pdf_record["kind"] == "compiled_original_paper_candidate"
+        and pdf_record["implementation_evidence"] is False,
+        "compiled PDF evidence classification",
+    )
+    require(
+        receipt["independent_review"] == "pending"
+        and receipt["publication"] == "not_performed_by_artifact_integration",
+        "pending publication/review gates",
+    )
