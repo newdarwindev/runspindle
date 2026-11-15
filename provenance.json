@@ -46,32 +46,50 @@
       "preserved_pdf": "older_ReportLab_derivative_not_authored_source_rendering"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
-      "destination": "docs/marketing/argument.pdf",
-      "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
+      "adaptation_limits": "Original full-scope concept adaptation with safe expression exclusions; native compilation not run. Preserved old PDF does not render this authored source.",
+      "destination": "docs/marketing/argument.tex",
+      "license_review": "No verified historical expression reuse license. Original prose and native editable tables only; historical diagrams/style/binaries/private navigation excluded. Dependency/font notices require installed-closure review before build.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Every original slide and variant accounted for. Original Runspindle content, six attributed method references and explicit unsupported/live-not-run capability labels.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-003",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+      "disposition_map": "docs/marketing/SRC-003-004-disposition.json",
+      "review_record": "docs/marketing/SRC-003-004-review.md",
+      "source_receipt": "docs/marketing/SRC-003-004-source-receipt.json",
+      "executable_implementation": "none_in_decks",
+      "verified_behavior": "static_source_integrity_only",
+      "artifact_acceptance": "blocked_native_build_and_all_pages_review",
+      "preserved_pdf": "older_ReportLab_derivative_not_authored_source_rendering"
     },
     {
-      "adaptation_limits": "New concise conceptual derivatives, not faithful historical re-renders or live implementation. Detailed historical dependencies preserved privately.",
-      "destination": "docs/marketing/fleet.pdf",
-      "license_review": "No executable or binary import completed. Retain all required third-party notices when importing.",
+      "adaptation_limits": "Original full-scope concept adaptation with safe expression exclusions; native compilation not run. Preserved old PDF does not render this authored source.",
+      "destination": "docs/marketing/fleet.tex",
+      "license_review": "No verified historical expression reuse license. Original prose and native editable tables only; historical diagrams/style/binaries/private navigation excluded. Dependency/font notices require installed-closure review before build.",
       "migration_status": "partial",
-      "modifications": "Created and reviewed a new concise conceptual adaptation. Historical original and dependency closure retained privately, not republished. Complete migration and faithful re-render remain unverified.",
+      "modifications": "Every original slide and variant accounted for. Original Runspindle content, six attributed method references and explicit unsupported/live-not-run capability labels.",
       "published_adaptations": [
         "docs/marketing"
       ],
       "rights_basis": "Owner-directed adaptation. Original rights retained; no blanket relicense.",
       "source_description": "Owner-selected legacy material; detailed source mapping retained privately.",
       "source_id": "SRC-004",
-      "status": "adapted_document"
+      "status": "adapted_document",
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "historical_reference": "exact_selected_bytes_and_hashes_retained_privately",
+      "disposition_map": "docs/marketing/SRC-003-004-disposition.json",
+      "review_record": "docs/marketing/SRC-003-004-review.md",
+      "source_receipt": "docs/marketing/SRC-003-004-source-receipt.json",
+      "executable_implementation": "none_in_decks",
+      "verified_behavior": "static_source_integrity_only",
+      "artifact_acceptance": "blocked_native_build_and_all_pages_review",
+      "preserved_pdf": "older_ReportLab_derivative_not_authored_source_rendering"
     },
     {
       "adaptation_limits": "Selected concepts and citations accounted for with explicit safe exclusions. Original expression rights and historical native rendering remain unresolved; no live economics.",

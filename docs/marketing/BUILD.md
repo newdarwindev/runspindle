@@ -2,9 +2,9 @@
 
 Status: newly authored Runspindle design documents, not implemented services.
 
-The argument and fleet PDFs were rendered with ReportLab from their generated Beamer narratives. The preserved older runspindle-paper.pdf also remains ReportLab output, with its old uncompiled companion at paper/legacy/reportlab-paper.tex. It **does not render the new authored runspindle-paper.tex**. None of these three PDFs is TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
+The old argument and fleet PDFs were rendered with ReportLab from concise generated narratives, now preserved in presentations/legacy. They do not render the new authored argument.tex or fleet.tex. The preserved older runspindle-paper.pdf also remains ReportLab output, with its old uncompiled companion at paper/legacy/reportlab-paper.tex. It **does not render the new authored runspindle-paper.tex**. None of these three PDFs is TeX-compiled or Beamer-rendered output. The static HTML pages need no dependencies or build service.
 
-To reproduce the nine remaining generated narrative, HTML, deck source, PDF and notice outputs, use Python 3 with ReportLab installed and run `python build_documents.py` in this directory. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
+To reproduce the five remaining generated Markdown, HTML and notice outputs, use Python 3 and run `python -B -S build_documents.py` in this directory. No site package or ReportLab dependency is used. This script does not fetch sources, access accounts, or make network requests. Retain BUILD, README, source license notice files and artifact/provenance manifests alongside the generated materials; the renderer does not regenerate those support files.
 
 The new SRC-002 paper has a separate source-only build proposal in
 `SRC-002-build-plan.json`. Its minimal installed toolchain inventory is not a
@@ -20,7 +20,7 @@ Prior concise-derivative verification (before replacing workflow-refinery.pdf): 
 
 ## Reproducibility and migration status
 
-Installed renderer: Python 3.12.14, ReportLab 4.4.9. ReportLab invariant mode is enabled to stabilize PDF metadata and identifiers. Determinism applies to these installed versions; cross-version byte identity is not asserted.
+Historical PDF renderer: Python 3.12.14, ReportLab 4.4.9, with invariant metadata. Those preserved output receipts remain unchanged. The current five-output text generator uses only the Python standard library; it does not render PDFs. Cross-version PDF byte identity is not asserted.
 
 All materials remain partial migrations and new adaptations, not faithful re-renders of historical artifacts. The three other PDFs are ReportLab outputs, not compiled TeX/Beamer.
 
@@ -33,11 +33,10 @@ run its documented checks, then review and copy all four files together and upda
 the pinned canonical revision and hashes. No component Gitlink is advanced by this
 document-only mirror. A local canonical pin does not prove publication or CI.
 
-Before importing ReportLab or writing any generated artifact, `build_documents.py`
+Before writing any generated artifact, `build_documents.py`
 checks all four mirror hashes, canonical repository/path/revision, consistent pin,
 required notice and blocked visual status. A missing, modified or mismatched
-mirror fails without changing any existing generated output. The other document
-rendering behavior and source notices remain unchanged. Check it from the root:
+mirror fails without changing any existing generated output. The guard still protects this closure; the separate presentation source transition retires PDF rendering and updates only the current notices. Check it from the root:
 
 ```
 python3 -m unittest discover -s tests -p 'test_marketing_vision.py' -v
@@ -62,7 +61,7 @@ the exact MIT notice, [separate font notice](SRC-013-NOTICES.md),
 and [original build receipt](build-evidence.json) are preserved byte-for-byte.
 This eight-page PDF is TeX-built, not ReportLab output. The generator validates
 this full pinned closure before any writes and never regenerates its TeX or PDF.
-The remaining narratives and decks are concise derivatives, not this full paper.
+The authored presentation sources are separate adaptations and not this canonical paper.
 
 No additional native compilation was performed for this mirror. The copied
 `build-paper.py` is a reference CLI wrapper, not executed here or during the
@@ -77,8 +76,7 @@ and landing; issue 3 remains open until dependent integration passes and lands.
 
 `build_documents.py` validates the existing SRC-010 and SRC-013 canonical closures,
 then validates the independently authored SRC-002 source, old ReportLab pairing,
-18 citation records, 28 disposition units and frozen economics before importing
-ReportLab or writing outputs. It never writes runspindle-paper.tex or
+18 citation records, 28 disposition units and frozen economics before writing outputs. It never writes runspindle-paper.tex or
 runspindle-paper.pdf. A changed receipt, source, required schematic, package,
 citation, preserved PDF or economics invariant fails closed. A future reviewed
 native PDF requires a deliberate receipt/guard transition; the legacy generator
@@ -94,3 +92,26 @@ is mislabeled as a compiled output. Run `python3 tools/check_paper_source.py` an
 Native acceptance still requires the actual edited-source build, complete loaded
 input hashes, all-page visual/text review and citation/link annotation checks.
 Do not close issue 4 or report that these stages passed from static tests alone.
+
+## Original SRC-003 / SRC-004 presentation protection
+
+The edited decks have 16 authored TeX inputs, including shared fragments. No TeX
+engine has run on them. See SRC-003-004-build-plan.json for remaining installed
+Beamer/dependency inventory, license and native build gates. All original slides
+and both variants are mapped in SRC-003-004-disposition.json; source frame counts
+are not a new PDF page-count gate.
+
+The generator now makes five stdlib-only text outputs. Its ReportLab imports,
+PDF-producing calls and generated-deck writer are retired. It verifies the prior
+canonical mirrors and full SRC-002 paper closure, then verifies the new deck
+sources and preserved prior PDFs before any writes. It cannot produce a replacement
+for any PDF. The positive vision and presentation tests execute twice with `-S`
+and the presentation test also places an import-failure trap for ReportLab. This
+is real preservation testing without optional packages, not a skipped dependency
+check. Earlier CI receipts and their failures remain unchanged.
+
+Run `python3 -B -S tools/check_presentation_source.py` and the checks documented in
+SRC-003-004-review.md. After exact-tree review, a separately approved confined build
+must pin the actual loaded inputs and inspect every output page, text and link.
+New compiled artifacts require new receipts and a deliberate guard transition.
+Issues 5 and 6 remain open until those actual acceptance stages pass.

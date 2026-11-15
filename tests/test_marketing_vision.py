@@ -1,7 +1,6 @@
 """SRC-010 mirror guard; generator checks are not visual acceptance."""
 
 import hashlib
-import importlib.util
 import json
 import shutil
 import subprocess
@@ -45,7 +44,7 @@ class MarketingVisionTests(unittest.TestCase):
 
     def run_generator(self) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
-            [sys.executable, "-B", str(self.folder / "build_documents.py")],
+            [sys.executable, "-B", "-S", str(self.folder / "build_documents.py")],
             capture_output=True,
             text=True,
             timeout=30,
@@ -149,10 +148,6 @@ class MarketingVisionTests(unittest.TestCase):
         self.rejected_without_writes("FileNotFoundError")
 
     def test_generator_preserves_canonical_and_other_outputs(self) -> None:
-        self.assertIsNotNone(
-            importlib.util.find_spec("reportlab"),
-            "ReportLab is required for generator validation; no install or fallback was attempted",
-        )
         before = self.snapshot()
         for _ in range(2):
             result = self.run_generator()

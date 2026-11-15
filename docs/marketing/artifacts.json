@@ -5,7 +5,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/BUILD.md",
-      "sha256": "6d8ff56cfd39690fc2d5a323fb272f44585095bd2b70458ea639571debd39b60",
+      "sha256": "991b4f6873ad138817d51af997bd961767c42a8fbbe93bb45cd39c72a13279e5",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -14,7 +14,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/README.md",
-      "sha256": "6be6eecb63c9d8bceb5c2d1ed4c905979684a63eac5f0dc4d35fda65861c9c49",
+      "sha256": "2cd86562385defa5a0fe01b3ac4a650c0f10f9d3fbc4ee30d707d008dd10f467",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -23,7 +23,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/THIRD_PARTY_NOTICES.md",
-      "sha256": "c3dc7d75818554193249e86faa196453ddce37d2cf6ff4a2af4e4b3ce7b846a9",
+      "sha256": "444ed22c618e358f54adad35b5cc8c8329d44d3051e250e877587d5e184df21f",
       "source_ids": [
         "SRC-010",
         "SRC-002",
@@ -35,7 +35,7 @@
     {
       "historical_original": false,
       "implementation_evidence": false,
-      "kind": "new_reportlab_pdf",
+      "kind": "preserved_prior_ReportLab_pdf_not_authored_source_rendering",
       "path": "docs/marketing/argument.pdf",
       "sha256": "b1727d0db5cb9568e91f4beb90a0b38a496299eb17379e6443a92cc1b17cdcac",
       "source_ids": [
@@ -44,21 +44,19 @@
         "SRC-005",
         "SRC-013"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "Older concise derivative preserved unchanged; does not render current authored source"
     },
     {
       "historical_original": false,
       "implementation_evidence": false,
-      "kind": "uncompiled_editable_tex",
+      "kind": "uncompiled_original_editable_tex",
       "path": "docs/marketing/argument.tex",
-      "sha256": "f82e8cbd628f8595a2e30e0003019575ad11ea560daef4e9fb84b56185c5b26c",
+      "sha256": "969ef99adb7d0778933f3ff75c4e56ebc118a250b570deff1a855cc3d1120535",
       "source_ids": [
-        "SRC-002",
         "SRC-003",
-        "SRC-005",
-        "SRC-013"
+        "SRC-004"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "Original full-scope presentation source; native build not run; old PDF is not paired"
     },
     {
       "historical_original": false,
@@ -76,7 +74,7 @@
       "implementation_evidence": false,
       "kind": "new_renderer",
       "path": "docs/marketing/build_documents.py",
-      "sha256": "b8883ab796aa710f41fd6b66ef61f8c7448b2ceb551523b8b3ac435bbcb18a40",
+      "sha256": "9da4c67e8f640a334534390a34c3d779b54bff76f60e5a8a492fc46de0d9228e",
       "source_ids": [
         "SRC-002",
         "SRC-003",
@@ -103,7 +101,7 @@
     {
       "historical_original": false,
       "implementation_evidence": false,
-      "kind": "new_reportlab_pdf",
+      "kind": "preserved_prior_ReportLab_pdf_not_authored_source_rendering",
       "path": "docs/marketing/fleet.pdf",
       "sha256": "8fc9565bc3f992fdb58f82bbcffa6d03aa33c2e1ae1e0143bbf69384ae4b5978",
       "source_ids": [
@@ -111,20 +109,19 @@
         "SRC-004",
         "SRC-009"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "Older concise derivative preserved unchanged; does not render current authored source"
     },
     {
       "historical_original": false,
       "implementation_evidence": false,
-      "kind": "uncompiled_editable_tex",
+      "kind": "uncompiled_original_editable_tex",
       "path": "docs/marketing/fleet.tex",
-      "sha256": "9cfee958c6700005e2ffce8595697b6bd12785f206c3d63ccd9e447123ae2316",
+      "sha256": "bf8605782be64ccc629a09240ceba9b4631cb897922dade7f3a63653474f56d4",
       "source_ids": [
-        "SRC-002",
-        "SRC-004",
-        "SRC-009"
+        "SRC-003",
+        "SRC-004"
       ],
-      "source_relationship": "conceptual adaptation of the listed source material; not a faithful re-render"
+      "source_relationship": "Original full-scope presentation source; native build not run; old PDF is not paired"
     },
     {
       "historical_original": false,
@@ -795,6 +792,294 @@
       "implementation_evidence": false,
       "kind": "preserved_prior_adaptation_receipt",
       "source_relationship": "Byte-preserved source-only evidence for superseded local review identity, not current source validation"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-build-plan.json",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "9dd966e8d2d8310721213eeb4268dd227509eedde71afa6e7a82bb6676c10517"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-citations.json",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "fc87f5de72150ff6f7f69c9d94a9067dce91981c3aba775e8c1822183db065a2"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-disposition.json",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "442d792ee20b93b990c0e3ecf808ebb26c71dca771ec9122c5222c6ca040b03f"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-review.md",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "8f53fbb7f0729d66691dff7d8f6b82f275f2913a16b5c2e46f037a012a6382a5"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-source-receipt.json",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "96670b37eb11d6124e373950bb39fdbe5339182e6b9034dbc7f51cab1c324e5a"
+    },
+    {
+      "path": "docs/marketing/presentation_source.py",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_support",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "b15eba3ca7165c7b0dcceefba66ec0219ecdbf9b0133c3a55263e3ba885abfe9"
+    },
+    {
+      "path": "docs/marketing/presentations/argument/comparison.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "05bd4162714b66b70b5107d728c97eb394c5b1d22ae490a3b2713e4f0c5a3961"
+    },
+    {
+      "path": "docs/marketing/presentations/argument/evidence.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "73a27dfa6f5169b25f8b4b4a7b64ce71e5e0d22edd309872e5e7bd58365c11e3"
+    },
+    {
+      "path": "docs/marketing/presentations/argument/mechanism.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "0c55bafbab3c319dd2c3d6820d406188c68e6fbab99390c344d2c2d9e7a0cc44"
+    },
+    {
+      "path": "docs/marketing/presentations/fleet/comparison.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "2d876c9f4efc2b3fbdacc8579e4abde9a14323000ab6f9595e61c1305621baea"
+    },
+    {
+      "path": "docs/marketing/presentations/fleet/evidence.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "afb7aa24d3e03ae80d6a2dd263f44dc56493ed0eea31f3de75e8b3b86238644e"
+    },
+    {
+      "path": "docs/marketing/presentations/fleet/mechanism.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "ba23e4cfbcf77da25c4617be184b3ee3e406b892ca652ddac980cdb76652363f"
+    },
+    {
+      "path": "docs/marketing/presentations/legacy/argument-reportlab.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "preserved_prior_uncompiled_generated_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "f82e8cbd628f8595a2e30e0003019575ad11ea560daef4e9fb84b56185c5b26c"
+    },
+    {
+      "path": "docs/marketing/presentations/legacy/fleet-reportlab.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "preserved_prior_uncompiled_generated_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "9cfee958c6700005e2ffce8595697b6bd12785f206c3d63ccd9e447123ae2316"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/accepted-work.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "8847263358d0ec3d93df073a5309bb93fd5a1fc9f161081d773c8129721da566"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/diagnosis.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "7a0edd9b900c980ec3c648a8f6eb83b71dbc6af348e93e3b0f5d5c2bbdf7fa08"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/durability.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "07a31590d8885f8ff8f327d76737082867aa85491c3e0d6513301cf5d2881b8d"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/economics.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "e5cd55b9247bc086823c2091a9b913380ae79b4afbd622a9cd865de22df8fc62"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/effort.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "f945d41497706b48ade769eaa3c58750411ca07776d27c24e1b4fc35c2a4ec90"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/market.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "b9c10cd4482f5e6822b6d4d06ededfb6d3351ba74c7293991984efa2cee597f5"
+    },
+    {
+      "path": "docs/marketing/presentations/shared/references.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "4da9a858f8aa98e427225ce845cd1dda4a2a9128385191ce6c51f2359e6ee20f"
+    },
+    {
+      "path": "docs/marketing/presentations/style.tex",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "uncompiled_original_editable_tex",
+      "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
+      "sha256": "bec877d14a7f114e6b476dd0497ca4793f2bb5b22a25ec2f3a5165e28a36ef62"
+    },
+    {
+      "path": "docs/marketing/SRC-003-004-validation.json",
+      "sha256": "3a34876e2f4fe67670263c8ae52ce2f6c725b11ea1450f94a5901eadd8ba12a4",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "source_preparation_validation_receipt",
+      "source_relationship": "Local source-only checked content identity; no native build or remote publication claim"
+    },
+    {
+      "path": "docs/marketing/presentations/history/validation-216ce150.json",
+      "sha256": "ad0d9f4af57bf972bb42a1b02a347cccf134a5fb2ed78f8ff98caee256568092",
+      "source_ids": [
+        "SRC-003",
+        "SRC-004"
+      ],
+      "historical_original": false,
+      "implementation_evidence": false,
+      "kind": "preserved_prior_source_validation_receipt",
+      "source_relationship": "Immutable earlier receipt; its aggregate child site-package claim is corrected explicitly in current SRC-003-004-validation.json"
     }
   ],
   "migration_status": "partial",
@@ -806,8 +1091,8 @@
       "visual_keyboard_zoom": "blocked"
     },
     "html": "browser_visual_qa_pending",
-    "pdf": "SRC-013 eight-page TeX-built mirror; two ReportLab decks; preserved older SRC-002 ReportLab PDF is not the new paper",
-    "tex": "SRC-013 compiled canonical mirror; new SRC-002 source and deck sources uncompiled",
+    "pdf": "SRC-013 compiled canonical mirror; three preserved old ReportLab PDFs do not render current authored paper/deck sources",
+    "tex": "SRC-013 compiled canonical mirror; SRC-002/SRC-003/SRC-004 authored sources uncompiled",
     "SRC-013": {
       "static_integrity": "passed",
       "root_integration": "local_checks_passed_remote_pending",
@@ -825,6 +1110,22 @@
       "native_compile": "not_run",
       "pdf_matches_authored_source": false,
       "all_pages_citations_links": "not_run",
+      "runtime": "not_claimed"
+    },
+    "SRC-003": {
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "source": "full_original_proposal_with_safe_exclusions",
+      "native_compile": "not_run",
+      "pdf_matches_authored_source": false,
+      "all_pages_text_links": "not_run",
+      "runtime": "not_claimed"
+    },
+    "SRC-004": {
+      "scope_accounting": "accounted_with_safe_exclusions",
+      "source": "full_original_proposal_with_safe_exclusions",
+      "native_compile": "not_run",
+      "pdf_matches_authored_source": false,
+      "all_pages_text_links": "not_run",
       "runtime": "not_claimed"
     }
   }

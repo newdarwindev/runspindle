@@ -2,11 +2,10 @@ import hashlib
 import html
 import json
 import re
-from importlib import import_module
 from pathlib import Path
-from typing import Any
 
 from paper_source import verify_paper_source
+from presentation_source import verify_presentation_source
 from refinery_mirror import verify_refinery_mirror
 
 
@@ -63,9 +62,7 @@ P = Path(__file__).resolve().parent
 verify_vision_mirror(P)
 verify_refinery_mirror(P)
 verify_paper_source(P)
-# ReportLab exposes a dynamic configuration module without bundled types.
-rl_config: Any = import_module("reportlab.rl_config")
-rl_config.invariant = 1
+verify_presentation_source(P)
 P.mkdir(exist_ok=True)
 sections = [
     (
@@ -136,32 +133,6 @@ Production readiness requires independently evidenced secrets management, authen
 The next useful evidence is a reproducible, permissioned end-to-end task that traverses the component boundaries and demonstrates recovery from an uncertain result. Until then, the materials describe a research and engineering plan. Open questions include native session integration, browser lifecycle compatibility, least-privilege secret delivery, evaluation validity, release reproducibility, and operational cost.""",
     ),
 ]
-pre = r"""\documentclass[11pt]{article}
-\usepackage[margin=0.95in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern,microtype,hyperref,enumitem}
-\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
-\setlength{\parindent}{0pt}\setlength{\parskip}{0.65em}
-"""
-
-
-def tex(s: str) -> str:
-    return s.replace("&", r"\&").replace("%", r"\%").replace("_", r"\_")
-
-
-def article(name: str, title: str, parts: list[tuple[str, str]]) -> None:
-    body = (
-        pre
-        + "\\title{"
-        + title
-        + "}\\author{Runspindle}\\date{Design scaffold | November 2026}\n\\begin{document}\\maketitle\n\\textbf{Status: planned architecture. No live implementation, deployment, benchmark, or savings claim.}\n"
-    )
-    for h, t in parts:
-        body += "\\section{" + tex(h) + "}\n" + tex(t) + "\n"
-    body += "\\end{document}\n"
-    (P / (name + ".tex")).write_text(body)
-
-
 # SRC-002 TeX is independently authored; its old PDF is preserved, not regenerated.
 (P / "economics.md").write_text(
     "# Runspindle economics\n\nStatus: proposed accounting model; no measured results.\n\n"
@@ -201,143 +172,7 @@ page("index.html", "Runspindle", [sections[i] for i in [0, 2, 6, 7, 8]])
 page("browser.html", "Runspindle Browser", [sections[i] for i in [0, 3, 6, 7]])
 
 
-# vision.html is Console-owned and must not be regenerated here.
-def deck(name: str, title: str, parts: list[tuple[str, list[str]]]) -> None:
-    b = (
-        r"""\documentclass[aspectratio=169,11pt]{beamer}
-\usepackage[T1]{fontenc}\usepackage{lmodern}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamercolor{structure}{fg=blue!55!black}
-"""
-        + "\\title{"
-        + title
-        + "}\\subtitle{Design scaffold; no live deployment or measured savings}\\author{Runspindle}\\date{November 2026}\\begin{document}\\begin{frame}\\titlepage\\end{frame}\n"
-    )
-    for h, bullets in parts:
-        b += (
-            "\\begin{frame}{"
-            + tex(h)
-            + "}\\begin{itemize}\n"
-            + "".join("\\item " + tex(x) + "\n" for x in bullets)
-            + "\\end{itemize}\\end{frame}\n"
-        )
-    b += "\\end{document}\n"
-    (P / (name + ".tex")).write_text(b)
-
-
-deck(
-    "argument",
-    "Runspindle: The Case for Verified Work",
-    [
-        (
-            "The problem",
-            [
-                "A tool call is not an accepted outcome.",
-                "Human repair, retries, and uncertain external effects belong in the cost.",
-                "A harness must preserve task authority rather than expand it.",
-            ],
-        ),
-        (
-            "The proposed system",
-            [
-                "Core: Rust and Temporal. Host: native Codex.",
-                "Browser: OpenBao, PinchTab, KasmVNC. Tether: existing Slack integration.",
-                "Refinery: Python DSPy. Console: actual fleet views. Platform: distribution.",
-                "All new integrations remain scaffolded.",
-            ],
-        ),
-        (
-            "A measurable claim",
-            [
-                "Compare native, expert-guided, and harness-assisted work on matched tasks.",
-                "Predeclare acceptance, authorization, failure, and stop rules.",
-                "Count every attempt and human intervention. No results are asserted.",
-            ],
-        ),
-        (
-            "Refinement with gates",
-            [
-                "Select and authorize; review and redact; curate grouped held-out data.",
-                "Compare candidates on quality, safety, latency, and full cost.",
-                "Bind attributable reactions/replies to exact outputs; task-specific gold rules quarantine conflicts.",
-                "Gold eligibility is separate from human-approved candidate release and rollback.",
-            ],
-        ),
-        (
-            "Economics without a forecast",
-            [
-                "Divide total operating cost by verified authorized completions.",
-                "Include setup, maintenance, verification, recovery, and failed attempts.",
-                "Low volume or provider improvements can erase a proposed advantage.",
-            ],
-        ),
-        (
-            "Next evidence",
-            [
-                "Demonstrate a permissioned end-to-end task and uncertain-result recovery.",
-                "Verify component contracts before any production claim.",
-                "Historical source evidence is separate from Runspindle results. Source: SRC-002, SRC-013.",
-            ],
-        ),
-    ],
-)
-deck(
-    "fleet",
-    "Runspindle: Fleet Evidence and Control",
-    [
-        (
-            "State must be observable",
-            [
-                "A process observation is not a managed session or a completed task.",
-                "Every record needs identity, timestamp, source, and freshness.",
-                "Missing updates mean unknown, not permission to restart.",
-            ],
-        ),
-        (
-            "Bind control to identity",
-            [
-                "Verify host, repository, process, session, and task before an action.",
-                "Native Codex is the planned host boundary.",
-                "Tether routes bounded requests; delivery alone proves no outcome.",
-            ],
-        ),
-        (
-            "One browser, one controller",
-            [
-                "Authorized passive KasmVNC viewing grants no input control.",
-                "Interactive takeover needs a fenced lease on the same browser as PinchTab.",
-                "Fence stale lease epochs and revoke streams on handoff.",
-                "OpenBao secret references must stay out of logs and evaluation data.",
-            ],
-        ),
-        (
-            "Durability is not external certainty",
-            [
-                "Temporal stores durable intent and approval waits.",
-                "An uncertain submission requires reconciliation before retry.",
-                "Browser-side fencing and account isolation need separate tests.",
-            ],
-        ),
-        (
-            "Console and release evidence",
-            [
-                "Planned console views must use actual fleet observations with age.",
-                "Collectors/Langfuse identity and readback are proposed; masking coverage remains unresolved.",
-                "No live fleet is connected in this scaffold.",
-                "Platform packaging, development integration, and production acceptance remain planned.",
-            ],
-        ),
-        (
-            "A bounded validation plan",
-            [
-                "Test stale routes, recycled process IDs, cancellation, restart, and duplicate requests.",
-                "Use permissioned environments; do not inherit historical success claims.",
-                "No implementation, deployment, or savings result is claimed. Source: SRC-002, SRC-009.",
-            ],
-        ),
-    ],
-)
+# Authored decks and all three preserved old PDFs are read-only to this generator.
 (P / "THIRD_PARTY_NOTICES.md").write_text("""# Third-party notices and source status
 
 Runspindle names Rust, Temporal, Codex, OpenBao, PinchTab, KasmVNC, Slack, Python, DSPy, and Langfuse only to identify proposed integrations. No endorsement is implied, and this document does not relicense those products.
@@ -346,113 +181,9 @@ SRC-010 and SRC-013 selected source material carries the MIT notice: Copyright (
 
 No project license was found for SRC-002 or SRC-009 during source review. No license is invented or assigned to them here. Detailed provenance and original artifacts remain in restricted migration records outside this public candidate. A publisher must resolve the rights to any retained expression before release.
 
-The SRC-013 paper is a byte-preserved, compiled adaptation with eight cleared historical figures. See [SRC-013 notices](SRC-013-NOTICES.md) for the separate Latin Modern font notice and [source disposition](source-disposition.json) for scope. The full historical paper, unselected code, Git history and private operational evidence are not republished. Other documents remain concise conceptual derivatives, not fresh verification of historical claims.
+The SRC-013 paper is a byte-preserved, compiled adaptation with eight cleared historical figures. See [SRC-013 notices](SRC-013-NOTICES.md) for the separate Latin Modern font notice and [source disposition](source-disposition.json) for scope. The full historical paper, unselected code, Git history and private operational evidence are not republished. Other documents are original conceptual adaptations, not fresh verification of historical claims.
 
 SRC-002 now has a full nine-section original editable research proposal and five original schematic inputs. No historical prose, diagram expression, coordinates, style or binary is imported. Its unchanged older ReportLab PDF is not a rendering of the new source. Native compilation and page review remain unperformed. Citation attribution is not a license to reproduce source expression. See SRC-002-disposition.json and SRC-002-source-receipt.json. The planned Latin Modern font dependency is separately subject to its GUST Font License/LPPL terms; no new font embedding is claimed. The preserved SRC-013 font notice is not a license for the rest of this paper.
+
+SRC-003 and SRC-004 have original editable Beamer sources with full original-slide and variant accounting. Historical prose, artwork, style, plotted coordinates, binaries and private navigation are excluded. No source reuse license is invented. Their older ReportLab PDFs remain unchanged and do not render the new sources. Beamer, its transitive packages and Latin Modern need an installed dependency/notice review before any separate native compile; no new font embedding has occurred. See SRC-003-004-disposition.json and SRC-003-004-source-receipt.json.
 """)
-
-# ReportLab objects are dynamically typed; import only after all preflights.
-platypus: Any = import_module("reportlab.platypus")
-styles: Any = import_module("reportlab.lib.styles")
-colors: Any = import_module("reportlab.lib.colors")
-SimpleDocTemplate = platypus.SimpleDocTemplate
-Paragraph = platypus.Paragraph
-Spacer = platypus.Spacer
-PageBreak = platypus.PageBreak
-getSampleStyleSheet = styles.getSampleStyleSheet
-ParagraphStyle = styles.ParagraphStyle
-S = getSampleStyleSheet()
-S.add(
-    ParagraphStyle(
-        name="Copy",
-        fontName="Helvetica",
-        fontSize=10.5,
-        leading=15,
-        spaceAfter=10,
-        textColor=colors.HexColor("#183247"),
-    )
-)
-S["Heading1"].textColor = colors.HexColor("#075985")
-S["Title"].textColor = colors.HexColor("#183247")
-
-
-def foot(c: Any, d: Any) -> None:
-    c.setFont("Helvetica", 8)
-    c.setFillColor(colors.HexColor("#566877"))
-    c.drawString(50, 28, "RUNSPINDLE / DESIGN SCAFFOLD / NEW DOCUMENT")
-    c.drawRightString(d.pagesize[0] - 50, 28, str(d.page))
-
-
-def paper(name: str, title: str, parts: list[tuple[str, str]]) -> None:
-    story = [
-        Paragraph(title, S["Title"]),
-        Paragraph("November 2026 | Design scaffold", S["Heading2"]),
-        Paragraph(
-            "No live implementation, deployment, benchmark, or savings claim.",
-            S["Copy"],
-        ),
-    ]
-    for h, t in parts:
-        story.append(Paragraph(h, S["Heading1"]))
-        for para in filter(None, t.split("\n")):
-            story.append(Paragraph(html.escape(para), S["Copy"]))
-    SimpleDocTemplate(
-        str(P / (name + ".pdf")),
-        rightMargin=52,
-        leftMargin=52,
-        topMargin=42,
-        bottomMargin=48,
-        title=title,
-        author="Runspindle",
-    ).build(story, onFirstPage=foot, onLaterPages=foot)
-
-
-# Never overwrite the independently authored SRC-002 paper or a future compiled PDF.
-for name in ["argument", "fleet"]:
-    source = (P / (name + ".tex")).read_text()
-    match = re.search(r"\\title\{([^}]+)", source)
-    if match is None:
-        raise ValueError("Missing deck title: " + name)
-    title = match[1]
-    story = [
-        Paragraph(title, S["Title"]),
-        Spacer(1, 24),
-        Paragraph(
-            "Design scaffold; no live deployment or measured savings.", S["Heading2"]
-        ),
-        Paragraph("November 2026", S["Copy"]),
-        PageBreak(),
-    ]
-    for h, body in re.findall(
-        r"\\begin\{frame\}\{([^}]+)\}(.*?)\\end\{frame\}", source, re.S
-    ):
-        story.append(Paragraph(h, S["Title"]))
-        story.append(Spacer(1, 18))
-        for bullet in re.findall(r"\\item (.*)", body):
-            story.append(
-                Paragraph(
-                    html.escape(bullet),
-                    ParagraphStyle(
-                        name="slide",
-                        parent=S["Copy"],
-                        fontSize=17,
-                        leading=24,
-                        spaceAfter=18,
-                        bulletIndent=0,
-                        leftIndent=16,
-                    ),
-                    bulletText="-",
-                )
-            )
-        story.append(PageBreak())
-    story.pop()
-    SimpleDocTemplate(
-        str(P / (name + ".pdf")),
-        pagesize=(960, 540),
-        rightMargin=60,
-        leftMargin=60,
-        topMargin=55,
-        bottomMargin=52,
-        title=title,
-        author="Runspindle",
-    ).build(story, onFirstPage=foot, onLaterPages=foot)

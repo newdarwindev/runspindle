@@ -1,12 +1,14 @@
 # Runspindle design adaptations
 
-These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed compiled paper adaptation. SRC-002 now has a full original nine-section editable proposal, not yet compiled; its old PDF is preserved separately from the new source. The other narratives and decks remain concise derivatives. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
+These are adaptations of selected historical material, not faithful re-renders or migrated live applications. SRC-013 is the full reviewed compiled paper adaptation. SRC-002 now has a full original nine-section editable proposal, not yet compiled; its old PDF is preserved separately from the new source. SRC-003 and SRC-004 now have full-scope original editable presentation sources; their older PDFs are preserved, not current renderings. Historical source dependency closure is preserved privately. Overall selected-source migration remains partial.
 
 - `runspindle-paper.tex`: full original research and evaluation proposal, uncompiled.
 - `runspindle-paper.pdf`: unchanged older ReportLab derivative, **not the new paper**.
 - `paper/legacy/reportlab-paper.tex`: old generated, uncompiled companion source.
 - `SRC-002-source-receipt.json`: exact separation of old rendering and new source; native build remains not run.
-- `argument.pdf`/`.tex`, `fleet.pdf`/`.tex`: two concise design decks.
+- `argument.tex`, `fleet.tex`: original editable full-scope presentation adaptations, uncompiled.
+- `argument.pdf`, `fleet.pdf`: older ReportLab derivatives, **not the new presentation sources**.
+- `presentations/legacy`: preserved old generated companion TeX.
 - `workflow-refinery.pdf` and `.tex`: proposed DSPy evaluation and serving boundaries.
 - `economics.md`: accepted-work cost accounting with no claimed savings.
 - `index.html`, `browser.html`: standalone product/design narratives generated here.
@@ -42,7 +44,7 @@ the exact MIT notice, [separate font notice](SRC-013-NOTICES.md),
 and [original build receipt](build-evidence.json) are preserved byte-for-byte.
 This eight-page PDF is TeX-built, not ReportLab output. The generator validates
 this full pinned closure before any writes and never regenerates its TeX or PDF.
-The remaining narratives and decks are concise derivatives, not this full paper.
+The authored presentation sources are separate adaptations and not this canonical paper.
 
 No additional native compilation was performed for this mirror. The copied
 `build-paper.py` is a reference CLI wrapper, not executed here or during the
@@ -60,3 +62,13 @@ See [source review](SRC-002-review.md), [complete disposition](SRC-002-dispositi
 The generator verifies source, preserved PDF and frozen economics before any
 writes, then leaves both paper representations alone. It cannot be used to build
 the new paper. Issue 4 remains open and selected-source migration remains partial.
+
+## Full-scope presentation source preparation
+
+[SRC-003-004-review.md](SRC-003-004-review.md) explains every-slide/variant scope,
+rights exclusions and current component boundaries. The [disposition](SRC-003-004-disposition.json),
+[citations](SRC-003-004-citations.json) and [source receipt](SRC-003-004-source-receipt.json)
+separate the original edited sources from the unchanged older PDFs. No PDF
+currently renders these new decks. The generator now uses only the Python standard
+library and cannot rebuild any PDF or authored TeX. Native Beamer dependency
+inventory, separate build review and all-page acceptance remain pending.
