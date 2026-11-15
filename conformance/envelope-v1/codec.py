@@ -73,12 +73,7 @@ def encode(value: dict[str, Any]) -> bytes:
     ).encode()
 
 
-def validate(e: dict[str, Any]) -> None:
-    fields(e, ["version", "message_type", "message_id", "binding", "payload"])
-    if e["version"] != VERSION:
-        raise AssertionError("version")
-    identifier(e["message_id"])
-    b = e["binding"]
+def validate_binding(b: Any) -> None:
     fields(b, BINDING)
     for key in BINDING:
         (
@@ -86,6 +81,15 @@ def validate(e: dict[str, Any]) -> None:
             if key in ["revision", "lease_epoch"]
             else identifier(b[key])
         )
+
+
+def validate(e: dict[str, Any]) -> None:
+    fields(e, ["version", "message_type", "message_id", "binding", "payload"])
+    if e["version"] != VERSION:
+        raise AssertionError("version")
+    identifier(e["message_id"])
+    b = e["binding"]
+    validate_binding(b)
     p = e["payload"]
     kind = e["message_type"]
     if kind == "admission_request":
@@ -277,6 +281,7 @@ def consume(
     last_sequence: int = 0,
     destination: tuple[str, str] | None = None,
 ) -> T:
+    validate_binding(expected_binding)
     e = decode(data)
     if e["binding"] != expected_binding:
         raise AssertionError("binding mismatch")
