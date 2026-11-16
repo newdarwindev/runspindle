@@ -132,10 +132,10 @@
       "status": "adapted_document",
       "canonical": {
         "repository": "newdarwindev/runspindle-browser",
-        "commit": "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b",
-        "tree": "03f5e9d2f0388ea8f948de2b0c85e065eef877ba",
+        "commit": "dfc9ac3e51abba8e84ab217a5eec5358b2088a3f",
+        "tree": "81ae9a5ea4dd310c89e537f551ca2465730d7eac",
         "path": "docs/product/browser.html",
-        "sha256": "afab98f2e8fab8ac27ef29e9ee2499ae2a2fffd9e2aa09fbdcb877bbb1ef2f9e"
+        "sha256": "cb3850490c4cd430ef58490ad997c0d205205d170869c937d757eaed12a13da7"
       },
       "mirror_mapping": "docs/marketing/SRC-009-mirror.json",
       "source_relationship": "link_and_location_normalized_derivative_not_byte_identical",

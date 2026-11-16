@@ -14,7 +14,7 @@
       "implementation_evidence": false,
       "kind": "new_support_document",
       "path": "docs/marketing/README.md",
-      "sha256": "cc29776f2b911b889eb40d269accedb03827033c0f609c6aaa660b9e4481c711",
+      "sha256": "43b491e7464783f2ffd7f143101c56ac596a71240b6b7cd783767676caa0d2b9",
       "source_ids": [],
       "source_relationship": "new authoring/build metadata"
     },
@@ -63,17 +63,17 @@
       "implementation_evidence": false,
       "kind": "normalized_canonical_html",
       "path": "docs/marketing/browser.html",
-      "sha256": "29e95738298a933c28de6ba1d9e38be6f5b330c2c6b920fce7d75c2668fb717e",
+      "sha256": "e6e37c380d3ba0dfd24c5f3f5d7b61c454e20b05b5a7682cf750c3ecae08a053",
       "source_ids": [
         "SRC-009"
       ],
       "source_relationship": "Reviewed Browser canonical HTML with ten reversible link/location substitutions; not byte-identical and not rendered acceptance.",
       "canonical": {
         "repository": "newdarwindev/runspindle-browser",
-        "commit": "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b",
-        "tree": "03f5e9d2f0388ea8f948de2b0c85e065eef877ba",
+        "commit": "dfc9ac3e51abba8e84ab217a5eec5358b2088a3f",
+        "tree": "81ae9a5ea4dd310c89e537f551ca2465730d7eac",
         "path": "docs/product/browser.html",
-        "sha256": "afab98f2e8fab8ac27ef29e9ee2499ae2a2fffd9e2aa09fbdcb877bbb1ef2f9e"
+        "sha256": "cb3850490c4cd430ef58490ad997c0d205205d170869c937d757eaed12a13da7"
       },
       "transformation": "docs/marketing/SRC-009-mirror.json",
       "verification": {
@@ -1133,7 +1133,7 @@
         "SRC-009"
       ],
       "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
-      "sha256": "2d2bcf66f300127f62725d53f2c5a8b72e2bfacb4330150134a66bbe0e477df7"
+      "sha256": "6af04ef2ce9f80c77a8a81ea3526ecaefbafd92ccaa556c401451f3deaf5e3fe"
     },
     {
       "path": "docs/marketing/SRC-009-mirror.md",
@@ -1144,7 +1144,7 @@
         "SRC-009"
       ],
       "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
-      "sha256": "82eb3200a074f57636630fbd85b0f58c007cc7040f635e3d02ae14b0dfd2be58"
+      "sha256": "73180818e68c3de7d773a7671edbba758c60dc2e3c6992f108f80c02a48d8dc5"
     },
     {
       "path": "docs/marketing/browser_mirror.py",
@@ -1155,7 +1155,7 @@
         "SRC-009"
       ],
       "source_relationship": "Original canonical normalization accounting and fail-closed integrity guard; no rendered or runtime acceptance.",
-      "sha256": "3e44a87491af69abf49b0f71a27a07cc07e16fb7839c5b520ede3c16003ebccb"
+      "sha256": "f25e33cd535abcd5ecb313ba87453b837c78250485697440d12df4bec558c5b5"
     },
     {
       "historical_original": false,

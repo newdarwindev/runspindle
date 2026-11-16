@@ -11,93 +11,93 @@ from typing import Any
 
 CANONICAL = {
     "repository": "newdarwindev/runspindle-browser",
-    "commit": "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b",
-    "tree": "03f5e9d2f0388ea8f948de2b0c85e065eef877ba",
+    "commit": "dfc9ac3e51abba8e84ab217a5eec5358b2088a3f",
+    "tree": "81ae9a5ea4dd310c89e537f551ca2465730d7eac",
     "path": "docs/product/browser.html",
-    "sha256": "afab98f2e8fab8ac27ef29e9ee2499ae2a2fffd9e2aa09fbdcb877bbb1ef2f9e",
+    "sha256": "cb3850490c4cd430ef58490ad997c0d205205d170869c937d757eaed12a13da7",
 }
 TRANSFORMS = [
     {
         "id": "L01",
         "old": 'href="../../specs/synthetic-vault-fixtures.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/synthetic-vault-fixtures.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/synthetic-vault-fixtures.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L02",
         "old": 'href="../../specs/effect-journal-v1.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/effect-journal-v1.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/effect-journal-v1.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L03",
         "old": 'href="../../specs/trusted-credential-resolver.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/trusted-credential-resolver.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/trusted-credential-resolver.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L04",
         "old": 'href="../../specs/openbao-kv-adapter.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/openbao-kv-adapter.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/openbao-kv-adapter.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L05",
         "old": 'href="../../specs/credentials-handoff.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/credentials-handoff.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/credentials-handoff.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L06",
         "old": 'href="../../specs/desired-intent.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/desired-intent.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/desired-intent.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L07",
         "old": 'href="browser-source-review.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/browser-source-review.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/browser-source-review.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L08",
         "old": 'href="THIRD_PARTY_NOTICES.md"',
-        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/THIRD_PARTY_NOTICES.md"',
+        "new": 'href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/THIRD_PARTY_NOTICES.md"',
         "occurrences": 1,
         "reason": "Keep this Browser-owned document at its verified immutable canonical location.",
     },
     {
         "id": "L09",
         "old": "The composition repository mirror remains pending.",
-        "new": "This composition mirror records source and link normalization only; rendered and keyboard acceptance remain pending.",
+        "new": "This composition mirror records source and link normalization only; root-derivative rendering and keyboard acceptance remain pending.",
         "occurrences": 1,
         "reason": "Replace the canonical snapshot's pending-mirror location statement without advancing rendered or keyboard acceptance.",
     },
     {
         "id": "L10",
         "old": "Canonical Browser source: this repository's docs/product/browser.html.",
-        "new": 'Canonical Browser source: <a href="https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/browser.html">runspindle-browser at the recorded revision</a>. This composition copy applies <a href="SRC-009-mirror.md">documented link and location normalization</a>.',
+        "new": 'Canonical Browser source: <a href="https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/browser.html">runspindle-browser at the recorded revision</a>. This composition copy applies <a href="SRC-009-mirror.md">documented link and location normalization</a>.',
         "occurrences": 1,
         "reason": "Identify the actual canonical repository and disclose the normalized derivative at its new location.",
     },
 ]
 EXTERNAL_LINKS = [
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/browser.html",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/synthetic-vault-fixtures.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/effect-journal-v1.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/trusted-credential-resolver.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/openbao-kv-adapter.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/credentials-handoff.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/specs/desired-intent.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/browser-source-review.md",
-    "https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/THIRD_PARTY_NOTICES.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/browser.html",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/synthetic-vault-fixtures.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/effect-journal-v1.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/trusted-credential-resolver.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/openbao-kv-adapter.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/credentials-handoff.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/specs/desired-intent.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/browser-source-review.md",
+    "https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/THIRD_PARTY_NOTICES.md",
 ]
 VERIFICATION = {
     "source_mapping": "checked_separately",
@@ -107,9 +107,9 @@ VERIFICATION = {
     "runtime": "not_run",
 }
 PINS = {
-    "browser.html": "29e95738298a933c28de6ba1d9e38be6f5b330c2c6b920fce7d75c2668fb717e",
-    "SRC-009-mirror.json": "2d2bcf66f300127f62725d53f2c5a8b72e2bfacb4330150134a66bbe0e477df7",
-    "SRC-009-mirror.md": "82eb3200a074f57636630fbd85b0f58c007cc7040f635e3d02ae14b0dfd2be58",
+    "browser.html": "e6e37c380d3ba0dfd24c5f3f5d7b61c454e20b05b5a7682cf750c3ecae08a053",
+    "SRC-009-mirror.json": "6af04ef2ce9f80c77a8a81ea3526ecaefbafd92ccaa556c401451f3deaf5e3fe",
+    "SRC-009-mirror.md": "73180818e68c3de7d773a7671edbba758c60dc2e3c6992f108f80c02a48d8dc5",
 }
 
 
