@@ -67,8 +67,10 @@ are exercised; no mutable application store or crash/power-loss durability is
 claimed. TemporaryDirectory cleanup is registered before fixture setup; this is
 not cancellation qualification for an operational installer or service.
 
-Failed checks: none in this bounded verification. Blocked prerequisites: none
-for the offline checker suite. Not run: full aggregate, native/component/provider
+Failed checks: none in this bounded verification. The offline checker suite had
+no blocked prerequisites. However, issue 44 explicitly requires cancellation
+cleanup: cancellation was not injected to verify checker-fixture cleanup, so that
+clause remains unverified and issue closure is blocked on resolving it. Not run: full aggregate, native/component/provider
 or campaign qualification, CI reruns and application cancellation/crash campaigns.
 Downstream acceptance is unknown from this evidence and `system_acceptance`
 remains `not_inferred`. Parent issue 2 keeps its broader acceptance criteria.

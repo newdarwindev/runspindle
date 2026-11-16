@@ -73,8 +73,8 @@
     },
     {
       "id": "durability_where_claimed_and_cleanup",
-      "status": "passed_with_scope",
-      "evidence": "Fresh CLI/observer processes and actual disposable Git stores exercised; TemporaryDirectory cleanup registered before setup. No durable mutable application store, crash/power-loss, campaign or service claim."
+      "status": "partially_verified",
+      "evidence": "Fresh CLI/observer processes and actual disposable Git stores exercised; TemporaryDirectory cleanup registered before setup. Cancellation was not injected to verify checker-fixture cleanup, so the explicit cancellation clause remains unverified. No application-store durability claim."
     },
     {
       "id": "issue_and_parent_links",
@@ -92,7 +92,8 @@
     "full aggregate",
     "component runtime qualification",
     "native/provider/campaign execution",
-    "CI reruns"
+    "CI reruns",
+    "checker-fixture cancellation cleanup verification"
   ],
   "issue_closed": false,
   "parent": "https://github.com/newdarwindev/runspindle/issues/2",
@@ -118,13 +119,16 @@
       "targeted Ruff lint/format and strict mypy"
     ],
     "failed": [],
-    "blocked": [],
+    "blocked": [
+      "Issue44 closure: explicit cancellation-cleanup criterion is not yet execution-verified"
+    ],
     "not_run": [
       "full aggregate",
       "component runtime qualification",
       "native/provider/campaign execution",
       "CI reruns",
-      "application crash/power-loss or cancellation qualification"
+      "application crash/power-loss or cancellation qualification",
+      "checker-fixture cancellation cleanup verification"
     ],
     "unknown": [
       "downstream system acceptance from this evidence"
@@ -142,7 +146,7 @@
       "effect ledger read by independent observer"
     ],
     "forbidden_effects": "Test spy restricts reconciler Git invocations; receipt commands are data and never executed. No provider/service invocation is part of these entrypoints.",
-    "cleanup": "TemporaryDirectory cleanup is registered before fixture setup. No application-store durability or process-cancellation qualification is claimed."
+    "cleanup": "TemporaryDirectory cleanup is registered before fixture setup. Cancellation was not injected, so checker-fixture cancellation cleanup is unverified. No application-store durability or service cancellation qualification is claimed."
   },
   "logs": {
     "format.log": "3 files already formatted\n",
