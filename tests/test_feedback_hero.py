@@ -36,7 +36,7 @@ class FeedbackHeroTests(unittest.TestCase):
         self.assertEqual(set(manifest["sources"]), {"tether", "refinery"})
         for name, source in manifest["sources"].items():
             self.assertEqual(source["base"], lock[name]["commit"])
-            self.assertNotEqual(source["commit"], source["base"])
+            self.assertEqual(source["commit"], source["base"])
             self.assertTrue(source["files"])
 
     def test_changed_source_bytes_rejected_before_import(self) -> None:
@@ -102,7 +102,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+                    "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
                 ],
                 check=True,
                 capture_output=True,
@@ -172,7 +172,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "b68ba9d77d51ca453b3f0fa3a9fa31573d065250",
+                    "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
                 ],
                 check=True,
                 capture_output=True,
@@ -202,7 +202,7 @@ class FeedbackHeroTests(unittest.TestCase):
             Path(os.environ["RUNSPINDLE_FEEDBACK_HERO_REFINERY"]),
         )
         self.assertEqual(result["repeat_runs"], 2)
-        self.assertEqual(result["schema_reopen_denials"], 4)
+        self.assertEqual(result["schema_reopen_denials"], 5)
         self.assertEqual(result["precommit_process_crash_recovery"], "passed")
         self.assertTrue(result["deliberate_mutation_detected"])
         self.assertEqual(result["system_acceptance"], "blocked")

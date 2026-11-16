@@ -30,15 +30,16 @@
     "H10": "passed_pinned_refinery_SQLite_scripted_Tether",
     "H11": "passed_pinned_SQLite_DSPy_local_serving_recovery_and_rollback",
     "H12": "passed_pinned_installed_core_Temporal_refinery_offline_development_bundle",
-    "composition_pins": "qualified_exact_merged_revisions",
+    "composition_pins": "historically_qualified_prior_revisions_current_upgrade_unqualified",
     "concurrent_remote_mains": "reconciled_preserving_Strix_CI_isolation",
     "contract": "runspindle.maintained-evidence.v1",
     "evidence": "docs/offline-finish-evidence.json",
     "independent_review": "user_waived_no_review_performed",
     "repeat_runs": 2,
-    "sources": "specs/maintained-scenarios-v1.json",
+    "sources": "https://github.com/newdarwindev/runspindle/blob/a622177553f54a71d09454fe05fcc122049a6cb8/specs/maintained-scenarios-v1.json",
     "streaming_bundle": "runspindle.streaming-development-bundle.v1",
-    "system_aggregate": "blocked"
+    "system_aggregate": "blocked",
+    "evidence_scope": "historical_prior_pins_only_not_current_composition"
   },
   "production_deployment": "not_run",
   "real_core_temporal_development_lane": {
@@ -116,5 +117,19 @@
     "runtime_activation": "not_run",
     "composition_pins": "unchanged",
     "system_acceptance": "not_inferred"
+  },
+  "composition_pin_candidate": {
+    "evidence": "docs/COMPOSITION_PIN_FOLLOWTHROUGH.md",
+    "source_base": "a622177553f54a71d09454fe05fcc122049a6cb8",
+    "changed_components": [
+      "browser",
+      "tether",
+      "refinery"
+    ],
+    "H10_retained_feedback": "passed_normal_and_optimized_real_stores_synthetic_authority",
+    "H10_H11_H12_maintained": "not_run_prepared_runtime_dependencies_unavailable",
+    "browser_runtime_integration": "not_run",
+    "live_acceptance": "not_run",
+    "status": "draft_candidate_not_release_qualification"
   }
 }

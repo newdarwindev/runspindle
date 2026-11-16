@@ -144,11 +144,15 @@ def fixture(
 
     dep = TetherDependency(tether)
     # The real constructors must resolve the verified new schema snapshot.
-    for family in ("admission", "journal", "feedback"):
+    for family in ("admission", "journal"):
         require(
             dep.modules["tether." + family].open_store
             is dep.modules["tether.schema"].open_store
         )
+    require(
+        dep.modules["tether.feedback"].open_feedback_store
+        is dep.modules["tether.feedback_schema"].open_feedback_store
+    )
     from refinery import schema
 
     require(
@@ -551,7 +555,8 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
         for filename, table in (
             ("admission.sqlite", "mirrors"),
             ("journal.sqlite", "provider_attempts"),
-            ("feedback.sqlite", "feedback_heads"),
+            ("feedback.sqlite", "feedback_heads_v2"),
+            ("feedback.sqlite", "feedback_invalidations"),
             ("refinery.sqlite", "families"),
         ):
             case = root / ("schema-" + table)
@@ -590,7 +595,7 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
         "fresh_process_replay": "passed",
         "precommit_process_crash_recovery": "passed",
         "negative_cases": 3,
-        "schema_reopen_denials": 4,
+        "schema_reopen_denials": 5,
         "deliberate_mutation_detected": True,
         "independent_object_digest": outcomes[0],
         "sources": {n: i["commit"] for n, i in manifest["sources"].items()},
