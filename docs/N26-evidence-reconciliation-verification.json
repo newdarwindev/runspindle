@@ -73,8 +73,8 @@
     },
     {
       "id": "durability_where_claimed_and_cleanup",
-      "status": "partially_verified",
-      "evidence": "Fresh CLI/observer processes and actual disposable Git stores exercised; TemporaryDirectory cleanup registered before setup. Cancellation was not injected to verify checker-fixture cleanup, so the explicit cancellation clause remains unverified. No application-store durability claim."
+      "status": "passed_with_scope",
+      "evidence": "Fresh CLI/observer processes and actual disposable Git stores exercised. Five added lifecycle tests verify owned-fixture success/failure/injected KeyboardInterrupt cleanup and cleanup-error non-success. Cancellation guard removal produces two expected regression failures. No application-store durability or uncatchable-termination cleanup claim."
     },
     {
       "id": "issue_and_parent_links",
@@ -92,14 +92,13 @@
     "full aggregate",
     "component runtime qualification",
     "native/provider/campaign execution",
-    "CI reruns",
-    "checker-fixture cancellation cleanup verification"
+    "CI reruns"
   ],
   "issue_closed": false,
   "parent": "https://github.com/newdarwindev/runspindle/issues/2",
   "record_kind": "historical offline checker verification, not a current-head campaign receipt",
   "date": "2026-11-16",
-  "publication_scope": "Evidence-only successor commit; tested_source and tree identify the prior tested implementation, not the evidence commit.",
+  "publication_scope": "Initial publication was evidence-only. This follow-up adds the sole test-fixture overlay pinned under cancellation_verification. Top-level tested_source and tree identify the prior 34-test implementation; production, pins and workflows are unchanged.",
   "quality_packages": {
     "ruff": "0.14.5",
     "mypy": "1.18.2",
@@ -116,19 +115,18 @@
       "34 reconciliation tests, optimized",
       "artifact-digest mutation detected",
       "scaffold and 100-file artifact integrity",
-      "targeted Ruff lint/format and strict mypy"
+      "targeted Ruff lint/format and strict mypy",
+      "39 reconciliation/lifecycle tests, normal and optimized, zero skips",
+      "Interruption cleanup removal mutation detected by two filesystem regressions"
     ],
     "failed": [],
-    "blocked": [
-      "Issue44 closure: explicit cancellation-cleanup criterion is not yet execution-verified"
-    ],
+    "blocked": [],
     "not_run": [
       "full aggregate",
       "component runtime qualification",
       "native/provider/campaign execution",
       "CI reruns",
-      "application crash/power-loss or cancellation qualification",
-      "checker-fixture cancellation cleanup verification"
+      "application crash/power-loss or cancellation qualification"
     ],
     "unknown": [
       "downstream system acceptance from this evidence"
@@ -146,7 +144,7 @@
       "effect ledger read by independent observer"
     ],
     "forbidden_effects": "Test spy restricts reconciler Git invocations; receipt commands are data and never executed. No provider/service invocation is part of these entrypoints.",
-    "cleanup": "TemporaryDirectory cleanup is registered before fixture setup. Cancellation was not injected, so checker-fixture cancellation cleanup is unverified. No application-store durability or service cancellation qualification is claimed."
+    "cleanup": "See cancellation_verification: injected KeyboardInterrupt lifecycle checks verify owned fixture cleanup; cleanup failure preserves cancellation and is explicitly reported. No SIGKILL or runtime durability guarantee."
   },
   "logs": {
     "format.log": "3 files already formatted\n",
@@ -165,5 +163,37 @@
     "optimized.log": "8ff49273ed97fa67eca90e4d2b5f0073f283cc18cab79ee0fa398cfab6916981",
     "scaffold.log": "01e6a0ef0ce6af7ad1ab9382911063ed22627f3f3ebae194d4b6309961503205",
     "types.log": "8228fcc5ce46d42d01caf3cd941f4e9c5f2bcc372bb5b147a2f0572d2dd675a8"
+  },
+  "cancellation_verification": {
+    "source_identity": {
+      "base_commit": "6d354d54f48b69c79a75a1159cbb21793a1f8db2",
+      "base_tree": "5baa74b8ff9cec635b83b514f47600ab0bb310c2",
+      "only_executable_overlay": "tests/test_evidence_reconciliation.py",
+      "overlay_sha256": "d5b8885eadd07270d7a3d24a97477dfbf8c8a5eadaad46b6e83d15297c7a075f"
+    },
+    "normal_tests": 39,
+    "optimized_tests": 39,
+    "skips": 0,
+    "claim": "Owned checker-fixture cleanup verified for success, assertion failure, injected setup KeyboardInterrupt and injected reconciliation KeyboardInterrupt. Cleanup failure preserves the same interruption and attaches a sanitized failure note; cleanup is not falsely claimed in that case.",
+    "production_changes": false,
+    "not_claimed": [
+      "SIGKILL cleanup",
+      "arbitrary process termination",
+      "application-store crash durability",
+      "runtime/service cancellation qualification"
+    ],
+    "logs": {
+      "cancellation-normal.log": "test_cleanup_failure_preserves_cancellation (test_evidence_reconciliation.FixtureLifecycleTests.test_cleanup_failure_preserves_cancellation) ... ok\ntest_failure_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_failure_cleanup) ... ok\ntest_reconciliation_cancellation_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_reconciliation_cancellation_cleanup) ... ok\ntest_setup_cancellation_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_setup_cancellation_cleanup) ... ok\ntest_success_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_success_cleanup) ... ok\ntest_boolean_number_observations_rejected (test_evidence_reconciliation.ReconciliationTests.test_boolean_number_observations_rejected) ... ok\ntest_changed_artifact (test_evidence_reconciliation.ReconciliationTests.test_changed_artifact) ... ok\ntest_changed_main (test_evidence_reconciliation.ReconciliationTests.test_changed_main) ... ok\ntest_component_pin_positive_and_changed_component_rejected (test_evidence_reconciliation.ReconciliationTests.test_component_pin_positive_and_changed_component_rejected) ... ok\ntest_dirty_receipt (test_evidence_reconciliation.ReconciliationTests.test_dirty_receipt) ... ok\ntest_dirty_source_including_untracked (test_evidence_reconciliation.ReconciliationTests.test_dirty_source_including_untracked) ... ok\ntest_draft_and_historical (test_evidence_reconciliation.ReconciliationTests.test_draft_and_historical) ... ok\ntest_empty_criteria_and_duplicate_json_fail_closed (test_evidence_reconciliation.ReconciliationTests.test_empty_criteria_and_duplicate_json_fail_closed) ... ok\ntest_exact_numeric_equivalent_representations (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_equivalent_representations) ... ok\ntest_exact_numeric_observation_mismatches (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_observation_mismatches) ... ok\ntest_exact_numeric_parser_boundaries_and_compatibility (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_parser_boundaries_and_compatibility) ... ok\ntest_exact_source_positive_fresh_process_and_no_effects (test_evidence_reconciliation.ReconciliationTests.test_exact_source_positive_fresh_process_and_no_effects) ... ok\ntest_float_decoder_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_float_decoder_mutation_detected) ... ok\ntest_forbidden_call_effect_and_independence (test_evidence_reconciliation.ReconciliationTests.test_forbidden_call_effect_and_independence) ... ok\ntest_gitlink_lock_disagreement (test_evidence_reconciliation.ReconciliationTests.test_gitlink_lock_disagreement) ... ok\ntest_invalid_producer_identity_rejected (test_evidence_reconciliation.ReconciliationTests.test_invalid_producer_identity_rejected) ... ok\ntest_invalid_seven_component_set (test_evidence_reconciliation.ReconciliationTests.test_invalid_seven_component_set) ... ok\ntest_matching_json_observation_semantics (test_evidence_reconciliation.ReconciliationTests.test_matching_json_observation_semantics) ... ok\ntest_missing_artifact (test_evidence_reconciliation.ReconciliationTests.test_missing_artifact) ... ok\ntest_missing_receipt (test_evidence_reconciliation.ReconciliationTests.test_missing_receipt) ... ok\ntest_non_finite_json_numbers_rejected (test_evidence_reconciliation.ReconciliationTests.test_non_finite_json_numbers_rejected) ... ok\ntest_path_escape (test_evidence_reconciliation.ReconciliationTests.test_path_escape) ... ok\ntest_producer_identity_guard_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_producer_identity_guard_mutation_detected) ... ok\ntest_python_equality_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_python_equality_mutation_detected) ... ok\ntest_receipt_parse_uses_verified_bytes (test_evidence_reconciliation.ReconciliationTests.test_receipt_parse_uses_verified_bytes) ... ok\ntest_scope_identity_and_input_hashes (test_evidence_reconciliation.ReconciliationTests.test_scope_identity_and_input_hashes) ... ok\ntest_source_change_during_artifact_scan (test_evidence_reconciliation.ReconciliationTests.test_source_change_during_artifact_scan) ... ok\ntest_source_change_during_claim_scan (test_evidence_reconciliation.ReconciliationTests.test_source_change_during_claim_scan) ... ok\ntest_stale_claim_bytes (test_evidence_reconciliation.ReconciliationTests.test_stale_claim_bytes) ... ok\ntest_stale_readme_and_status (test_evidence_reconciliation.ReconciliationTests.test_stale_readme_and_status) ... ok\ntest_stale_sha (test_evidence_reconciliation.ReconciliationTests.test_stale_sha) ... ok\ntest_statuses_remain_distinct_and_non_success (test_evidence_reconciliation.ReconciliationTests.test_statuses_remain_distinct_and_non_success) ... ok\ntest_valid_distinct_and_equal_producer_identity (test_evidence_reconciliation.ReconciliationTests.test_valid_distinct_and_equal_producer_identity) ... ok\ntest_wrong_evidence_class (test_evidence_reconciliation.ReconciliationTests.test_wrong_evidence_class) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 6.233s\n\nOK\n",
+      "cancellation-optimized.log": "test_cleanup_failure_preserves_cancellation (test_evidence_reconciliation.FixtureLifecycleTests.test_cleanup_failure_preserves_cancellation) ... ok\ntest_failure_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_failure_cleanup) ... ok\ntest_reconciliation_cancellation_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_reconciliation_cancellation_cleanup) ... ok\ntest_setup_cancellation_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_setup_cancellation_cleanup) ... ok\ntest_success_cleanup (test_evidence_reconciliation.FixtureLifecycleTests.test_success_cleanup) ... ok\ntest_boolean_number_observations_rejected (test_evidence_reconciliation.ReconciliationTests.test_boolean_number_observations_rejected) ... ok\ntest_changed_artifact (test_evidence_reconciliation.ReconciliationTests.test_changed_artifact) ... ok\ntest_changed_main (test_evidence_reconciliation.ReconciliationTests.test_changed_main) ... ok\ntest_component_pin_positive_and_changed_component_rejected (test_evidence_reconciliation.ReconciliationTests.test_component_pin_positive_and_changed_component_rejected) ... ok\ntest_dirty_receipt (test_evidence_reconciliation.ReconciliationTests.test_dirty_receipt) ... ok\ntest_dirty_source_including_untracked (test_evidence_reconciliation.ReconciliationTests.test_dirty_source_including_untracked) ... ok\ntest_draft_and_historical (test_evidence_reconciliation.ReconciliationTests.test_draft_and_historical) ... ok\ntest_empty_criteria_and_duplicate_json_fail_closed (test_evidence_reconciliation.ReconciliationTests.test_empty_criteria_and_duplicate_json_fail_closed) ... ok\ntest_exact_numeric_equivalent_representations (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_equivalent_representations) ... ok\ntest_exact_numeric_observation_mismatches (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_observation_mismatches) ... ok\ntest_exact_numeric_parser_boundaries_and_compatibility (test_evidence_reconciliation.ReconciliationTests.test_exact_numeric_parser_boundaries_and_compatibility) ... ok\ntest_exact_source_positive_fresh_process_and_no_effects (test_evidence_reconciliation.ReconciliationTests.test_exact_source_positive_fresh_process_and_no_effects) ... ok\ntest_float_decoder_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_float_decoder_mutation_detected) ... ok\ntest_forbidden_call_effect_and_independence (test_evidence_reconciliation.ReconciliationTests.test_forbidden_call_effect_and_independence) ... ok\ntest_gitlink_lock_disagreement (test_evidence_reconciliation.ReconciliationTests.test_gitlink_lock_disagreement) ... ok\ntest_invalid_producer_identity_rejected (test_evidence_reconciliation.ReconciliationTests.test_invalid_producer_identity_rejected) ... ok\ntest_invalid_seven_component_set (test_evidence_reconciliation.ReconciliationTests.test_invalid_seven_component_set) ... ok\ntest_matching_json_observation_semantics (test_evidence_reconciliation.ReconciliationTests.test_matching_json_observation_semantics) ... ok\ntest_missing_artifact (test_evidence_reconciliation.ReconciliationTests.test_missing_artifact) ... ok\ntest_missing_receipt (test_evidence_reconciliation.ReconciliationTests.test_missing_receipt) ... ok\ntest_non_finite_json_numbers_rejected (test_evidence_reconciliation.ReconciliationTests.test_non_finite_json_numbers_rejected) ... ok\ntest_path_escape (test_evidence_reconciliation.ReconciliationTests.test_path_escape) ... ok\ntest_producer_identity_guard_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_producer_identity_guard_mutation_detected) ... ok\ntest_python_equality_mutation_detected (test_evidence_reconciliation.ReconciliationTests.test_python_equality_mutation_detected) ... ok\ntest_receipt_parse_uses_verified_bytes (test_evidence_reconciliation.ReconciliationTests.test_receipt_parse_uses_verified_bytes) ... ok\ntest_scope_identity_and_input_hashes (test_evidence_reconciliation.ReconciliationTests.test_scope_identity_and_input_hashes) ... ok\ntest_source_change_during_artifact_scan (test_evidence_reconciliation.ReconciliationTests.test_source_change_during_artifact_scan) ... ok\ntest_source_change_during_claim_scan (test_evidence_reconciliation.ReconciliationTests.test_source_change_during_claim_scan) ... ok\ntest_stale_claim_bytes (test_evidence_reconciliation.ReconciliationTests.test_stale_claim_bytes) ... ok\ntest_stale_readme_and_status (test_evidence_reconciliation.ReconciliationTests.test_stale_readme_and_status) ... ok\ntest_stale_sha (test_evidence_reconciliation.ReconciliationTests.test_stale_sha) ... ok\ntest_statuses_remain_distinct_and_non_success (test_evidence_reconciliation.ReconciliationTests.test_statuses_remain_distinct_and_non_success) ... ok\ntest_valid_distinct_and_equal_producer_identity (test_evidence_reconciliation.ReconciliationTests.test_valid_distinct_and_equal_producer_identity) ... ok\ntest_wrong_evidence_class (test_evidence_reconciliation.ReconciliationTests.test_wrong_evidence_class) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 4.826s\n\nOK\n",
+      "cancellation-mutation.log": "{\"status\": \"passed\", \"mutation\": \"disabled_artifact_digest_check\", \"detected\": true, \"evidence_class\": \"synthetic\", \"live_acceptance\": \"not_run\"}\n",
+      "cancellation-guard-mutation.log": "{\"mutation\": \"remove_interruption_cleanup_override\", \"detected\": true, \"expected_failures\": 2, \"unexpected_errors\": 0, \"fixture_safety_cleanup\": \"completed\"}\n"
+    },
+    "log_sha256": {
+      "cancellation-normal.log": "c57af89a9c3b1259168685b254ddd19e8611188a9520b0e992ca6a3980e3f3a7",
+      "cancellation-optimized.log": "a97e446061aa8cbb88161e8766342d25c8e7ede74659989161f336edb07fadc7",
+      "cancellation-mutation.log": "f170817556b72301d4d3f5026ffba876045e2fd9ab5ab3692e2de9051781eaaf",
+      "cancellation-guard-mutation.log": "d2f17ae4990ed6c49dff1aca141e1316517dadb603f49853ba179fe55ec3aad7"
+    },
+    "command": "python3.12 -m unittest discover -s tests -p test_evidence_reconciliation.py -v"
   }
 }

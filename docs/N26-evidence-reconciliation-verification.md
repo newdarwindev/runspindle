@@ -23,9 +23,11 @@ skips. The existing artifact-digest mutation checker detected the deliberate
 broken invariant. The suite also detects Python-equality, float-decoder and
 producer-identity guard mutations. Scaffold/100-file artifact integrity,
 targeted Ruff lint/format and strict mypy passed. See the JSON for exact outputs.
-This evidence-only successor does not retroactively change the tested source
+The initial evidence-only publication does not retroactively change the tested source
 identity or assert that its own new head was the source of those historical runs.
-No STATUS, receipt-generator, implementation, fixture, pin or workflow changes.
+The initial evidence-only record changed no implementation. The follow-up below
+changes only the test fixture lifecycle; STATUS, production implementation, pins
+and workflows remain unchanged.
 
 ## Reproduce on an isolated local runner
 
@@ -67,11 +69,33 @@ are exercised; no mutable application store or crash/power-loss durability is
 claimed. TemporaryDirectory cleanup is registered before fixture setup; this is
 not cancellation qualification for an operational installer or service.
 
-Failed checks: none in this bounded verification. The offline checker suite had
-no blocked prerequisites. However, issue 44 explicitly requires cancellation
-cleanup: cancellation was not injected to verify checker-fixture cleanup, so that
-clause remains unverified and issue closure is blocked on resolving it. Not run: full aggregate, native/component/provider
-or campaign qualification, CI reruns and application cancellation/crash campaigns.
+## Cancellation follow-up: test-only overlay
+
+The original 34-test run did not inject cancellation. A follow-up found that
+CPython unittest skips registered cleanups when KeyboardInterrupt escapes. The
+fixture now cleans its owned TemporaryDirectory on that path only; ordinary
+success/failure accounting stays with unittest. If cleanup itself fails, the
+same interruption propagates with a sanitized failure note, never a success.
+
+The JSON pins this follow-up by base source/tree plus the SHA256 of the sole
+executable overlay, `tests/test_evidence_reconciliation.py`, avoiding a circular
+hash of this evidence document. Production code is unchanged. Five additional
+lifecycle tests use actual temporary files and Git stores: success, assertion
+failure, setup interruption, interruption during reconciliation artifact hashing,
+and cleanup failure preserving the original interruption. All 39 tests pass
+normally and optimized, zero skips. Removing the interruption cleanup in memory
+causes both cancellation-filesystem regressions to fail as expected; their own
+safety cleanup removes the deliberately leaked fixtures. The original digest
+mutation checker still passes. Strict mypy passes for the same three files.
+The reproduction command above also runs this follow-up when used with the
+exact overlaid test file whose digest is recorded in the JSON.
+
+Failed checks: none in the bounded verification. Blocked prerequisites: none
+for the offline suite or controlled fixture-cancellation checks. Cancellation
+means injected catchable KeyboardInterrupt, not SIGKILL, arbitrary process
+termination or service cancellation. No mutable application-store durability is
+claimed. Not run: full aggregate, native/component/provider or campaign
+qualification, CI reruns and application cancellation/crash campaigns.
 Downstream acceptance is unknown from this evidence and `system_acceptance`
 remains `not_inferred`. Parent issue 2 keeps its broader acceptance criteria.
 Issue closure and any release or runtime qualification require separate decisions.

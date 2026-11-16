@@ -27,6 +27,24 @@ spec.loader.exec_module(engine)
 
 
 class ReconciliationTests(unittest.TestCase):
+    def run(
+        self, result: unittest.TestResult | None = None
+    ) -> unittest.TestResult | None:
+        try:
+            return super().run(result)
+        except KeyboardInterrupt as primary:
+            # unittest skips registered cleanups when KeyboardInterrupt escapes.
+            # Ordinary success/failure cleanup remains under unittest's ownership.
+            owned = getattr(self, "temp", None)
+            if owned is not None:
+                try:
+                    owned.cleanup()
+                except Exception as error:
+                    primary.add_note(
+                        f"Owned fixture cleanup failed: {type(error).__name__}"
+                    )
+            raise
+
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -582,6 +600,101 @@ class ReconciliationTests(unittest.TestCase):
         path.write_text('{"status":"blocked","status":"passed"}')
         with self.assertRaisesRegex(ValueError, "duplicate_json_key"):
             engine.load_json(path)
+
+
+class FixtureLifecycleTests(unittest.TestCase):
+    def exercise(self, phase: str) -> None:
+        class RecordingResult(unittest.TestResult):
+            def __init__(self) -> None:
+                super().__init__()
+                self.successes = 0
+
+            def addSuccess(self, test: unittest.TestCase) -> None:
+                self.successes += 1
+                super().addSuccess(test)
+
+        interruption = KeyboardInterrupt("scan cancelled")
+
+        class Probe(ReconciliationTests):
+            def git(self, *args: str) -> str:
+                if phase == "setup_cancel":
+                    raise KeyboardInterrupt("setup cancelled")
+                return super().git(*args)
+
+            def runTest(self) -> None:
+                if phase == "assertion_failure":
+                    self.fail("deliberate assertion failure")
+                if phase in {"reconcile_cancel", "cleanup_failure"}:
+                    with mock.patch.object(
+                        engine,
+                        "digest_file",
+                        side_effect=interruption,
+                    ):
+                        self.run_engine()
+                else:
+                    self.assertEqual(self.run_engine()["status"], "passed")
+
+        probe = Probe("runTest")
+        result = RecordingResult()
+        try:
+            if phase in {"setup_cancel", "reconcile_cancel", "cleanup_failure"}:
+                if phase == "cleanup_failure":
+                    original_setup = probe.setUp
+
+                    def setup_with_failed_cleanup() -> None:
+                        original_setup()
+                        self.patch_cleanup = mock.patch.object(
+                            probe.temp, "cleanup", side_effect=OSError("cleanup failed")
+                        )
+                        self.patch_cleanup.start()
+
+                    with mock.patch.object(
+                        probe, "setUp", side_effect=setup_with_failed_cleanup
+                    ):
+                        with self.assertRaisesRegex(
+                            KeyboardInterrupt, "scan cancelled"
+                        ) as caught:
+                            probe.run(result)
+                    self.patch_cleanup.stop()
+                    self.assertIn(
+                        "Owned fixture cleanup failed: OSError",
+                        caught.exception.__notes__,
+                    )
+                    self.assertIs(caught.exception, interruption)
+                    self.assertTrue(probe.base.exists())
+                    probe.temp.cleanup()
+                else:
+                    with self.assertRaises(KeyboardInterrupt):
+                        probe.run(result)
+                self.assertEqual(result.successes, 0)
+            else:
+                probe.run(result)
+                self.assertEqual(result.successes, int(phase == "success"))
+                self.assertEqual(
+                    len(result.failures), int(phase == "assertion_failure")
+                )
+            self.assertFalse(probe.base.exists())
+        finally:
+            # Test-oracle safety net also cleans a deliberately broken implementation.
+            if hasattr(self, "patch_cleanup"):
+                self.patch_cleanup.stop()
+            if hasattr(probe, "temp"):
+                probe.temp.cleanup()
+
+    def test_success_cleanup(self) -> None:
+        self.exercise("success")
+
+    def test_failure_cleanup(self) -> None:
+        self.exercise("assertion_failure")
+
+    def test_setup_cancellation_cleanup(self) -> None:
+        self.exercise("setup_cancel")
+
+    def test_reconciliation_cancellation_cleanup(self) -> None:
+        self.exercise("reconcile_cancel")
+
+    def test_cleanup_failure_preserves_cancellation(self) -> None:
+        self.exercise("cleanup_failure")
 
 
 if __name__ == "__main__":
