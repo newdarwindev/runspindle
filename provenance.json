@@ -264,5 +264,12 @@
     "implementation": "Original synthetic composition fixture and read-only SQL oracle calling reviewed actual Tether/Refinery source; no historical import.",
     "sources": "scenarios/feedback-collection-v1.json",
     "scope": "Candidate H10 component seam only; deployed composition and full hero acceptance remain blocked."
+  },
+  "native_turn_contract_source": {
+    "classification": "original_closed_contract_independent_python_codec_and_synthetic_vectors",
+    "specification": "specs/native-turn-v1.md",
+    "upstream_schema_reference": "openai/codex d32063f96c2dff1dc96af839b3952abb6acfeda4 TurnStartParams",
+    "third_party_source_import": "none",
+    "runtime_acceptance": "not_inferred"
   }
 }
