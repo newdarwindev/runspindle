@@ -95,7 +95,7 @@ inventory, separate build review and all-page acceptance remain pending.
 ## Canonical Browser SRC-009 source
 
 The canonical Browser page is pinned to merged Browser commit
-`a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b`. Its six specification links, source
+`dfc9ac3e51abba8e84ab217a5eec5358b2088a3f`. Its six specification links, source
 review and notices link to verified immutable Browser files. Product navigation
 stays local; two location/status sentences disclose this derivative. Reversing
 only the documented substitutions recovers the exact canonical content hash.

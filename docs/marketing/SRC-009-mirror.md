@@ -1,14 +1,17 @@
 # Browser SRC-009 composition mirror
 
 This source-only derivative adopts the reviewed Browser product page from
-[Browser PR 24](https://github.com/newdarwindev/runspindle-browser/pull/24), merged
-at `a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b`, tree
-`03f5e9d2f0388ea8f948de2b0c85e065eef877ba`. The
-[canonical HTML](https://github.com/newdarwindev/runspindle-browser/blob/a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b/docs/product/browser.html)
-and its original source-accounting records remain owned by Browser. Its exact-head
-push CI passed; that result is not rendered, mobile, keyboard or runtime acceptance.
-Browser issue 5 remains open. This root candidate requires independent review
-before publication, and does not change any component Gitlink or runtime pin.
+[Browser PR 48](https://github.com/newdarwindev/runspindle-browser/pull/48), merged
+at `dfc9ac3e51abba8e84ab217a5eec5358b2088a3f`, tree
+`81ae9a5ea4dd310c89e537f551ca2465730d7eac`. The
+[canonical HTML](https://github.com/newdarwindev/runspindle-browser/blob/dfc9ac3e51abba8e84ab217a5eec5358b2088a3f/docs/product/browser.html)
+and its original source-accounting records remain owned by Browser. Independent
+source review found no blocker to this canonical heading-wrap change; that review
+did not inspect the private original or approve visual baselines. The earlier
+Browser CI receipt in the mapping is explicitly historical, not qualification of
+this candidate. Browser issue 5 remains open. This root derivative requires
+independent review before publication, and does not change any component Gitlink
+or runtime pin.
 
 ## Precisely bounded transformation
 
@@ -21,14 +24,15 @@ replacement, expected occurrence count and verified public target identity.
 - L07–L08 link the source review and notices to their immutable Browser originals.
   Their document closures are not broadly copied into this repository.
 - L09 replaces the snapshot's pending composition-mirror sentence with an
-  explicit source-only mirror statement. Rendered and keyboard gates remain open.
+  explicit source-only mirror statement. Root-derivative rendered and keyboard
+  gates remain open.
 - L10 fixes the canonical-location footer and adds this transformation disclosure.
 - The three product-page links remain local: index.html, browser.html and
   vision.html. Their destinations are present and checked. Page-fragment links
   remain unchanged and resolve to existing unique anchors.
 
 All nine immutable external destinations, including the canonical HTML, were read
-through the connected repository API at the recorded merge commit. Their content
+from the clean Browser checkout at the recorded merge commit. Their content
 and Git blob hashes are recorded. That read verifies repository-file existence,
 not browser navigation or permanent hosting availability. Opening those links
 requires network access; they are ordinary navigation, not automatic page assets.
@@ -73,7 +77,14 @@ Run from the repository root:
 The full source suite and separately prepared pinned H10 seam remain required;
 H10 is existing bounded integration evidence and does not exercise this page.
 No browser/native renderer, live account, service or deployment is invoked by the
-mirror checks. Actual desktop/mobile rendering, keyboard navigation, zoom and
-assistive-technology acceptance are still not run. Source synchronization does
-not complete those gates or close Browser issue 5. The exact final root
+mirror checks. The canonical Browser page has a separately recorded local Chrome
+candidate at 320/390/768/1440 CSS pixels and a keyboard focus probe; its reference
+images are not approved baselines. A separate local Chrome DOM probe of this
+normalized root derivative at 195/320/390/768/1440 CSS pixels found no document
+or inspected-element overflow, missing fragment targets or hidden diagram stages;
+the first Tab reached the visible outlined skip link. It used disposable synthetic
+browser state and did not establish visual baseline approval, actual browser zoom,
+manual keyboard navigation or assistive technology behavior. Its rendered/keyboard
+acceptance therefore remains **not run** in the source-mapping receipt. Source
+synchronization does not complete those gates or close Browser issue 5. The exact final root
 commit/tree and check results belong in the separate review/publication receipt.

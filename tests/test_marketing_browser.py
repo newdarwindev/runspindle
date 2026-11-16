@@ -85,7 +85,7 @@ class BrowserMirrorTests(unittest.TestCase):
         self.assertEqual(result["external_navigation_targets"], 9)
         self.assertNotEqual(result["canonical_sha256"], result["derivative_sha256"])
         self.assertEqual(
-            result["canonical_commit"], "a5446d9fab1f2384b0d2ea0a051b7fd56a8af00b"
+            result["canonical_commit"], "dfc9ac3e51abba8e84ab217a5eec5358b2088a3f"
         )
         self.assertEqual(
             result["verification"],
@@ -155,8 +155,8 @@ class BrowserMirrorTests(unittest.TestCase):
             original.replace('href="index.html"', 'href="missing.html"'),
             original.replace('/specs/credentials-handoff.md"', '/specs/system.md"'),
             original.replace(
-                "rendered and keyboard acceptance remain pending",
-                "rendered and keyboard acceptance passed",
+                "root-derivative rendering and keyboard acceptance remain pending",
+                "root-derivative rendering and keyboard acceptance passed",
             ),
         ):
             with self.subTest(body=body[-80:]):
