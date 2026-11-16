@@ -2,9 +2,10 @@
 
 This bounded lane implements part of composition #45 using actual merged-ancestry
 Tether and Refinery source. It does not qualify the deployed composition, all of
-H10, H12, or system acceptance. Composition lock/gitlinks and the older maintained
-scenario manifest/evidence are unchanged. Their historical qualification does not
-transfer to these candidate pins. The new manifest is
+H10, H12, or system acceptance. The current composition pin candidate updates Browser, Tether and Refinery
+lock/gitlinks together. Earlier maintained-scenario receipts remain historical;
+their qualification does not transfer to these candidate pins. See
+`docs/COMPOSITION_PIN_FOLLOWTHROUGH.md` for the current evidence boundary. The new manifest is
 `scenarios/feedback-collection-v1.json`.
 
 ## Reproduce
@@ -22,9 +23,9 @@ A clean authorized checkout can prepare the same inputs explicitly:
 ```
 git submodule update --init --recursive
 git clone https://github.com/newdarwindev/runspindle-tether.git local/feedback-sources/tether
-git -C local/feedback-sources/tether checkout --detach 670989839a0fccbcf2014d01609778ae6e4df424
+git -C local/feedback-sources/tether checkout --detach c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d
 git clone https://github.com/newdarwindev/runspindle-refinery.git local/feedback-sources/refinery
-git -C local/feedback-sources/refinery checkout --detach b68ba9d77d51ca453b3f0fa3a9fa31573d065250
+git -C local/feedback-sources/refinery checkout --detach 3b14229b32cd0abef65937f3a9d9a9474a2ca937
 python3 tools/feedback_hero.py --tether local/feedback-sources/tether --refinery local/feedback-sources/refinery
 ```
 
@@ -58,8 +59,7 @@ access expansion is introduced.
 The trusted-source loader verifies clean exact commits, all tracked component file
 hashes, no untracked files anywhere in either import root, including ignored root-level
 stdlib shadows, sourceless bytecode packages and platform extensions, unchanged composition base/gitlink agreement,
-base ancestry and recorded reviewed merge ancestry. Refinery's immutable internal
-Tether pin stays unchanged. Workers use an empty temporary bytecode prefix and
+base ancestry and recorded reviewed merge ancestry. Refinery's exact internal Tether pin must equal the selected Tether commit. Workers use an empty temporary bytecode prefix and
 `-B`; Tether additionally loads hash-verified source snapshots itself. This is
 reviewed local source verification, not remote identity attestation.
 
@@ -103,9 +103,9 @@ inputs fail before child execution; optional local unittest skips cannot satisfy
 this mandatory entry. Quality and component CI jobs prepare exact candidate sources;
 the quality job sets `MYPYPATH` to the prepared Refinery checkout for strict type
 resolution. All root checkouts fetch full history. Aggregate receipt checks,
-other partition entries and existing composition pins are unchanged. Local full
+other partition entries remain unchanged. Exact preparation refs follow the current manifest. Local full
 hygiene validation requires the same ignored `local/feedback-sources` checkouts,
 `MYPYPATH` and both test source variables, plus the pinned quality-tool environment.
-## Schema-admitted candidate upgrade
+## Historical schema-admitted candidate upgrade
 
 The candidate pins now include Tether schema admission (PR18) and Refinery structural storage admission plus its exact Tether pin integration (PR22/23). Both schema modules are included in the verified source inventories. Fresh worker processes reject missing admission, provider-journal, feedback and Refinery tables before collection, with independent SQLite observations of zero lineage writes and no silent schema repair. Existing replay, precommit crash recovery, consent-removal mutation and ignored source-shadow tests still run. The original `docs/feedback-hero-evidence.json` remains historical; current evidence is `docs/feedback-schema-candidate-evidence.json`. Release composition/gitlinks and older acceptance artifacts remain unchanged. This is still a synthetic adapter candidate lane, not full H10/H12 or deployment qualification.

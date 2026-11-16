@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: newdarwindev/runspindle-tether
-          ref: 670989839a0fccbcf2014d01609778ae6e4df424
+          ref: c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d
           path: local/feedback-sources/tether
           fetch-depth: 0
           persist-credentials: false
@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: newdarwindev/runspindle-refinery
-          ref: b68ba9d77d51ca453b3f0fa3a9fa31573d065250
+          ref: 3b14229b32cd0abef65937f3a9d9a9474a2ca937
           path: local/feedback-sources/refinery
           fetch-depth: 0
           persist-credentials: false
@@ -62,7 +62,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: newdarwindev/runspindle-tether
-          ref: 670989839a0fccbcf2014d01609778ae6e4df424
+          ref: c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d
           path: local/feedback-sources/tether
           fetch-depth: 0
           persist-credentials: false
@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           repository: newdarwindev/runspindle-refinery
-          ref: b68ba9d77d51ca453b3f0fa3a9fa31573d065250
+          ref: 3b14229b32cd0abef65937f3a9d9a9474a2ca937
           path: local/feedback-sources/refinery
           fetch-depth: 0
           persist-credentials: false

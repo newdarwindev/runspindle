@@ -20,14 +20,14 @@
   "component_pins": {
     "core": "83296c3962de7546efdd1bb4e3d7e5b25452509f",
     "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
-    "browser": "56b78515fc3edbfb5e199cebc9c60db110c60f68",
-    "tether": "ef4c99a8eea8918350666948a32868e3763e1dbe",
-    "refinery": "8959700953b14b8fe7fb86efd8d7647ad364bfe1",
+    "browser": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+    "tether": "c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d",
+    "refinery": "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
     "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
     "platform": "4e9a2b38b9ebc9d79eba5d2fc0f364ab8a5f4cf0"
   },
   "component_spec_hashes": {
-    "components/browser/specs/credentials-handoff.md": "d3c818c4c8cd0e63ea494fccf7ad95ed33f238bed94f105c73537a518845c7b6",
+    "components/browser/specs/credentials-handoff.md": "55bd5c001c7a6e7dabd803c43bfef1e82897f888d0b6003fca3aa8abdf71af25",
     "components/console/specs/fleet-view.md": "ff0b7af18fb2baf71c74d6ceca69588d07d7674efb935d905669ee616e9ebb1d",
     "components/core/specs/contracts.md": "627604ce5ce2dc51374a0a6d5592e5242476cad3117963fe6a495cb279006a20",
     "components/core/specs/durable-artifacts.md": "bca04daa47e16c63ff142d4cb0bdd5fa85365883d8abfe60d91e037df612855d",
@@ -36,7 +36,7 @@
     "components/host/specs/durable-lifecycle.md": "19bce4026a47a7fb17bca55852e992dbeab84c46dc3ff691a82796402c7147f5",
     "components/host/specs/native-sessions.md": "8623e9d9ca9215bd9ebfa4be8b9ec58bbb3518612986eff86ab411b63d7f38dc",
     "components/platform/specs/native-monitoring.md": "6dde6c26b723211d14433b2bfd40af212b92d1e5a2181989e764dc74955d78a8",
-    "components/refinery/specs/durable-offline.md": "86278f19154597738605f40f88fc048d003bef2cc0f20181e45f4a8c333f0201",
+    "components/refinery/specs/durable-offline.md": "5d8e94c878893dabb6f2ae5726a558158eaf79d3c5c118ef93a4e3e1fdac682a",
     "components/refinery/specs/experiments.md": "a4c51d4148789f0bec052fb0b64102501a48764e8f9f932273991824286c9d5d",
     "components/tether/specs/slack-events.md": "77ef813748640b537388b63a7f9701e2f29eacdada8e955ddfc34f970323f218"
   },
