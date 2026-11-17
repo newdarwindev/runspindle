@@ -1,12 +1,85 @@
-# runspindle
+# RUNSPINDLE
 
-Composition and release boundary for seven pinned component repositories.
+## Persistent work across applications, machines and time
 
-**Status: public scaffold, not a deployed or production-ready implementation.**
+A request should become a continuing piece of work: explicit authority, a selected
+machine, recoverable execution and a result its owner can inspect. **RUNSPINDLE**
+connects those boundaries instead of replacing the specialist software beneath them.
 
-The core component includes a bounded in-memory identity/artifact contract model.
-Its local synthetic tests do not establish runtime activation, durable effects or
-system acceptance. See [implementation evidence and remaining gaps](docs/IMPLEMENTATION.md).
+**Current status:** implemented component libraries and bounded local integrations,
+not a deployed or production-qualified system. Ordinary text below describes the
+implemented boundaries; *italics mark upcoming work or qualification*. A conceptual
+screen is not evidence that its depicted workflow is implemented.
+
+[![Conceptual recurring-work gallery: authorized inputs, intervention and reviewed results](https://newdarwindev.github.io/runspindle_for_bloomberg/gallery/01.webp)](https://newdarwindev.github.io/runspindle_for_bloomberg/assets/Runspindle_Gallery_Index.html#page-01)
+
+Concept illustration from [Runspindle for Bloomberg](https://github.com/newdarwindev/runspindle_for_bloomberg),
+page 1: fictional jobs and proposed UI, not a screenshot of a deployed console.
+
+## One workflow, seven responsibilities
+
+**TETHER — COMMUNICATION WITH PROVENANCE.** Slack supplies the conversation surface;
+[TETHER](https://github.com/newdarwindev/runspindle-tether) supplies versioned events,
+sanitation, durable journal coordination and exact output/destination identities.
+Its Core bridge reconciles revisions without treating a duplicate as permission to
+repeat an effect. *Authenticated live ingress and complete provider-backed delivery
+remain separately qualified work.*
+
+**CORE — DURABLE INTENT AND EFFECTS.** [Temporal](https://temporal.io/) supplies durable
+workflow progression; SQLite supplies local durable records. [CORE](https://github.com/newdarwindev/runspindle-core)
+adds scoped admission, immutable operation/host bindings and explicit uncertain
+outcomes. Its [bounded F02 acceptance](https://github.com/newdarwindev/runspindle-core/issues/2)
+includes interruption/revocation and pinned old-to-new upgrade evidence, not a
+whole-system sign-off. *Live issuers, native peers, arbitrary upgrades and power-loss
+qualification remain outside that acceptance.*
+
+**HOST — CONTINUITY ON THE SELECTED MACHINE.** [Codex CLI](https://github.com/openai/codex)
+remains an agent runtime. [HOST](https://github.com/newdarwindev/runspindle-host) wraps
+session lifecycle and durable identity mappings; scripted-peer tests cover lost
+launch replies, reconnects and cancellation races. *Actual native protocol and
+per-operating-system compatibility still need their own qualification.*
+
+**BROWSER — ACCOUNT CONTINUITY AND CONTROL.** [OpenBao](https://openbao.org/) and
+[PinchTab](https://github.com/pinchtab/pinchtab) provide the selected secret-management
+and browser-control foundations. [BROWSER](https://github.com/newdarwindev/runspindle-browser)
+adds credential-reference checks, control leases, guarded effects and encrypted
+profile components. *The full real-account lifecycle, production key custody and
+live takeover/handback remain qualification work.*
+
+**CONSOLE — TRUTHFUL OPERATOR OBSERVATION.** [CONSOLE](https://github.com/newdarwindev/runspindle-console)
+implements a bounded state projection that rejects stale or mismatched observations.
+[KasmVNC](https://github.com/kasmtech/KasmVNC) is the selected viewing route, not a
+replacement desktop server built here. *Rendered fleet UI, authenticated live feeds
+and actual supported desktop viewers are not established by projection tests.*
+
+**REFINERY — MEASURED IMPROVEMENT.** [DSPy](https://dspy.ai/) supplies optimization;
+[REFINERY](https://github.com/newdarwindev/runspindle-refinery) supplies lineage,
+feedback-use controls, budgets, candidate identity and serving admission. Its
+scripted/local lanes do not establish real model-quality gains. *Representative
+workload evaluation and approved live serving remain separate gates.*
+
+**PLATFORM — REPRODUCIBLE OPERATION.** [QEMU](https://www.qemu.org/), systemd,
+[OpenTelemetry](https://opentelemetry.io/) and [Langfuse](https://langfuse.com/) provide
+execution and observability foundations. [PLATFORM](https://github.com/newdarwindev/runspindle-platform)
+adds pinned preparation, runner-state checks, monitoring contracts and evidence
+accounting. *Fleet deployment and live backend readback need explicit qualification.*
+
+## Explore the product idea, then inspect the evidence
+
+The [visual product library](https://newdarwindev.github.io/runspindle_for_bloomberg/)
+expresses the product thesis as “Observe → decide → verify”: useful work leaves a
+checkable record. The following materials explain the ambition, not production results:
+
+- [16-page product concept](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle_bloomberg_product.pdf): two proposed workflow modes.
+- [37-page gallery](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/Runspindle_Revised_Gallery.pdf) and [page/source index](https://newdarwindev.github.io/runspindle_for_bloomberg/assets/Runspindle_Gallery_Index.html): conceptual interfaces and fictional cases.
+- [40-workflow catalog](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle_bloomberg_workflows.csv): source-linked scenarios, not measured outcomes.
+- [Research proposal](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle-paper.pdf) and [full-cost model](https://github.com/newdarwindev/runspindle_for_bloomberg/tree/main/economics): evaluation questions, not claimed savings.
+- [Asset provenance and claim boundaries](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/ASSETS.md). Assets remain linked at their source; no new license grant or Bloomberg affiliation is implied.
+
+For implementation evidence, start with the [exact composition-pin qualification](docs/COMPOSITION_PIN_FOLLOWTHROUGH.md),
+[authority integration](docs/AUTHORITY_COMPOSITION.md) and [current status](STATUS.json).
+The Core–Tether–Platform slice is bounded; H10 and live/full-system acceptance remain
+separate. Standalone component main branches can be newer than the pinned composition.
 
 This repository is one boundary of [Runspindle](https://github.com/newdarwindev/runspindle). Repository boundaries do not require one microservice each.
 
