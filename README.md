@@ -16,6 +16,51 @@ screen is not evidence that its depicted workflow is implemented.
 Concept illustration from [Runspindle for Bloomberg](https://github.com/newdarwindev/runspindle_for_bloomberg),
 page 1: fictional jobs and proposed UI, not a screenshot of a deployed console.
 
+## User journeys: what the boundaries are for
+
+These examples connect the seven responsibilities to work an owner can recognize.
+**Verified building blocks** means the named bounded behavior was tested, not that
+the entire live journey works. *Italic text marks missing implementation or qualification.*
+The Bloomberg examples are paper/concept workflows, not trading instructions or
+claims of licensed data access.
+
+### Keep ongoing work continuous and correctable
+
+| What the owner does | Intended experience and responsible boundary | Evidence boundary |
+| --- | --- | --- |
+| “Continue my coding task on the same machine.” | **CORE + HOST** reconcile the existing task/native-session mapping after a disconnect instead of starting a duplicate or silently changing machines. The result is continuity, or an explicit unresolved outcome. | [Bounded recovery qualification](docs/COMPOSITION_PIN_FOLLOWTHROUGH.md) uses a scripted host. *Actual native-runtime/OS qualification remains.* |
+| “Stop this task.” | **CORE + HOST + TETHER** stop newly authorized effects and distinguish confirmed, failed and unknown effects already sent. Cancellation is not represented as an undo. | Controlled-peer revocation/interruption evidence exists. *Live provider cancellation is separate.* |
+| “Actually, use the corrected figures.” | **TETHER + CORE** bind an edit to a new exact revision and reject duplicates/conflicts; stale work gains no new permission. | Durable bridge and constrained same-author signed-edit paths exist. *Complete live ingress and deletion-actor handling remain.* |
+| “Send me the finished report.” Its confirmation disappears. | **TETHER + CORE** keep the attempted delivery identity and reconcile independent readback before any retry; an unknown upload does not become an automatic duplicate. | [Durable upload contract](https://github.com/newdarwindev/runspindle-tether/blob/main/specs/durable-slack-upload-v1.md) has controlled-peer evidence. *Full live Slack delivery/readback remains.* |
+| “Continue reconciling this invoice.” The account session needs restoring. | **BROWSER + CORE** check the intended account, origin and current authority before using a profile; resume or request intervention. | Local encrypted-profile and guarded-effect components exist. *The complete real-account restoration journey is unqualified.* |
+| “Show me the work; let me take over.” | **CONSOLE + HOST + BROWSER** associate observation with the exact task/session, keep watching separate from control, and require current authority for handback. | Projection/passive-status components exist. *Authenticated live viewing and full rendered takeover/handback integration remain.* |
+
+### Turn recurring business work into reviewable results
+
+| What the owner asks | Intended experience and responsible boundary | Evidence boundary |
+| --- | --- | --- |
+| “Make tomorrow's bakery prep sheet from paid orders.” | **TETHER + CORE + BROWSER** carry approved orders through pack-size/quantity checks into a source-linked prep sheet; incomplete coverage becomes a review item. | [Gallery page 3](https://newdarwindev.github.io/runspindle_for_bloomberg/assets/Runspindle_Gallery_Index.html#page-03) is illustrative. *Commerce ingestion, business rules and live acceptance are upcoming.* |
+| “Match invoice #107 to the order and payment.” | **CORE + BROWSER + CONSOLE** preserve exact record identity, compare values, pause on ambiguity and reconcile an uncertain write rather than repeat it. | [Gallery page 4](https://newdarwindev.github.io/runspindle_for_bloomberg/assets/Runspindle_Gallery_Index.html#page-04) is a concept built around implemented identity/effect primitives. *Accounting adapters and live readback remain.* |
+| “That pack size was wrong. Use six next time.” | **TETHER + REFINERY** attach the correction to the exact output/source, check permitted use, then evaluate a candidate on held-out examples. A correction is not automatic production promotion. | Feedback lineage, consent, budgets and candidate identity are implemented. *Representative model evaluation and approved live serving remain.* |
+| “Upgrade the component, but preserve my feedback history.” | **REFINERY + TETHER** keep the old receipt immutable and require fresh source/consent checks before creating a current-pin receipt. | [Actual old/new-source qualification](https://github.com/newdarwindev/runspindle-refinery/pull/50) passed. Live use still needs its own authorization. |
+
+### Explore data-dependent workflows without confusing concepts with live products
+
+| Illustrative question | Proposed workflow and reviewable outcome | Current limit |
+| --- | --- | --- |
+| “Did this stock really break its price threshold?” | **CORE + CONSOLE** would bind comparable closes and a dividend event, expose the adjustment, and produce a paper decision or pause, never an order. | [Case 10 synthetic contract/prototype](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/pilot/case-10-contract-v0.1.md). *Terminal access, financial-domain validation and live integration are unqualified.* |
+| “Find a genuinely independent backup supplier.” | **CORE + BROWSER + CONSOLE** would use supplier relationships to flag alternatives sharing an upstream producer, then compare approved stock and evidence. | [Catalog case 2](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle_bloomberg_workflows.csv), using Bloomberg SPLC, is fictional. *Data rights, procurement adapters and inventory verification remain.* |
+| “Was this royalty converted at the contracted FX rate?” | **CORE + BROWSER** would match fixing date, benchmark and deductions, draft a discrepancy for approval, and close it only against verified credit. | [Catalog case 5](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle_bloomberg_workflows.csv), using BFIX, is fictional. *Entitled/licensed data access, portals and settlement readback remain.* |
+| “Trace the dividend missing after my custody transfer.” | **CORE + BROWSER + TETHER** would match the security/event and both custody records, prepare an approved inquiry and distinguish actual recovery from an unrelated credit. | [Catalog case 8](https://github.com/newdarwindev/runspindle_for_bloomberg/blob/main/assets/runspindle_bloomberg_workflows.csv), using CACT/DVD, is fictional. *Account access, entitlement, approval and credit verification remain.* |
+
+### Make the infrastructure uphold the same standard
+
+When a developer starts another verification run after a crash, **PLATFORM** checks
+durable capacity state. A damaged database is rejected instead of rebuilding empty
+occupancy tables and falsely reporting free capacity. This [bounded implemented
+scenario](https://github.com/newdarwindev/runspindle-platform/pull/42) protects the
+work above; *deployed-fleet and remaining architecture qualification are separate*.
+
 ## One workflow, seven responsibilities
 
 **TETHER — COMMUNICATION WITH PROVENANCE.** Slack supplies the conversation surface;
