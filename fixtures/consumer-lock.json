@@ -1,0 +1,132 @@
+{
+  "components": {
+    "browser": {
+      "commit": "fc5d047ed10d7cea8f91f25c54ee19ec32d464f5",
+      "files": {
+        "fixtures/shared-v1.pin.json": "e03514344b6318b3f4ca1df05e5f1e3a911d7f3cf1fd512e30b487ad93375fee",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "47998d4b68afd5a501ff0fc412ddb907d7597d2eda319a854f2cf7f7290df03c",
+        "fixtures/shared-v1/manifest.json": "274be4d8c6845bae81d822cf34fe0b19e9f248664a23fec08620a900988bd561",
+        "fixtures/shared-v1/vectors.json": "df85aa84e30e3d530e5bbf49ed7d90c001d264e01b5cfc5a2b9151755fdebea8",
+        "tests/test_shared_fixture_upgrade.py": "be813dd3afd305cd9fd7a3e5214315fc83f109f75ce6fd5272cd29fb5b38fe29",
+        "tests/test_shared_fixtures.py": "97eb5413d93d4baaf606c0b6539179aeebb0857306149c4138718628dbbfa134"
+      },
+      "repository": "newdarwindev/runspindle-browser",
+      "tree": "f095d1823b4dc1c6e8fe507a7495cf41fc3bbb24"
+    },
+    "console": {
+      "commit": "f246390af652094d26d2e1d709cd6fad73123158",
+      "files": {
+        "fixtures/shared-v1.pin.json": "2b1f06bbf11a1c7ae9633c300c9973eb996d71bb8fa70619b3db895e6b463cc9",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "9a42bcbb6950179931c07e3e4768e91859b873834687346ace8f96e32e047728",
+        "fixtures/shared-v1/manifest.json": "5fa997387ad990c1f8314f5549a1d452b2b7fcf1ef3ae811f6f9cd286af30235",
+        "fixtures/shared-v1/vectors.json": "0d60f635ccaa9535c05fc9ca98e9982c618fb86e70c50bdac56f230f3ab3d8ed",
+        "tests/test_shared_fault_fixtures.py": "48f5b2539dcf0913a676cc18377b2ea764259de24677e338448a30b460d3dca7",
+        "tests/test_shared_fixtures.py": "c9ae3c50bd48a3bd082c451cc51ea8f9fcc518cd4ecb5c896996faca68711cb0",
+        "tools/shared_fixtures.py": "191a9e091824372714ac88bc59d2567e17a4f4eafe4d2ad29b1c571a0eead654"
+      },
+      "repository": "newdarwindev/runspindle-console",
+      "tree": "82acf1ffb28c9ba10b8a6a6acf100eabd055d8bf"
+    },
+    "core": {
+      "commit": "a6f89555cea62796fec4e0b64a089da2d10fc329",
+      "files": {
+        "fixtures/shared-v1.origin-manifest.json": "11ba400c1e9a82566496678104200538f7d2f9b3394d73e65b6ad75c83c2d1ed",
+        "fixtures/shared-v1.pin.json": "5a8c5ca9e66c52bf8a592af61ccbb12d8c23994f075dfe80f98208c3ced112c9",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "24f8076021b5181f03b63162c687499e6e4b51ab016474472d52285546d7aa1e",
+        "fixtures/shared-v1/manifest.json": "c3eab06ada9fee6c1f89ed1ff96256c03d85ba7ecf1260bd5b665076d15e2d54",
+        "fixtures/shared-v1/vectors.json": "04baf8efb5b4048d673e2a7d83ca3720a5df6a5f60c44329228bcc3b4d561a94",
+        "tests/test_shared_fault_fixtures.py": "955ce49cfaa88c913a0470ed052f44b739cf76874a33ccb300103f6c44d04bbc",
+        "tests/test_shared_fixtures.py": "2b3fccd7d6b8057966f3a9fbbe91f275d7f4c7dc5e5472d1e04a5295cd1c9ff2",
+        "tools/check_shared_fixtures.py": "601e6787ba32adbf64e884d8856363b29d3f02694315a803e1fb8269d745b9ed"
+      },
+      "repository": "newdarwindev/runspindle-core",
+      "tree": "676f6bee9817b8ab42b0b82be7ef5eed458d06ea"
+    },
+    "host": {
+      "commit": "c7458c392d9b64e25b47366d8ad71f8834f2d6b9",
+      "files": {
+        "fixtures/shared-v1.pin.json": "c12ca0984e2799caff21e6c80c2d567c6e00118dd93a1ab6a552c324169907e3",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "ae89dbd0bbaf42a27d435a321778a0605cb6626f1fb7be2e397ae43d88f1589c",
+        "fixtures/shared-v1/manifest.json": "4dc397a4378c78df40ce72c7ca3a7a6e3ade2b9726a5789778a5186e0e5610b1",
+        "fixtures/shared-v1/vectors.json": "764ef9bb8f5a0ec0493f8f4d49857980da540ecf81a4714be466cc5296e06b03",
+        "tests/test_shared_fixture_upgrade.py": "003d5fa6c120c57cfc45e4dbcc9ce4f4635465839f4d6d3c1b76b4b794e6b3fb",
+        "tests/test_shared_fixtures.py": "b73abaa1a3eb93d04909666018d764adbb8193d29e034be08d56dc071be7ef2b"
+      },
+      "repository": "newdarwindev/runspindle-host",
+      "tree": "48235094bacb8fea14b714a76dfdb9990f93ec4b"
+    },
+    "platform": {
+      "commit": "c12600ff9d62ab95f7420e2801e7a429c2e2c876",
+      "files": {
+        "fixtures/shared-v1.pin.json": "e13946dadd6e985c8e3b5a964d216c2c5ac69f6b4553819261d27843c548a3e9",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "2423a15fd198f9ed32e452e2ac6f04177d5687c65e5cb7b42230c4986a1e40d6",
+        "fixtures/shared-v1/manifest.json": "7ebcd153a0e48de2cb591da3d49eb2c50ef62ba8cf1f8a3c82a5789ad8129b1d",
+        "fixtures/shared-v1/vectors.json": "411863e6484c0dec8a9271afb390629af09f72af2cf289ef0af644539543e351",
+        "tests/test_shared_fault_fixtures.py": "46d9012d0a354190feef19f193b4b2966b591d3da6fe7652761b2103e222220f",
+        "tests/test_shared_fixtures.py": "8e799313f2a7e6c7092bcc7be9e4ec9e789f880bcaa69904ab818a048cd5bf88",
+        "tools/check_shared_fixtures.py": "701128a09ac9ab4ef0951740c5aeb63d8181ce8044e1d72bf3f3cd996ba6d181"
+      },
+      "repository": "newdarwindev/runspindle-platform",
+      "tree": "676fc0d8a5748d0a04b8991ca6bcd424b7bb5ab9"
+    },
+    "refinery": {
+      "commit": "54daf86cd601c681a6727de322dd835fc48e3757",
+      "files": {
+        "fixtures/shared-v1.origin-manifest.json": "11ba400c1e9a82566496678104200538f7d2f9b3394d73e65b6ad75c83c2d1ed",
+        "fixtures/shared-v1.pin.json": "5408344cdb7243a623dce305e43fd04295a3ff4fdc14f1a7cf7315d8833a3d11",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "b71ca2b738c28e93622aa2e88831b59670352e2c15ef262cc7a35a5203470eed",
+        "fixtures/shared-v1/manifest.json": "911742a753d7246ebabd7ac5c75a8608bf33bf50420df96abeea8bef9b20d819",
+        "fixtures/shared-v1/vectors.json": "b40f757791378962eed9ad5645eed28ccb236ada907f476d985a319fb5511db7",
+        "tests/test_shared_fixture_upgrade.py": "4d948b9c434a9e634fd05c1c7dca8bb2014553e38cc6cffefe976a1195929145",
+        "tests/test_shared_fixtures.py": "f9417678affba287e420ff816960e053f9f185db5aef946f12617bfe92a12e7d"
+      },
+      "repository": "newdarwindev/runspindle-refinery",
+      "tree": "f39e65e1d2e3cba75f9bceaf2341c7c626ea790f"
+    },
+    "tether": {
+      "commit": "f21e5c359012ed560645f2a249a70227c7ddb012",
+      "files": {
+        "fixtures/shared-v1.pin.json": "9c924c346608c3361cb158567539b9ec397aefd0ae580518a6cfc643a6291369",
+        "fixtures/shared-v1/artifact.txt": "5d331381d2f6ae517386fdda84eb4f92011915473935b57385c69648cc85bbc8",
+        "fixtures/shared-v1/contract.json": "f707f1d2b7147797042292b6374afd34aecc39c09916ec7a809ae7587ee556a9",
+        "fixtures/shared-v1/faults.json": "21c1ed0e14e37c0904acd4a8fd90649c83ded15180e35e828e9c4d9df710b934",
+        "fixtures/shared-v1/fixturekit.py": "29857e337c30f84e673387a2ac27c7f0fc95bada1d783b346085286251f65279",
+        "fixtures/shared-v1/golden.json": "ed7dfc929cf62ec2df680aee6c1f39ec46807d7b9783859b5bee6decfd58f8df",
+        "fixtures/shared-v1/manifest.json": "0acbf77265b87cac998e8af77a744308bd1eed2e9314612f3189564f12bd97cc",
+        "fixtures/shared-v1/vectors.json": "408cbe352e7cc6042fac7b2c03dcab58b0a0b8c9ea7d8cb022feda8dd49abdea",
+        "tests/test_shared_fixture_upgrade.py": "48a0202d1cf64eda6827aaab4233670709ea9d90c3613d4ee9e0e22b37b08bc0",
+        "tests/test_shared_fixtures.py": "8e799313f2a7e6c7092bcc7be9e4ec9e789f880bcaa69904ab818a048cd5bf88",
+        "tools/check_shared_fixtures.py": "153ffbc9eff768b95804e43b1d851edfe7740f02aad3e5b00ba9e1906d635526"
+      },
+      "repository": "newdarwindev/runspindle-tether",
+      "tree": "dffb7f740935291135ca3d8d39bfe61fc961eeff"
+    }
+  },
+  "origin_manifest_sha256": "11ba400c1e9a82566496678104200538f7d2f9b3394d73e65b6ad75c83c2d1ed",
+  "schema": "runspindle.fixture-consumer-lock.v1",
+  "source_commit": "e283957d80aebc48fb0bd3b6e2a600850ff6dc97"
+}

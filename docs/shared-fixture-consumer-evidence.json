@@ -1,0 +1,269 @@
+{
+  "components": {
+    "browser": {
+      "cleanup": "passed",
+      "commit": "fc5d047ed10d7cea8f91f25c54ee19ec32d464f5",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "f095d1823b4dc1c6e8fe507a7495cf41fc3bbb24"
+    },
+    "console": {
+      "cleanup": "passed",
+      "commit": "f246390af652094d26d2e1d709cd6fad73123158",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "82acf1ffb28c9ba10b8a6a6acf100eabd055d8bf"
+    },
+    "core": {
+      "cleanup": "passed",
+      "commit": "a6f89555cea62796fec4e0b64a089da2d10fc329",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 13
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "676f6bee9817b8ab42b0b82be7ef5eed458d06ea"
+    },
+    "host": {
+      "cleanup": "passed",
+      "commit": "c7458c392d9b64e25b47366d8ad71f8834f2d6b9",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 9
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 9
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "48235094bacb8fea14b714a76dfdb9990f93ec4b"
+    },
+    "platform": {
+      "cleanup": "passed",
+      "commit": "c12600ff9d62ab95f7420e2801e7a429c2e2c876",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 8
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "676fc0d8a5748d0a04b8991ca6bcd424b7bb5ab9"
+    },
+    "refinery": {
+      "cleanup": "passed",
+      "commit": "54daf86cd601c681a6727de322dd835fc48e3757",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 13
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 13
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "f39e65e1d2e3cba75f9bceaf2341c7c626ea790f"
+    },
+    "tether": {
+      "cleanup": "passed",
+      "commit": "f21e5c359012ed560645f2a249a70227c7ddb012",
+      "runs": [
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": false,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 1,
+          "status": "passed",
+          "tests": 8
+        },
+        {
+          "forbidden_network_calls": 0,
+          "optimized": true,
+          "repeat": 2,
+          "status": "passed",
+          "tests": 8
+        }
+      ],
+      "runtime": "not_run",
+      "tree": "dffb7f740935291135ca3d8d39bfe61fc961eeff"
+    }
+  },
+  "evidence_class": "isolated_synthetic_fixture_conformance",
+  "finished_at": "2026-11-17T15:08:31.834564+00:00",
+  "live_acceptance": "not_run",
+  "lock_sha256": "cbaa8d7801af92ba23425df89634da921c5a54a858e58ee8dd7065ff4b5ca7df",
+  "python_version": "3.12.14",
+  "runtime_integration": "not_run",
+  "schema": "runspindle.fixture-consumer-evidence.v1",
+  "seed": 90210,
+  "source_commit": "e283957d80aebc48fb0bd3b6e2a600850ff6dc97",
+  "started_at": "2026-11-17T15:08:07.757616+00:00",
+  "status": "passed",
+  "tool_sha256": "8e040be8ab177681d9d865598c990099d5083abd7f4bbec4753cd9cc962bc191",
+  "upstream_compatibility": "provisional-not-qualified"
+}
