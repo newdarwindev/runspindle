@@ -25,7 +25,7 @@ class FeedbackHeroTests(unittest.TestCase):
                 hero.rows(path, "SELECT 1")
             self.assertFalse(path.exists())
 
-    def test_manifest_retains_existing_composition_bases(self) -> None:
+    def test_historical_manifest_does_not_qualify_new_composition_pins(self) -> None:
         manifest = json.loads(hero.MANIFEST.read_bytes())
         lock = {
             x["component"]: x
@@ -35,9 +35,35 @@ class FeedbackHeroTests(unittest.TestCase):
         }
         self.assertEqual(set(manifest["sources"]), {"tether", "refinery"})
         for name, source in manifest["sources"].items():
-            self.assertEqual(source["base"], lock[name]["commit"])
+            if name == "tether":
+                self.assertEqual(
+                    source["base"], "c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d"
+                )
+                self.assertNotEqual(source["base"], lock[name]["commit"])
+            else:
+                self.assertEqual(source["base"], lock[name]["commit"])
             self.assertEqual(source["commit"], source["base"])
             self.assertTrue(source["files"])
+
+    def test_historical_tether_current_pin_mismatch_rejected_before_import(
+        self,
+    ) -> None:
+        manifest = json.loads(hero.MANIFEST.read_bytes())
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory)
+
+            def fake_git(root: Path, *args: str) -> str:
+                if args[0] == "rev-parse":
+                    return str(manifest["sources"]["tether"]["commit"])
+                return ""
+
+            with (
+                patch.object(hero, "git", fake_git),
+                patch.object(subprocess, "run") as ancestry,
+            ):
+                ancestry.return_value.returncode = 0
+                with self.assertRaises(ValueError):
+                    hero.verify_sources(source, source)
 
     def test_changed_source_bytes_rejected_before_import(self) -> None:
         manifest = json.loads(hero.MANIFEST.read_bytes())

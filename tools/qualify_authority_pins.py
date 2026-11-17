@@ -6,9 +6,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 PINS = {
@@ -30,7 +31,7 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def validate_lock(lock: dict, entries: dict[str, str]) -> None:
+def validate_lock(lock: dict[str, Any], entries: dict[str, str]) -> None:
     components = lock.get("components", [])
     if len(components) != 7 or len({c["component"] for c in components}) != 7:
         raise ValueError("exact seven distinct component pins required")
@@ -45,7 +46,7 @@ def validate_lock(lock: dict, entries: dict[str, str]) -> None:
         raise ValueError("missing qualified component")
 
 
-def snapshot(root: Path) -> dict:
+def snapshot(root: Path) -> dict[str, str]:
     if git(
         root,
         "status",
@@ -164,7 +165,7 @@ def main() -> None:
                 ],
             )
         )
-    summary = {
+    summary: dict[str, Any] = {
         "status": "running",
         "revisions": revisions,
         "checks": [],
