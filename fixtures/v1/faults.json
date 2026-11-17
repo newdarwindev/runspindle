@@ -1,7 +1,33 @@
 {
   "cases": [
     {
+      "expected_calls": [
+        {
+          "attempt": 1,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "send"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "deliver:1",
+          "sequence": 0,
+          "state": "admitted"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "deliver:1",
+          "sequence": 0,
+          "state": "admitted"
+        }
+      ],
       "id": "duplicate",
       "required_observation": "same-task-and-operation",
       "schedule": [
@@ -10,7 +36,24 @@
       ]
     },
     {
+      "expected_calls": [],
       "expected_effect_calls": 0,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 0,
+          "input": "sequence:2",
+          "sequence": 2,
+          "state": "observed"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 0,
+          "input": "sequence:1",
+          "sequence": 2,
+          "state": "observed"
+        }
+      ],
       "id": "reorder",
       "required_observation": "older-observation-cannot-replace-newer",
       "schedule": [
@@ -19,7 +62,40 @@
       ]
     },
     {
+      "expected_calls": [
+        {
+          "attempt": 1,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "send"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "send",
+          "sequence": 0,
+          "state": "sent"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "timeout",
+          "sequence": 0,
+          "state": "unknown"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "readback:absent",
+          "sequence": 0,
+          "state": "unknown"
+        }
+      ],
       "id": "timeout",
       "required_observation": "unknown-no-blind-retry",
       "schedule": [
@@ -29,7 +105,33 @@
       ]
     },
     {
+      "expected_calls": [
+        {
+          "attempt": 1,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "send"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "send",
+          "sequence": 0,
+          "state": "sent"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "partial-receipt",
+          "sequence": 0,
+          "state": "unknown"
+        }
+      ],
       "id": "partial-response",
       "required_observation": "unknown-no-delivered-state",
       "schedule": [
@@ -38,7 +140,33 @@
       ]
     },
     {
+      "expected_calls": [
+        {
+          "attempt": 2,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "send"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 0,
+          "input": "explicit-rejection",
+          "sequence": 0,
+          "state": "rejected"
+        },
+        {
+          "attempt": 2,
+          "effect_calls": 1,
+          "input": "retry-authorized",
+          "sequence": 0,
+          "state": "sent"
+        }
+      ],
       "id": "retry",
       "required_observation": "new-attempt-same-operation",
       "schedule": [
@@ -47,7 +175,40 @@
       ]
     },
     {
+      "expected_calls": [
+        {
+          "attempt": 1,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "commit"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "commit",
+          "sequence": 0,
+          "state": "committed"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "stop",
+          "sequence": 0,
+          "state": "stopped"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "fresh-process-read",
+          "sequence": 0,
+          "state": "blocked"
+        }
+      ],
       "id": "restart",
       "required_observation": "blocked-until-real-durable-adapter",
       "schedule": [
@@ -57,7 +218,40 @@
       ]
     },
     {
+      "expected_calls": [
+        {
+          "attempt": 1,
+          "identity": {
+            "operation_id": "synthetic-operation",
+            "task_id": "synthetic-task"
+          },
+          "operation": "send"
+        }
+      ],
       "expected_effect_calls": 1,
+      "expected_steps": [
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "send",
+          "sequence": 0,
+          "state": "sent"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "lost-ack",
+          "sequence": 0,
+          "state": "unknown"
+        },
+        {
+          "attempt": 1,
+          "effect_calls": 1,
+          "input": "readback:inconclusive",
+          "sequence": 0,
+          "state": "unknown"
+        }
+      ],
       "id": "uncertain-effect",
       "required_observation": "unknown-no-resubmit",
       "schedule": [
