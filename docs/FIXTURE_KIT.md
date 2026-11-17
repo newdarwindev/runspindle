@@ -1,18 +1,20 @@
 # Provisional synthetic fixture contract
 
-This implements a bounded part of [issue #1](https://github.com/newdarwindev/runspindle/issues/1).
+This implements the synthetic fixture scope of [issue #1](https://github.com/newdarwindev/runspindle/issues/1).
 `fixtures/v1` is an original synthetic test bundle, **not an agreed runtime wire
 protocol**, an authentication interface, or evidence of upstream compatibility.
-No operational acceptance gate or CI workflow is changed.
+No operational acceptance gate or CI workflow is changed. Current exact sources,
+prerequisites, commands and evidence are in
+[shared-fixture-acceptance.md](shared-fixture-acceptance.md).
 
-## Local invocation and evidence
+## Historical initial invocation and evidence
 
-Prerequisite: Python 3.9 or newer; no package installation, service or sibling
+Initial prerequisite: Python 3.9 or newer; no package installation, service or sibling
 checkout is required. From the composition source directory:
 
 ```sh
 python3 fixtures/v1/fixturekit.py
-python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests -p 'test_fixture*.py' -v
 python3 tools/check_scaffold.py
 ```
 
@@ -147,16 +149,16 @@ cleans a disposable directory on normal or exceptional exit; it does not promise
 persistence or crash recovery. Every future real adapter test must specify its
 resource deadline, fault points, real/fake matrix and cleanup owner independently.
 
-## Remaining issue #1 work
+## Fixture completion and separate runtime gates
 
-Seven component consumer pin PRs have merged and their exact source revisions are
-bound by composition.lock.json. Actual runtime producer/consumer parity and
-cross-language validators remain open. Runtime adapter mappings cannot be agreed
-or qualified from these fixtures alone. Stateful scenario implementations, real store concurrency and
-restart, upstream pins and bounded integration belong to subsequent component
-and composition work. This change therefore references #1 without closing it.
-It does not complete source migration, authorize legacy archival or establish
-live acceptance.
+The final seven-consumer fixture lock, isolated execution evidence and criterion
+mapping are in [shared-fixture-acceptance.md](shared-fixture-acceptance.md).
+`fixtures/consumer-lock.json` records the fixture-only revisions; it does not move
+`composition.lock.json` runtime pins. Runtime producer/consumer mappings,
+cross-language validators, real store concurrency/restart and upstream/live
+qualification remain separate component and composition gates, not claims made
+by this reusable fixture prerequisite. No source migration, legacy archival or
+live acceptance is implied.
 
 
 ## Typed independent-oracle identities
@@ -174,9 +176,9 @@ contexts and two guard-removal mutations that reproduce false passes. Run it and
 the existing fixture tests with `python3 -m unittest discover -s tests -p
 "test_fixture*.py" -v`, also under `python3 -O`.
 
-The root bundle manifest is regenerated for these validator bytes. Existing
-component-vendored subsets and composition pins remain unchanged historical
-versions; no consumer upgrade or runtime/cross-language qualification is implied.
+The root bundle manifest is regenerated for these validator bytes. At that source-only stage, component subsets and composition pins remained
+historical. The subsequent reviewed fixture upgrades are recorded in the final
+consumer lock; runtime/cross-language qualification is still not implied.
 
 ## Completion contract and reviewed upgrades
 
@@ -206,7 +208,6 @@ python3 -B -m unittest discover -s tests -p 'test_fixture*.py'
 python3 -O -B -m unittest discover -s tests -p 'test_fixture*.py'
 ```
 
-The source bundle is published before consumer upgrades, so each of the seven pins
-can name an existing exact source commit. Full issue #1 closure still requires a
-verified all-consumer matrix and independent criterion review; this source-only
-change does not close it or assert runtime conformance.
+The source bundle was published before the seven consumer upgrades. The final
+acceptance document and matrix now bind those exact merged revisions. This
+fixture-only evidence does not assert runtime conformance.
