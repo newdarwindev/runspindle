@@ -131,5 +131,20 @@
     "browser_runtime_integration": "not_run",
     "live_acceptance": "not_run",
     "status": "draft_candidate_not_release_qualification"
+  },
+  "authority_composition_slice": {
+    "status": "passed_exact_pin_isolated_qualification_pending_final_review",
+    "evidence": "docs/authority-composition-qualification.json",
+    "specification": "docs/AUTHORITY_COMPOSITION.md",
+    "source": "317d175fec0693e1b36ae5aa2848332e6be8340a",
+    "changed_components": [
+      "core",
+      "tether",
+      "platform"
+    ],
+    "H10": "blocked_Refinery_requires_prior_Tether",
+    "static_gate": "failed_identical_inherited_findings",
+    "full_system": "not_inferred",
+    "live_acceptance": "not_run"
   }
 }
