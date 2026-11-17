@@ -177,3 +177,36 @@ the existing fixture tests with `python3 -m unittest discover -s tests -p
 The root bundle manifest is regenerated for these validator bytes. Existing
 component-vendored subsets and composition pins remain unchanged historical
 versions; no consumer upgrade or runtime/cross-language qualification is implied.
+
+## Completion contract and reviewed upgrades
+
+Standalone exports now also contain `faults.json`. Its expected per-step states,
+call counts, attempts, sequences and call order are independent of the tiny model
+used in `tests/test_fixture_completion.py`. `assert_fault_trace` rejects altered
+identity, duplicate effects, reversed nonidentical observations, sequence regression
+and unauthorized retry. Restart remains explicitly **blocked until a real durable
+adapter**: these traces qualify shared test oracles, not product recovery.
+
+`python3 tools/fixture_compatibility.py OLD_BUNDLE NEW_BUNDLE` produces a deterministic
+file and manifest-metadata diff without executing either validator. Any changed
+byte, component mapping or provenance pin requires review. Digest, inventory and
+path failures reject rather than produce a compatible result. This report is not
+auto-approval: separately execute golden/negative vectors in both trusted pinned
+versions and document changed decisions before updating a consumer pin.
+
+The completion tests verify cleanup on normal exit, exceptions, cancelled partial
+exports and graceful SIGTERM in a bounded fresh process. The child temporary store
+is under a parent-owned disposable root, including forced-failure cleanup. SIGKILL
+and power-loss durability are not promised by this synthetic temporary-store helper.
+
+Root fixture-only invocation (no sibling checkout or network):
+
+```sh
+python3 -B -m unittest discover -s tests -p 'test_fixture*.py'
+python3 -O -B -m unittest discover -s tests -p 'test_fixture*.py'
+```
+
+The source bundle is published before consumer upgrades, so each of the seven pins
+can name an existing exact source commit. Full issue #1 closure still requires a
+verified all-consumer matrix and independent criterion review; this source-only
+change does not close it or assert runtime conformance.

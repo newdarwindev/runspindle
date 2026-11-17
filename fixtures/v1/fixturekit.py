@@ -217,7 +217,7 @@ def export_bundle(component: str, destination: str | Path) -> dict[str, Any]:
     destination = Path(destination)
     destination.mkdir(parents=False, exist_ok=False)
     try:
-        for name in ["fixturekit.py", "contract.json", "artifact.txt"]:
+        for name in ["fixturekit.py", "contract.json", "artifact.txt", "faults.json"]:
             shutil.copyfile(root / name, destination / name)
         fixtures = [
             x
@@ -254,6 +254,66 @@ def export_bundle(component: str, destination: str | Path) -> dict[str, Any]:
         shutil.rmtree(destination)
         raise
     return result
+
+
+def assert_fault_trace(case_id: str, trace: Any) -> bool:
+    """Check independent synthetic observations, never claim durable recovery."""
+    cases = load_json(Path(__file__).with_name("faults.json"))["cases"]
+    case = next((row for row in cases if row["id"] == case_id), None)
+    if case is None:
+        reject("unknown-fault")
+    _keys(
+        trace,
+        [
+            "case",
+            "classification",
+            "effect_calls",
+            "observation",
+            "identity",
+            "steps",
+            "calls",
+        ],
+    )
+    if (
+        trace["case"] != case_id
+        or trace["classification"] != "model_schedule_not_runtime_recovery"
+    ):
+        reject("fault-scope")
+    _field(trace["effect_calls"], "counter")
+    _keys(trace["identity"], ["task_id", "operation_id"])
+    for value in trace["identity"].values():
+        _field(value, "id")
+    if type(trace["steps"]) is not list or type(trace["calls"]) is not list:
+        reject("fault-trace")
+    for step in trace["steps"]:
+        _keys(step, ["input", "state", "effect_calls", "attempt", "sequence"])
+        for name in ("effect_calls", "sequence"):
+            _field(step[name], "counter")
+        _field(step["attempt"], "positive")
+    for call in trace["calls"]:
+        _keys(call, ["operation", "attempt", "identity"])
+        _keys(call["identity"], ["task_id", "operation_id"])
+        for value in call["identity"].values():
+            _field(value, "id")
+        _field(call["attempt"], "positive")
+    if (
+        trace["steps"] != case["expected_steps"]
+        or trace["calls"] != case["expected_calls"]
+    ):
+        reject("fault-transition-or-call-order")
+    if len(trace["calls"]) != trace["effect_calls"]:
+        reject("fault-call-count")
+    if trace["identity"] != {
+        "task_id": "synthetic-task",
+        "operation_id": "synthetic-operation",
+    }:
+        reject("fault-identity")
+    if (
+        trace["effect_calls"] != case["expected_effect_calls"]
+        or trace["observation"] != case["required_observation"]
+    ):
+        reject("fault-outcome")
+    return True
 
 
 class Spy:
