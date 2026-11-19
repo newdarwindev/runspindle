@@ -18,7 +18,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-MANIFEST = ROOT / "scenarios/feedback-collection-v1.json"
+MANIFEST = ROOT / "scenarios/feedback-collection-current-v1.json"
 
 
 def require(value: object) -> None:

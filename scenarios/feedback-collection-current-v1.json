@@ -1,0 +1,51 @@
+{
+  "version": "runspindle.feedback-hero.v1",
+  "lane": "H10.retained_feedback_collection",
+  "composition_base": "a622177553f54a71d09454fe05fcc122049a6cb8",
+  "sources": {
+    "tether": {
+      "base": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+      "commit": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+      "merged_ancestry": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+      "files": {
+        "tether/__init__.py": "8c7f563517f58350d1bd45b95b8ea03f5cadbdd98df399c9f9b17b176075d11e",
+        "tether/admission.py": "1b2f2e778bd23e5f956ff8e0e69d46a00d5ea42454a09d3930537d11568373ca",
+        "tether/feedback.py": "e3843265dbe6ca97a22890ca5bd9af0feceefb7200cfa6a7cc6d9c2413132ace",
+        "tether/journal.py": "9b7d2ce2737d7a3005788f3a2a97df305f57e11c2a928336b046348631b18420",
+        "tether/native_testing.py": "d92efe289d54fe66c5157ccb2d2ea2fd3bf15a2470e8ff35ffe154a1f07ca755",
+        "tether/sanitization.py": "7c0b5e6fae5eb0e00e43667a447213d8268007588cd42d5fb56e6449a2eb064d",
+        "tether/schema.py": "ebd7544018096f02394c637d70dd1570baab66ea844232a1963c8318d0a3d3a1",
+        "tether/slack_feedback.py": "7de0d511211c7c87e4a9a25a4ce55c8549112c51963507f4e33c22b6e00abc9f",
+        "tether/slack_ingress.py": "2eb2d4eca46ab6dd6263ad35658c9a3206f268ed29f3960e7997154ea00a9ed8",
+        "tether/slack_wire.py": "0de192e858962cce3110d28682fe03329649d5341fcad06e6d75cac0797515b8",
+        "tether/testing.py": "2b84de229c6aff62ec48b52c6decb8dd369e20bade2b0b3d16003ed14ff046c9",
+        "tether/feedback_schema.py": "d26f76629f4b0cd1e2bcabc589cb215817f209f1279b563b091aa86472e7f03f",
+        "tether/source_observation.py": "8b96b00233057e37b378cf27a6977c9345bf25c20c994321bd562e44369e6421"
+      }
+    },
+    "refinery": {
+      "base": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+      "commit": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+      "merged_ancestry": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+      "files": {
+        "dependencies/tether-feedback.json": "7b3fde62dda082970ceba5480409f47aff0163b66c98592709679464fd8d4f74",
+        "refinery/__init__.py": "2a372055baae947e8aaca1df614eefd95755a18654d9db8ca93b73fb86008c61",
+        "refinery/dspy_local.py": "64dfca3fb0419641fa88ee60b87c3f545c3e7d70492f4f5d758e59db1353cb06",
+        "refinery/durable_evaluation.py": "8b43113f498011647d0aa16f8173f0f36fecb26fd5af2ae7b64cef6da23fb2c5",
+        "refinery/durable_optimization.py": "79129f220bc5ca6d4c400852f98d226d9c4df982cb9eca1644f0b90f88dcfe4e",
+        "refinery/evaluation.py": "894ddd568de03c779b8f24b0d7a34f14c453c95d40b5d7c2b3b91cf66f088896",
+        "refinery/feedback_collection.py": "42dc1c220c3f98f0bc1630c93c957630ae4f37981f7185b6526a1ec85dde8e1e",
+        "refinery/lineage.py": "c39be0332eeb11c2f232f051629f00cd92e1fc704c9820ed264a348194502749",
+        "refinery/optimization.py": "221fb8a547e7670ebda598811e96197b79e6567b6d31e841701edffd8466eba2",
+        "refinery/schema.py": "e7f4dff84a79c9af4995f1f5dd0a54238baf618490d414e4cf0cfbddee23d138",
+        "refinery/serving.py": "c94110587390a5dc6dad9bbb89ae271bb2f652c8280ee98b451a69e012d279c2",
+        "refinery/storage.py": "13c62d821fb4e0b3d1beb706b93346fd50440f357ddc7df16a03e3e28e0e491e",
+        "refinery/tether_dependency.py": "4580fe40f02be673c58a88ebb155c1c0fb3d01e1561ec5fbd150c8a6265589bc",
+        "refinery/dspy_optimizer.py": "243c12b888c4111c497642dbc190fb5e2fe5af2abc2167ea6c907d2d2ca6b1e6",
+        "refinery/feedback_use.py": "2a8e3ed67d9a40e094f057a63f7790731a60e01177f18fa6b366a261c335b8ae",
+        "refinery/heldout_policy.py": "5dfafcbff850d21812c1c73099e5e9b80d5fdb4a04488ec25a4c3323fc0d7dd1",
+        "refinery/source_feedback.py": "f9ff4938d32bae14b42e892064568d7090fdd02fcbc8b0db0ede7248bf181f5f"
+      }
+    }
+  }
+}

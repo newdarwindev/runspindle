@@ -26,7 +26,8 @@ class FeedbackHeroTests(unittest.TestCase):
             self.assertFalse(path.exists())
 
     def test_historical_manifest_does_not_qualify_new_composition_pins(self) -> None:
-        manifest = json.loads(hero.MANIFEST.read_bytes())
+        historical = hero.ROOT / "scenarios/feedback-collection-v1.json"
+        manifest = json.loads(historical.read_bytes())
         lock = {
             x["component"]: x
             for x in json.loads((hero.ROOT / "composition.lock.json").read_bytes())[
@@ -35,20 +36,15 @@ class FeedbackHeroTests(unittest.TestCase):
         }
         self.assertEqual(set(manifest["sources"]), {"tether", "refinery"})
         for name, source in manifest["sources"].items():
-            if name == "tether":
-                self.assertEqual(
-                    source["base"], "c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d"
-                )
-                self.assertNotEqual(source["base"], lock[name]["commit"])
-            else:
-                self.assertEqual(source["base"], lock[name]["commit"])
+            self.assertNotEqual(source["base"], lock[name]["commit"])
             self.assertEqual(source["commit"], source["base"])
             self.assertTrue(source["files"])
 
     def test_historical_tether_current_pin_mismatch_rejected_before_import(
         self,
     ) -> None:
-        manifest = json.loads(hero.MANIFEST.read_bytes())
+        historical = hero.ROOT / "scenarios/feedback-collection-v1.json"
+        manifest = json.loads(historical.read_bytes())
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory)
 
@@ -58,6 +54,7 @@ class FeedbackHeroTests(unittest.TestCase):
                 return ""
 
             with (
+                patch.object(hero, "MANIFEST", historical),
                 patch.object(hero, "git", fake_git),
                 patch.object(subprocess, "run") as ancestry,
             ):
@@ -128,7 +125,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
+                    hero.git(source, "rev-parse", "HEAD"),
                 ],
                 check=True,
                 capture_output=True,
@@ -198,7 +195,7 @@ class FeedbackHeroTests(unittest.TestCase):
                     str(checkout),
                     "checkout",
                     "--detach",
-                    "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
+                    hero.git(source, "rev-parse", "HEAD"),
                 ],
                 check=True,
                 capture_output=True,

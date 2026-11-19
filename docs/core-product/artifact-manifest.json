@@ -8,9 +8,9 @@
   "provenance_record_sha256": "9d4c94c5de665a260f025e75655b8749feb39b97a99d5984832b9f901d794b52",
   "file_sha256": {
     "docs/core-product/README.md": "dbc36ffb62cec68e6e78ad8482b3ec2270a176b111550422529337e2bbbec8de",
-    "docs/core-product/coverage.json": "605ae94f6dd6f3b696728bd1f38bf99e31955db745d50c30d4d0908b1a1a4f91",
+    "docs/core-product/coverage.json": "703b4a19c6c8a4ef3d03c58730ac343d17ad9411741bffb5095fed4f954cb416",
     "docs/core-product/original-artifact-manifest.json": "d675375dab798224acc8bad4b39557c1300cd0c3fe2e9f3671b4a54618d6feba",
-    "hygiene.json": "bc5441670599b951bdc1ba5848c93c9c45b3f3c6a3acb6cd6e70016603f22892",
+    "hygiene.json": "3fbffa45b5c323018424ee17e95f02b96195bc3a5571001be9bb2df63e9e1c11",
     "requirements-quality.txt": "9cbe1331549216b953f2922f1e8321357ca82bb985e1ea595c87fcee8a8fdc84",
     "specs/system.md": "e9c06bf50d9a35ef22b2a689d5974668601a12913d406cf5658a2089b336447b",
     "tests/test_core_product.py": "eba634f1ba7f1143a6070f135cb734054992a9f4be65081a4dbbc881a1565f00",
