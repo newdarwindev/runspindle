@@ -14,7 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 PINS = {
     "core": "18b5d65392b176e1ab6c4b65ac27e941f530956c",
-    "tether": "5e5fdb73422926d015657166e9ef60b293c01e50",
+    "tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
     "platform": "398c74766b9ec9f7203256e17dea34f1b15cac4c",
 }
 FIXTURES = {
