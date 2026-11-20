@@ -11,8 +11,10 @@ import signal
 import subprocess
 import sys
 import tempfile
+from types import FrameType
+from typing import Any
 
-from runtime_integration_scenario import ROOT, Blocked, git, inventory, sha
+from tools.runtime_integration_scenario import ROOT, Blocked, git, inventory, sha
 
 CASES = (
     "actual_tether_concurrent_same_resolution_retains_one_decision",
@@ -34,10 +36,10 @@ CORE_INPUTS = (
 )
 
 
-def source_inventory(root, core):
+def source_inventory(root: pathlib.Path, core: pathlib.Path) -> dict[str, Any]:
     if git(root, "status", "--porcelain", "--untracked-files=all"):
         raise Blocked("composition checkout must match its committed tree")
-    sources = inventory(root)
+    sources: dict[str, Any] = inventory(root)
     manifest = json.loads((root / MANIFEST).read_bytes())
     candidate = manifest["core_candidate"]
     tether = sources["components"]["tether"]
@@ -65,6 +67,8 @@ def source_inventory(root, core):
         MANIFEST: root / MANIFEST,
         "composition.lock.json": root / "composition.lock.json",
         "tools/tether_delivery_scenario.py": root / "tools/tether_delivery_scenario.py",
+        "tools/runtime_integration_scenario.py": root
+        / "tools/runtime_integration_scenario.py",
         "tether/tests/test_slack_upload.py": tether_path / "tests/test_slack_upload.py",
         **{f"core_candidate/{name}": core / name for name in CORE_INPUTS},
     }
@@ -77,7 +81,9 @@ def source_inventory(root, core):
     return sources
 
 
-def command(args, cwd, env, timeout, step):
+def command(
+    args: list[str], cwd: pathlib.Path, env: dict[str, str], timeout: float, step: str
+) -> str:
     with subprocess.Popen(
         args,
         cwd=cwd,
@@ -106,7 +112,7 @@ def command(args, cwd, env, timeout, step):
     return output.decode("utf-8")
 
 
-def observations(rust_output, python_output):
+def observations(rust_output: str, python_output: str) -> dict[str, list[str] | str]:
     actual = re.findall(r"^test (actual_tether_\w+) \.\.\. ok$", rust_output, re.M)
     cases = sorted(actual)
     if cases != list(CASES):
@@ -116,7 +122,12 @@ def observations(rust_output, python_output):
     return {"durable_cases": cases, "expected_binding_mutations": MUTATION_CASE}
 
 
-def qualify(root, core, protoc, protoc_include):
+def qualify(
+    root: pathlib.Path,
+    core: pathlib.Path,
+    protoc: pathlib.Path,
+    protoc_include: pathlib.Path,
+) -> dict[str, Any]:
     sources = source_inventory(root, core)
     tether = root / sources["components"]["tether"]["path"]
     protoc = protoc.resolve(strict=True)
@@ -222,7 +233,7 @@ def qualify(root, core, protoc, protoc_include):
     }
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--core-source", type=pathlib.Path, required=True)
     parser.add_argument("--protoc", type=pathlib.Path, required=True)
@@ -234,14 +245,19 @@ def main():
     if report_path.is_relative_to(ROOT) or report_path.is_relative_to(core):
         parser.error("write the report outside both source checkouts")
 
-    def cancelled(_signal, _frame):
+    def cancelled(_signal: int, _frame: FrameType | None) -> None:
         raise KeyboardInterrupt
 
     signal.signal(signal.SIGTERM, cancelled)
     try:
         report = qualify(ROOT, core, args.protoc, args.protoc_include)
-    except (Blocked, FileNotFoundError) as error:
+    except Blocked as error:
         report = {"lane_status": "blocked", "reason": str(error)}
+    except FileNotFoundError:
+        report = {
+            "lane_status": "blocked",
+            "reason": "required local input unavailable",
+        }
     except subprocess.TimeoutExpired:
         report = {
             "lane_status": "unknown",
