@@ -17,17 +17,17 @@
     "SRC-003-004-disposition.json": "442d792ee20b93b990c0e3ecf808ebb26c71dca771ec9122c5222c6ca040b03f",
     "argument.tex": "969ef99adb7d0778933f3ff75c4e56ebc118a250b570deff1a855cc3d1120535",
     "fleet.tex": "bf8605782be64ccc629a09240ceba9b4631cb897922dade7f3a63653474f56d4",
-    "presentations/argument/comparison.tex": "05bd4162714b66b70b5107d728c97eb394c5b1d22ae490a3b2713e4f0c5a3961",
+    "presentations/argument/comparison.tex": "c48ec4c802026ddbbb07ff7f74fc97a7ee083f9012a17554c6361caa40549a26",
     "presentations/argument/evidence.tex": "73a27dfa6f5169b25f8b4b4a7b64ce71e5e0d22edd309872e5e7bd58365c11e3",
-    "presentations/argument/mechanism.tex": "0c55bafbab3c319dd2c3d6820d406188c68e6fbab99390c344d2c2d9e7a0cc44",
-    "presentations/fleet/comparison.tex": "2d876c9f4efc2b3fbdacc8579e4abde9a14323000ab6f9595e61c1305621baea",
+    "presentations/argument/mechanism.tex": "1c0b24a765d89c2c3ee7055bce9bb02683a9c4e1c553be06b1997675f451629a",
+    "presentations/fleet/comparison.tex": "7e48f7b33a56654bd39abada8cd7b3058aa10299b123ec04b7defb5119d2541a",
     "presentations/fleet/evidence.tex": "afb7aa24d3e03ae80d6a2dd263f44dc56493ed0eea31f3de75e8b3b86238644e",
-    "presentations/fleet/mechanism.tex": "ba23e4cfbcf77da25c4617be184b3ee3e406b892ca652ddac980cdb76652363f",
-    "presentations/shared/accepted-work.tex": "8847263358d0ec3d93df073a5309bb93fd5a1fc9f161081d773c8129721da566",
-    "presentations/shared/diagnosis.tex": "7a0edd9b900c980ec3c648a8f6eb83b71dbc6af348e93e3b0f5d5c2bbdf7fa08",
-    "presentations/shared/durability.tex": "07a31590d8885f8ff8f327d76737082867aa85491c3e0d6513301cf5d2881b8d",
-    "presentations/shared/economics.tex": "e5cd55b9247bc086823c2091a9b913380ae79b4afbd622a9cd865de22df8fc62",
-    "presentations/shared/effort.tex": "f945d41497706b48ade769eaa3c58750411ca07776d27c24e1b4fc35c2a4ec90",
+    "presentations/fleet/mechanism.tex": "deace7a1bc19b00e799cb37d1b2882163e7fe609932a852ca257feab0bab6773",
+    "presentations/shared/accepted-work.tex": "6b75fae00498391c63764d8dadcd0ac84b74e78ae056d8c5ea7148da05d9937f",
+    "presentations/shared/diagnosis.tex": "bb9a11921e348b869c8d9719400940ed24d267d671f1423d647a84b786ab0b9d",
+    "presentations/shared/durability.tex": "b76147f020f279cf1b7ab8351162fb794cf723113d47f3d11c196e304cc364bf",
+    "presentations/shared/economics.tex": "567af553057fa354af09c4a52982377696234675ab1283c2ce1886268b0ca2f4",
+    "presentations/shared/effort.tex": "c80bd53de5d8d2f949ced8ea84921191742d63b7700c208480485723554eb5f1",
     "presentations/shared/market.tex": "b9c10cd4482f5e6822b6d4d06ededfb6d3351ba74c7293991984efa2cee597f5",
     "presentations/shared/references.tex": "4da9a858f8aa98e427225ce845cd1dda4a2a9128385191ce6c51f2359e6ee20f",
     "presentations/style.tex": "bec877d14a7f114e6b476dd0497ca4793f2bb5b22a25ec2f3a5165e28a36ef62"
@@ -117,5 +117,10 @@
     "SRC-003": 10,
     "SRC-004": 10
   },
-  "original_source_scope": "28 retained bundle files, 20 original slide instances and all variant fragments accounted for."
+  "original_source_scope": "28 retained bundle files, 20 original slide instances and all variant fragments accounted for.",
+  "visual_layout_revision": {
+    "base_receipt_commit": "1880adfa713a6eeacbc4887722a5f11d9bea263b",
+    "scope": "End the paragraph after each affected tabular block before adding spacing.",
+    "build_evidence": "visual-review"
+  }
 }
