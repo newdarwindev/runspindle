@@ -181,26 +181,34 @@ def observe_host(directory, context):
     ]
     selected = [action for action, b in calls if b == binding]
     check(selected.count("launch") == 1, "duplicate/missing host dispatch")
-    sessions = [
-        json.loads(row[0])
-        for row in records(
-            directory, "native-peer.sqlite", "SELECT observation FROM sessions"
+    check(
+        all(action in {"launch", "discover", "cancel"} for action, _ in calls),
+        "unexpected native peer action",
+    )
+    sessions = {
+        operation: json.loads(observation)
+        for operation, observation in records(
+            directory,
+            "native-peer.sqlite",
+            "SELECT operation,observation FROM sessions",
         )
-    ]
-    receipts = [o for o in sessions if o["binding"] == binding]
+    }
     if context["before"]:
         check(
             all(b == binding for _, b in calls) and not sessions,
             "unexpected effect at before-dispatch boundary",
         )
         check(
-            not receipts
-            and snapshot["execution"] == "Unknown"
-            and snapshot["native_session_id"] is None,
+            snapshot["execution"] == "Unknown"
+            and snapshot["native_session_id"] is None
+            and snapshot["last_sequence"] == 0
+            and snapshot["observed_at_ms"] is None,
             "before-effect uncertainty fabricated native success",
         )
         check(
-            selected.count("cancel") == 0 and "discover" in selected,
+            selected[0] == "launch"
+            and "discover" in selected
+            and "cancel" not in selected,
             "before-effect intent retried or not reconciled",
         )
         return {
@@ -209,10 +217,10 @@ def observe_host(directory, context):
             "native_receipts": 0,
             "state": "unknown",
         }
-    check(len(receipts) == 1, "ambiguous native receipts")
-    receipt = receipts[0]
+    receipt = sessions.get(binding["operation_id"], {})
     check(
-        receipt.get("terminal") == "Completed"
+        receipt.get("binding") == binding
+        and receipt.get("terminal") == "Completed"
         and receipt.get("observed_at_ms") == snapshot.get("observed_at_ms"),
         "native outcome/time not observed from peer",
     )
@@ -229,6 +237,7 @@ def observe_host(directory, context):
     )
     check(
         selected.count("cancel") == 1
+        and "discover" in selected
         and selected.index("launch")
         < selected.index("discover")
         < selected.index("cancel"),
@@ -241,17 +250,22 @@ def observe_host(directory, context):
         all(b in (binding, race_binding) for _, b in calls),
         "unexpected host target/effect",
     )
-    race_receipts = [o for o in sessions if o["binding"] == race_binding]
+    race_receipt = sessions.get(race_binding["operation_id"], {})
     check(
         len(sessions) == 2
-        and len(race_receipts) == 1
-        and race_receipts[0].get("terminal") == "Completed"
-        and race_receipts[0]["native_session_id"] == native["native_session_id"],
-        "race outcome/session lacks independent receipt",
+        and race_receipt.get("binding") == race_binding
+        and race_receipt.get("terminal") == "Completed"
+        and race_receipt["native_session_id"] == native["native_session_id"]
+        and race_receipt["sequence"] == native["last_sequence"]
+        and race_receipt["sequence"] >= 2
+        and race_receipt["observed_at_ms"] == native["observed_at_ms"],
+        "race outcome/session lacks matching independent receipt",
     )
     race_calls = [action for action, b in calls if b == race_binding]
     check(
-        race_calls.count("launch") == 1 and "discover" in race_calls,
+        race_calls.count("launch") == 1
+        and race_calls[0] == "launch"
+        and "discover" in race_calls,
         "race operation did not reconcile exactly one dispatch",
     )
     held = json.loads(
@@ -264,25 +278,32 @@ def observe_host(directory, context):
             directory / ("reconcile-returned-" + race_binding["operation_id"] + ".json")
         ).read_text()
     )
+    released = json.loads(
+        (
+            directory / ("reconcile-release-" + race_binding["operation_id"] + ".json")
+        ).read_text()
+    )
     check(
-        held == returned
+        held == returned == native
+        and released == race_binding
         and native["binding"] == race_binding
-        and held["execution"] == {"Terminal": "Completed"}
-        and held["cancellation"] == "None",
+        and native["execution"] == {"Terminal": "Completed"}
+        and native["cancellation"] == "None"
+        and native["cancel_dispatched"] is False,
         "terminal barrier fabricated host observation",
     )
     check(
-        race["core"]["native_session_id"] == native["native_session_id"]
-        and race["core"]["cancellation"] == "ObservedTerminal"
-        and race["core"]["execution"] == native["execution"],
+        race["core"] == dict(native, cancellation="ObservedTerminal"),
         "core lost accepted cancellation or changed native outcome",
     )
     check(
-        max(race["completed_events"]) > max(race["accepted_events"]),
+        race["accepted_events"]
+        and race["completed_events"]
+        and max(race["completed_events"]) > max(race["accepted_events"]),
         "terminal reply was not after cancel acceptance",
     )
     check(
-        not any(action == "cancel" and b == race_binding for action, b in calls),
+        "cancel" not in race_calls,
         "late cancellation effect after observed completion",
     )
     return {
@@ -292,6 +313,7 @@ def observe_host(directory, context):
         "native_receipts": 1,
         "identity_preserved": True,
         "cancel_completion_race": "preserved",
+        "race_peer_receipt_and_host_barrier_match": True,
     }
 
 
