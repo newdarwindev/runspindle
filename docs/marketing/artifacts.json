@@ -866,7 +866,7 @@
       "implementation_evidence": false,
       "kind": "source_preparation_support",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "96670b37eb11d6124e373950bb39fdbe5339182e6b9034dbc7f51cab1c324e5a"
+      "sha256": "43add70b2ac5a2982879baaa0b5321fe8b06010038bbe6e86ea0786419508c05"
     },
     {
       "path": "docs/marketing/presentation_source.py",
@@ -890,7 +890,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "05bd4162714b66b70b5107d728c97eb394c5b1d22ae490a3b2713e4f0c5a3961"
+      "sha256": "c48ec4c802026ddbbb07ff7f74fc97a7ee083f9012a17554c6361caa40549a26"
     },
     {
       "path": "docs/marketing/presentations/argument/evidence.tex",
@@ -914,7 +914,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "0c55bafbab3c319dd2c3d6820d406188c68e6fbab99390c344d2c2d9e7a0cc44"
+      "sha256": "1c0b24a765d89c2c3ee7055bce9bb02683a9c4e1c553be06b1997675f451629a"
     },
     {
       "path": "docs/marketing/presentations/fleet/comparison.tex",
@@ -926,7 +926,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "2d876c9f4efc2b3fbdacc8579e4abde9a14323000ab6f9595e61c1305621baea"
+      "sha256": "7e48f7b33a56654bd39abada8cd7b3058aa10299b123ec04b7defb5119d2541a"
     },
     {
       "path": "docs/marketing/presentations/fleet/evidence.tex",
@@ -950,7 +950,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "ba23e4cfbcf77da25c4617be184b3ee3e406b892ca652ddac980cdb76652363f"
+      "sha256": "deace7a1bc19b00e799cb37d1b2882163e7fe609932a852ca257feab0bab6773"
     },
     {
       "path": "docs/marketing/presentations/legacy/argument-reportlab.tex",
@@ -986,7 +986,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "8847263358d0ec3d93df073a5309bb93fd5a1fc9f161081d773c8129721da566"
+      "sha256": "6b75fae00498391c63764d8dadcd0ac84b74e78ae056d8c5ea7148da05d9937f"
     },
     {
       "path": "docs/marketing/presentations/shared/diagnosis.tex",
@@ -998,7 +998,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "7a0edd9b900c980ec3c648a8f6eb83b71dbc6af348e93e3b0f5d5c2bbdf7fa08"
+      "sha256": "bb9a11921e348b869c8d9719400940ed24d267d671f1423d647a84b786ab0b9d"
     },
     {
       "path": "docs/marketing/presentations/shared/durability.tex",
@@ -1010,7 +1010,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "07a31590d8885f8ff8f327d76737082867aa85491c3e0d6513301cf5d2881b8d"
+      "sha256": "b76147f020f279cf1b7ab8351162fb794cf723113d47f3d11c196e304cc364bf"
     },
     {
       "path": "docs/marketing/presentations/shared/economics.tex",
@@ -1022,7 +1022,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "e5cd55b9247bc086823c2091a9b913380ae79b4afbd622a9cd865de22df8fc62"
+      "sha256": "567af553057fa354af09c4a52982377696234675ab1283c2ce1886268b0ca2f4"
     },
     {
       "path": "docs/marketing/presentations/shared/effort.tex",
@@ -1034,7 +1034,7 @@
       "implementation_evidence": false,
       "kind": "uncompiled_original_editable_tex",
       "source_relationship": "Original concept adaptation/source validation or preserved prior evidence; no native compile or live acceptance",
-      "sha256": "f945d41497706b48ade769eaa3c58750411ca07776d27c24e1b4fc35c2a4ec90"
+      "sha256": "c80bd53de5d8d2f949ced8ea84921191742d63b7700c208480485723554eb5f1"
     },
     {
       "path": "docs/marketing/presentations/shared/market.tex",
