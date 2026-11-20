@@ -1,0 +1,552 @@
+             Runspindle: Testing Maintained Workﬂows
+                         Under Explicit Authority
+
+                                                Runspindle
+
+                          Research and design proposal | November 2026
+
+
+                                                 Abstract
+
+         Can better task speciﬁcation, session continuity and independent veriﬁcation make an autho-
+     rized workﬂow more useful without broadening the actions an agent may take? Runspindle provides
+     a proposed composition boundary for studying that question. This paper deﬁnes accepted work,
+     distinguishes incomplete execution from correct refusal, and describes how to measure human inter-
+     vention alongside cost and quality. It proposes comparisons against native products, expert-assisted
+     use and conventional integration software. A separate model-matched experiment would investigate
+     individual harness mechanisms. The study design connects bounded execution, human takeover,
+     uncertain-eﬀect reconciliation and separately governed candidate evaluation. It oﬀers hypothe-
+     ses and disconﬁrmation criteria rather than results. No new benchmark, deployment, market-size
+     estimate, measured savings or return on investment is reported.
+
+Evidence status. This is an original conceptual adaptation. The integrated Runspindle system re-
+mains unimplemented. Existing bounded component and synthetic integration evidence is not product
+acceptance. Artifact formats, source/output relationships and performed validation are identiﬁed by
+the accompanying manifest and receipts; the existence of a PDF alone proves no source build. Scope
+and exclusions are recorded in SRC-002-disposition.json. Document validation is separate from
+implementation and live acceptance.
+
+
+1    Research question and unit of analysis
+
+An assistant’s useful output can be a draft, advice, a completed change in another system, or a
+correctly bounded stop. These are diﬀerent products. A workﬂow that promises an external result
+must establish whether that result occurred; ﬂuent narration cannot supply the evidence. Runspindle’s
+research question is whether explicit task contracts and coordinated execution improve usefulness for
+a stated workload, relative to alternatives an owner can already use. The answer could be negative
+even if the proposed components work.
+Deﬁne a task episode by an owner-authorized objective, initial state, permitted eﬀects, selected targets,
+time and resource budget, and acceptance test. A task revision changes those bindings deliberately.
+A retry is an attempt within a revision, not a fresh grant. An accepted completion is a distinct
+terminal outcome that meets both the declared goal and relevant permission conditions. A correctly
+refused task is a valuable boundary outcome, but not completed work. A study must not improve its
+completion metric by taking actions it should not take.
+The object of comparison also matters. A consumer product includes models, instructions, routing,
+connectors, interfaces, budgets and safety controls. A model accessed through an API is not necessarily
+
+                                                      1
+the same treatment. Work on compound systems motivates examining this surrounding software [12].
+Agent-computer interface research makes interface design a plausible experimental variable [5]. Neither
+establishes a market for Runspindle or general superiority over ordinary software.
+Runspindle is intended to compose scoped access, a selected managed session, explicit human excep-
+tions, evidence-bearing delivery and separately approved workﬂow evaluation. The proposed beneﬁt is
+less repeated reconstruction of context and fewer unexamined gaps between steps. Repetition does not
+create a recurring schedule. A maintained workﬂow additionally needs a trigger, accountable owner,
+limits, stop rule and authority for repeated eﬀects. This paper proposes tests; it does not assert that
+the lifecycle has been deployed.
+
+    What stays ﬁxed?                 What may diﬀer?
+    Task, authority, initial state, Interface, context assembly, state management and bounded re-
+    deadline and acceptance rule     covery
+    Observe each alternative separately. Compare accepted results, human work, full cost and boundary
+    failures. Do not assume that one alternative wins.
+
+Figure 1: An original comparison contract, not a completion curve. No gain, ordering, probability or
+market size is implied.
+
+A product comparison asks which available alternative serves an owner best under realistic constraints.
+A mechanism study holds model, tools and task conditions ﬁxed where possible, then varies a har-
+ness feature. If a provider does not expose an exact model version or matching interface, the ﬁrst
+comparison can still be useful, but the second cannot isolate a model-independent eﬀect. Record
+the mismatch instead of assuming equivalence. Figure 1 speciﬁes obligations without predicting a
+completion advantage.
+A specialist could be useful if it completes permitted tasks, makes incomplete ones legible and justiﬁes
+its full cost against substitutes. The stronger claim that this is the best opportunity for a non-
+frontier research team requires comparing alternative uses of engineering resources. That claim is not
+established here and is not a premise for product marketing.
+
+
+2    Diagnosing stops without weakening boundaries
+
+A visible refusal is an observation, not an explanation. Missing context, absent tools, stale sessions,
+missing approval, prohibited eﬀects and planning mistakes can all leave work incomplete. Several
+causes may coexist. Classify observable preconditions and actions rather than guessing at hidden
+model capability.
+Record the requested end state, last observed action, unresolved precondition, applicable boundary,
+evidence and remaining authorized options. Separate facts from a diagnostic hypothesis. Missing
+write scope supports an authority diagnosis; wrong record selection despite adequate access supports
+a perception or planning diagnosis. A lost submission response establishes uncertainty, not failure.
+Later success does not prove that an earlier trial had the same inputs, tools or scope.
+XSTest and OR-Bench provide precedents for studying exaggerated safety behavior and benign over-
+refusal [6, 7]. Their datasets and model conditions do not estimate current commercially recoverable
+workﬂow stops. A Runspindle study needs its own population and labels. Prohibited requests and
+cases requiring approval belong in boundary testing, not the target for increased compliance.
+A permitted repair stays inside existing authorization: retrieving allowed context, using an approved
+tool, restoring accurate state or requesting a required decision. Missing authority cannot be converted
+
+                                                   2
+     Observation                       Evidence to obtain                Permitted response
+     Eﬀect is prohibited               Applicable rule and task scope    Stop; preserve the reason
+     Speciﬁc authority is absent       Owner decision or required        Wait without performing the ef-
+                                       handoﬀ                            fect
+     Tool, context or state is miss-   Exact missing precondition        Repair only inside approved
+     ing                                                                 scope
+     Action was attempted; result      Independent external readback     Reconcile before any retry
+     is unclear
+     Planning or perception fails      Observed action and veriﬁer re-   Bounded investigation    or   a
+                                       sult                              truthful stop
+
+Figure 2: Proposed stop triage. Multiple labels may apply. This is not a route around a denied action
+or a diagnosis of hidden model capability.
+
+
+into a search for a more permissive interface. A policy denial remains a denial even if another tool
+appears capable. New approval applies to its stated eﬀect and target. Human takeover does not
+automatically authorize subsequent agent actions.
+Before a test demonstrates recovery under speciﬁed conditions, an intervention is a recovery hypothesis.
+Record intervention type independently from stop type to learn which repairs generalize. When an
+eﬀect might already have occurred, reconcile external state before retrying. Otherwise a seemingly
+productive loop can duplicate messages, records or transactions.
+Correct behavior may be an explanation of uncertainty, bounded handoﬀ or ﬁnal stop. Evaluate
+whether the reason is accurate, the next responsible actor is clear and prohibited action was avoided.
+A completion-only metric can reward concealment of uncertainty; report these boundary outcomes
+separately.
+
+
+3    Human intervention as an observable cost
+
+People contribute work that an agent’s apparent success rate can omit: correcting a goal, ﬁnding
+context, transferring data, restoring state, checking results and repairing mistakes. We use tactical
+intervention for this hands-on steering. The source’s informal “nudge tax” describes hidden burden,
+not a measured tax or an assertion that all human involvement is waste. Governance, identity and
+professional judgment remain necessary in many tasks.
+Measure tactical work, required governance and unattended delay separately. Deﬁne categories before
+collection and avoid counting overlapping time twice. An approval that reveals a defect may involve
+both a decision and subsequent repair; distinguish them. Elapsed latency is not labor. Parallel activity
+also complicates converting minutes to cost. State the counting rule and uncertainty instead of treating
+every wait as paid eﬀort.
+The actor can be a customer, vendor operator or evaluator. Moving correction into a vendor queue does
+not remove it. Report where work occurs and who bears its cost. Setup, veriﬁcation, exception review
+and maintenance also belong in a full comparison. Section 6 uses the frozen canonical accounting
+classiﬁcation; eﬀort logs supply observations, not another set of costs to add twice.
+The customer-support ﬁeld study in Generative AI at Work measures assisted workers in a particular
+setting [17]. Its ﬁndings do not establish equivalent eﬀects for autonomous cross-service systems.
+Complementary intangible investment can precede measured beneﬁts [3], but this supplies neither
+Runspindle’s acceptance rate nor a promised return. METR’s discussion of developer study redesign
+
+
+                                                      3
+     Work category               Example record                         Report separately
+     Tactical intervention       Context repair or manual transfer      Active time and actor
+     Required governance         Approval or identity decision          Active time and decision
+                                                                        boundary
+     Unattended delay            Waiting for an external response       Elapsed time, not labor
+     Vendor operations           Adapter repair or escalation           Labor, maintenance and re-
+                                                                        covery cost
+
+Figure 3: An original measurement ledger. Blank records are unknown, not zero. The categories do
+not imply that any work has been removed.
+
+also highlights recruitment, selection and time-measurement limits; its newer signal should not be
+turned into a deﬁnitive general productivity estimate [18].
+An expert-assisted baseline should disclose coaching budget, tools and manual transfers and count the
+expert’s active time. A native product given an artiﬁcially weak request is not an adequate substitute.
+Conversely, undocumented preparation or privileges can unfairly favor the expert arm. Evaluate useful
+alternatives, not convenient demonstrations.
+Intervention records can reveal requirements but are not automatically training data. The proposed
+learning path requires separate permission, selection, redaction, attribution and adjudication. A
+reaction is neither proof of correctness nor a release decision. Related revisions must remain together
+in dataset splits. Credentials and private conversations are not public ﬁxtures; approved aggregates
+and synthetic examples should replace unnecessary case detail.
+
+
+4    A bounded Runspindle execution contract
+
+Seven repositories deﬁne responsibilities, not seven mandatory network services. Core coordinates
+durable intent and artifact state. Host binds work to a selected native session. Browser manages
+account-isolated UI actions and fenced takeover. Tether routes attributable collaboration events.
+Reﬁnery evaluates eligible examples and candidates. Console displays observations and freshness.
+Platform owns composition and release gates. These names do not establish interoperability.
+The desired lifecycle admits a bounded revision and stable operation identity, retains host, workspace,
+account and lease bindings, pauses and fences for exceptions, reconciles ambiguous eﬀects, then vali-
+dates, accepts and delivers exact output. Feedback may later enter separately authorized evaluation.
+These are explanatory responsibilities; the repository’s versioned contracts remain authoritative.
+
+     Execution path                                Evidence and authority checkpoint
+     Revision admitted → target selected           Bind policy, operation, account, host and lease
+     Action attempted → result observed            Fence takeover; reconcile uncertain eﬀects
+     Artifact produced → accepted                  Check exact bytes against independent criteria
+     Accepted artifact → delivered                 Check authorized destination and delivery receipt
+     Separate learning path: eligible feedback → reviewed dataset → held-out candidate evaluation →
+     separate release decision. Execution authority does not ﬂow through feedback.
+
+Figure 4: Proposed Runspindle boundaries. These are explanatory responsibilities, not new runtime
+enums or evidence of integrated implementation.
+
+Durable orchestration preserves intent across interruption; it cannot prove a website submission oc-
+curred or independently fence stale browser input. Takeover requires an eﬀective control fence as well
+as durable state. Passive viewing grants no control. Handback needs fresh observations and an explicit
+
+                                                   4
+transition. A recycled process identiﬁer, stale route or recovered proﬁle is not suﬃcient evidence of
+the intended session, account or permission.
+Resolve credentials only through approved account- and origin-bound helpers. Trace identiﬁers are not
+authorization tokens. Scope cannot migrate silently to another host or account when the selected one
+is unavailable. Telemetry should distinguish emitted, queued, rejected and independently observed
+events; a local HTTP response does not establish backend readback. Existing masking and native
+integration gaps remain explicit, with no complete security or redaction guarantee.
+Prior research motivates studying the mechanisms without proving this design. ReAct examines
+interleaved reasoning and action [4]. SWE-agent examines interfaces for software tasks [5]. Anthropic’s
+dated engineering guidance distinguishes predeﬁned workﬂows from dynamic control and describes
+long-running coding harnesses [13, 14]. These are observations about their settings, not Runspindle
+results or evidence that unbounded retries will produce reliability.
+A controller needs limits on steps, time, expense and allowed recovery. It should stop accurately when
+a prerequisite cannot be met. Use deterministic code for a stable step when it satisﬁes the same
+contract more simply. A model is a candidate for variable interpretation or choice, not a mandatory
+implementation for every transition.
+Experiments bind dataset, baseline, parameters and output digests. A favorable evaluation justiﬁes
+review, not deployment or broader authority. Release requires the applicable approval and rollback
+reference. Improvement is a proposed governed process, not autonomous self-modiﬁcation. Existing
+bounded local evidence remains distinct from the unimplemented integrated system and unrun live
+acceptance.
+
+
+5    Workload selection and credible substitutes
+
+Incomplete work is not automatically a market. Begin with an owner who can authorize a legitimate
+route, a valuable outcome, feasible independent acceptance and enough recurrence to examine upkeep.
+Prohibited routes cannot support a completion promise. Irreducible judgment must remain visible.
+Rare tasks may be better served by expert help than a custom integration.
+Screen observed work rather than enthusiasm for agents: what happened in recent episodes, which
+prerequisite was absent, who repaired it, how often did it recur, and which existing system could have
+handled it? Include ordinary successes and routine exceptions. Interview interest establishes neither
+willingness to pay nor feasibility. Segment by dominant friction: context assembly, interruptions,
+service-speciﬁc actions or veriﬁcation. Test the smallest suitable intervention before constructing a
+general platform.
+A document-delivery study could assemble permitted material, produce an exact artifact, obtain
+required approval and verify delivery. An account-setup assistant could preserve progress while the
+owner handles identity and binding acceptance. A connection-management workﬂow could reduce
+repeated context entry through already approved integrations with clear revocation. These examples
+grant no credentials, create no accounts and authorize no ongoing access. They are study ideas, not
+demonstrated features.
+An authorized defensive-operations study might compare alert summarization, operator review and
+result readback through already approved tools. Remediation still requires its exact action approval.
+This example supplies no authority to change security controls or aﬀect another party’s systems. It
+illustrates why preparation, decision, execution and veriﬁcation need separate evidence.
+
+
+
+                                                  5
+Customization, service adapters, support and changing access can make a repeatable product resemble
+a services business. A stable conventional integration may win on both cost and reliability. Provider
+products are also moving comparators. Provider oﬀerings can change materially. The ChatGPT
+agent Help page now presents a retirement notice while retaining older feature guidance. Here it
+is historical/transitional documentation, not evidence that ChatGPT agent is a currently available
+comparator [15]. Oﬃcial Agents SDK documentation describes provider building blocks [16]. Nei-
+ther document demonstrates Runspindle compatibility, reliable performance or enduring access. No
+replacement-product capability is inferred from the retirement notice. Record versions and repeat
+comparisons after material changes.
+Distribution, trust, procurement and support aﬀect viability separately from task completion. A buyer
+may prefer fewer completions with dependable escalation to a higher rate that conceals errors. A pilot
+should deﬁne accepted noncompletion states, responsible actors and withdrawal conditions. Its correct
+result may be that no specialist oﬀering is warranted for the workload.
+
+
+6    Economics of accepted work
+
+SRC-005 is the selected economics section within the SRC-002 paper bundle. This original adaptation
+is not a historical rebuild or measured economics. Deﬁne the workload, accounting period, currency,
+task boundary and acceptance/permission rules before comparing alternatives. A is the count of
+distinct terminal outcomes that meet both the declared goal and authorization rules. Retries and
+unveriﬁed outputs are not accepted outcomes; failed, rejected and unauthorized attempts still incur
+costs.
+Accounting identity: C = M + T + H + V + K + R + F; U = C / A for A > 0. M is model expense,
+T tools/infrastructure, H human operation, V veriﬁcation, K maintenance, R recovery/repair, and F
+allocated ﬁxed integration, onboarding, exception-design and initial evaluation expense. The seven
+disjoint period totals use one currency; U is currency per accepted authorized completion. Assign each
+cost once: for example, veriﬁcation labor belongs in V rather than also H, and initial evaluation in F
+rather than also V. State allocation periods and avoid hiding setup expense outside the comparison.
+With A = 0, U is undeﬁned even if C = 0; report incurred C and zero completions. Unknown inputs
+remain unknown, not zero. The executable model stores costs in millionths of a currency unit, so its
+exact conversion is U = C_micro / (1,000,000 * A).
+Compare native assistance, expert-guided assistance and a specialist harness on matched task families
+with the same permission and acceptance rules. Report cost alongside acceptance, quality, safety,
+latency and human repair; a cheaper attempt need not produce cheaper accepted work. More model
+use might reduce repair, but only observation can establish that tradeoﬀ. Reference [1] motivates
+evaluating cost together with accuracy; it supplies no Runspindle return-on-investment estimate.
+Fixed-cost sensitivity: for A > 0, the identity can be regrouped as U = F / A + (C - F) / A.
+This is accounting, not a volume forecast: recurring costs and acceptance can change with workload.
+Rare tasks can favor manual help because integration and evaluation must be funded before useful
+output. Report the assumed workload mix, period, labor rates, acceptance rate and maintenance
+cadence. Include all failures and cleanup on both sides. The source’s schematic amortization diagram
+is excluded; its idea is represented here without curves or an estimated crossing. A specialist may
+remain more expensive at every volume. No measured break-even point is known.
+Synthetic illustration only: the original executable example assumes ten attempts and total cost of 20
+USD, including 10 USD ﬁxed integration. Holding every cost ﬁxed while varying A through 0, 1, 5 and
+
+
+                                                  6
+10 gives undeﬁned, 20, 4 and 2 USD per accepted authorized completion. This isolates denominator
+sensitivity and neither predicts acceptance nor holds in general when volume changes. More generally,
+at ﬁxed positive A an added cost dC raises U by dC / A; at ﬁxed C, lowering A between positive
+values raises U when C > 0. Stress maintenance, repair, setup allocation and completion assumptions
+together before a real comparison. No measured input, savings or proﬁtability follows from these
+invented totals.
+Customer value and vendor revenue are diﬀerent quantities. Measure active eﬀort, elapsed time,
+rework, audit usefulness and access to otherwise impractical tasks separately; released time does not
+automatically reduce cash spending. Subscription, integration and completion fees allocate diﬀerent
+risks. An attempt fee can reward extra activity, whereas an accepted-outcome fee can encourage
+easy-task selection or disagreement about veriﬁcation. Specify the acceptance test, eligible workload,
+exceptions and dispute process in the commercial agreement. This is a comparison of incentives, not
+a Runspindle oﬀer, price schedule or forecast.
+Provider change can remove a specialist’s advantage through stronger models, built-in workﬂow fea-
+tures, improved platform APIs or incumbent products. In one engineering report, Anthropic describes
+removing context-reset machinery after moving from Sonnet 4.5 to Opus 4.5 [2]. That is a vendor’s
+observation in a particular application-development setting, not a general prediction. The source’s
+opportunity diagram is excluded; retain three qualitative scenarios instead: domain-speciﬁc value
+persists, the product becomes a narrower complement, or the gap closes and value erodes. Access
+restrictions could also eliminate a niche. These are possibilities without probabilities, calibrated axes
+or estimated trajectories.
+Potential enduring assets include a permissioned task corpus, domain acceptance tests, reliable inte-
+gration, skilled exception handling and customer reach. None ensures a lasting advantage. Evaluate
+against the current native product, then rerun the same held-out task families after material provider
+or platform changes, documenting versions and any task changes. If a previous gain disappears, re-
+assess the service rather than carrying the old result forward. Additional generic prompting alone
+does not establish durable value.
+Complementary investment and delayed beneﬁts: the productivity J-curve literature [3] explains how
+intangible investment can precede gains visible in ordinary productivity measures. Track integration
+eﬀort and outcomes over time instead of declaring success after one completed task. This is neither a
+promise of eventual gains nor a reason to omit setup costs. Runspindle has no measured prices, costs,
+refusal rates, savings, break-even point or market size. Historical claims are not Runspindle evidence.
+Rights to original prose and diagrams remain unresolved; the selected concepts are accounted for by
+original adaptation and explicit exclusions, while migration and native TeX validation remain partial.
+[1] Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir and Arvind Narayanan. AI
+Agents That Matter (2024), arXiv:2407.01502. https://arxiv.org/abs/2407.01502 .
+[2] Prithvi Rajasekaran. Harness design for long-running application development. Anthropic, March
+24, 2026. https://www.anthropic.com/research/harness-design-long-running-apps . One vendor engi-
+neering observation; no general obsolescence forecast.
+[3] Erik Brynjolfsson, Daniel Rock and Chad Syverson. The Productivity J-Curve: How Intangibles
+Complement General Purpose Technologies. NBER Working Paper 25148, October 2018, revised
+January 2020. https://www.nber.org/papers/w25148 . Complementary investment and measurement
+timing, not guaranteed proﬁtability.
+
+
+
+
+                                                   7
+7    Evaluation protocol and evidence boundaries
+
+Section 6 is the frozen canonical SRC-005 narrative, including its three reference paragraphs. Refer-
+ences [1, 2, 3] below use the same ﬁrst three numbers. Its examples are synthetic and its historical
+economic diagrams remain excluded. This protocol describes future measurement, not a study already
+performed.
+Predeclare task goals, initial state, owners, permitted routes, deadlines, budgets and independent ac-
+ceptance rules. Include tasks that already work, exceptions and correct boundary outcomes. Selecting
+only native-product failures biases the estimated opportunity. Repeated arms need isolated synthetic
+or separately permissioned environments to avoid duplicate consequential eﬀects. A test reset is not
+permission to reset a real account.
+
+     Study arm                  Allowed intervention                     Shared endpoint
+     Native product             Its documented tools and controls        Veriﬁed authorized result by
+                                                                         deadline
+     Expert-assisted            Disclosed operator coaching and trans-   Same rule; all human eﬀort
+                                fers                                     counted
+     Conventional integration   Deterministic code and permitted APIs    Same rule; setup and upkeep
+                                                                         counted
+     Runspindle candidate       Pinned proposed orchestration and in-    Same rule; independent read-
+                                terfaces                                 back
+
+Figure 5: Proposed evaluation register, with no observations or results. Product comparisons and
+model-matched mechanism studies answer diﬀerent questions.
+
+Compare the available native product, expert-assisted use, conventional integration and a pinned
+Runspindle candidate. Separately vary mechanisms with model and tools held ﬁxed where possible. A
+product comparison that also changes model, privilege or permitted eﬀects does not identify a causal
+harness eﬀect. Inaccessible conﬁguration details are limitations, not evidence of equivalence.
+The primary work endpoint is veriﬁed authorized completion by the deadline. Report produced-
+only artifacts, pending conﬁrmation, unknown eﬀects, failed attempts, correct refusals and required
+handoﬀs separately. Acceptance by a remote service is not necessarily settlement; an accepted message
+is not necessarily delivered. Independent external observation must support the result. Human-judged
+outputs need a predeclared rubric, independent review and disagreement reporting.
+WebArena, WorkArena and TheAgentCompany provide methodological precedents for realistic digital
+tasks and outcome checking [8, 9, 11]. They are not estimates of Runspindle performance, customer
+demand or commercial refusal prevalence. The repeated-success perspective in τ -bench [10] motivates
+consistency measures rather than selecting one lucky success from many trials. Deﬁne the metric and
+trial-selection rules explicitly and apply them equally.
+Measure quality, boundary failures, human-active time, delay, attempts, model and tool spending,
+veriﬁcation, upkeep, recovery and duplicates. Interpret cost and accuracy jointly [1]; zero accepted
+completions leave unit cost undeﬁned. Budget exhaustion and failed setup remain outcomes. Report
+budget-matched and realistic best-eﬀort comparisons separately. Neither alone establishes a viable
+customer service.
+Hold out related task families and revisions, not merely alternate wording. Claims across organizations,
+services or time require corresponding holdouts. Predeclare thresholds and budgets before inspecting
+test results. Choose sample size from pilot variance and use an uncertainty analysis appropriate to
+paired and grouped tasks; repeated observations from one family are not independent by default.
+
+
+                                                   8
+Report heterogeneous results and failure cases instead of one aggregate victory.
+Ablations can vary speciﬁcation, retrieval, continuity, interfaces, exception handling and veriﬁcation.
+Interactions mean one additive sequence cannot establish each contribution. Rotate order or use
+a suitable factorial subset if feasible and disclose limitations. A prompt template or deterministic
+adapter may explain most improvement; that is informative rather than grounds to alter the endpoint
+after seeing results.
+Reuse the repository’s existing isolated acceptance contracts. Negative cases include wrong tar-
+gets/accounts, stale leases, interrupted takeover, cancellation, lost responses, duplicate delivery, stale
+observations and candidate rollback. Independently observe eﬀects across seams, rather than relying
+on coordinator self-report. Pin compatible component revisions and exact artifacts. Structural checks
+and local ﬁxture passes do not establish native interoperability, live delivery or production acceptance.
+
+
+8    Hypotheses and disconﬁrmation
+
+Four proposed claims can fail. Each needs a workload, comparator, budget and threshold chosen
+before collection. A broad claim cannot be rescued by selecting only favorable cases afterward.
+H1: A bounded intervention recovers some permitted stops. Evidence against this includes
+no gain on held-out families, gains explained by changed tools or authority, or apparent success that
+disappears under independent veriﬁcation. Correct prohibitions are never the recovery target.
+H2: Productized execution reduces tactical human work without hiding or shifting it.
+Compare against experts, retain required approval, and include vendor operations and later repair.
+Fewer visible interactions are insuﬃcient if hidden eﬀort or errors rise. An active-time result is not
+automatically an elapsed-time or cash-savings result.
+H3: Speciﬁc mechanisms contribute beyond extra attempts. Model-matched, budget-aware
+studies can test context, interface, continuity and veriﬁcation. Uncontrolled diﬀerences limit causal
+interpretation. If deterministic software achieves the same outcome more simply, narrow the harness
+claim. Interface and workﬂow studies motivate the question without answering it for Runspindle [5, 13].
+H4: An advantage survives full cost and material product change. Repeat task families
+after provider or platform updates and record version diﬀerences. The economics review describes one
+vendor removing a scaﬀold after a model change [2]; this motivates durability testing, not universal
+obsolescence predictions. Access loss, upkeep or native-product convergence can invalidate a business
+case even when its initial experiment was valid.
+Begin with permissioned discovery, baseline pilots and measurement validation. Test the smallest
+intervention supported by stop evidence. Reserve holdouts before tuning and plan sample size from
+pilot variability. Only then compare broader uses of an engineering budget: conventional integration,
+prompt-only assistance or domain-speciﬁc model work. Equal expenditure does not ensure equal
+maturity; report development time and constraints. Rejecting the specialist hypothesis in one domain
+is a legitimate result, not a universal conclusion about all domains.
+A commercial study additionally needs payer identity, support obligations, deployment limits and
+an acceptable escalation process. State an operating envelope of workload, delay, required decisions,
+support burden and withdrawal conditions. A repeatable task need not support a scalable business.
+Lower average error does not establish that remaining errors are acceptable for every consequence
+level.
+Governance is part of validity: consented sources, task-scoped access and minimum necessary evidence.
+
+
+                                                    9
+Do not publish credentials or private operational traces. Evaluation does not authorize provider
+transmission, deployment, recurring collection or new grants. A result achieved by crossing those
+boundaries does not support the hypotheses as stated.
+
+
+9    Counterarguments and conditional conclusion
+
+Providers may absorb common features and have substantial distribution advantages [13, 16]. Do-
+main knowledge and customer-speciﬁc veriﬁcation could justify a specialist, but not by default. The
+comparison must stay current after native-product upgrades.
+Conventional software is a serious substitute. Known procedures and stable interfaces may need no
+model. A useful composition can reserve model decisions for variation and use deterministic steps
+elsewhere. If an agent adds cost and uncertainty without improving accepted output, removing it is a
+successful engineering ﬁnding.
+Necessary human judgment is not a defect to erase. Identity, consent and professional decisions can
+deﬁne the task’s value. Distinguish those acts from repeated tactical steering. Hiding people in an
+exception queue does not prove unattended completion. Accurate handoﬀ and noncompletion can be
+useful without being counted as accepted work.
+The empirical case remains open. Benchmarks, benign-refusal datasets, ﬁeld studies and vendor
+reports have particular settings [6, 7, 8, 10, 17]. None automatically estimates Runspindle adoption,
+ROI or commercial opportunity. Population and tool changes can matter as much as model changes.
+Failure to reproduce an advantage should narrow the conclusion, not change the denominator.
+Runspindle oﬀers a research program: bind an authorized workﬂow, retain identity through inter-
+ruptions, distinguish uncertainty from failure, verify results independently and account for all work
+required. Compare against useful native products, skilled users and conventional software. Study
+recurrence only with explicit authority. Evaluation informs decisions; it does not authorize action.
+The proposal succeeds only if those tests show an advantage inside a stated scope and cost. It may
+instead identify tasks better served by conventional code, expert help, a native product or a correct
+stop. Negative ﬁndings are part of the intended outcome. Compiling or reviewing this document
+cannot pass the separate implementation and live-acceptance gates. This is a research proposal rather
+than a record of deployed behavior.
+
+
+
+
+                                                 10
+References
+
+ [1] Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir and Arvind Narayanan. AI
+     Agents That Matter. 2024. https://arxiv.org/abs/2407.01502.
+
+ [2] Prithvi Rajasekaran. Harness design for long-running application development. March 24, 2026.
+     https://www.anthropic.com/research/harness-design-long-running-apps.
+
+ [3] Erik Brynjolfsson, Daniel Rock and Chad Syverson. The Productivity J-Curve: How Intangibles
+     Complement General Purpose Technologies. NBER Working Paper 25148, October 2018; revised
+     January 2020. https://www.nber.org/papers/w25148.
+
+ [4] Shunyu Yao, Jeﬀrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan and Yuan Cao.
+     ReAct: Synergizing Reasoning and Acting in Language Models. 2022 preprint; ICLR 2023; arXiv
+     v3 March 10, 2023. https://arxiv.org/abs/2210.03629.
+
+ [5] John Yang, Carlos E. Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao, Karthik Narasimhan
+     and Oﬁr Press. SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.
+     2024; arXiv v3 November 11, 2024. https://arxiv.org/abs/2405.15793.
+
+ [6] Paul Röttger, Hannah Rose Kirk, Bertie Vidgen, Giuseppe Attanasio, Federico Bianchi and Dirk
+     Hovy. XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language
+     Models. 2023 preprint; NAACL 2024; arXiv v3 April 1, 2024. https://arxiv.org/abs/2308.
+     01263.
+
+ [7] Justin Cui, Wei-Lin Chiang, Ion Stoica and Cho-Jui Hsieh. OR-Bench: An Over-Refusal
+     Benchmark for Large Language Models. 2024 preprint; ICML 2025; arXiv v5 June 15, 2025.
+     https://arxiv.org/abs/2405.20947.
+
+ [8] Shuyan Zhou et al. WebArena: A Realistic Web Environment for Building Autonomous Agents.
+     2023; arXiv v4 April 16, 2024. https://arxiv.org/abs/2307.13854.
+
+ [9] Alexandre Drouin et al. WorkArena: How Capable Are Web Agents at Solving Common Knowledge
+     Work Tasks?. 2024; arXiv v5 July 23, 2024. https://arxiv.org/abs/2403.07718.
+
+[10] Shunyu Yao, Noah Shinn, Pedram Razavi and Karthik Narasimhan. τ -bench: A Benchmark
+     for Tool-Agent-User Interaction in Real-World Domains. 2024; arXiv v1 June 17, 2024. https:
+     //arxiv.org/abs/2406.12045.
+
+[11] Frank F. Xu et al. TheAgentCompany: Benchmarking LLM Agents on Consequential Real World
+     Tasks. 2024; arXiv v3 September 10, 2025. https://arxiv.org/abs/2412.14161.
+
+[12] Matei Zaharia et al. The Shift from Models to Compound AI Systems. Berkeley AI Research,
+     February 18, 2024. https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/.
+
+[13] Anthropic. Building eﬀective agents. December 19, 2024. https://www.anthropic.com/
+     research/building-effective-agents.
+
+[14] Anthropic. Eﬀective harnesses for long-running agents. November 26, 2025. https://www.
+     anthropic.com/research/effective-harnesses-for-long-running-agents.
+
+[15] OpenAI. ChatGPT agent. Undated Help Center documentation; reviewed November 14, 2026.
+     https://help.openai.com/en/articles/11752874-chatgpt-agent.
+
+
+                                               11
+[16] OpenAI. OpenAI Agents SDK. Undated oﬃcial documentation; reviewed November 14, 2026.
+     https://openai.github.io/openai-agents-python/.
+
+[17] Erik Brynjolfsson, Danielle Li and Lindsey Raymond. Generative AI at Work. Quarterly Journal of
+     Economics 140(2), 889–942, May 2025; ﬁrst published February 4, 2025; doi:10.1093/qje/qjae044.
+     https://academic.oup.com/qje/article/140/2/889/7990658.
+
+[18] METR. We are Changing our Developer Productivity Experiment Design. February 24, 2026.
+     https://metr.org/blog/2026-02-24-uplift-update/.
+
+
+
+
+                                                12
+

@@ -1,0 +1,192 @@
+{
+  "artifacts": {
+    "candidate.pdf": "0fe16ef32d8fb87a86b8134eb0f1978bbb69462eb7a504d27c1307fff8d3ffbd",
+    "contact-sheet.png": "db38e4cd7b1111847102edac219d4a0ca3030a0aa62a1a005b9372f72d1ccb11",
+    "page-01.png": "58aa46f0f6455551dee43d189e3fbc1fc9dfc27b4d394d22cf1129d4a3ca84d2",
+    "page-02.png": "bffc5ad1dd9a3c0ef25598baaf04ee81667fcbbcdb578b2bb32baf0727b324c8",
+    "page-03.png": "3e7ba20d5abc8115c6aabdf0a03b22f3c49867762ddb4b584cf65f66d046f86c",
+    "page-04.png": "5cdd081e7c5c8f946fe31ee9e39d9b6a41e04015f1b271011e0b22e48f39bbba",
+    "page-05.png": "0ae8ca984831a7f4bff285e6a21da2de45346ea5d7a082a5f90d46ae330075b9",
+    "page-06.png": "f5fc693142a8511ab8c080b6177e6126c5e3675ad76e32a5c898c1c3c49ab77d",
+    "page-07.png": "2281c3b7ac81ba110eaddbe118416a1a7cc6eabea3610ab92244245866537b9b",
+    "page-08.png": "12f548c793769fac361f0560ab3fbf5468c5d53b123d7067c2479a0613350052",
+    "page-09.png": "188ee5afefa9dc99edbe14a435f279dbb3da48d26963f0e7a80f8cb8e3f5f409",
+    "page-10.png": "697247a1000ad5de25b65a4d1b38eb4e8964b7435fa27769418f9720fc402624",
+    "page-11.png": "a41e2753f9f2b046f13c28fe7dd142d58653e802337ef355e93ea384a9f03f78",
+    "page-12.png": "c051f0481fccc27833c39240d29368249e8048c496e07a0164da2b80b47f332b",
+    "text.txt": "ca96a29ce61d1291c403a2dff8c92b02baf4c05baed576f37000099f83e8df0e"
+  },
+  "classification": "offline_tex_candidate",
+  "commit": "e7419bb79684431cc117bec4029e3d55843224c2",
+  "compile": {
+    "authored_inputs": [
+      "argument.tex",
+      "presentations/argument/comparison.tex",
+      "presentations/argument/evidence.tex",
+      "presentations/argument/mechanism.tex",
+      "presentations/shared/accepted-work.tex",
+      "presentations/shared/diagnosis.tex",
+      "presentations/shared/durability.tex",
+      "presentations/shared/economics.tex",
+      "presentations/shared/effort.tex",
+      "presentations/shared/market.tex",
+      "presentations/shared/references.tex",
+      "presentations/style.tex"
+    ],
+    "overfull_boxes": []
+  },
+  "disposition": "SRC-003-004-disposition.json",
+  "disposition_sha256": "442d792ee20b93b990c0e3ecf808ebb26c71dca771ec9122c5222c6ca040b03f",
+  "output": {
+    "embedded_fonts": [
+      "AKHCZK+LMSans10-Oblique",
+      "BZIVMZ+LMSans10-Regular",
+      "CAFSZL+LMMathItalic10-Regular",
+      "DDIEWW+LMSans9-Oblique",
+      "IHAIZV+LMSans10-Bold",
+      "IXFAWU+LMSans9-Regular",
+      "TQTHRL+LMSans8-Regular",
+      "VDVGTR+CMR10",
+      "YEUUOC+LMMathSymbols10-Regular"
+    ],
+    "external_link_targets": [
+      "https://arxiv.org/abs/2307.13854",
+      "https://arxiv.org/abs/2308.01263",
+      "https://arxiv.org/abs/2403.07718",
+      "https://arxiv.org/abs/2405.20947",
+      "https://arxiv.org/abs/2406.12045",
+      "https://arxiv.org/abs/2407.01502",
+      "https://github.com/newdarwindev/runspindle/blob/main/STATUS.json"
+    ],
+    "pages": [
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 1,
+        "smallest_word_box_points": 5.308,
+        "words": 34
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 2,
+        "smallest_word_box_points": 5.308,
+        "words": 100
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 3,
+        "smallest_word_box_points": 5.308,
+        "words": 100
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 4,
+        "smallest_word_box_points": 5.308,
+        "words": 98
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 5,
+        "smallest_word_box_points": 5.308,
+        "words": 98
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 6,
+        "smallest_word_box_points": 5.308,
+        "words": 104
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 7,
+        "smallest_word_box_points": 5.308,
+        "words": 106
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 8,
+        "smallest_word_box_points": 5.308,
+        "words": 127
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 9,
+        "smallest_word_box_points": 5.308,
+        "words": 104
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 10,
+        "smallest_word_box_points": 5.308,
+        "words": 103
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 11,
+        "smallest_word_box_points": 5.308,
+        "words": 86
+      },
+      {
+        "geometry_points": [
+          453.54,
+          255.12
+        ],
+        "page": 12,
+        "smallest_word_box_points": 5.308,
+        "words": 72
+      }
+    ],
+    "tagged_pdf": false
+  },
+  "previous_publication_sha256": "b1727d0db5cb9568e91f4beb90a0b38a496299eb17379e6443a92cc1b17cdcac",
+  "profile_sha256": "ca8f96de7e5608ddb4ad837fa99f6630a6438c9bd6fc2cb68b2aaab82239e47c",
+  "review_status": "pending_confirmation",
+  "source": "docs/marketing/argument.tex",
+  "source_hashes": {
+    "argument.tex": "969ef99adb7d0778933f3ff75c4e56ebc118a250b570deff1a855cc3d1120535",
+    "presentations/argument/comparison.tex": "c48ec4c802026ddbbb07ff7f74fc97a7ee083f9012a17554c6361caa40549a26",
+    "presentations/argument/evidence.tex": "73a27dfa6f5169b25f8b4b4a7b64ce71e5e0d22edd309872e5e7bd58365c11e3",
+    "presentations/argument/mechanism.tex": "1c0b24a765d89c2c3ee7055bce9bb02683a9c4e1c553be06b1997675f451629a",
+    "presentations/shared/accepted-work.tex": "6b75fae00498391c63764d8dadcd0ac84b74e78ae056d8c5ea7148da05d9937f",
+    "presentations/shared/diagnosis.tex": "bb9a11921e348b869c8d9719400940ed24d267d671f1423d647a84b786ab0b9d",
+    "presentations/shared/durability.tex": "b76147f020f279cf1b7ab8351162fb794cf723113d47f3d11c196e304cc364bf",
+    "presentations/shared/economics.tex": "567af553057fa354af09c4a52982377696234675ab1283c2ce1886268b0ca2f4",
+    "presentations/shared/effort.tex": "c80bd53de5d8d2f949ced8ea84921191742d63b7700c208480485723554eb5f1",
+    "presentations/shared/market.tex": "b9c10cd4482f5e6822b6d4d06ededfb6d3351ba74c7293991984efa2cee597f5",
+    "presentations/shared/references.tex": "4da9a858f8aa98e427225ce845cd1dda4a2a9128385191ce6c51f2359e6ee20f",
+    "presentations/style.tex": "bec877d14a7f114e6b476dd0497ca4793f2bb5b22a25ec2f3a5165e28a36ef62"
+  },
+  "source_id": "SRC-003"
+}

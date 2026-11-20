@@ -1,0 +1,20 @@
+{
+  "argument": {
+    "page_pngs_compared": 12,
+    "changed_pixels": 0,
+    "contact_sheet_sha256": "db38e4cd7b1111847102edac219d4a0ca3030a0aa62a1a005b9372f72d1ccb11",
+    "pdf_bytes_repeated": true
+  },
+  "fleet": {
+    "page_pngs_compared": 14,
+    "changed_pixels": 0,
+    "contact_sheet_sha256": "128e1460e019f48282fa415c5f97b0ab960a5caeaf51f8fd27697a085cc2ab72",
+    "pdf_bytes_repeated": true
+  },
+  "paper": {
+    "page_pngs_compared": 12,
+    "changed_pixels": 0,
+    "contact_sheet_sha256": "f52fc1eaf383c7ec8f922ebad69983455b245d18f06ccb3d1551f66fa535a076",
+    "pdf_bytes_repeated": true
+  }
+}
