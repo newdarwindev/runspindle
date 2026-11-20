@@ -45,15 +45,20 @@ to a host with Python, Docker and the already-loaded exact runtime image:
 python@sha256:0e58fc4a4575979bfce26735236422a48b38dae99d72b9d72a15e8e3fe0f7f93
 ```
 
-Then run inside that directory:
+Use `lanes.H12.outcome.bundle_input_sha256` from the trusted report emitted by
+the qualification command. Keep the report available separately so the expected
+digest comes from qualification. Then run inside the artifact directory:
 
 ```sh
-python3 run.py --artifacts .
+python3 run.py --artifacts . --input-sha256 "$qualified_bundle_input_sha256"
 ```
 
 This saved launcher needs no component checkout, compiler, dependency cache,
-credentials or network acquisition. It checks bootstrap/launcher bytes against
-the bundled manifest before launching a disposable Linux arm64 container with
+credentials or network acquisition. It verifies the exact saved input bytes
+against the supplied qualification digest before checking bootstrap/launcher
+bytes against the bundled manifest. Saved artifacts generated with earlier
+launchers retain their historical instructions. The current launcher starts a
+disposable Linux arm64 container with
 `--pull never`, denied network, a read-only root, dropped capabilities, bounded
 CPU/memory/processes and an executable temporary target. It installs and verifies
 all bytes/modes, executes the installed core against the included qualified
