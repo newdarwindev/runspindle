@@ -184,7 +184,7 @@
       "required_files": [
         "tools/feedback_hero.py",
         "tests/test_feedback_hero.py",
-        "scenarios/feedback-collection-v1.json",
+        "scenarios/feedback-collection-current-v1.json",
         "local/feedback-sources/tether/tether/feedback.py",
         "local/feedback-sources/refinery/refinery/feedback_collection.py",
         "local/feedback-sources/refinery/dependencies/tether-feedback.json"

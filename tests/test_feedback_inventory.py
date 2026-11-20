@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from tools import hygiene
+from tools import feedback_hero, hygiene
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -67,13 +67,14 @@ class FeedbackInventoryTests(unittest.TestCase):
 
     def test_ci_prepares_exact_sources_for_component_and_quality(self) -> None:
         workflow = (ROOT / ".github/workflows/validation.yml").read_text()
+        sources = json.loads(feedback_hero.MANIFEST.read_bytes())["sources"]
         for job, following in (("quality", "component"), ("component", "rust")):
             section = workflow.split("  " + job + ":\n", 1)[1].split(
                 "  " + following + ":\n", 1
             )[0]
             self.assertEqual(section.count("fetch-depth: 0"), 3)
-            self.assertIn("ref: c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d", section)
-            self.assertIn("ref: 3b14229b32cd0abef65937f3a9d9a9474a2ca937", section)
+            for source in sources.values():
+                self.assertIn(f"ref: {source['commit']}", section)
             self.assertIn("RUNSPINDLE_FEEDBACK_HERO_TETHER:", section)
             self.assertIn("RUNSPINDLE_FEEDBACK_HERO_REFINERY:", section)
             self.assertIn("MYPYPATH:", section)

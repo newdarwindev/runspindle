@@ -26,14 +26,14 @@
       "component": "tether",
       "repository": "newdarwindev/runspindle-tether",
       "path": "components/tether",
-      "commit": "5e5fdb73422926d015657166e9ef60b293c01e50",
+      "commit": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
       "url": "https://github.com/newdarwindev/runspindle-tether.git"
     },
     {
       "component": "refinery",
       "repository": "newdarwindev/runspindle-refinery",
       "path": "components/refinery",
-      "commit": "3b14229b32cd0abef65937f3a9d9a9474a2ca937",
+      "commit": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
       "url": "https://github.com/newdarwindev/runspindle-refinery.git"
     },
     {
