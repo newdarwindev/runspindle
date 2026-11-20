@@ -1,0 +1,246 @@
+Runspindle: Fleet Boundaries
+Native identity, observation and human control
+
+
+
+  Research proposal and component contracts.
+  No new benchmark, live ﬂeet, savings or market estimate.
+
+
+
+
+  Integrated system not implemented. Live acceptance not run.
+
+
+
+
+                                                                1 / 14
+Outcome and authority
+
+  A useful result satisﬁes the owner’s acceptance rule and stays within the approved task,
+  target and eﬀects.
+   Observed event            What still needs evidence
+   A model response          The requested state actually changed
+   A completed action        The eﬀect and destination were authorized
+   An accepted result        Total human eﬀort and operating cost
+
+  The research hypothesis is that task-speciﬁc integration can improve this combination.
+  Its advantage over native assistance remains unmeasured.
+
+
+  WebArena and WorkArena motivate end-state evaluation in bounded web settings: Zhou et al. (2023);
+  Drouin et al. (2024). Their results do not measure Runspindle or commercial demand.
+
+
+
+                                                                                                      2 / 14
+Reasons work stops
+
+   Possible cause                 Permitted response
+   A valid restriction            End the action or use an allowed human handoﬀ
+   Insuﬃcient ability             Reduce the task or improve a tested capability
+   Missing integration            Supply permitted context, tools or persistent state
+   Missing authority              Ask the owner for the speciﬁc decision or grant
+  These causes can coexist. An uncompleted request alone neither proves a model could
+  do the work nor justiﬁes overriding its boundary.
+
+
+  XSTest and OR-Bench study over-refusal with unsafe contrast cases: Röttger et al. (2024); Cui et al.
+  (2025). They do not grant permission or establish Runspindle failure rates.
+
+
+
+
+                                                                                                         3 / 14
+Human work across the task
+
+   Work category                    What a comparison must record
+   Task preparation                 Reframing requests and locating permitted information
+   Continuity                       Transferring state, resuming work and repairing failures
+   Owner decisions                  Reviewing exceptions and granting required approvals
+   Acceptance                       Independent checking and corrections after attempted
+                                    delivery
+  A harness may move eﬀort into setup or maintenance rather than remove it. Measure
+  user-active, reviewer and repair minutes for every trial.
+
+
+  Original responsibility register, not a measured timeline. Both native assistance and a harness retain
+  approval and veriﬁcation duties. Human intervention becomes training material only after a separate
+  eligibility review.
+
+
+
+                                                                                                           4 / 14
+Native session and component ownership
+   Owner                      Required binding or responsibility
+   Core                       Task, revision, operation, policy and durable approval state
+   Host                       Explicit host/workspace pin, native session and current lease
+                              epoch
+   Browser                    Same browser instance, account/origin scope and fenced con-
+                              troller
+   Tether                     Authorized request/delivery route and destination-speciﬁc re-
+                              ceipt
+   Console / Platform         Fresh observations / pinned packaging and qualiﬁcation
+   Reﬁnery                    Reviewed examples, candidate digest and separate release de-
+                              cision
+  A recycled process ID or a reachable machine does not establish native session identity.
+  A requested host pin must not silently move to another host.
+  Proposed boundaries, not evidence of enrolled hosts or live control. Trace correlation aids diagnosis; it
+  carries no execution authority.
+                                                                                                              5 / 14
+Observation and event continuity
+
+   Observation                   What can be concluded
+   Snapshot                      A source reported a state at a particular time
+   Event mirror                  Ordered records need source identity, cursor and replay/gap
+                                 handling
+   Freshness                     Age and missing updates must remain visible to the viewer
+   External receipt              A separately checked eﬀect can resolve a previously un-
+                                 known result
+  A snapshot cannot establish continuous event coverage. Missing or stale telemetry
+  leaves state unknown; it does not authorize restart, retry or takeover.
+
+
+  Actual source transport, native wire qualiﬁcation and full system acceptance remain blocked in the
+  pinned status. No live ﬂeet observation is asserted by these diagrams or repository ﬁles.
+
+
+
+                                                                                                       6 / 14
+Passive viewing and control transfer
+
+   Boundary                     Required control check
+   Passive human view           Authorized viewing grants no keyboard or pointer control
+   Interactive takeover         Bind a new fenced lease to the same browser and account
+   Handoﬀ / expiry              Reject stale epochs and revoke obsolete input paths
+   Lost action response         Reconcile the external eﬀect before a possible retry
+  The planned PinchTab action path and KasmVNC view must share the browser identity.
+  OpenBao references remain inside scoped helpers, outside logs and evaluation data.
+
+
+  Browser runtime enforcement, isolation and native handoﬀ acceptance are not run. Temporal durability
+  alone does not prove browser fencing or an external outcome. No platform limit is modiﬁed by this
+  proposal.
+
+
+
+
+                                                                                                         7 / 14
+Candidate tasks and alternatives
+
+  A promising study needs recurring work with a clear acceptance state, permitted access
+  and enough value to cover its support burden.
+    • Compare with an ordinary API or deterministic workﬂow when either can solve the
+      task.
+    • Preserve expert judgment where the judgment itself is the work.
+    • Treat missing access as a boundary, not as a reason to automate around it.
+    • Include exceptions, account changes and maintenance in the business case.
+
+
+  Task-selection hypotheses only. No market size, adoption, pricing, customer, career or
+  return-on-investment claim. A technically successful task can still cost more than its alternative.
+
+
+
+                                                                                                        8 / 14
+A separately authorized ﬂeet study
+
+  Compare feasible tasks on one native computer with the same tasks using a separately
+  authorized ﬂeet layer. Within that layer, test placement and recovery as separate
+  interventions; hold model and task conditions ﬁxed where feasible.
+   Proposed measure                  Record and denominator
+   Accepted outcomes                 Independent acceptance / all scheduled trials
+   Placement                         Correct authorized host / all placement decisions
+   Human eﬀort / latency             Active minutes / request-to-terminal seconds
+   Recovery / cost                   Reconciled failures / disjoint spend and labor ledger
+
+  Report tasks unavailable to the baseline separately. Wrong host or missing grant
+  requires a stop. Lost receipts remain unknown. Include failures, repeats and uncertainty.
+
+  No ﬂeet superiority result. Reliability and cost methodology: Yao et al. (2024) and Kapoor et al.
+  (2024); neither tests this ﬂeet.
+
+
+                                                                                                      9 / 14
+Cost of accepted work
+
+
+               C = M + T + H + V + K + R + F,                    U = C /A      when A > 0
+   M, T              Model and tool costs
+   H, V              Human task eﬀort and independent veriﬁcation
+   K, R              Maintenance/support and recovery/repair
+   F                 Fixed cost allocated to the period, including setup
+   A                 Independently accepted, authorized completions in that period
+  Each cost appears once, in the same currency and accounting period. Failures still cost
+  money. At A = 0, unit cost is undeﬁned, including when C = 0.
+
+  Pending eﬀects, unknown outcomes and correct stops are reported separately from A. Disclose labor
+  rates, allocation and actual spend separately from elapsed time. Accounting identity, not a price,
+  measurement or forecast.
+
+
+                                                                                                       10 / 14
+Volume, maintenance and changing alternatives
+   Condition to vary               Question for a new evaluation
+   Repeated     permitted          Does useful volume spread setup cost without increasing
+   work                            exceptions?
+   Domain-speciﬁc value            Does knowledge of the workﬂow still improve accepted
+                                   outcomes?
+   Complementary integra-          Does the harness help a newer native product at accept-
+   tion                            able cost?
+   Provider improvement            Has the alternative removed the need for the integration?
+  Retest held-out tasks after upgrades and account for migration, support and retirement
+  costs. Falling marginal cost alone does not establish break-even.
+
+  These are scenarios to investigate. No amortization curve, break-even volume, opportunity trajectory or
+  return forecast has been measured.
+
+
+                                                                                                            11 / 14
+Fleet acceptance still to establish
+
+    • Check stale routes, recycled process IDs, wrong workspace and conﬂicting leases.
+    • Observe actual adapter eﬀects during cancellation, restart, duplicate requests and
+      takeover.
+    • Reconcile a lost submission response before retry and verify the authorized delivery
+      destination.
+
+  The status record separates scripted peers and bounded library seams from native wire
+  and live acceptance. A local test pass does not qualify an untested component or a
+  remote ﬂeet.
+
+  Integrated system not implemented; live acceptance not run. Human corrections do not authorize
+  dataset ingestion, promotion or recurring jobs. No private topology, operational snapshot or historical
+  deployment claim appears here.
+
+
+                                                                                                            12 / 14
+References: bounded web tasks and stops
+Zhou et al. (2023). WebArena: A Realistic Web Environment for Building Autonomous
+Agents. arXiv:2307.13854. Functional task completion in reproducible websites; no Runspindle
+or market inference.
+Drouin et al. (2024). WorkArena: How Capable Are Web Agents at Solving Common
+Knowledge Work Tasks? arXiv:2403.07718. Controlled enterprise-web tasks; no general
+productivity inference.
+Röttger et al. (2024). XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in
+Large Language Models. arXiv:2308.01263. Safe/unsafe contrast prompts; no permission to
+bypass a valid restriction.
+
+
+
+
+                                                                                          13 / 14
+References: refusal, reliability and cost
+Cui et al. (2025). OR-Bench: An Over-Refusal Benchmark for Large Language Models.
+arXiv:2405.20947. Over-refusal with toxic contrasts; no live workﬂow success claim.
+Yao et al. (2024). τ -bench: A Benchmark for Tool-Agent-User Interaction in Real-World
+Domains. arXiv:2406.12045. Simulated interaction and repeated state checks; no deployed
+ﬂeet guarantee.
+Kapoor et al. (2024). AI Agents That Matter. arXiv:2407.01502. Cost, holdouts and
+reproducibility; no Runspindle comparative result.
+
+
+
+
+                                                                                          14 / 14
+
