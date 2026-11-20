@@ -56,6 +56,10 @@ runtime qualification are recorded separately. No independent review occurred
 bounded H10 seam using actual pinned Tether and Refinery stores. Composition pins
 and existing maintained-scenario acceptance remain unchanged.
 
+[Scoped Browser credential qualification](../docs/BROWSER_CREDENTIAL_HERO.md)
+records the H03 lane using the pinned resolver and OpenBao adapter with
+synthetic authority, vault transport, and website sink.
+
 [Browser effect recovery](../docs/BROWSER_EFFECT_HERO.md) records the H05 lane
 using the pinned Browser journal with synthetic authority and a synthetic site.
 
