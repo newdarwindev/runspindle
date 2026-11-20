@@ -2,11 +2,10 @@
 
 This bounded lane implements part of composition #45 using actual merged-ancestry
 Tether and Refinery source. It does not qualify the deployed composition, all of
-H10, H12, or system acceptance. The current composition pin candidate updates Browser, Tether and Refinery
-lock/gitlinks together. Earlier maintained-scenario receipts remain historical;
-their qualification does not transfer to these candidate pins. See
-`docs/COMPOSITION_PIN_FOLLOWTHROUGH.md` for the current evidence boundary. The new manifest is
-`scenarios/feedback-collection-v1.json`.
+H10, H12, or system acceptance. Current validation uses the exact Tether and Refinery commits recorded in the
+composition lock and `scenarios/feedback-collection-current-v1.json`. Earlier
+maintained-scenario receipts and `scenarios/feedback-collection-v1.json` are
+historical evidence.
 
 ## Reproduce
 
@@ -23,9 +22,9 @@ A clean authorized checkout can prepare the same inputs explicitly:
 ```
 git submodule update --init --recursive
 git clone https://github.com/newdarwindev/runspindle-tether.git local/feedback-sources/tether
-git -C local/feedback-sources/tether checkout --detach c3fbfb9ff5ed0483e522c93268ced9e40a6cb79d
+git -C local/feedback-sources/tether checkout --detach 1e8d2091c55dfad47fdc64ec2e73fcd946da9921
 git clone https://github.com/newdarwindev/runspindle-refinery.git local/feedback-sources/refinery
-git -C local/feedback-sources/refinery checkout --detach 3b14229b32cd0abef65937f3a9d9a9474a2ca937
+git -C local/feedback-sources/refinery checkout --detach d86a720b0a41bbc8e2dfefb773348aaaa563961b
 python3 tools/feedback_hero.py --tether local/feedback-sources/tether --refinery local/feedback-sources/refinery
 ```
 
@@ -109,3 +108,40 @@ hygiene validation requires the same ignored `local/feedback-sources` checkouts,
 ## Historical schema-admitted candidate upgrade
 
 The candidate pins now include Tether schema admission (PR18) and Refinery structural storage admission plus its exact Tether pin integration (PR22/23). Both schema modules are included in the verified source inventories. Fresh worker processes reject missing admission, provider-journal, feedback and Refinery tables before collection, with independent SQLite observations of zero lineage writes and no silent schema repair. Existing replay, precommit crash recovery, consent-removal mutation and ignored source-shadow tests still run. The original `docs/feedback-hero-evidence.json` remains historical; current evidence is `docs/feedback-schema-candidate-evidence.json`. Release composition/gitlinks and older acceptance artifacts remain unchanged. This is still a synthetic adapter candidate lane, not full H10/H12 or deployment qualification.
+
+## Materialized feedback batch
+
+The existing `feedback-hero` validation entry now also runs the
+`H10.materialized_feedback_batch` lane. The lane creates one synthetic
+Slack task and output through the pinned Tether ingress and journal,
+checks reaction HMAC admission against that exact output, and drives the
+pinned Refinery collection, dataset, and batch APIs.
+
+The parent checks the feedback revision, lineage and collection receipts,
+dataset row and batch manifest using independent SQLite reads and SHA-256
+recomputation. Two clean repetitions produce the same item, receipt and
+manifest. Fresh workers repeat materialization and replay the original
+batch, checking the input and output bytes at the read boundary. A worker
+exits after the item insert and before commit. The parent observes zero
+committed items and a fresh worker recovers normally.
+
+Wrong-purpose and missing-consent reads return zero bytes. After signed
+source removal or local dataset withdrawal, a fresh worker returns zero
+bytes and the prior row is still present. Deliberately disabling the
+local withdrawal guard in a disposable worker exposes the synthetic
+bytes and proves the independent observation catches that regression.
+The original provider attempt is unchanged and no later provider
+requests or model/serving rows appear.
+
+Run both paths with the exact prepared Tether and Refinery checkouts:
+
+```sh
+python3 tools/feedback_hero.py --tether local/feedback-sources/tether --refinery local/feedback-sources/refinery
+python3 -O tools/materialized_feedback_hero.py --tether local/feedback-sources/tether --refinery local/feedback-sources/refinery
+```
+
+See the [local qualification record](materialized-feedback-hero-evidence.json)
+for exact pins and checks. The evidence covers the H10 signed synthetic
+feedback batch. Full H10 remains blocked on the complete authorized
+artifact and live source chain. Provider transport, DSPy execution,
+dataset upload, and deployment are not run.

@@ -146,5 +146,12 @@
     "static_gate": "failed_identical_inherited_findings",
     "full_system": "not_inferred",
     "live_acceptance": "not_run"
+  },
+  "materialized_feedback_hero": {
+    "lane": "H10.materialized_feedback_batch",
+    "status": "passed_pinned_Tether_Refinery_with_signed_synthetic_callbacks",
+    "evidence": "docs/materialized-feedback-hero-evidence.json",
+    "full_H10": "blocked",
+    "live_acceptance": "not_run"
   }
 }
