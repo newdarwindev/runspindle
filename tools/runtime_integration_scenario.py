@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Pinned H02/H07 with composition-owned direct ledger observations; system stays blocked."""
+
 import argparse
 import contextlib
 import datetime
@@ -11,6 +12,7 @@ import sqlite3
 import subprocess
 import sys
 import types
+from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "specs/runtime-integration-scenarios-v1.json"
@@ -41,7 +43,7 @@ def check(value, message):
         raise AssertionError(message)
 
 
-def sha(data):
+def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
@@ -67,13 +69,13 @@ def aggregate(lane):
     return "failed" if lane == "failed" else "blocked"
 
 
-def git(directory, *args):
+def git(directory: pathlib.Path, *args: str) -> str:
     return subprocess.check_output(
         ["git", *args], cwd=directory, text=True, timeout=30
     ).strip()
 
 
-def inventory(root=ROOT):
+def inventory(root: pathlib.Path = ROOT) -> dict[str, Any]:
     lock = json.loads((root / "composition.lock.json").read_text())
     components = {}
     for item in lock["components"]:
