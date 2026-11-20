@@ -1,0 +1,207 @@
+Runspindle: Authorized Work
+A testable case for task-speciﬁc integration
+
+
+
+  Research proposal and component contracts.
+  No new benchmark, live ﬂeet, savings or market estimate.
+
+
+
+
+  Integrated system not implemented. Live acceptance not run.
+
+
+
+
+                                                                1 / 12
+Outcome and authority
+
+  A useful result satisﬁes the owner’s acceptance rule and stays within the approved task,
+  target and eﬀects.
+   Observed event            What still needs evidence
+   A model response          The requested state actually changed
+   A completed action        The eﬀect and destination were authorized
+   An accepted result        Total human eﬀort and operating cost
+
+  The research hypothesis is that task-speciﬁc integration can improve this combination.
+  Its advantage over native assistance remains unmeasured.
+
+
+  WebArena and WorkArena motivate end-state evaluation in bounded web settings: Zhou et al. (2023);
+  Drouin et al. (2024). Their results do not measure Runspindle or commercial demand.
+
+
+
+                                                                                                      2 / 12
+Reasons work stops
+
+   Possible cause                 Permitted response
+   A valid restriction            End the action or use an allowed human handoﬀ
+   Insuﬃcient ability             Reduce the task or improve a tested capability
+   Missing integration            Supply permitted context, tools or persistent state
+   Missing authority              Ask the owner for the speciﬁc decision or grant
+  These causes can coexist. An uncompleted request alone neither proves a model could
+  do the work nor justiﬁes overriding its boundary.
+
+
+  XSTest and OR-Bench study over-refusal with unsafe contrast cases: Röttger et al. (2024); Cui et al.
+  (2025). They do not grant permission or establish Runspindle failure rates.
+
+
+
+
+                                                                                                         3 / 12
+Human work across the task
+
+   Work category                    What a comparison must record
+   Task preparation                 Reframing requests and locating permitted information
+   Continuity                       Transferring state, resuming work and repairing failures
+   Owner decisions                  Reviewing exceptions and granting required approvals
+   Acceptance                       Independent checking and corrections after attempted
+                                    delivery
+  A harness may move eﬀort into setup or maintenance rather than remove it. Measure
+  user-active, reviewer and repair minutes for every trial.
+
+
+  Original responsibility register, not a measured timeline. Both native assistance and a harness retain
+  approval and veriﬁcation duties. Human intervention becomes training material only after a separate
+  eligibility review.
+
+
+
+                                                                                                           4 / 12
+The workﬂow contract
+   Contract part                 Proposed Runspindle responsibility
+   Goal and limits               Core binds the revision, acceptance rule and permitted ef-
+                                 fects
+   Execution target              Host binds the native session; Browser binds account and
+                                 origin
+   Interrupted work              Core records waits; adapters reconcile uncertain external
+                                 eﬀects
+   Accepted delivery             Veriﬁcation checks exact output; Tether checks the desti-
+                                 nation
+  Console projects observations. Platform packages pinned components and evidence.
+  Reﬁnery curates eligible data and compares locked candidates.
+
+  Seven repository responsibilities, not seven required network services. These obligations do not establish
+  an integrated implementation. Evaluation, promotion and recurring execution need separate authority.
+
+
+                                                                                                               5 / 12
+Candidate tasks and alternatives
+
+  A promising study needs recurring work with a clear acceptance state, permitted access
+  and enough value to cover its support burden.
+    • Compare with an ordinary API or deterministic workﬂow when either can solve the
+      task.
+    • Preserve expert judgment where the judgment itself is the work.
+    • Treat missing access as a boundary, not as a reason to automate around it.
+    • Include exceptions, account changes and maintenance in the business case.
+
+
+  Task-selection hypotheses only. No market size, adoption, pricing, customer, career or
+  return-on-investment claim. A technically successful task can still cost more than its alternative.
+
+
+
+                                                                                                        6 / 12
+A comparison that can reject the hypothesis
+   Study arm                        Intervention to isolate
+   Native assistance                Available baseline product without added integration
+   Expert assistance                Human prompting, context transfer and repair
+   Deterministic workﬂow            Conventional software with an equivalent permitted
+                                    task
+   Runspindle candidate             Explicit workﬂow contract and component integration
+  Use held-out task families, equivalent starting state, permissions and acceptance. Pin
+  the model where feasible; disclose any unmatched product constraints. Include all
+  scheduled trials, failures and human eﬀort. Repeat trials and report uncertainty; do not
+  select only successful attempts.
+
+  Proposed study, never run. Repeated state checks: Yao et al. (2024). Cost and holdout design: Kapoor
+  et al. (2024).
+
+
+                                                                                                         7 / 12
+Cost of accepted work
+
+
+               C = M + T + H + V + K + R + F,                    U = C /A      when A > 0
+   M, T              Model and tool costs
+   H, V              Human task eﬀort and independent veriﬁcation
+   K, R              Maintenance/support and recovery/repair
+   F                 Fixed cost allocated to the period, including setup
+   A                 Independently accepted, authorized completions in that period
+  Each cost appears once, in the same currency and accounting period. Failures still cost
+  money. At A = 0, unit cost is undeﬁned, including when C = 0.
+
+  Pending eﬀects, unknown outcomes and correct stops are reported separately from A. Disclose labor
+  rates, allocation and actual spend separately from elapsed time. Accounting identity, not a price,
+  measurement or forecast.
+
+
+                                                                                                       8 / 12
+Volume, maintenance and changing alternatives
+   Condition to vary               Question for a new evaluation
+   Repeated     permitted          Does useful volume spread setup cost without increasing
+   work                            exceptions?
+   Domain-speciﬁc value            Does knowledge of the workﬂow still improve accepted
+                                   outcomes?
+   Complementary integra-          Does the harness help a newer native product at accept-
+   tion                            able cost?
+   Provider improvement            Has the alternative removed the need for the integration?
+  Retest held-out tasks after upgrades and account for migration, support and retirement
+  costs. Falling marginal cost alone does not establish break-even.
+
+  These are scenarios to investigate. No amortization curve, break-even volume, opportunity trajectory or
+  return forecast has been measured.
+
+
+                                                                                                            9 / 12
+Evidence needed for the decision
+
+    • Separate the eﬀect of integration from the model, human assistance and task
+      selection.
+    • Exercise interruptions, recovery and independent acceptance on held-out services.
+    • Compare quality, safety, latency and full cost after product upgrades.
+
+  Current status records bounded synthetic and component evidence separately from
+  blocked system acceptance. The integrated system is not implemented; live acceptance
+  is not run.
+
+  Editable source and authored tests support review; they do not prove runtime behavior. Historical
+  examples are not new Runspindle results. Kapoor et al. (2024) motivates joint cost, quality and
+  generalization checks. No comparative win is claimed.
+
+
+
+                                                                                                      10 / 12
+References: bounded web tasks and stops
+Zhou et al. (2023). WebArena: A Realistic Web Environment for Building Autonomous
+Agents. arXiv:2307.13854. Functional task completion in reproducible websites; no Runspindle
+or market inference.
+Drouin et al. (2024). WorkArena: How Capable Are Web Agents at Solving Common
+Knowledge Work Tasks? arXiv:2403.07718. Controlled enterprise-web tasks; no general
+productivity inference.
+Röttger et al. (2024). XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in
+Large Language Models. arXiv:2308.01263. Safe/unsafe contrast prompts; no permission to
+bypass a valid restriction.
+
+
+
+
+                                                                                          11 / 12
+References: refusal, reliability and cost
+Cui et al. (2025). OR-Bench: An Over-Refusal Benchmark for Large Language Models.
+arXiv:2405.20947. Over-refusal with toxic contrasts; no live workﬂow success claim.
+Yao et al. (2024). τ -bench: A Benchmark for Tool-Agent-User Interaction in Real-World
+Domains. arXiv:2406.12045. Simulated interaction and repeated state checks; no deployed
+ﬂeet guarantee.
+Kapoor et al. (2024). AI Agents That Matter. arXiv:2407.01502. Cost, holdouts and
+reproducibility; no Runspindle comparative result.
+
+
+
+
+                                                                                          12 / 12
+
