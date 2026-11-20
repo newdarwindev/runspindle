@@ -1,0 +1,13 @@
+{
+  "version": "runspindle.console-freshness-hero.v1",
+  "console_commit": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+  "projection_sha256": "daf72b3303a88e18742ab86380dff1f540b095116255845b6a80b4753f466d64",
+  "repeat_runs": 2,
+  "clock_ms": 1000,
+  "max_age_ms": 30,
+  "viewer_origin": "https://view.example.invalid",
+  "tasks": [
+    {"task": "task-a", "host": "host-a", "workspace": "workspace-fixture", "nativeSession": "session-a", "browser": "browser-a", "leaseEpoch": 1},
+    {"task": "task-b", "host": "host-b", "workspace": "workspace-fixture", "nativeSession": "session-b", "browser": "browser-b", "leaseEpoch": 2}
+  ]
+}
