@@ -1,0 +1,333 @@
+{
+  "schema": "runspindle.composition-storyboards.v1",
+  "source": {
+    "composition_head": "4ce6ec6632641a2bcde6496e4947a10263caff6b",
+    "composition_pins": {
+      "core": "18b5d65392b176e1ab6c4b65ac27e941f530956c",
+      "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+      "browser": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+      "tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+      "refinery": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+      "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+      "platform": "398c74766b9ec9f7203256e17dea34f1b15cac4c"
+    },
+    "files": {
+      "visual/storyboards.json": "50a6e35d91139dc9716aea2ef3b8ef6bebe8e326435c8b40fe950c6d461f05ac",
+      "visual/storyboards.css": "0597ca7c80933fb51283316f544319aeccc16f8ecb68fc3236ce4268fbf0bd95",
+      "tools/render_storyboards.py": "06286269f2a52532a363cf2d33acf1eb9c33f940c104a1ada555abd2b4108dab",
+      "requirements-visual.txt": "6facb8fb449b0e14d279b9928c305cf7240b7bf80172d5bc0ce30d934c69ca53",
+      "composition.lock.json": "c42564215bfa5a8eab659c01196a3727e30787355dadd593f3f9a3b6f69ea1b0",
+      "fixtures/v1/manifest.json": "11ba400c1e9a82566496678104200538f7d2f9b3394d73e65b6ad75c83c2d1ed"
+    },
+    "canonical_references": {
+      "tether": {
+        "repository": "runspindle-tether",
+        "commit": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+        "source": "visual/scenarios.json",
+        "sha256": "c3aacc3c49259d0ee891ee2c3e63fdb035a68761be7743552041d7f0b8fd3522",
+        "assets": {
+          "docs/visual-reference/admitted.png": "20e712ab8dc82a94762fee3f8daca5e7c45bb2e0e2358660fdacdd77c2f8abf8",
+          "docs/visual-reference/delivered.png": "019d062f3b571363ac31530efe3a07402379d700cdb3fefccc5104b705d22faa",
+          "docs/visual-reference/running.png": "7aae2f0ef58a0e0015029f4687a51c8d497f0fbad49f0b5ad2020bf35e67cebb",
+          "docs/visual-reference/unknown.png": "6f9234ca4725762d331dff1786f1bd1fe39dd47cbb50f0b91112ff983e1807d9"
+        }
+      },
+      "console": {
+        "repository": "runspindle-console",
+        "commit": "a0706bc907beb17fa5b4a6ad11639d45a02bf9be",
+        "source": "visual/scenarios.mjs",
+        "fixtures": "fixtures/console-ui/scenarios.js",
+        "sha256": "22ec553178f1055c6de955404d82c9aa580de1c25064efbe0d9e8cb018867eb4",
+        "assets": {
+          "fixtures/console-ui/scenarios.js": "73c648a7b098acc65835fbd5348a9506127bff0b8047999f9e94729cbba8ee61"
+        }
+      }
+    }
+  },
+  "render_profile": {
+    "playwright": "1.65.2",
+    "chromium": "156.0.8078.4",
+    "chromium_sha256": "77d8278b1ac9d0687fad4e817ea83023ede09b1deef36e1864b49ba194ac9634",
+    "os": "27.2",
+    "arch": "arm64",
+    "locale": "en-US",
+    "timezone": "UTC",
+    "device_scale": 1,
+    "viewports": [
+      [
+        320,
+        900
+      ],
+      [
+        390,
+        900
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1440,
+        1080
+      ]
+    ],
+    "fonts": {
+      "Avenir Next.ttc": "e03834eefdb4164c2af2c35b985285eb4fd67ff8db54aaed3bdc6d9c8b7f3c3c",
+      "Menlo.ttc": "f2d400484a6aace67980730ec0a9ef24ce9e535a2604f118e6fdc2510021b85f"
+    }
+  },
+  "toolchain": {
+    "python": "3.13.18",
+    "pillow": "12.2.0",
+    "greenlet": "3.5.6"
+  },
+  "generation": "generated",
+  "review": "candidate_pending_approval",
+  "actual_render": "not_run",
+  "behavioral_acceptance": "not_run",
+  "coverage": {
+    "h01": {
+      "issue": 8,
+      "criterion": "Synthetic Slack intake and truthful progress across duplicates and interruption",
+      "fixture": "visual/storyboards.json",
+      "viewports": [
+        [
+          320,
+          900
+        ],
+        [
+          390,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "canonical_states": [
+        [
+          "tether",
+          "admitted"
+        ],
+        [
+          "tether",
+          "running"
+        ],
+        [
+          "tether",
+          "unknown"
+        ]
+      ],
+      "reference": "h01.png",
+      "actual_render": {
+        "status": "not_run",
+        "capture": null
+      }
+    },
+    "h06": {
+      "issue": 13,
+      "criterion": "Passive viewing, denied or interrupted takeover, and fenced handback",
+      "fixture": "visual/storyboards.json",
+      "viewports": [
+        [
+          320,
+          900
+        ],
+        [
+          390,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "canonical_states": [
+        [
+          "console",
+          "simulated"
+        ],
+        [
+          "console",
+          "takeover-denied"
+        ],
+        [
+          "console",
+          "takeover-granted"
+        ],
+        [
+          "console",
+          "incomplete-handback"
+        ]
+      ],
+      "reference": "h06.png",
+      "actual_render": {
+        "status": "not_run",
+        "capture": null
+      }
+    },
+    "h07": {
+      "issue": 14,
+      "criterion": "Exact accepted artifact, lost delivery acknowledgement, and independent readback",
+      "fixture": "visual/storyboards.json",
+      "viewports": [
+        [
+          320,
+          900
+        ],
+        [
+          390,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "canonical_states": [
+        [
+          "console",
+          "accepted-delivery-unknown"
+        ],
+        [
+          "tether",
+          "unknown"
+        ],
+        [
+          "tether",
+          "delivered"
+        ]
+      ],
+      "reference": "h07.png",
+      "actual_render": {
+        "status": "not_run",
+        "capture": null
+      }
+    },
+    "h09": {
+      "issue": 16,
+      "criterion": "Truthful fleet and session freshness when observations expire or disconnect",
+      "fixture": "visual/storyboards.json",
+      "viewports": [
+        [
+          320,
+          900
+        ],
+        [
+          390,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "canonical_states": [
+        [
+          "console",
+          "fresh"
+        ],
+        [
+          "console",
+          "stale"
+        ],
+        [
+          "console",
+          "desktop-disconnected"
+        ]
+      ],
+      "reference": "h09.png",
+      "actual_render": {
+        "status": "not_run",
+        "capture": null
+      }
+    },
+    "h08": {
+      "issue": 15,
+      "criterion": "Correlated telemetry presents queue, export, persistence, and verified readback separately",
+      "fixture": "visual/storyboards.json",
+      "viewports": [
+        [
+          320,
+          900
+        ],
+        [
+          390,
+          900
+        ],
+        [
+          768,
+          1024
+        ],
+        [
+          1440,
+          1080
+        ]
+      ],
+      "canonical_states": [
+        [
+          "console",
+          "telemetry-queued"
+        ],
+        [
+          "console",
+          "telemetry-exported"
+        ],
+        [
+          "console",
+          "telemetry-persisted"
+        ],
+        [
+          "console",
+          "telemetry-readback"
+        ]
+      ],
+      "reference": "h08.png",
+      "actual_render": {
+        "status": "not_run",
+        "capture": null
+      }
+    }
+  },
+  "checks": {
+    "repeat_pixel_difference": 0,
+    "comparison_threshold_changed_pixels": 0,
+    "keyboard_navigation": "passed",
+    "minimum_text_contrast_ratio": 4.5,
+    "long_identity_200_percent_css_zoom": "passed",
+    "clipping_mutation": "detected",
+    "heading_clipping_mutation": "detected",
+    "external_requests": 0
+  },
+  "assets": {
+    "contact-sheet.png": "ebfcc5e07095353f84f9cae0808a1e0d468ce5609117a7abbcb7e23261c1ddd5",
+    "h01.png": "545a4e680cb898ffc75a410c65aa5f0f6da2ef4371dfa4bf24359ec947fb4b73",
+    "h06.png": "3bbbc4ec0e02b03c90dda85ba0cf076833c8f415f3bfcded043080e43ab80904",
+    "h07.png": "74705695a49936aa5d26d6d380c718841b4dc1dfbf23d66ebae079b4be3f16bb",
+    "h08.png": "6060558d01f5f61509437b6c24227deeba06df6eaeeb195c152d7afc1241ad8e",
+    "h09.png": "b0855fe3273fc10ace0005e6a51003beccdf6591af9cfa07aa6d7fe55ca81f20",
+    "index.html": "f2be4b5739304f16c31eaedc10831934f52a6b4508dde6b380597ffb840b5df3",
+    "repeat-diff.png": "332e3e5415f51d1337f935a5b74031b523a16013a53d9ef979fb441ca355b680",
+    "viewport-1440.png": "72244dfa7719bb7152c00da4bd4ed40f80109602e4eb43842df20f5dddd938eb",
+    "viewport-320.png": "a935dad773b1a861c90232fce6bc277eb502ac2311d5d82c8049b82b83112dfe",
+    "viewport-390.png": "02c4249cdb098601b851635161764a466ab591055412eedc6e385c6af2452c2a",
+    "viewport-768.png": "9383bd050ca0179ebbd7ace9c27ff71a6421a20ee8f4e2c3fccfec96f5e43bf1",
+    "zoom-200.png": "99934081dc2d4bb18afd7ac37582800cb53d75e14cbca28899a85c2251d6fc49"
+  }
+}
