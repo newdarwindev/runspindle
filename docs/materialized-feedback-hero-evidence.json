@@ -8,14 +8,15 @@
     "composition_python": {
       "errors": 0,
       "failures": 0,
-      "passed": 375,
-      "skipped": 3,
-      "status": "passed_with_optional_skips"
+      "passed": 380,
+      "skipped": 0,
+      "status": "passed",
+      "sqlite_resource_warnings": "observed"
     },
     "core_product_artifact": "passed",
     "scaffold": "passed"
   },
-  "composition_base": "fc68cb72528922217d50663c6761a148e1a3cb35",
+  "composition_base": "1880adfa713a6eeacbc4887722a5f11d9bea263b",
   "evidence_class": "local_pinned_components_signed_synthetic_fixture",
   "exercised": [
     "Tether SignedSlackIngress and SignedSlackFeedback",
@@ -25,6 +26,8 @@
   ],
   "normal_and_optimized": {
     "crash_before_commit": "rolled_back",
+    "delayed_add_after_removal": "denied",
+    "duplicate_callbacks": "unchanged",
     "invalid_signature": "denied",
     "lane": "H10.materialized_feedback_batch",
     "local_withdrawal": "denied",
@@ -58,13 +61,13 @@
   "schema_version": 1,
   "source_sha256": {
     "composition.lock.json": "c42564215bfa5a8eab659c01196a3727e30787355dadd593f3f9a3b6f69ea1b0",
-    "docs/FEEDBACK_HERO.md": "500f92b656e6b714fc6ad07c6a6ac3cc0740b6ffb9cbb2f6ba487ec64e3cd6a0",
+    "docs/FEEDBACK_HERO.md": "4ad320917d5f67fd364ce8546b69747a3fd4c8bfd7696a19633d85a9f14aaf78",
     "docs/core-product/artifact-manifest.json": "166fc43f0e80105ffcd026709ffc2c8169bfd568271182d0b5dce3256d1007cd",
     "hygiene.json": "5e514a12a58f9d96926dc61423b3e471e15b91f65f091e51dee3cf76b3445d11",
     "scenarios/feedback-collection-current-v1.json": "3efb21dc53fcbe8f730ee8697b16507220b7ab921fe05c4393b1ac6784360202",
     "tests/test_feedback_inventory.py": "f0bf03765f4bd283a854433dade2495403e98d50142be9457e56f7c85488bf6e",
     "tools/feedback_hero.py": "5a641f3b6aff3efd08b11fe2b3cfcf34d613e491f3ca1d3eed344f5800e97ffa",
-    "tools/materialized_feedback_hero.py": "92d15c3b52c8b0ba0bc08651d6fcc5990d7f9180c66ebbca8c1a991bbdf4c789"
+    "tools/materialized_feedback_hero.py": "4ca9bc8a6f40efc8431996fcb2b56f03ce071ee7355d3b5bf3c3b170297c191f"
   },
   "synthetic_boundaries": [
     "Slack HMAC credential and callbacks",
