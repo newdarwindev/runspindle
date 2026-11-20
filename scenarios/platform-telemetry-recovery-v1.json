@@ -1,0 +1,39 @@
+{
+  "version": "runspindle.platform-telemetry-hero.v1",
+  "platform_commit": "398c74766b9ec9f7203256e17dea34f1b15cac4c",
+  "source_sha256": {
+    "tools/collector_privacy_check.py": "83a478f438bd4e45a005ea308114dee37dfd35ef7c8225fda44e5bc2f7e4a07e",
+    "tools/disposable_harness/__init__.py": "5750c5aa449b3d4214cc4e8229c3290cd54cba881649c90ba86c3d8d586dc786",
+    "tools/disposable_harness/telemetry.py": "48caf0d8052c06dcd5ca2e2df41c97b7f221a86e28defd8044fd102eab1b6fc8",
+    "tools/disposable_harness/runtime.py": "e32db571515bfc0d16c74e8d63a6a6c1a7ef96eabf3d83637c8fdfa2133f5ec0",
+    "tools/disposable_harness/contracts.py": "a7ac36260da32c907bd40a80588d86cbef2810f8d9df430c98c8b95bb9cbfa0a"
+  },
+  "phases": [
+    "outage",
+    "lost_ack",
+    "replay",
+    "observe",
+    "privacy"
+  ],
+  "seed": 17,
+  "units": {
+    "1": 7,
+    "2": 11,
+    "3": 13,
+    "4": 17
+  },
+  "policy_sha256": "e7951692aa23d0d566cfd32126d36ea32e0eea484d09f15bc8e3bed52801517c",
+  "scope": {
+    "platform": "pinned_synthetic_otlp_pipeline",
+    "spool": "real_sqlite",
+    "receiver": "synthetic_peer_with_independent_sqlite_records",
+    "model_baseline": "not_run",
+    "core_only": "not_run",
+    "host_only": "not_run",
+    "console_only": "not_run",
+    "collector": "not_run",
+    "langfuse": "blocked",
+    "joint_integration": "blocked",
+    "live": "not_run"
+  }
+}

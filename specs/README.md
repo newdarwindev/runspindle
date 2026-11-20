@@ -59,6 +59,9 @@ and existing maintained-scenario acceptance remain unchanged.
 [Browser effect recovery](../docs/BROWSER_EFFECT_HERO.md) records the H05 lane
 using the pinned Browser journal with synthetic authority and a synthetic site.
 
+[Platform telemetry recovery](../docs/PLATFORM_TELEMETRY_HERO.md) records the H08
+lane using the pinned SQLite spool and an independent synthetic backend.
+
 [Native-turn request v1](native-turn-v1.md) adds a separate content-addressed,
 closed-profile request and independent Python synthetic mapping vectors. It does
 not alter Admission/grant semantics, advance component pins or activate native
