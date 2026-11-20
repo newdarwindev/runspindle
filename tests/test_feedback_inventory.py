@@ -21,6 +21,13 @@ class FeedbackInventoryTests(unittest.TestCase):
         self.assertEqual(len(checks), 1)
         entry = checks[0]
         self.assertNotIn("not_applicable", entry)
+        self.assertTrue(
+            {
+                "tools/materialized_feedback_hero.py",
+                "local/feedback-sources/refinery/refinery/dataset_batch.py",
+                "local/feedback-sources/refinery/refinery/dataset_materialization.py",
+            }.issubset(entry["required_files"])
+        )
         self.assertEqual(
             entry["command"],
             [
