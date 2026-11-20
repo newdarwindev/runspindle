@@ -183,10 +183,13 @@
       ],
       "required_files": [
         "tools/feedback_hero.py",
+        "tools/materialized_feedback_hero.py",
         "tests/test_feedback_hero.py",
         "scenarios/feedback-collection-current-v1.json",
         "local/feedback-sources/tether/tether/feedback.py",
         "local/feedback-sources/refinery/refinery/feedback_collection.py",
+        "local/feedback-sources/refinery/refinery/dataset_batch.py",
+        "local/feedback-sources/refinery/refinery/dataset_materialization.py",
         "local/feedback-sources/refinery/dependencies/tether-feedback.json"
       ],
       "timeout_seconds": 180
