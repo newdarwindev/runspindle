@@ -588,9 +588,13 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
                 require(found["objects"] > 0 and not found["result"]["denied"])
             else:
                 require(found["objects"] == 0 and found["result"]["denied"])
+    from tools import materialized_feedback_hero
+
+    materialized = materialized_feedback_hero.run(tether, refinery)
     return {
         "lane": "H10.retained_feedback_collection",
         "status": "passed",
+        "materialized_batch": materialized,
         "repeat_runs": 2,
         "fresh_process_replay": "passed",
         "precommit_process_crash_recovery": "passed",
