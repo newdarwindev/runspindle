@@ -4,19 +4,20 @@
 Candidate heads never advance reviewed composition pins. Required external and
 review gates keep the aggregate non-success even when bounded lanes pass.
 """
+
 import argparse
 import base64
-from contextlib import closing
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
 import signal
 import sqlite3
 import subprocess
 import sys
 import tempfile
 import uuid
+from contextlib import closing
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "runspindle.maintained-scenarios.v1"
@@ -47,7 +48,7 @@ def check(value, message):
         raise AssertionError(message)
 
 
-def sha(data):
+def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
@@ -384,8 +385,7 @@ def development_bundle(sources):
         b"Development evidence metadata bundle only. No product adapters, services or production installation. Component heads are candidates awaiting independent review."
     )
     dependencies = {
-        name
-        + "/inventory": "sha256:"
+        name + "/inventory": "sha256:"
         + sha((sources[name]["path"] / relative).read_bytes())
         for name, relative in (
             ("core", "docs/runtime-dependencies.json"),
@@ -425,9 +425,12 @@ def run_lane(
                     variant=variant,
                 )
                 manifests[variant] = {"manifest": manifest, "sha256": digest}
-            (directory / "bundle-input.json").write_text(
-                json.dumps({"component_commits": pins, "bundles": manifests})
-            )
+            bundle_input = json.dumps(
+                {"component_commits": pins, "bundles": manifests},
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode("ascii")
+            (directory / "bundle-input.json").write_bytes(bundle_input)
             container_worker(lane, directory, sources)
             result = json.loads((directory / "H12-worker.json").read_bytes())
             artifact_directory.mkdir(parents=True, exist_ok=True)
@@ -438,9 +441,7 @@ def run_lane(
                     directory / (variant + ".stream"),
                     artifact_directory / (variant + ".stream"),
                 )
-            (artifact_directory / "bundle-input.json").write_bytes(
-                (directory / "bundle-input.json").read_bytes()
-            )
+            (artifact_directory / "bundle-input.json").write_bytes(bundle_input)
             for relative, source in {
                 "composition/tools/maintained_lane_worker.py": ROOT
                 / "tools/maintained_lane_worker.py",
@@ -458,11 +459,11 @@ def run_lane(
             )
             (artifact_directory / "README.txt").write_text(
                 "Offline development bundle only. Preload the exact Python image from the manifest. "
-                "Run: python3 run.py --artifacts .\n"
+                "Run: python3 run.py --artifacts . --input-sha256 <digest from trusted H12 qualification report>\n"
                 "Uses disposable Linux arm64 Docker targets with denied network and bounded resources. "
                 "Native, Tether, browser, console, providers and production services are unsupported.\n"
             )
-            return result
+            return {**result, "bundle_input_sha256": sha(bundle_input)}
         container_worker(lane, directory, sources)
         lineage = observe_lineage(directory)
         if lane == "H11":

@@ -4,19 +4,30 @@
 Needs only Python on the launcher host, Docker, and the already-loaded exact
 Python runtime image. It does not need component checkouts or dependency caches.
 """
+
 import argparse
 import hashlib
 import json
-from pathlib import Path
+import re
 import subprocess
 import uuid
+from pathlib import Path
+from typing import Any, cast
 
 IMAGE = "python@sha256:0e58fc4a4575979bfce26735236422a48b38dae99d72b9d72a15e8e3fe0f7f93"
 
 
-def run(artifacts):
+def run(artifacts: str | Path, *, input_sha256: str) -> dict[str, Any]:
     directory = Path(artifacts).resolve()
-    metadata = json.loads((directory / "bundle-input.json").read_bytes())
+    if re.fullmatch(r"[0-9a-f]{64}", input_sha256) is None:
+        raise ValueError("expected a lowercase SHA-256 for the qualified bundle input")
+    bundle_input = directory / "bundle-input.json"
+    if bundle_input.is_symlink():
+        raise ValueError("saved bundle input must be a local file")
+    input_bytes = bundle_input.read_bytes()
+    if hashlib.sha256(input_bytes).hexdigest() != input_sha256:
+        raise ValueError("saved bundle input differs from qualification report")
+    metadata = json.loads(input_bytes)
     bootstrap = directory / "bootstrap"
     manifest = metadata["bundles"]["baseline"]["manifest"]
     for name, relative in (
@@ -89,7 +100,10 @@ def run(artifacts):
         result = subprocess.run(args, capture_output=True, text=True, timeout=600)
         if result.returncode:
             raise RuntimeError("saved offline bundle failed: " + result.stderr[-3000:])
-        return json.loads((directory / "H12-worker.json").read_bytes())
+        receipt = cast(
+            dict[str, Any], json.loads((directory / "H12-worker.json").read_bytes())
+        )
+        return {**receipt, "bundle_input_sha256": input_sha256}
     finally:
         subprocess.run(
             ["docker", "rm", "--force", name],
@@ -109,5 +123,12 @@ def run(artifacts):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifacts", default=str(Path(__file__).resolve().parent))
+    parser.add_argument(
+        "--input-sha256",
+        required=True,
+        help="Bundle input digest from the trusted H12 qualification report",
+    )
     args = parser.parse_args()
-    print(json.dumps(run(args.artifacts), sort_keys=True))
+    print(
+        json.dumps(run(args.artifacts, input_sha256=args.input_sha256), sort_keys=True)
+    )
