@@ -1,0 +1,114 @@
+{
+  "schema": "runspindle.composition-storyboards.v1",
+  "composition_issue": 30,
+  "render_profile": {
+    "playwright": "1.65.2",
+    "chromium": "156.0.8078.4",
+    "chromium_sha256": "77d8278b1ac9d0687fad4e817ea83023ede09b1deef36e1864b49ba194ac9634",
+    "os": "27.2",
+    "arch": "arm64",
+    "locale": "en-US",
+    "timezone": "UTC",
+    "device_scale": 1,
+    "viewports": [[320, 900], [390, 900], [768, 1024], [1440, 1080]],
+    "fonts": {
+      "Avenir Next.ttc": "e03834eefdb4164c2af2c35b985285eb4fd67ff8db54aaed3bdc6d9c8b7f3c3c",
+      "Menlo.ttc": "f2d400484a6aace67980730ec0a9ef24ce9e535a2604f118e6fdc2510021b85f"
+    }
+  },
+  "identity": {
+    "task": "synthetic-task-007",
+    "host": "host-synthetic-02",
+    "session": "native-synthetic-007",
+    "artifact": "artifact-synthetic-007",
+    "trace": "trace-synthetic-007",
+    "clock": "2026-11-16T12:00:00Z"
+  },
+  "references": {
+    "tether": {
+      "repository": "runspindle-tether",
+      "commit": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+      "source": "visual/scenarios.json"
+    },
+    "console": {
+      "repository": "runspindle-console",
+      "commit": "a0706bc907beb17fa5b4a6ad11639d45a02bf9be",
+      "source": "visual/scenarios.mjs",
+      "fixtures": "fixtures/console-ui/scenarios.js"
+    }
+  },
+  "cases": [
+    {
+      "id": "h01",
+      "parent": 8,
+      "navigation": "Progress",
+      "title": "Follow a request",
+      "intro": "One admitted task stays visible through duplicate delivery and interrupted progress.",
+      "criterion": "Synthetic Slack intake and truthful progress across duplicates and interruption",
+      "actual_render": {"status": "not_run", "capture": null},
+      "frames": [
+        ["Tether", "Admitted", "neutral", "The request is recorded once. The repeated callback adds no task.", "tether", "admitted"],
+        ["Tether", "Running", "good", "The selected host and observed native session are attached to this revision.", "tether", "running"],
+        ["Tether", "Unknown", "warn", "Progress stopped after disconnect. The latest retained update is shown with its timestamp.", "tether", "unknown"]
+      ]
+    },
+    {
+      "id": "h06",
+      "parent": 13,
+      "navigation": "Takeover",
+      "title": "Observe, take over, hand back",
+      "intro": "A visible desktop and an interactive lease have separate authority.",
+      "criterion": "Passive viewing, denied or interrupted takeover, and fenced handback",
+      "actual_render": {"status": "not_run", "capture": null},
+      "frames": [
+        ["Console", "View only", "neutral", "The simulated viewer can display a frame. Interactive input stays disabled.", "console", "simulated"],
+        ["Console", "Takeover denied", "warn", "The lease has no authenticated grant. The operator cannot send input.", "console", "takeover-denied"],
+        ["Console", "Grant reported", "neutral", "The reference shows a matched grant and the automation fence. The preview accepts no input.", "console", "takeover-granted"],
+        ["Console", "Handback pending", "warn", "Release was interrupted. Automation stays fenced until handback is confirmed.", "console", "incomplete-handback"]
+      ]
+    },
+    {
+      "id": "h07",
+      "parent": 14,
+      "navigation": "Artifact",
+      "title": "Deliver the accepted artifact",
+      "intro": "Acceptance and delivery have separate receipts for the same artifact.",
+      "criterion": "Exact accepted artifact, lost delivery acknowledgement, and independent readback",
+      "actual_render": {"status": "not_run", "capture": null},
+      "frames": [
+        ["Console", "Accepted", "neutral", "Validation and approval bind the artifact revision and digest.", "console", "accepted-delivery-unknown"],
+        ["Tether", "Delivery unknown", "warn", "The upload acknowledgement was lost. Recovery waits for receipt readback.", "tether", "unknown"],
+        ["Tether", "Delivered", "good", "Readback confirms the same bytes at the authorized destination.", "tether", "delivered"]
+      ]
+    },
+    {
+      "id": "h09",
+      "parent": 16,
+      "navigation": "Fleet",
+      "title": "Inspect fleet freshness",
+      "intro": "The source observation time controls the freshness shown for this host.",
+      "criterion": "Truthful fleet and session freshness when observations expire or disconnect",
+      "actual_render": {"status": "not_run", "capture": null},
+      "frames": [
+        ["Console", "Fresh", "good", "The latest host observation is inside the freshness window.", "console", "fresh"],
+        ["Console", "Stale", "warn", "The last observation is retained with its original timestamp.", "console", "stale"],
+        ["Console", "Disconnected", "warn", "The session stream stopped. The earlier observation remains stale.", "console", "desktop-disconnected"]
+      ]
+    },
+    {
+      "id": "h08",
+      "parent": 15,
+      "navigation": "Telemetry",
+      "title": "Read correlated telemetry",
+      "intro": "Queue, export, persistence, and readback are visible as distinct states.",
+      "criterion": "Correlated telemetry presents queue, export, persistence, and verified readback separately",
+      "actual_render": {"status": "not_run", "capture": null},
+      "frames": [
+        ["Console", "Queued", "neutral", "The trace is buffered locally.", "console", "telemetry-queued"],
+        ["Console", "Readback unknown", "warn", "Export succeeded. Backend persistence has no confirmed readback.", "console", "telemetry-exported"],
+        ["Console", "Persisted", "good", "The backend confirms persistence for this trace.", "console", "telemetry-persisted"],
+        ["Console", "Read back", "good", "The returned trace matches the task and session correlation.", "console", "telemetry-readback"]
+      ]
+    }
+  ]
+}
