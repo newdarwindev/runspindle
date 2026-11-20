@@ -74,6 +74,11 @@
     "version": "runspindle.integration.v1"
   },
   "runtime_integration_lanes": {
+    "H01": {
+      "tether_lane": "real_pinned_Tether_with_synthetic_Core_native_and_Slack",
+      "evidence": "docs/TETHER_SLACK_HERO.md",
+      "system_aggregate": "blocked"
+    },
     "H02": "passed_real_core_host_library_Temporal_scripted_native_peer",
     "H07": "passed_real_acceptance_outbox_Temporal_scripted_destination",
     "Tether_source_transport": "blocked",
