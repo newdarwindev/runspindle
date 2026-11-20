@@ -47,3 +47,28 @@ qualifies process interruption in a disposable local filesystem, not power loss,
 hostile database modification, backup, production retention or schema upgrades.
 Components own their stores; composition reads independent ledgers and never
 writes another component's state. Unavailable checks remain blocked/not-run.
+
+## H11 on the reviewed composition pin
+
+Run `python3 -B -m tools.serving_hero` with the pinned submodules initialized.
+The [scenario manifest](../scenarios/refinery-serving-recovery-v1.json) binds
+the Refinery commit, package tree, and its existing durable evaluation and
+lineage fixtures. The runner checks all seven gitlinks against the composition
+lock, stages the pinned package and fixtures from Git, and uses fresh Python
+processes and disposable SQLite files.
+
+The Refinery Store, durable evaluation and budget, Registry, and LocalServing
+execute their real component paths. The model responses, approval authority
+and explicit pre-effect rejection are scripted. The scenario rejects a forged
+approval, interrupts the worker after an actual load, reconciles in a new
+process, and verifies the predecessor after one rejected and one successful
+rollback. The parent reads SQLite independently for the paired heldout cases,
+global budget tickets, exact fired loads, active bytes, and registry settlement.
+Two runs must produce identical normalized observations. The controlled
+false-acknowledgement mutation must fail at the independent registry readback.
+Worker audit hooks deny socket and subprocess effects.
+
+The receipt records this bounded component lane, its source and fixture
+digests, and the unresolved full-system gate. DSPy, production serving,
+and live acceptance remain outside this run. Historical DSPy evidence
+retains its original pins.
