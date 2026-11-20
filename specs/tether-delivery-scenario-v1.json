@@ -1,0 +1,8 @@
+{
+  "version": "runspindle.tether-delivery-scenario.v1",
+  "core_candidate": {
+    "repository": "newdarwindev/runspindle-core",
+    "commit": "89c659c9236aad5f1b2be202576f92ae687590f2"
+  },
+  "composition_tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921"
+}
