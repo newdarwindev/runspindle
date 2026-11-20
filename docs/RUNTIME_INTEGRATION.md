@@ -89,7 +89,7 @@ and a local protobuf compiler and matching includes. Run from the clean
 composition checkout with a report path outside both checkouts.
 
 ```sh
-python3 tools/tether_delivery_scenario.py \
+python3 -m tools.tether_delivery_scenario \
   --core-source /path/to/core-candidate \
   --protoc /path/to/protobuf/bin/protoc \
   --protoc-include /path/to/protobuf/include \
