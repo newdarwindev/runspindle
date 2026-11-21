@@ -130,7 +130,7 @@ def load_component(core, relative, name):
     return load_exact(core / relative, name)
 
 
-def records(directory, database, sql):
+def records(directory: pathlib.Path, database: str, sql: str) -> list[tuple[Any, ...]]:
     path = directory / database
     check(
         path.is_file(),
@@ -297,43 +297,89 @@ def observe_host(directory, context):
     }
 
 
+def _compact_json(value: object) -> str:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+
+
 def observe_delivery(directory, context):
     request = context["request"]
     accepted = request["accepted"]
     validation = accepted["validation"]
     reference = validation["artifact"]
-    artifacts = records(
-        directory, "core.sqlite", "SELECT reference,bytes FROM artifacts"
+    operation = request["delivery_operation_id"]
+    # Match the pinned Core SQLite key layouts independently of the stored JSON.
+    binding = {
+        field: reference["binding"][field]
+        for field in (
+            "task_id",
+            "revision",
+            "operation_id",
+            "policy_revision",
+            "host_id",
+            "workspace_id",
+            "lease_epoch",
+        )
+    }
+    exact_ref = dict(
+        binding=binding,
+        artifact_id=reference["artifact_id"],
+        artifact_revision=reference["artifact_revision"],
+        sha256=reference["sha256"],
     )
-    validations = records(directory, "core.sqlite", "SELECT record FROM validations")
-    acceptances = records(directory, "core.sqlite", "SELECT record FROM acceptances")
+    artifact_key = _compact_json(
+        [binding, exact_ref["artifact_id"], exact_ref["artifact_revision"]]
+    )
+    validation_key = _compact_json(
+        [exact_ref, validation["validator_revision"], validation["policy_revision"]]
+    )
+    acceptance_key = _compact_json([binding["task_id"], binding["revision"]])
+    artifacts = records(
+        directory, "core.sqlite", "SELECT identity,reference,bytes FROM artifacts"
+    )
+    validations = records(
+        directory,
+        "core.sqlite",
+        "SELECT identity,artifact_identity,record FROM validations",
+    )
+    acceptances = records(
+        directory,
+        "core.sqlite",
+        "SELECT identity,artifact_identity,record FROM acceptances",
+    )
     check(
         len(artifacts) == len(validations) == len(acceptances) == 1,
         "missing/extra durable artifact evidence",
     )
-    stored_ref, data = artifacts[0]
+    retained_key, stored_ref, data = artifacts[0]
     check(
-        json.loads(stored_ref) == reference
+        retained_key == artifact_key
+        and json.loads(stored_ref) == reference
         and len(data) <= 1048576
         and sha(data) == reference["sha256"],
         "changed accepted bytes",
     )
     check(
-        json.loads(validations[0][0]) == validation
+        validations[0][:2] == (validation_key, artifact_key)
+        and json.loads(validations[0][2]) == validation
         and validation["passed"] is True
         and validation["policy_revision"] == reference["binding"]["policy_revision"],
         "validation skipped or rebound",
     )
     check(
-        json.loads(acceptances[0][0]) == accepted
+        acceptances[0][:2] == (acceptance_key, artifact_key)
+        and json.loads(acceptances[0][2]) == accepted
         and not (directory / "artifact.bin").exists(),
         "acceptance changed or generation input retained",
     )
     rows = records(
-        directory, "core.sqlite", "SELECT request,state,receipt,conflict FROM outbox"
+        directory,
+        "core.sqlite",
+        "SELECT operation,request,state,receipt,conflict FROM outbox",
     )
     check(
-        len(rows) == 1 and json.loads(rows[0][0]) == request,
+        len(rows) == 1
+        and rows[0][0] == operation
+        and json.loads(rows[0][1]) == request,
         "delivery reservation rebound",
     )
     calls = [
@@ -348,16 +394,18 @@ def observe_delivery(directory, context):
         all(r == request for _, r in calls), "destination transport authority changed"
     )
     receipts = records(
-        directory, "destination.sqlite", "SELECT receipt,bytes FROM receipts"
+        directory, "destination.sqlite", "SELECT operation,receipt,bytes FROM receipts"
     )
-    sends = sum(action == "send" for action, _ in calls)
+    actions = [action for action, _ in calls]
+    _, _, state, stored_receipt, conflict = rows[0]
     if context["before"]:
         check(
-            sends == 0
+            actions
+            and all(action == "lookup" for action in actions)
             and not receipts
-            and rows[0][1] == "unknown"
-            and rows[0][2] is None
-            and rows[0][3] == 0,
+            and state == "unknown"
+            and stored_receipt is None
+            and conflict == 0,
             "uncertain reservation resent or receipt fabricated",
         )
         return {
@@ -368,24 +416,27 @@ def observe_delivery(directory, context):
             "accepted_sha256": sha(data),
         }
     check(
-        sends == 1
-        and len(receipts) == 1
-        and calls[0][0] == "send"
-        and any(action == "lookup" for action, _ in calls[1:]),
+        len(receipts) == 1
+        and len(actions) > 1
+        and actions[0] == "send"
+        and all(action == "lookup" for action in actions[1:]),
         "delivery count/order mismatch",
     )
-    receipt, delivered = receipts[0]
+    receipt_operation, receipt, delivered = receipts[0]
     receipt = json.loads(receipt)
     check(
-        receipt["request"] == request
+        receipt_operation == operation
+        and receipt
+        == {"request": request, "receipt_id": "receipt-" + sha(operation.encode())}
         and delivered == data
         and sha(delivered) == reference["sha256"],
         "destination bytes/receipt differ from acceptance",
     )
     check(
-        rows[0][1] == "delivered"
-        and json.loads(rows[0][2]) == receipt
-        and rows[0][3] == 1,
+        state == "delivered"
+        and stored_receipt is not None
+        and json.loads(stored_receipt) == receipt
+        and conflict == 1,
         "confirmed receipt changed or later contradiction was forgotten",
     )
     return {
