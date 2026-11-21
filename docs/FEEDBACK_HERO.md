@@ -43,6 +43,14 @@ environment variables. Failed/missing materialization fails CI, never silently
 skips this lane. Remote CI qualification is pending. No hosted fallback or token/
 access expansion is introduced.
 
+The retained-feedback observer reads SQLite directly to match the Tether event
+and exact artifact revision to the Refinery collection receipt, retained input
+records, and dataset example. It recomputes the approved batch digest from the
+stored batch and checks the source and output bytes against their recorded
+digests. The pinned integration tests edit disposable database copies, rehash
+the changed records, and verify that a substituted feedback ID, batch output
+revision, or dataset example output revision is rejected.
+
 ## Boundary matrix
 
 | Boundary | Exercised | Evidence limits |

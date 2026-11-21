@@ -2,10 +2,13 @@
 
 import json
 import os
+import shutil
+import sqlite3
 import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import closing
 from pathlib import Path
 from unittest.mock import patch
 
@@ -229,6 +232,96 @@ class FeedbackHeroTests(unittest.TestCase):
         self.assertEqual(result["precommit_process_crash_recovery"], "passed")
         self.assertTrue(result["deliberate_mutation_detected"])
         self.assertEqual(result["system_acceptance"], "blocked")
+
+    @unittest.skipUnless(
+        os.environ.get("RUNSPINDLE_FEEDBACK_HERO_REFINERY")
+        and os.environ.get("RUNSPINDLE_FEEDBACK_HERO_TETHER"),
+        "candidate source checkouts must be explicitly prepared; no fetch/fallback",
+    )
+    def test_observer_rejects_rehashed_lineage_and_selection(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = root / "original"
+            original.mkdir()
+            for mode in ("prepare", "collect"):
+                subprocess.run(
+                    [
+                        sys.executable,
+                        *(["-O"] if sys.flags.optimize else []),
+                        "-B",
+                        str(Path(hero.__file__)),
+                        "--worker",
+                        mode,
+                        "--directory",
+                        str(original),
+                        "--tether",
+                        os.environ["RUNSPINDLE_FEEDBACK_HERO_TETHER"],
+                        "--refinery",
+                        os.environ["RUNSPINDLE_FEEDBACK_HERO_REFINERY"],
+                    ],
+                    env=dict(
+                        os.environ,
+                        PYTHONPYCACHEPREFIX=str(root / "cache"),
+                        PYTHONDONTWRITEBYTECODE="1",
+                    ),
+                    capture_output=True,
+                    check=True,
+                    timeout=40,
+                )
+            self.assertEqual(hero.observe(original)["objects"], 6)
+
+            for changed in ("selection", "batch", "example"):
+                with self.subTest(changed=changed):
+                    case = root / changed
+                    shutil.copytree(original, case)
+                    with closing(sqlite3.connect(case / "refinery.sqlite")) as db:
+                        records = {
+                            kind: json.loads(payload)
+                            for kind, payload in db.execute(
+                                "SELECT kind,payload FROM objects"
+                            )
+                        }
+                        trigger = db.execute(
+                            "SELECT sql FROM sqlite_master WHERE name='objects_UPDATE'"
+                        ).fetchone()[0]
+                        # Change the disposable copy as if the producer had written it.
+                        db.execute("DROP TRIGGER objects_UPDATE")
+
+                        def rewrite(kind: str) -> str:
+                            payload = json.dumps(
+                                records[kind], sort_keys=True, separators=(",", ":")
+                            ).encode()
+                            digest = hero.sha(payload)
+                            db.execute(
+                                "UPDATE objects SET identity=?,digest=?,payload=? WHERE kind=?",
+                                (digest, digest, payload, kind),
+                            )
+                            return digest
+
+                        lineage = records["lineage"]["dict"]
+                        if changed == "selection":
+                            receipt = records["feedback_collection"]["dict"]
+                            selected = receipt["selected"]["tuple"][0]["dict"]
+                            selected["selection"]["dict"]["feedback_id"] = "other"
+                            lineage["collection_evidence"] = rewrite(
+                                "feedback_collection"
+                            )
+                        elif changed == "batch":
+                            batch_output = lineage["batch"]["tuple"][1]["tuple"][0]
+                            batch_output["fields"]["revision"] = "2"
+                        else:
+                            dataset = lineage["dataset"]["fields"]
+                            example = dataset["examples"]["tuple"][0]["fields"]
+                            example["output"]["fields"]["revision"] = "2"
+                        snapshot = rewrite("lineage")
+                        db.execute(trigger)
+                        db.commit()
+                    result_path = case / "result.json"
+                    result = json.loads(result_path.read_bytes())
+                    result["snapshot"] = snapshot
+                    result_path.write_text(json.dumps(result))
+                    with self.assertRaises(ValueError):
+                        hero.observe(case)
 
 
 if __name__ == "__main__":
