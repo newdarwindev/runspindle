@@ -1,0 +1,172 @@
+{
+  "version": "runspindle.platform-fleet-freshness.v1",
+  "clock": 1700000120,
+  "components": {
+    "core": "18b5d65392b176e1ab6c4b65ac27e941f530956c",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+    "tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+    "refinery": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "398c74766b9ec9f7203256e17dea34f1b15cac4c"
+  },
+  "cases": [
+    {
+      "id": "fresh-idle",
+      "guest": "idle",
+      "expected": {
+        "status": "passed",
+        "occupied_slots": [],
+        "available_slots": 2,
+        "reasons": []
+      }
+    },
+    {
+      "id": "fresh-owned",
+      "guest": "owned",
+      "reserved": true,
+      "expected": {
+        "status": "passed",
+        "occupied_slots": [
+          0
+        ],
+        "available_slots": 1,
+        "reasons": []
+      }
+    },
+    {
+      "id": "old-owner",
+      "guest": "old_owner",
+      "reserved": true,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [
+          0
+        ],
+        "available_slots": 0,
+        "reasons": [
+          "unreconciled guest ownership"
+        ]
+      }
+    },
+    {
+      "id": "guest-loss",
+      "guest": "idle",
+      "reserved": true,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [
+          0
+        ],
+        "available_slots": 0,
+        "reasons": [
+          "guest loss awaiting reconciliation"
+        ]
+      }
+    },
+    {
+      "id": "orphan-guest",
+      "guest": "owned",
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [
+          0
+        ],
+        "available_slots": 0,
+        "reasons": [
+          "unreconciled guest ownership"
+        ]
+      }
+    },
+    {
+      "id": "missing-guest",
+      "guest": "idle",
+      "missing_guest": true,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "unavailable guest observation",
+          "unavailable guest process observation"
+        ]
+      }
+    },
+    {
+      "id": "stale-heartbeat",
+      "guest": "idle",
+      "heartbeat": 120,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "stale or unavailable heartbeat"
+        ]
+      }
+    },
+    {
+      "id": "missing-heartbeat",
+      "guest": "idle",
+      "heartbeat": null,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "stale or unavailable heartbeat"
+        ]
+      }
+    },
+    {
+      "id": "future-poll",
+      "guest": "idle",
+      "poll_at": -1,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "stale or unavailable poll_at"
+        ]
+      }
+    },
+    {
+      "id": "stale-poll",
+      "guest": "idle",
+      "poll_at": 121,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "stale or unavailable poll_at"
+        ]
+      }
+    },
+    {
+      "id": "manager-outage",
+      "guest": "idle",
+      "manager_outage": true,
+      "expected": {
+        "status": "blocked",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": [
+          "manager service unavailable"
+        ]
+      }
+    },
+    {
+      "id": "drained",
+      "guest": "idle",
+      "drained": true,
+      "expected": {
+        "status": "passed",
+        "occupied_slots": [],
+        "available_slots": 0,
+        "reasons": []
+      }
+    }
+  ]
+}
