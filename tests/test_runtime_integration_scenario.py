@@ -1,5 +1,6 @@
 """Synthetic mutations of independent ledger oracles; not runtime acceptance."""
 
+import contextlib
 import copy
 import hashlib
 import json
@@ -10,7 +11,7 @@ import sqlite3
 import tempfile
 import types
 import unittest
-from collections.abc import Sequence
+from collections.abc import Iterator, Sequence
 from contextlib import closing
 from typing import Any
 
@@ -30,13 +31,19 @@ B = {
 }
 
 
+@contextlib.contextmanager
+def database(root: pathlib.Path, name: str) -> Iterator[sqlite3.Connection]:
+    with closing(sqlite3.connect(root / name)) as db, db:
+        yield db
+
+
 def execute(
     root: pathlib.Path,
     name: str,
     sql: str,
     rows: Sequence[tuple[str, tuple[Any, ...]]] = (),
 ) -> None:
-    with closing(sqlite3.connect(root / name)) as db, db:
+    with database(root, name) as db:
         db.executescript(sql)
         for statement, values in rows:
             db.execute(statement, values)
@@ -154,6 +161,7 @@ def host_fixture(root, before=False):
         "native_session_id": "race-native",
         "last_sequence": 2,
         "observed_at_ms": 101,
+        "cancel_dispatched": False,
     }
     core = dict(held, cancellation="ObservedTerminal")
     state = {"entries": {"operation": snap, "race-operation": held}}
@@ -176,8 +184,9 @@ def host_fixture(root, before=False):
     if not before:
         rows.append(
             (
-                "INSERT INTO sessions VALUES(?)",
+                "INSERT INTO sessions VALUES(?,?)",
                 (
+                    B["operation_id"],
                     json.dumps(
                         {
                             "binding": B,
@@ -193,8 +202,9 @@ def host_fixture(root, before=False):
     if not before:
         rows.append(
             (
-                "INSERT INTO sessions VALUES(?)",
+                "INSERT INTO sessions VALUES(?,?)",
                 (
+                    race_binding["operation_id"],
                     json.dumps(
                         {
                             "binding": race_binding,
@@ -210,11 +220,12 @@ def host_fixture(root, before=False):
     execute(
         root,
         "native-peer.sqlite",
-        "CREATE TABLE calls(id INTEGER PRIMARY KEY,action TEXT,binding TEXT);CREATE TABLE sessions(observation TEXT);",
+        "CREATE TABLE calls(id INTEGER PRIMARY KEY,action TEXT,binding TEXT);CREATE TABLE sessions(operation TEXT PRIMARY KEY,observation TEXT);",
         rows,
     )
     for prefix in ("reconcile-ready", "reconcile-returned"):
         (root / (prefix + "-race-operation.json")).write_text(json.dumps(held))
+    (root / "reconcile-release-race-operation.json").write_text(json.dumps(race_binding))
     return {
         "request": {"admission": B},
         "before": before,
@@ -250,7 +261,7 @@ class Oracles(unittest.TestCase):
             root = pathlib.Path(directory)
             context = host_fixture(root)
             self.assertEqual(scenario.observe_host(root, context)["launch_calls"], 1)
-            with sqlite3.connect(root / "native-peer.sqlite") as db:
+            with database(root, "native-peer.sqlite") as db:
                 db.execute(
                     "INSERT INTO calls(action,binding) VALUES(?,?)",
                     ("launch", json.dumps(B)),
@@ -263,10 +274,11 @@ class Oracles(unittest.TestCase):
             root = pathlib.Path(directory)
             context = host_fixture(root, True)
             self.assertEqual(scenario.observe_host(root, context)["state"], "unknown")
-            with sqlite3.connect(root / "native-peer.sqlite") as db:
+            with database(root, "native-peer.sqlite") as db:
                 db.execute(
-                    "INSERT INTO sessions VALUES(?)",
+                    "INSERT INTO sessions VALUES(?,?)",
                     (
+                        B["operation_id"],
                         json.dumps(
                             {
                                 "binding": B,
@@ -287,7 +299,7 @@ class Oracles(unittest.TestCase):
                 if field == "cancellation":
                     context["terminal_race"]["core"][field] = "None"
                 else:
-                    with sqlite3.connect(root / "native-peer.sqlite") as db:
+                    with database(root, "native-peer.sqlite") as db:
                         db.execute(
                             "UPDATE sessions SET observation=?",
                             (
@@ -303,6 +315,89 @@ class Oracles(unittest.TestCase):
                             ),
                         )
                 with self.assertRaises(AssertionError):
+                    scenario.observe_host(root, context)
+
+    def test_race_receipt_must_keep_its_durable_key_and_observation(self):
+        for column, value in (
+            ("operation", "other-operation"),
+            ("sequence", 3),
+            ("observed_at_ms", 102),
+        ):
+            with self.subTest(column=column), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = host_fixture(root)
+                with database(root, "native-peer.sqlite") as db:
+                    if column == "operation":
+                        db.execute(
+                            "UPDATE sessions SET operation=? WHERE operation='race-operation'",
+                            (value,),
+                        )
+                    else:
+                        db.execute(
+                            "UPDATE sessions SET observation=json_set(observation, ?, ?) WHERE operation='race-operation'",
+                            ("$." + column, value),
+                        )
+                with self.assertRaisesRegex(AssertionError, "independent receipt"):
+                    scenario.observe_host(root, context)
+
+    def test_race_barrier_must_return_durable_host_snapshot_and_use_exact_pin(self):
+        for mutation in ("held_and_returned", "release"):
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = host_fixture(root)
+                baseline = scenario.observe_host(root, context)
+                self.assertTrue(baseline["race_peer_receipt_and_host_barrier_match"])
+                if mutation == "held_and_returned":
+                    for prefix in ("reconcile-ready", "reconcile-returned"):
+                        path = root / (prefix + "-race-operation.json")
+                        data = json.loads(path.read_text())
+                        data["binding"]["host_id"] = "alternate-host"
+                        path.write_text(json.dumps(data))
+                else:
+                    path = root / "reconcile-release-race-operation.json"
+                    data = json.loads(path.read_text())
+                    data["lease_epoch"] += 1
+                    path.write_text(json.dumps(data))
+                with self.assertRaisesRegex(AssertionError, "terminal barrier"):
+                    scenario.observe_host(root, context)
+
+    def test_race_core_cannot_change_terminal_observation_or_reorder_history(self):
+        for mutation in ("core_binding", "core_sequence", "empty_history", "reorder"):
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = host_fixture(root)
+                race = context["terminal_race"]
+                if mutation == "core_binding":
+                    race["core"]["binding"] = dict(race["core"]["binding"], lease_epoch=2)
+                elif mutation == "core_sequence":
+                    race["core"]["last_sequence"] += 1
+                elif mutation == "empty_history":
+                    race["completed_events"] = []
+                else:
+                    race["completed_events"] = [9]
+                with self.assertRaisesRegex(
+                    AssertionError, "core lost|terminal reply"
+                ):
+                    scenario.observe_host(root, context)
+
+    def test_race_rejects_reordered_discovery_and_unknown_peer_actions(self):
+        for mutation in ("reorder", "unknown_action"):
+            with self.subTest(mutation=mutation), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = host_fixture(root)
+                with database(root, "native-peer.sqlite") as db:
+                    if mutation == "reorder":
+                        db.execute(
+                            "UPDATE calls SET action=CASE action WHEN 'launch' THEN 'discover' ELSE 'launch' END WHERE id IN (4,5)"
+                        )
+                    else:
+                        db.execute(
+                            "INSERT INTO calls(action,binding) VALUES(?,?)",
+                            ("unrecognized", json.dumps(B)),
+                        )
+                with self.assertRaisesRegex(
+                    AssertionError, "dispatch|unexpected native peer action"
+                ):
                     scenario.observe_host(root, context)
 
     def test_delivery_ledger_rejects_skipped_validation_changed_bytes_and_fabricated_receipts(
@@ -326,7 +421,7 @@ class Oracles(unittest.TestCase):
                     if sql == "DELETE FROM receipts"
                     else "core.sqlite"
                 )
-                with sqlite3.connect(root / target) as db:
+                with database(root, target) as db:
                     db.execute(sql)
                 with self.assertRaises(AssertionError):
                     scenario.observe_delivery(root, context)

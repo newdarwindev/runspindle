@@ -114,3 +114,14 @@ cancellation races and conflicting receipts are required. Deliberate duplicate
 launch, session rebind, skipped validation, changed-byte and fabricated-receipt
 mutations must fail behavioral assertions. Seeded repeats compare normalized
 outcomes. Offline passes leave absent full-system adapters blocked.
+
+The composition H02 observer reads the scripted peer's durable operation key and
+terminal observation directly. For the cancellation race, the peer observation
+must match the durable Host snapshot by binding, session, sequence, and
+observation time. The held and returned activity snapshots must equal that Host
+snapshot, and the barrier release must echo the exact binding. Core must preserve
+the returned snapshot while recording the accepted cancellation as
+`ObservedTerminal`. The peer ledger must show launch before discovery and zero
+cancel calls for the race. Synthetic mutations exercise these assertions in
+`tests/test_runtime_integration_scenario.py`. Integration reports from earlier
+commits apply to their recorded driver and component revisions.
