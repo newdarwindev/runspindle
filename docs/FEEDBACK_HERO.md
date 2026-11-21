@@ -125,6 +125,13 @@ batch, checking the input and output bytes at the read boundary. A worker
 exits after the item insert and before commit. The parent observes zero
 committed items and a fresh worker recovers normally.
 
+Fresh workers also replay the exact signed add and remove callbacks. The parent
+compares the retained revision, head, delivery and invalidation rows before and
+after each replay. After removal, a delayed add is rejected both with its
+original delivery ID and with a new delivery ID. The parent verifies that the
+original revision and the single removal record are still present. A fresh
+Refinery read of the saved manifest then returns no dataset items.
+
 Wrong-purpose and missing-consent reads return zero bytes. After signed
 source removal or local dataset withdrawal, a fresh worker returns zero
 bytes and the prior row is still present. Deliberately disabling the

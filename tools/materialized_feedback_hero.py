@@ -36,10 +36,13 @@ PHASES = (
     "prepare",
     "crash",
     "materialize",
+    "duplicate_add",
     "replay",
     "wrong_purpose",
     "denied_consent",
     "remove",
+    "duplicate_remove",
+    "delayed_add",
     "source_revoked",
     "withdraw",
     "withdrawn",
@@ -80,9 +83,9 @@ def signature(raw: bytes) -> tuple[tuple[str, str], ...]:
     )
 
 
-def reaction(removed: bool) -> bytes:
+def reaction(removed: bool, event_id: str | None = None) -> bytes:
     return wire(
-        "EvRemove" if removed else "EvAdd",
+        event_id if event_id is not None else ("EvRemove" if removed else "EvAdd"),
         dict(
             type="reaction_removed" if removed else "reaction_added",
             user=ACTOR,
@@ -222,7 +225,7 @@ def open_refinery(
     refinery: Path,
     prepare: bool,
     stack: ExitStack,
-) -> tuple[Any, Any, Any]:
+) -> tuple[Any, Any, Any, Any]:
     sys.path.insert(0, str(refinery))
     from refinery import storage
     from refinery.dataset_materialization import DatasetRegistry
@@ -329,7 +332,7 @@ def open_refinery(
     )
     registry = DatasetRegistry(root / "datasets.sqlite")
     stack.callback(registry.close)
-    return app, source_ref, registry
+    return app, source_ref, registry, a.Rejected
 
 
 def bindings(root: Path) -> tuple[dict[str, Any], str, bytes]:
@@ -345,7 +348,7 @@ def worker(root: Path, tether: Path, refinery: Path, phase: str) -> None:
         network = stack.enter_context(
             patch("socket.socket", side_effect=AssertionError("network forbidden"))
         )
-        app, source, registry = open_refinery(
+        app, source, registry, rejected = open_refinery(
             root, tether, refinery, phase == "prepare", stack
         )
 
@@ -385,9 +388,21 @@ def worker(root: Path, tether: Path, refinery: Path, phase: str) -> None:
             )
             (root / "batch.json").write_bytes(manifest)
             write_read_receipt(root, phase, contents)
-        elif phase == "remove":
+        elif phase == "duplicate_add":
+            raw = reaction(False)
+            require(app.react(raw, signature(raw)) == "duplicate")
+        elif phase in {"remove", "duplicate_remove"}:
             raw = reaction(True)
-            app.react(raw, signature(raw))
+            expected = "invalidated" if phase == "remove" else "duplicate"
+            require(app.react(raw, signature(raw)) == expected)
+        elif phase == "delayed_add":
+            for event_id in ("EvAdd", "EvLateAdd"):
+                raw = reaction(False, event_id)
+                try:
+                    app.react(raw, signature(raw))
+                except rejected:
+                    continue
+                raise ValueError("Removed reaction became eligible again")
         elif phase == "withdraw":
             item, _, _ = bindings(root)
             registry.withdraw(item["item_id"], approve=approve, permission_ref=REF)
@@ -533,6 +548,20 @@ def observe(root: Path) -> dict[str, Any]:
     }
 
 
+def reaction_rows(root: Path) -> dict[str, list[Any]]:
+    return {
+        table: rows(root / "feedback.sqlite", "SELECT * FROM " + table)
+        for table in (
+            "feedback_revisions",
+            "feedback_heads_v2",
+            "feedback_deliveries",
+            "feedback_invalidations",
+            "feedback_invalidation_events",
+            "feedback_invalidation_state",
+        )
+    }
+
+
 def run(tether: Path, refinery: Path) -> dict[str, Any]:
     tether, refinery = tether.absolute(), refinery.absolute()
     sources = verify_sources(tether, refinery)["sources"]
@@ -581,6 +610,9 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
                 require(not (case / "batch.json").exists())
             invoke(case, "materialize")
             first = observe(case)
+            retained_add = reaction_rows(case)
+            invoke(case, "duplicate_add")
+            require(reaction_rows(case) == retained_add)
             invoke(case, "materialize")
             invoke(case, "replay")
             require(observe(case) == first)
@@ -591,15 +623,19 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
                 require((case / (phase + ".json")).read_bytes() == b"[]")
             if repeat == 0:
                 invoke(case, "remove")
+                retained_removal = reaction_rows(case)
+                require(len(retained_removal["feedback_invalidations"]) == 1)
+                require(len(retained_removal["feedback_invalidation_events"]) == 1)
+                require(
+                    retained_removal["feedback_revisions"]
+                    == retained_add["feedback_revisions"]
+                )
+                invoke(case, "duplicate_remove")
+                require(reaction_rows(case) == retained_removal)
+                invoke(case, "delayed_add")
+                require(reaction_rows(case) == retained_removal)
                 invoke(case, "source_revoked")
                 require((case / "source_revoked.json").read_bytes() == b"[]")
-                require(
-                    rows(
-                        case / "feedback.sqlite",
-                        "SELECT count(*) FROM feedback_invalidations",
-                    )
-                    == [(1,)]
-                )
             else:
                 invoke(case, "withdraw")
                 invoke(case, "withdrawn")
@@ -624,6 +660,8 @@ def run(tether: Path, refinery: Path) -> dict[str, Any]:
         status="passed",
         repeat_runs=2,
         invalid_signature="denied",
+        duplicate_callbacks="unchanged",
+        delayed_add_after_removal="denied",
         wrong_purpose="denied",
         missing_dataset_consent="denied",
         source_revocation="denied",
