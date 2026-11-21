@@ -15,10 +15,10 @@ import sqlite3
 import subprocess
 import sys
 import tempfile
+import typing
 import uuid
 from contextlib import closing
 from pathlib import Path
-from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "runspindle.maintained-scenarios.v1"
@@ -118,14 +118,16 @@ def load(path, name):
     return module
 
 
-def rows(path: Path, query: str, params: tuple[Any, ...] = ()) -> list[tuple[Any, ...]]:
+def rows(
+    path: Path, query: str, params: tuple[typing.Any, ...] = ()
+) -> list[tuple[typing.Any, ...]]:
     check(path.is_file(), "missing independent component store")
     with closing(sqlite3.connect("file:" + str(path) + "?mode=rw", uri=True)) as db:
         db.execute("PRAGMA query_only=ON")
         return db.execute(query, params).fetchall()
 
 
-def decode(value: Any) -> Any:
+def decode(value: typing.Any) -> typing.Any:
     """Independent evidence-only decoder; does not import component serializers."""
     if not isinstance(value, dict):
         return value
@@ -227,7 +229,7 @@ def observe_heldout_attempts(db: Path, candidate_digests: dict[str, str]) -> int
         db,
         "SELECT experiment,request,outcome,receipt FROM attempts ORDER BY experiment,ticket",
     )
-    observed: dict[str, list[tuple[Any, ...]]] = {
+    observed: dict[str, list[tuple[typing.Any, ...]]] = {
         name: [] for name in candidate_digests
     }
     request_fields = (
