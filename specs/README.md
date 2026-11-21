@@ -63,3 +63,6 @@ using the pinned Browser journal with synthetic authority and a synthetic site.
 closed-profile request and independent Python synthetic mapping vectors. It does
 not alter Admission/grant semantics, advance component pins or activate native
 task execution; durable Host and real-native qualification remain separate.
+
+[Console freshness and passive-view checks](../docs/CONSOLE_FRESHNESS_HERO.md)
+record the H09 lane using the pinned Console projection and scripted feeds.
