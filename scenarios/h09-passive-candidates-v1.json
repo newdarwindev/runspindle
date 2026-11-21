@@ -1,0 +1,129 @@
+{
+  "version": "runspindle.h09-passive-candidates.v1",
+  "composition_pins": {
+    "core": "18b5d65392b176e1ab6c4b65ac27e941f530956c",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+    "tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+    "refinery": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "398c74766b9ec9f7203256e17dea34f1b15cac4c"
+  },
+  "candidates": {
+    "core": "b883d8aa81e173119ab508ced2e95db3eb333a19",
+    "browser": "e898b73d57e0ff09c5cfad3437885f40827028dd"
+  },
+  "clock": 100,
+  "target": {
+    "binding": {
+      "principal": "fixture-viewer",
+      "account": "fixture-account",
+      "browser": "fixture-browser",
+      "tab": "fixture-tab",
+      "intent": "fixture-task",
+      "revision": 1,
+      "operation": "fixture-open",
+      "epoch": 1,
+      "origin": "https://example.invalid"
+    },
+    "native_session": "fixture-session",
+    "frame": "fixture-frame",
+    "frame_origin": "https://frame.invalid"
+  },
+  "cases": [
+    {
+      "id": "pending-a",
+      "selection": "task-a",
+      "view": "observed"
+    },
+    {
+      "id": "pending-b",
+      "selection": "task-b",
+      "view": "observed"
+    },
+    {
+      "id": "switched-b",
+      "selection": "task-b",
+      "confirm": true,
+      "view": "observed"
+    },
+    {
+      "id": "duplicate-b",
+      "selection": "task-b",
+      "duplicate": true,
+      "view": "observed"
+    },
+    {
+      "id": "late-pending-b",
+      "selection": "task-b",
+      "replay_core": "pending-b",
+      "view": "discarded"
+    },
+    {
+      "id": "late-a-for-b",
+      "selection": "task-a",
+      "active": "task-b",
+      "view": "discarded"
+    },
+    {
+      "id": "stale-grant",
+      "selection": "task-b",
+      "grant": "task-a",
+      "view": "unknown"
+    },
+    {
+      "id": "missing-time",
+      "selection": "task-b",
+      "observed_at": null,
+      "browser_denied": true,
+      "view": "retained_only"
+    },
+    {
+      "id": "stale-time",
+      "selection": "task-b",
+      "observed_at": 94,
+      "browser_denied": true,
+      "view": "retained_only"
+    },
+    {
+      "id": "future-time",
+      "selection": "task-b",
+      "observed_at": 101,
+      "browser_denied": true,
+      "view": "retained_only"
+    },
+    {
+      "id": "other-account",
+      "selection": "task-b",
+      "wrong_account": true,
+      "browser_denied": true,
+      "view": "retained_only"
+    },
+    {
+      "id": "expired-passive",
+      "selection": "task-b",
+      "deadline": 100,
+      "browser_denied": true,
+      "view": "retained_only"
+    },
+    {
+      "id": "recovered-b",
+      "selection": "task-b",
+      "observed_at": 100,
+      "view": "observed"
+    },
+    {
+      "id": "older-b",
+      "selection": "task-b",
+      "observed_at": 99,
+      "view": "discarded"
+    },
+    {
+      "id": "replayed-recovery",
+      "selection": "task-b",
+      "observed_at": 100,
+      "duplicate": true,
+      "view": "observed"
+    }
+  ]
+}
