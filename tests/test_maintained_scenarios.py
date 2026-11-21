@@ -1,10 +1,11 @@
-from contextlib import closing
 import importlib.util
 import json
-from pathlib import Path
 import sqlite3
 import tempfile
 import unittest
+from contextlib import closing
+from pathlib import Path
+from typing import Any
 
 PATH = Path(__file__).resolve().parents[1] / "tools/maintained_scenarios.py"
 SPEC = importlib.util.spec_from_file_location("maintained_scenarios", PATH)
@@ -12,8 +13,29 @@ lane = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(lane)
 
 
-def encoded(value):
-    return json.dumps({"dict": {k: v for k, v in value.items()}}).encode()
+def encoded(value: Any) -> bytes:
+    def record(item: Any) -> Any:
+        if isinstance(item, dict):
+            return {"dict": {k: record(v) for k, v in item.items()}}
+        if isinstance(item, tuple):
+            return {"tuple": [record(v) for v in item]}
+        return item
+
+    return json.dumps(record(value)).encode()
+
+
+def request(stage: str, artifact: str, output: str = "heldout") -> bytes:
+    return encoded(
+        {
+            "stage": stage,
+            "output_id": output,
+            "output_revision": "1",
+            "source_sha256": lane.sha(output.encode()),
+            "artifact_sha256": artifact,
+            "split_sha256": lane.sha(b"split"),
+            "attempt": 1,
+        }
+    )
 
 
 class MaintainedScenarioTests(unittest.TestCase):
@@ -40,29 +62,57 @@ class MaintainedScenarioTests(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 lane.decode(value)
 
-    def fixture(self, directory):
+    def fixture(self, directory: Path) -> dict[str, Any]:
         content = json.dumps(
             {"format": "synthetic.map.v1", "responses": {"hello": "first"}}
         ).encode()
         first, second = lane.sha(content), lane.sha(b"second")
         with closing(sqlite3.connect(directory / "refinery.sqlite")) as db:
+            lineage = encoded(
+                {
+                    "dataset": {
+                        "examples": tuple(
+                            {
+                                "source": {
+                                    "family_id": name,
+                                    "sha256": lane.sha(name.encode()),
+                                },
+                                "output": {"output_id": name, "revision": "1"},
+                            }
+                            for name in ("heldout", "train")
+                        )
+                    },
+                    "split": {
+                        "assignments": (("heldout", "heldout"), ("train", "train")),
+                        "sha256": lane.sha(b"split"),
+                    },
+                }
+            )
+            db.execute(
+                "CREATE TABLE objects(kind TEXT,identity TEXT,digest TEXT,payload BLOB)"
+            )
+            db.execute(
+                "INSERT INTO objects VALUES('lineage',?,?,?)",
+                (lane.sha(lineage), lane.sha(lineage), lineage),
+            )
             db.execute(
                 "CREATE TABLE attempts(request BLOB,outcome TEXT,receipt BLOB,experiment TEXT,ticket INTEGER)"
             )
-            for i, stage in enumerate(("baseline", "candidate")):
-                db.execute(
-                    "INSERT INTO attempts VALUES(?,'settled',?,'experiment',?)",
-                    (
-                        encoded(
-                            {
-                                "output_id": "output",
-                                "output_revision": "1",
-                                "stage": stage,
-                            }
+            for experiment, candidate in (
+                ("candidate-0", first),
+                ("candidate-1", second),
+            ):
+                db.executemany(
+                    "INSERT INTO attempts VALUES(?,'settled',?,?,?)",
+                    [
+                        (
+                            request("baseline", lane.sha(b"baseline")),
+                            b"receipt",
+                            experiment,
+                            0,
                         ),
-                        b"receipt",
-                        i,
-                    ),
+                        (request("candidate", candidate), b"receipt", experiment, 1),
+                    ],
                 )
             db.execute("CREATE TABLE activations(state TEXT,generation INTEGER)")
             db.executemany(
@@ -140,6 +190,43 @@ class MaintainedScenarioTests(unittest.TestCase):
                             )
                         db.commit()
                 with self.assertRaises(AssertionError):
+                    lane.observe_serving(directory, result)
+
+    def test_globally_matched_rows_cannot_hide_incomplete_experiments(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            result = self.fixture(directory)
+            with closing(sqlite3.connect(directory / "refinery.sqlite")) as db, db:
+                db.execute(
+                    "DELETE FROM attempts WHERE (experiment='candidate-0' AND ticket=1) "
+                    "OR (experiment='candidate-1' AND ticket=0)"
+                )
+            with self.assertRaisesRegex(AssertionError, "heldout"):
+                lane.observe_serving(directory, result)
+
+    def test_matching_training_rows_or_wrong_candidate_bytes_cannot_pass(self) -> None:
+        for mutation in ("train", "wrong-artifact"):
+            with (
+                self.subTest(mutation=mutation),
+                tempfile.TemporaryDirectory() as temporary,
+            ):
+                directory = Path(temporary)
+                result = self.fixture(directory)
+                with closing(sqlite3.connect(directory / "refinery.sqlite")) as db, db:
+                    for raw, rowid in db.execute(
+                        "SELECT request,rowid FROM attempts"
+                    ).fetchall():
+                        value = lane.decode(json.loads(raw))
+                        if mutation == "train":
+                            value["output_id"] = "train"
+                            value["source_sha256"] = lane.sha(b"train")
+                        elif value["stage"] == "candidate":
+                            value["artifact_sha256"] = lane.sha(b"wrong")
+                        db.execute(
+                            "UPDATE attempts SET request=? WHERE rowid=?",
+                            (encoded(value), rowid),
+                        )
+                with self.assertRaisesRegex(AssertionError, "heldout"):
                     lane.observe_serving(directory, result)
 
     def test_required_review_and_external_gates_remain_non_success(self):

@@ -4,19 +4,21 @@
 Candidate heads never advance reviewed composition pins. Required external and
 review gates keep the aggregate non-success even when bounded lanes pass.
 """
+
 import argparse
 import base64
-from contextlib import closing
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
 import signal
 import sqlite3
 import subprocess
 import sys
 import tempfile
 import uuid
+from contextlib import closing
+from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "runspindle.maintained-scenarios.v1"
@@ -42,12 +44,12 @@ class Blocked(RuntimeError):
     pass
 
 
-def check(value, message):
+def check(value: object, message: str) -> None:
     if not value:
         raise AssertionError(message)
 
 
-def sha(data):
+def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
@@ -116,14 +118,14 @@ def load(path, name):
     return module
 
 
-def rows(path, query, params=()):
+def rows(path: Path, query: str, params: tuple[Any, ...] = ()) -> list[tuple[Any, ...]]:
     check(path.is_file(), "missing independent component store")
     with closing(sqlite3.connect("file:" + str(path) + "?mode=rw", uri=True)) as db:
         db.execute("PRAGMA query_only=ON")
         return db.execute(query, params).fetchall()
 
 
-def decode(value):
+def decode(value: Any) -> Any:
     """Independent evidence-only decoder; does not import component serializers."""
     if not isinstance(value, dict):
         return value
@@ -194,31 +196,77 @@ def observe_lineage(directory):
     }
 
 
+def observe_heldout_attempts(db: Path, candidate_digests: dict[str, str]) -> int:
+    retained = rows(
+        db, "SELECT identity,digest,payload FROM objects WHERE kind='lineage'"
+    )
+    check(len(retained) == 1, "missing or ambiguous heldout lineage")
+    identity, digest, payload = retained[0]
+    check(identity == digest == sha(payload), "changed heldout lineage bytes")
+    lineage = decode(json.loads(payload))
+    split = lineage["split"]
+    examples = lineage["dataset"]["examples"]
+    pairs = split["assignments"]
+    assignments = dict(pairs)
+    check(
+        len(assignments) == len(pairs)
+        and set(assignments) == {e["source"]["family_id"] for e in examples}
+        and set(assignments.values()) == {"train", "heldout"},
+        "invalid heldout family assignments",
+    )
+    cohort = [
+        (e["output"]["output_id"], e["output"]["revision"], e["source"]["sha256"])
+        for e in examples
+        if assignments[e["source"]["family_id"]] == "heldout"
+    ]
+    check(
+        cohort and len({row[:2] for row in cohort}) == len(cohort),
+        "empty or duplicate heldout cohort",
+    )
+    attempts = rows(
+        db,
+        "SELECT experiment,request,outcome,receipt FROM attempts ORDER BY experiment,ticket",
+    )
+    observed: dict[str, list[tuple[Any, ...]]] = {
+        name: [] for name in candidate_digests
+    }
+    request_fields = (
+        "stage",
+        "output_id",
+        "output_revision",
+        "source_sha256",
+        "artifact_sha256",
+        "split_sha256",
+        "attempt",
+    )
+    for name, raw, state, receipt in attempts:
+        check(name in observed, "unexpected heldout experiment")
+        check(
+            state == "settled" and receipt is not None, "unresolved experiment passed"
+        )
+        request = decode(json.loads(raw))
+        check(
+            type(request) is dict and type(request.get("attempt")) is int,
+            "invalid heldout request",
+        )
+        observed[name].append(tuple(request.get(field) for field in request_fields))
+    for name, candidate in candidate_digests.items():
+        expected = [
+            (stage, *case, artifact, split["sha256"], 1)
+            for stage, artifact in (
+                ("baseline", sha(b"baseline")),
+                ("candidate", candidate),
+            )
+            for case in cohort
+        ]
+        check(
+            observed[name] == expected, "experiment differs from locked heldout cohort"
+        )
+    return len(attempts)
+
+
 def observe_serving(directory, result):
     db = directory / "refinery.sqlite"
-    attempts = rows(
-        db, "SELECT request,outcome,receipt FROM attempts ORDER BY experiment,ticket"
-    )
-    check(
-        attempts
-        and all(
-            state == "settled" and receipt is not None for _, state, receipt in attempts
-        ),
-        "unresolved experiment passed",
-    )
-    requests = [decode(json.loads(r)) for r, _, _ in attempts]
-    for stage in ("baseline", "candidate"):
-        selected = [
-            (r["output_id"], r["output_revision"])
-            for r in requests
-            if r["stage"] == stage
-        ]
-        other = [
-            (r["output_id"], r["output_revision"])
-            for r in requests
-            if r["stage"] == ("candidate" if stage == "baseline" else "baseline")
-        ]
-        check(selected == other, "baseline/candidate heldout mismatch")
     serving = directory / "serving.sqlite"
     calls = rows(
         serving, "SELECT activation,digest FROM calls WHERE action='load' ORDER BY id"
@@ -227,6 +275,7 @@ def observe_serving(directory, result):
         [r[0] for r in calls] == ["candidate-0", "candidate-1", "rollback"],
         "duplicate serving load after lost acknowledgement",
     )
+    attempts = observe_heldout_attempts(db, dict(calls[:2]))
     active = rows(
         serving,
         "SELECT activation,generation,digest,content FROM active WHERE environment='local'",
@@ -235,7 +284,7 @@ def observe_serving(directory, result):
     check(
         active[0] == "rollback"
         and active[1] == 3
-        and active[2] == sha(active[3]) == calls[0][1],
+        and active[2] == sha(active[3]) == calls[0][1] == calls[2][1],
         "incorrect actual serving version",
     )
     check(
@@ -254,7 +303,7 @@ def observe_serving(directory, result):
         "registry activation readback missing",
     )
     return {
-        "attempts": len(attempts),
+        "attempts": attempts,
         "load_order": [r[0] for r in calls],
         "active_sha256": active[2],
         "recovery": "fresh_process_after_actual_load_before_registry_ack",
@@ -384,8 +433,7 @@ def development_bundle(sources):
         b"Development evidence metadata bundle only. No product adapters, services or production installation. Component heads are candidates awaiting independent review."
     )
     dependencies = {
-        name
-        + "/inventory": "sha256:"
+        name + "/inventory": "sha256:"
         + sha((sources[name]["path"] / relative).read_bytes())
         for name, relative in (
             ("core", "docs/runtime-dependencies.json"),
