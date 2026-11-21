@@ -41,7 +41,9 @@ def git(root: Path, *args: str) -> bytes:
     return subprocess.check_output(["git", "-C", str(root), *args], timeout=15)
 
 
-def stage_source(stage: Path, spec: dict[str, Any]) -> dict[str, str]:
+def stage_source(
+    stage: Path, spec: dict[str, Any], *, component: str = "browser"
+) -> dict[str, str]:
     lock = json.loads((ROOT / "composition.lock.json").read_bytes())["components"]
     pins = {row["component"]: row["commit"] for row in lock}
     require(
@@ -57,13 +59,16 @@ def stage_source(stage: Path, spec: dict[str, Any]) -> dict[str, str]:
             == f"160000 {commit} 0\t{path}",
             "composition gitlink mismatch",
         )
-    source = ROOT / "components/browser"
-    require(pins["browser"] == spec["browser_commit"], "scenario Browser pin mismatch")
+    name = component.title()
+    source = ROOT / "components" / component
+    require(
+        pins[component] == spec[f"{component}_commit"], f"scenario {name} pin mismatch"
+    )
     require(
         git(source, "rev-parse", "--show-toplevel").decode().strip() == str(source)
-        and git(source, "rev-parse", "HEAD").decode().strip() == pins["browser"]
+        and git(source, "rev-parse", "HEAD").decode().strip() == pins[component]
         and not git(source, "status", "--porcelain"),
-        "need the clean, pinned Browser checkout",
+        f"need the clean, pinned {name} checkout",
     )
     for relative, expected in spec["source_sha256"].items():
         path = Path(relative)
@@ -71,15 +76,15 @@ def stage_source(stage: Path, spec: dict[str, Any]) -> dict[str, str]:
             not path.is_absolute() and ".." not in path.parts and path.suffix == ".py",
             "invalid staged source path",
         )
-        data = git(source, "show", f"{pins['browser']}:{relative}")
-        require(sha(data) == expected, "Browser source digest mismatch")
+        data = git(source, "show", f"{pins[component]}:{relative}")
+        require(sha(data) == expected, f"{name} source digest mismatch")
         destination = stage / path
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(data)
     return pins
 
 
-def worker(source: Path, data: Path, mode: str) -> str:
+def deny_external(data: Path) -> None:
     def audit(event: str, _: tuple[object, ...]) -> None:
         if event.startswith("socket.") or event in {
             "subprocess.Popen",
@@ -93,6 +98,10 @@ def worker(source: Path, data: Path, mode: str) -> str:
             raise RuntimeError("external effect forbidden")
 
     sys.addaudithook(audit)
+
+
+def worker(source: Path, data: Path, mode: str) -> str:
+    deny_external(data)
     sys.path.insert(0, str(source))
     credentials = import_module("browser_runtime.credentials")
     effects = import_module("browser_runtime.effects")
