@@ -69,13 +69,13 @@ def aggregate(lane):
     return "failed" if lane == "failed" else "blocked"
 
 
-def git(directory, *args):
+def git(directory: pathlib.Path, *args: str) -> str:
     return subprocess.check_output(
         ["git", *args], cwd=directory, text=True, timeout=30
     ).strip()
 
 
-def inventory(root=ROOT):
+def inventory(root: pathlib.Path = ROOT) -> dict[str, Any]:
     lock = json.loads((root / "composition.lock.json").read_text())
     components = {}
     for item in lock["components"]:
