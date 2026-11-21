@@ -3,6 +3,13 @@
   "browser_commit": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
   "repeat_runs": 2,
   "faults": ["lost", "crash_before", "crash_after"],
+  "readback_faults": [
+    "readback_timeout",
+    "readback_wrong_digest",
+    "readback_wrong_revision",
+    "readback_revoked",
+    "readback_crash"
+  ],
   "binding": {
     "principal": "principal-synthetic",
     "account": "account-synthetic",
