@@ -12,13 +12,16 @@ import os
 import socket
 from dataclasses import replace
 from pathlib import Path
+from typing import Any
 
 
 def deny_network(*_args, **_kwargs):
     raise AssertionError("outbound network forbidden")
 
 
-def refinery_fixture(store, *, collection_evidence="synthetic-collection-proof"):
+def refinery_fixture(
+    store: Any, *, collection_evidence: str = "synthetic-collection-proof"
+) -> str:
     from refinery.lineage import (
         Feedback,
         GoldRule,
@@ -88,7 +91,7 @@ def refinery_fixture(store, *, collection_evidence="synthetic-collection-proof")
         "seed-2",
     )
     expected_consent = digest(pack(batch))
-    snapshot = store.commit_lineage(
+    snapshot: str = store.commit_lineage(
         VERSION,
         *batch[:4],
         seed=batch[4],
