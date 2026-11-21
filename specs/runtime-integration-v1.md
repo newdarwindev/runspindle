@@ -82,6 +82,20 @@ Delivery state and receipt commit atomically with compare-and-swap protection.
 A scripted transport has a separate durable receipt ledger and independently
 observable calls/order/bytes. This is not a replacement Tether implementation.
 
+The H07 independent observer checks the retained SQLite keys for the artifact,
+validation, acceptance, outbox reservation and destination receipt against the
+exact request. Recovery before send requires an observed lookup and an empty
+receipt ledger. Recovery after lost acknowledgement requires one send followed
+by lookup calls and the exact scripted receipt under the retained operation key.
+The component tests reject changed keys, missing lookups and unexpected actions
+with independently authored scratch ledgers. Historical integration reports
+record their original observer and inputs.
+The observer also passed a scratch SQLite check using the pinned Core crate
+`18b5d65392b176e1ab6c4b65ac27e941f530956c` and a scripted peer on macOS arm64.
+The real stores produced an unknown reservation after absent readback and a
+delivered receipt after lost acknowledgement, with the later conflict retained.
+That check contains no Temporal process or Tether transport.
+
 ## Qualification and bounds
 
 H02: real core + immutable pinned host Rust library + real pinned Temporal,
