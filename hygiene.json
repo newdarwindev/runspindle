@@ -159,6 +159,22 @@
       "timeout_seconds": 600
     },
     {
+      "id": "host-session-freshness",
+      "command": [
+        "python3",
+        "tools/host_session_freshness.py",
+        "--check-mutation"
+      ],
+      "required_files": [
+        "tools/host_session_freshness.py",
+        "tools/host_session_freshness.rs",
+        "scenarios/host-session-freshness-v1.json",
+        "components/host/Cargo.lock",
+        "components/platform/fleet/rust-closure.json"
+      ],
+      "timeout_seconds": 480
+    },
+    {
       "id": "evidence-mutations",
       "command": [
         "python3",
