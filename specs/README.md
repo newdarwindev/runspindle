@@ -59,6 +59,9 @@ and existing maintained-scenario acceptance remain unchanged.
 [Browser effect recovery](../docs/BROWSER_EFFECT_HERO.md) records the H05 lane
 using the pinned Browser journal with synthetic authority and a synthetic site.
 
+[Workflow storyboards](../docs/WORKFLOW_STORYBOARDS.md) show synthetic progress,
+takeover, delivery, fleet and telemetry cases under a shared identity.
+
 [Native-turn request v1](native-turn-v1.md) adds a separate content-addressed,
 closed-profile request and independent Python synthetic mapping vectors. It does
 not alter Admission/grant semantics, advance component pins or activate native
