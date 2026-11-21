@@ -1,0 +1,75 @@
+{
+  "version": "runspindle.tether-slack-hero.v1",
+  "tether_commit": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+  "source_sha256": {
+    "tether/__init__.py": "8c7f563517f58350d1bd45b95b8ea03f5cadbdd98df399c9f9b17b176075d11e",
+    "tether/admission.py": "1b2f2e778bd23e5f956ff8e0e69d46a00d5ea42454a09d3930537d11568373ca",
+    "tether/intent.py": "4d678e12620cc4a4bbd86d92b7b71b8bcd45da09eceedbaf11e5b8c406dde4c8",
+    "tether/journal.py": "9b7d2ce2737d7a3005788f3a2a97df305f57e11c2a928336b046348631b18420",
+    "tether/native_testing.py": "d92efe289d54fe66c5157ccb2d2ea2fd3bf15a2470e8ff35ffe154a1f07ca755",
+    "tether/sanitization.py": "7c0b5e6fae5eb0e00e43667a447213d8268007588cd42d5fb56e6449a2eb064d",
+    "tether/schema.py": "ebd7544018096f02394c637d70dd1570baab66ea844232a1963c8318d0a3d3a1",
+    "tether/semantic_journal.py": "be8467793bc525c9270d8f6c7f558035b572e9d8061ed8eb2e8c93fc5b97d9c9",
+    "tether/slack_ingress.py": "2eb2d4eca46ab6dd6263ad35658c9a3206f268ed29f3960e7997154ea00a9ed8",
+    "tether/slack_revisions.py": "dc33fa78f483983ffd8de22e1470b2cea8b2875b182694af867c34151785c5c1",
+    "tether/slack_wire.py": "0de192e858962cce3110d28682fe03329649d5341fcad06e6d75cac0797515b8",
+    "tether/testing.py": "2b84de229c6aff62ec48b52c6decb8dd369e20bade2b0b3d16003ed14ff046c9"
+  },
+  "clock": 1900000000,
+  "source": {
+    "app_id": "AH01APP",
+    "account_id": "h01-account",
+    "actor_id": "UH01ACTOR",
+    "workspace_id": "TH01WORKSPACE",
+    "channel_id": "CH01CHANNEL",
+    "thread_id": "1900000000.000001",
+    "message_id": "1900000000.000002"
+  },
+  "edit_ts": "1900000000.000012",
+  "host": "h01-host",
+  "session": "h01-session",
+  "accepted_bytes": "synthetic exact accepted bytes",
+  "initial_faults": [
+    "dispatch",
+    "crash_after"
+  ],
+  "readback_phases": [
+    "outage",
+    "wrong_thread",
+    "resume"
+  ],
+  "expected": {
+    "ingress": [
+      "admitted",
+      "duplicate",
+      "admitted",
+      "duplicate"
+    ],
+    "progress": [
+      "gap",
+      "stale",
+      "unsupported",
+      "wrong_binding",
+      "submitted",
+      "duplicate"
+    ],
+    "provider_calls": [
+      "send",
+      "readback",
+      "readback",
+      "readback"
+    ],
+    "dispatch_outcomes": [
+      "unknown",
+      "unknown",
+      "unknown",
+      "destination_confirmed"
+    ],
+    "crash_after_outcomes": [
+      "interrupted",
+      "unknown",
+      "unknown",
+      "destination_confirmed"
+    ]
+  }
+}
