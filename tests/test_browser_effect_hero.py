@@ -23,7 +23,34 @@ class BrowserEffectHeroTests(unittest.TestCase):
             ],
         )
         self.assertEqual(
-            receipt["mutations_detected"], ["duplicate_submit", "stale_observation"]
+            receipt["cases"][0]["readback_faults"],
+            [
+                {"mode": "readback_timeout", "exit_code": 0, "result": "unknown"},
+                {"mode": "readback_wrong_digest", "exit_code": 0, "result": "unknown"},
+                {
+                    "mode": "readback_wrong_revision",
+                    "exit_code": 0,
+                    "result": "unknown",
+                },
+                {"mode": "readback_revoked", "exit_code": 0, "result": "denied"},
+                {"mode": "readback_crash", "exit_code": 19, "result": "interrupted"},
+            ],
+        )
+        self.assertEqual(
+            receipt["cases"][0]["calls"],
+            [
+                "submit",
+                "readback_timeout",
+                "readback_wrong_digest",
+                "readback_wrong_revision",
+                "readback_revoked",
+                "readback_crash",
+                "readback",
+            ],
+        )
+        self.assertEqual(
+            receipt["mutations_detected"],
+            ["duplicate_submit", "stale_observation", "readback_digest"],
         )
         self.assertEqual(receipt["core_native_live_and_full_system"], "blocked")
 
