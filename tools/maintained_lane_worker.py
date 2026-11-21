@@ -4,25 +4,26 @@
 The parent independently reads component SQL/serving/filesystem results. This
 worker's status alone never establishes integration or approval authority.
 """
+
 import argparse
-from dataclasses import replace
 import hashlib
 import json
 import os
-from pathlib import Path
 import socket
+from dataclasses import replace
+from pathlib import Path
 
 
 def deny_network(*_args, **_kwargs):
     raise AssertionError("outbound network forbidden")
 
 
-def refinery_fixture(store):
+def refinery_fixture(store, *, collection_evidence="synthetic-collection-proof"):
     from refinery.lineage import (
-        SourceRevision,
-        OutputRevision,
         Feedback,
         GoldRule,
+        OutputRevision,
+        SourceRevision,
         digest,
     )
     from refinery.storage import VERSION, pack
@@ -91,17 +92,16 @@ def refinery_fixture(store):
         VERSION,
         *batch[:4],
         seed=batch[4],
-        collection_evidence="synthetic-collection-proof",
+        collection_evidence=collection_evidence,
         verify_collection=lambda sha, evidence: sha == expected_consent
-        and evidence == "synthetic-collection-proof",
+        and evidence == collection_evidence,
         verify_actor=lambda event: observations.get(digest(pack(event))),
     )
     return snapshot
 
 
 def run_refinery(directory, dspy=False):
-    from refinery.storage import Store, VERSION, pack
-    from refinery.lineage import digest
+    from refinery.durable_evaluation import run
     from refinery.evaluation import (
         Completion,
         Configuration,
@@ -110,11 +110,19 @@ def run_refinery(directory, dspy=False):
         Reservation,
         VirtualClock,
     )
-    from refinery.durable_evaluation import run
-    from refinery.serving import Registry, Policy, Approval, LocalServing
+    from refinery.lineage import digest
+    from refinery.serving import Approval, LocalServing, Policy, Registry
+    from refinery.storage import VERSION, Store, pack
 
     with Store(directory / "refinery.sqlite") as store:
-        snapshot = refinery_fixture(store)
+        if dspy:
+            from refinery.feedback_use import SYNTHETIC_FIXTURE_REFERENCE
+
+            snapshot = refinery_fixture(
+                store, collection_evidence=SYNTHETIC_FIXTURE_REFERENCE
+            )
+        else:
+            snapshot = refinery_fixture(store)
         dataset, split = store.lineage(snapshot)
         if not dspy:
             return {
@@ -133,9 +141,8 @@ def run_refinery(directory, dspy=False):
         script = tuple(
             Completion(e.gold, 1, 1, True, 1) for _ in range(2) for e in heldout
         )
-        from refinery.dspy_local import LocalDSPyProvider
-
         from refinery import storage
+        from refinery.dspy_local import LocalDSPyProvider
 
         inventory = (
             Path(storage.__file__).resolve().parents[1] / "offline/dependencies.json"
@@ -185,6 +192,7 @@ def run_refinery(directory, dspy=False):
                 experiment,
                 provider=local,
                 budget_id=name,
+                synthetic_fixture=True,
             )
             assert report.status == "passed" and len(local.calls) == len(local.lm_calls)
             return report
@@ -242,8 +250,8 @@ def run_refinery(directory, dspy=False):
 
 
 def recover_refinery(directory):
-    from refinery.storage import Store, VERSION
-    from refinery.serving import Registry, LocalServing
+    from refinery.serving import LocalServing, Registry
+    from refinery.storage import VERSION, Store
 
     with Store(directory / "refinery.sqlite") as store:
         registry = Registry(
@@ -412,9 +420,9 @@ def installed_temporal(folder, evidence, env):
             snapshot = client({"command": "native", "job_id": job})
             if snapshot and snapshot["execution"] == {"Terminal": "Completed"}:
                 break
-            assert (
-                time.monotonic() < deadline
-            ), "installed native workflow completion deadline"
+            assert time.monotonic() < deadline, (
+                "installed native workflow completion deadline"
+            )
             time.sleep(0.1)
         assert snapshot["native_session_id"] == "synthetic-bundle-session"
 
@@ -484,6 +492,7 @@ def installed_temporal(folder, evidence, env):
 def run_bundle(directory):
     import subprocess
     import sys
+
     from tools.streaming_bundle import VERSION, StreamingTarget, file_sha
 
     metadata = json.loads((directory / "bundle-input.json").read_bytes())
