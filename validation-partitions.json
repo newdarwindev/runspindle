@@ -28,7 +28,9 @@
       "distributable-build",
       "feedback-hero"
     ],
-    "rust": [],
+    "rust": [
+      "host-session-freshness"
+    ],
     "mutation_1": [
       "evidence-mutations"
     ],

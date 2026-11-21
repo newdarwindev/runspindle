@@ -1,0 +1,277 @@
+{
+  "version": "runspindle.host-session-freshness.v1",
+  "max_age_ms": 20,
+  "components": {
+    "core": "18b5d65392b176e1ab6c4b65ac27e941f530956c",
+    "host": "a56e5d7c18611b07c1c28da425db7c14227b3e76",
+    "browser": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+    "tether": "1e8d2091c55dfad47fdc64ec2e73fcd946da9921",
+    "refinery": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+    "console": "d89ce7efd3545ba78e25452383ee88bc4c59e48f",
+    "platform": "398c74766b9ec9f7203256e17dea34f1b15cac4c"
+  },
+  "steps": [
+    {
+      "id": "launch-a",
+      "identity": "a",
+      "now": 1000,
+      "operation": "submit",
+      "call": "launch",
+      "observation": {
+        "sequence": 1,
+        "at": 999
+      },
+      "persist": [
+        "Acknowledged",
+        1,
+        999
+      ],
+      "writes": 2,
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "launch-b",
+      "identity": "b",
+      "now": 1005,
+      "operation": "submit",
+      "call": "launch",
+      "observation": {
+        "sequence": 1,
+        "at": 1004
+      },
+      "persist": [
+        "Acknowledged",
+        1,
+        1004
+      ],
+      "writes": 2,
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "unknown-host",
+      "identity": "c",
+      "now": 1006,
+      "operation": "submit",
+      "persist": [
+        "Queued",
+        0,
+        null
+      ],
+      "writes": 1,
+      "freshness": "unknown"
+    },
+    {
+      "id": "passive-unknown-session",
+      "identity": "c",
+      "now": 1007,
+      "operation": "snapshot",
+      "freshness": "unknown"
+    },
+    {
+      "id": "fresh-a",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 4,
+        "at": 1014
+      },
+      "persist": [
+        "Acknowledged",
+        4,
+        1014
+      ],
+      "writes": 1,
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "switch-to-b",
+      "identity": "b",
+      "now": 1015,
+      "operation": "snapshot",
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "late-a-for-b",
+      "identity": "b",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1015,
+        "origin": "a"
+      },
+      "error": "WrongBinding"
+    },
+    {
+      "id": "passive-b-unchanged",
+      "identity": "b",
+      "now": 1015,
+      "operation": "snapshot",
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "reordered-sequence",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 3,
+        "at": 1015
+      },
+      "error": "Stale"
+    },
+    {
+      "id": "duplicate-event",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 4,
+        "at": 1014
+      },
+      "error": "Stale"
+    },
+    {
+      "id": "regressed-source-clock",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1013
+      },
+      "error": "Stale"
+    },
+    {
+      "id": "future-timestamp",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1016
+      },
+      "error": "Stale"
+    },
+    {
+      "id": "wrong-session",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1015,
+        "native": "b"
+      },
+      "error": "WrongBinding"
+    },
+    {
+      "id": "wrong-lease-epoch",
+      "identity": "a",
+      "now": 1015,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1015,
+        "binding_override": {
+          "lease_epoch": 1
+        }
+      },
+      "error": "WrongBinding"
+    },
+    {
+      "id": "expired-timestamp",
+      "identity": "a",
+      "now": 1040,
+      "operation": "event",
+      "observation": {
+        "sequence": 5,
+        "at": 1015
+      },
+      "error": "Stale"
+    },
+    {
+      "id": "passive-a-stale",
+      "identity": "a",
+      "now": 1040,
+      "operation": "snapshot",
+      "freshness": "stale_retained"
+    },
+    {
+      "id": "discovery-outage",
+      "identity": "a",
+      "now": 1041,
+      "operation": "reconcile",
+      "error": "Unknown",
+      "call": "discover",
+      "persist": [
+        "Unknown",
+        4,
+        1014
+      ],
+      "writes": 1
+    },
+    {
+      "id": "passive-a-disconnected",
+      "identity": "a",
+      "now": 1042,
+      "operation": "snapshot",
+      "freshness": "unknown"
+    },
+    {
+      "id": "fresh-reconnect",
+      "identity": "a",
+      "now": 1043,
+      "operation": "reconcile",
+      "call": "discover",
+      "observation": {
+        "sequence": 7,
+        "at": 1042
+      },
+      "persist": [
+        "Acknowledged",
+        7,
+        1042
+      ],
+      "writes": 1,
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "passive-a-recovered",
+      "identity": "a",
+      "now": 1044,
+      "operation": "snapshot",
+      "freshness": "recent_retained"
+    },
+    {
+      "id": "passive-b-retained",
+      "identity": "b",
+      "now": 1044,
+      "operation": "snapshot",
+      "freshness": "stale_retained"
+    },
+    {
+      "id": "scripted-desktop-capabilities",
+      "identity": "a",
+      "now": 1045,
+      "operation": "capabilities"
+    }
+  ],
+  "scripted_capabilities": [
+    {
+      "platform": "linux",
+      "lifecycle": "Supported",
+      "capture": "Unsupported",
+      "text_transfer": "Unsupported",
+      "submission": "Unsupported"
+    },
+    {
+      "platform": "macos",
+      "lifecycle": "Supported",
+      "capture": "Unsupported",
+      "text_transfer": "Unsupported",
+      "submission": "Unsupported"
+    }
+  ]
+}
