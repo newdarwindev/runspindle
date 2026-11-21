@@ -11,6 +11,9 @@ import sqlite3
 import tempfile
 import types
 import unittest
+from collections.abc import Iterator, Sequence
+from contextlib import closing
+from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 source = ROOT / "tools/runtime_integration_scenario.py"
@@ -29,19 +32,24 @@ B = {
 
 
 @contextlib.contextmanager
-def database(root, name):
-    with contextlib.closing(sqlite3.connect(root / name)) as db, db:
+def database(root: pathlib.Path, name: str) -> Iterator[sqlite3.Connection]:
+    with closing(sqlite3.connect(root / name)) as db, db:
         yield db
 
 
-def execute(root, name, sql, rows=()):
+def execute(
+    root: pathlib.Path,
+    name: str,
+    sql: str,
+    rows: Sequence[tuple[str, tuple[Any, ...]]] = (),
+) -> None:
     with database(root, name) as db:
         db.executescript(sql)
         for statement, values in rows:
             db.execute(statement, values)
 
 
-def delivery_fixture(root, before=False):
+def delivery_fixture(root: pathlib.Path, before: bool = False) -> dict[str, Any]:
     data = b"original synthetic bytes\x00\xff"
     ref = {
         "binding": B,
@@ -56,21 +64,37 @@ def delivery_fixture(root, before=False):
         "passed": True,
     }
     accepted = {"validation": validation}
+    operation = "delivery-operation"
     request = {
         "version": "runspindle.integration.v1",
         "accepted": accepted,
         "account_id": "account",
         "destination_id": "destination",
-        "delivery_operation_id": "delivery-operation",
+        "delivery_operation_id": operation,
     }
-    receipt = {"request": request, "receipt_id": "receipt"}
+    receipt = {
+        "request": request,
+        "receipt_id": "receipt-" + hashlib.sha256(operation.encode()).hexdigest(),
+    }
+    identity = json.dumps(
+        [B, ref["artifact_id"], ref["artifact_revision"]], separators=(",", ":")
+    )
+    validation_key = json.dumps([ref, "validator", "policy"], separators=(",", ":"))
+    acceptance_key = json.dumps([B["task_id"], B["revision"]], separators=(",", ":"))
     rows = [
-        ("INSERT INTO artifacts VALUES(?,?)", (json.dumps(ref), data)),
-        ("INSERT INTO validations VALUES(?)", (json.dumps(validation),)),
-        ("INSERT INTO acceptances VALUES(?)", (json.dumps(accepted),)),
+        ("INSERT INTO artifacts VALUES(?,?,?)", (identity, json.dumps(ref), data)),
         (
-            "INSERT INTO outbox VALUES(?,?,?,?)",
+            "INSERT INTO validations VALUES(?,?,?)",
+            (validation_key, identity, json.dumps(validation)),
+        ),
+        (
+            "INSERT INTO acceptances VALUES(?,?,?)",
+            (acceptance_key, identity, json.dumps(accepted)),
+        ),
+        (
+            "INSERT INTO outbox VALUES(?,?,?,?,?)",
             (
+                operation,
                 json.dumps(request),
                 "unknown" if before else "delivered",
                 None if before else json.dumps(receipt),
@@ -81,7 +105,10 @@ def delivery_fixture(root, before=False):
     execute(
         root,
         "core.sqlite",
-        "CREATE TABLE artifacts(reference TEXT,bytes BLOB);CREATE TABLE validations(record TEXT);CREATE TABLE acceptances(record TEXT);CREATE TABLE outbox(request TEXT,state TEXT,receipt TEXT,conflict INTEGER);",
+        "CREATE TABLE artifacts(identity TEXT PRIMARY KEY,reference TEXT,bytes BLOB);"
+        "CREATE TABLE validations(identity TEXT PRIMARY KEY,artifact_identity TEXT,record TEXT);"
+        "CREATE TABLE acceptances(identity TEXT PRIMARY KEY,artifact_identity TEXT,record TEXT);"
+        "CREATE TABLE outbox(operation TEXT PRIMARY KEY,request TEXT,state TEXT,receipt TEXT,conflict INTEGER);",
         rows,
     )
     rows = (
@@ -91,12 +118,18 @@ def delivery_fixture(root, before=False):
             ("INSERT INTO calls VALUES(?,?)", (a, json.dumps(request)))
             for a in ("send", "lookup")
         ]
-        + [("INSERT INTO receipts VALUES(?,?)", (json.dumps(receipt), data))]
+        + [
+            (
+                "INSERT INTO receipts VALUES(?,?,?)",
+                (operation, json.dumps(receipt), data),
+            )
+        ]
     )
     execute(
         root,
         "destination.sqlite",
-        "CREATE TABLE calls(id INTEGER PRIMARY KEY,action TEXT,request TEXT);CREATE TABLE receipts(receipt TEXT,bytes BLOB);",
+        "CREATE TABLE calls(id INTEGER PRIMARY KEY,action TEXT,request TEXT);"
+        "CREATE TABLE receipts(operation TEXT PRIMARY KEY,receipt TEXT,bytes BLOB);",
         [
             (
                 statement.replace(
@@ -398,6 +431,41 @@ class Oracles(unittest.TestCase):
             root = pathlib.Path(directory)
             context = delivery_fixture(root, True)
             self.assertEqual(scenario.observe_delivery(root, context)["send_calls"], 0)
+
+    def test_delivery_requires_retained_links_and_exact_operation_keys(self) -> None:
+        for ledger, sql in (
+            ("core.sqlite", "UPDATE artifacts SET identity='unbound'"),
+            ("core.sqlite", "UPDATE validations SET identity='unbound'"),
+            ("core.sqlite", "UPDATE validations SET artifact_identity='other'"),
+            ("core.sqlite", "UPDATE acceptances SET identity='unbound'"),
+            ("core.sqlite", "UPDATE acceptances SET artifact_identity='other'"),
+            ("core.sqlite", "UPDATE outbox SET operation='other'"),
+            ("destination.sqlite", "UPDATE receipts SET operation='other'"),
+        ):
+            with self.subTest(sql=sql), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = delivery_fixture(root)
+                with closing(sqlite3.connect(root / ledger)) as db, db:
+                    db.execute(sql)
+                with self.assertRaises(AssertionError):
+                    scenario.observe_delivery(root, context)
+
+    def test_delivery_requires_readback_without_unexpected_peer_calls(self) -> None:
+        for before, sql in (
+            (True, "DELETE FROM calls"),
+            (True, "UPDATE calls SET action='other'"),
+            (
+                False,
+                "INSERT INTO calls(action,request) SELECT 'other',request FROM calls LIMIT 1",
+            ),
+        ):
+            with self.subTest(sql=sql), tempfile.TemporaryDirectory() as directory:
+                root = pathlib.Path(directory)
+                context = delivery_fixture(root, before)
+                with closing(sqlite3.connect(root / "destination.sqlite")) as db, db:
+                    db.execute(sql)
+                with self.assertRaises(AssertionError):
+                    scenario.observe_delivery(root, context)
 
     def test_observer_cannot_mutate_existing_ledger_or_create_missing_database(self):
         with tempfile.TemporaryDirectory() as directory:
