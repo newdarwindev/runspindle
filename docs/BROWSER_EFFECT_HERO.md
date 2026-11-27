@@ -34,19 +34,37 @@ Ordinary composition unittest discovery includes the check.
 All three cases ran twice with identical observations. None resubmitted after
 restart. Wrong tab, account and lease epoch caused zero readback calls. Stale
 and revoked authority caused zero submit calls and zero journal reservations.
-Two mutations in disposable staged copies exposed duplicate and stale-authority
-submissions and failed the independent call and site-row assertions.
 
-Local verification used macOS arm64, Python 3.13.18 and SQLite 3.54.1. Normal and
-optimized runs emitted identical receipts. The composition base was
-`fc68cb72528922217d50663c6761a148e1a3cb35`.
+For the lost-reply case, each readback failure runs in a fresh process against
+the same SQLite stores. The parent independently verifies one retained site
+effect, one submit total, and an unknown journal row with no stored evidence
+after every failure.
+
+| Readback fault | Worker observation | Retained outcome |
+| --- | --- | --- |
+| Synthetic timeout | Unknown | Unknown |
+| Different payload digest | Unknown | Unknown |
+| Different binding revision | Unknown | Unknown |
+| Grant revoked after the site read | Denied | Unknown |
+| Worker exits after the site read | Exit 19 | Unknown |
+
+A later exact site read confirms that same operation. The next two workers
+return the retained confirmation with zero extra site calls, even when one is
+configured to return a mismatched digest if invoked. Three disposable source
+mutations exercise duplicate dispatch, stale observation admission and
+acceptance of a mismatched readback digest. The last mutation fails the
+parent's direct SQL check of the unsettled journal row.
+
+Local verification used macOS arm64, Python 3.13.18 and SQLite 3.54.1.
+Normal and optimized runs emitted identical receipts on composition base
+`1880adf` and Browser pin `595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3`.
 
 | Input | SHA-256 |
 | --- | --- |
 | Composition lock | `c42564215bfa5a8eab659c01196a3727e30787355dadd593f3f9a3b6f69ea1b0` |
-| Scenario and Browser file hashes | `e86a0addffecf2d17ccb70b59ced1f13a3d80ef54e55b1dcf189896b351104c4` |
-| Runner | `7b4fa02659367ce514dab56fd81fa885be3e830447abbed3217e6c00d0290371` |
-| Tests | `ab713a07c429ceb3bde967f54fdd724c721c7548a1bb8b7aa861bca83250b36b` |
+| Scenario and Browser file hashes | `259052a9497fd6edde4db339f2269c8c1ed997530bdc68e24d0206656e5579c4` |
+| Runner | `14e1e50afb9cb328b3b4386b1c945e76d9d0e37fa24af9b4f29e4ea8d9a385be` |
+| Tests | `210eea8a6a0f1b2a5df9df702ad06c5a46629de2f2239dea5e8f8785aed593e5` |
 
 This is the Browser component lane for composition issues #12 and #45. Core and
 Host recovery, native browser fencing, actual site/vault adapters, and

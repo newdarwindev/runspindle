@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import platform
 import shutil
 import sqlite3
@@ -20,6 +21,13 @@ from typing import Any, Iterator
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "scenarios/browser-effect-recovery-v1.json"
 FAULTS = {"lost": 0, "crash_before": 17, "crash_after": 18}
+READBACK_FAULTS = {
+    "readback_timeout": (0, "unknown"),
+    "readback_wrong_digest": (0, "unknown"),
+    "readback_wrong_revision": (0, "unknown"),
+    "readback_revoked": (0, "denied"),
+    "readback_crash": (19, "interrupted"),
+}
 WRONG_TARGETS = ("tab", "account", "epoch")
 SCRIPT = Path(__file__).resolve()
 
@@ -115,7 +123,11 @@ def worker(source: Path, data: Path, mode: str) -> str:
     if mode in WRONG_TARGETS:
         changed = binding.epoch - 1 if mode == "epoch" else "wrong-synthetic"
         observed = replace(target, binding=replace(binding, **{mode: changed}))
-    action = "reconcile" if mode in (*WRONG_TARGETS, "reconcile") else "dispatch"
+    action = (
+        "reconcile"
+        if mode in (*WRONG_TARGETS, *READBACK_FAULTS, "reconcile")
+        else "dispatch"
+    )
     grant = guarded.Grant(target, sha(payload), action, 20.0)
     ticket = object()
     site = site_module.Site(data / "site.sqlite", mode)
@@ -123,6 +135,7 @@ def worker(source: Path, data: Path, mode: str) -> str:
     class Adapters:
         held = False
         used = False
+        revoked = False
 
         @contextmanager
         def acquire(self) -> Iterator[Adapters]:
@@ -142,7 +155,12 @@ def worker(source: Path, data: Path, mode: str) -> str:
             return credentials.Observation(observed, 8.0 if mode == "stale" else 10.0)
 
         def current(self, supplied: object) -> bool:
-            return self.held and supplied is grant and mode != "revoked"
+            return (
+                self.held
+                and supplied is grant
+                and not self.revoked
+                and mode != "revoked"
+            )
 
         def record(self, supplied: object, guard: object, name: str) -> None:
             require(self.held and guard is self and supplied is grant, "unfenced site")
@@ -154,8 +172,24 @@ def worker(source: Path, data: Path, mode: str) -> str:
             return site.submit(supplied.target.binding, value)
 
         def readback(self, supplied: Any, guard: object) -> Any:
-            self.record(supplied, guard, "readback")
-            return site.observe(supplied.target.binding, supplied.payload_digest)
+            self.record(
+                supplied, guard, mode if mode in READBACK_FAULTS else "readback"
+            )
+            if mode == "readback_timeout":
+                raise TimeoutError("synthetic readback outage")
+            reply = site.observe(supplied.target.binding, supplied.payload_digest)
+            if mode == "readback_wrong_digest":
+                return replace(reply, payload_digest=sha(b"other synthetic payload"))
+            if mode == "readback_wrong_revision":
+                wrong_binding = replace(
+                    reply.binding, revision=reply.binding.revision + 1
+                )
+                return replace(reply, binding=wrong_binding)
+            if mode == "readback_revoked":
+                self.revoked = True
+            if mode == "readback_crash":
+                os._exit(19)
+            return reply
 
     adapter = Adapters()
     journal = guarded.GuardedJournal(
@@ -255,22 +289,53 @@ def scenario(
         require(invoke(source, data, wrong) == "denied", "wrong target allowed")
     require(calls(data) == ["submit"], "wrong target reached site readback")
 
+    readback_faults = []
+    expected_calls = ["submit"]
+    if fault == "lost":
+        for mode, (exit_code, expected) in READBACK_FAULTS.items():
+            observed = invoke(source, data, mode, exit_code)
+            expected_calls.append(mode)
+            require(
+                journal_rows() == [(*operation, "unknown", None)],
+                "fault settled durable outcome: " + mode,
+            )
+            require(
+                site_rows(data) == expected_events and calls(data) == expected_calls,
+                "readback fault changed site effects or calls",
+            )
+            require(
+                observed == ("" if exit_code else expected),
+                "wrong readback fault result",
+            )
+            readback_faults.append(
+                {
+                    "mode": mode,
+                    "exit_code": exit_code,
+                    "result": observed or "interrupted",
+                }
+            )
     final = "confirmed" if accepted else "unknown"
     require(invoke(source, data, "reconcile") == final, "wrong authoritative outcome")
     require(invoke(source, data, "reconcile") == final, "reopened outcome changed")
+    if fault == "lost":
+        require(
+            invoke(source, data, "readback_wrong_digest") == final,
+            "late conflicting readback changed a retained terminal",
+        )
     evidence = sha(json.dumps([["confirmed"]]).encode()) if accepted else None
     require(
         journal_rows() == [(*operation, final, evidence)], "wrong retained evidence"
     )
     require(site_rows(data) == expected_events, "readback changed site effects")
     require(
-        calls(data) == ["submit"] + ["readback"] * (1 if accepted else 2),
+        calls(data) == expected_calls + ["readback"] * (1 if accepted else 2),
         "unexpected helper calls during reconciliation",
     )
     return {
         "fault": fault,
         "effects": len(expected_events),
         "calls": calls(data),
+        "readback_faults": readback_faults,
         "outcome": final,
     }
 
@@ -303,6 +368,13 @@ def mutations(source: Path, scratch: Path, spec: dict[str, Any]) -> list[str]:
             "",
             "forbidden submit for stale",
         ),
+        (
+            "readback_digest",
+            "effects.py",
+            "or observed.payload_digest != payload_digest",
+            "",
+            "fault settled durable outcome: readback_wrong_digest",
+        ),
     ):
         clone = scratch / name
         shutil.copytree(source, clone)
@@ -312,10 +384,10 @@ def mutations(source: Path, scratch: Path, spec: dict[str, Any]) -> list[str]:
         path.write_text(original.replace(needle, replacement))
         data = scratch / (name + "-data")
         try:
-            if name == "duplicate_submit":
-                scenario(clone, data, spec, "lost")
-            else:
+            if name == "stale_observation":
                 authority_negative(clone, data, "stale")
+            else:
+                scenario(clone, data, spec, "lost")
         except AssertionError as error:
             require(str(error) == failure, "mutation failed outside its oracle")
             detected.append(name)
@@ -333,6 +405,10 @@ def run() -> dict[str, Any]:
         and spec["repeat_runs"] == 2
         and spec["faults"] == list(FAULTS),
         "unknown scenario contract",
+    )
+    require(
+        spec["readback_faults"] == list(READBACK_FAULTS),
+        "unknown readback fault schedule",
     )
     with TemporaryDirectory(prefix="runspindle-h05-") as directory:
         scratch = Path(directory).resolve()
