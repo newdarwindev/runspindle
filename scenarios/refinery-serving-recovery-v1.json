@@ -1,0 +1,13 @@
+{
+  "version": "runspindle.refinery-serving-recovery.v1",
+  "refinery_commit": "d86a720b0a41bbc8e2dfefb773348aaaa563961b",
+  "refinery_tree": "24509cb9d7eda75335546f44f2210b070d34543c",
+  "fixture_sha256": {
+    "tests/test_durable.py": "7972e6c9e798c6ccc1c5008f7b25d02c235e7462361288f7ecf4084846007877",
+    "tests/test_lineage.py": "71d16735e02913aeda255783259acdb13d4a76d87574262b285cfa55303c1e44"
+  },
+  "repeat_runs": 2,
+  "answers": ["first", "second"],
+  "budget_id": "h11-shared",
+  "faults": ["forged_approval", "crash_after_load", "rejected_rollback"]
+}
