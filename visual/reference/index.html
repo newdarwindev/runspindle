@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runspindle workflow storyboards</title>
+<style>:root {
+  color-scheme: light;
+  --paper: #f3f3e9;
+  --ink: #182e25;
+  --muted: #4a6054;
+  --line: #c9d0be;
+  --accent: #dbe9a6;
+  font-family: "Avenir Next", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+a:focus-visible { outline: 3px solid #8a3910; outline-offset: 3px; }
+p, h1, h2, h3, dl, dd { margin: 0; }
+.shell { width: min(100% - 48px, 1320px); margin-inline: auto; }
+.masthead { background: #1a3227; color: #fbfbed; padding-block: 30px 43px; }
+.masthead a:focus-visible { outline-color: #f5b37e; }
+.masthead-line, .case-head, nav, .identity { display: flex; flex-wrap: wrap; }
+.masthead-line { gap: 10px 24px; justify-content: space-between; align-items: baseline; }
+.wordmark { font-size: .82rem; font-weight: 700; letter-spacing: .17em; }
+.boundary { color: var(--accent); font-size: .79rem; font-weight: 600; }
+.hero { padding-block: 42px 25px; container-type: inline-size; }
+h1 { font-size: clamp(2.4rem, 7vw, 5.9rem); font-weight: 600; line-height: .98; letter-spacing: -.077em; }
+.hero p { color: #d6e0d2; max-width: 56ch; margin-top: 20px; }
+nav { gap: 8px; }
+nav a { text-decoration: none; border: 1px solid #667d6b; border-radius: 60px; padding: 7px 14px; font-size: .88rem; }
+nav a:hover { background: var(--accent); color: var(--ink); }
+.identity { column-gap: 25px; row-gap: 12px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.identity > div { min-width: 0; }
+dt, .case-id, .surface { font-size: .72rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+dt { color: var(--muted); }
+dd, .case-id { font: .74rem/1.65 "Menlo", monospace; overflow-wrap: anywhere; }
+.case { padding: 33px 0 38px; border-bottom: 1px solid var(--line); scroll-margin-top: 18px; }
+.case-head { justify-content: space-between; gap: 10px 24px; align-items: baseline; }
+.case-id { color: var(--muted); }
+h2 { font-size: clamp(1.65rem, 3.5vw, 2.8rem); letter-spacing: -.05em; line-height: 1.05; }
+h1, h2, h3, .boundary { overflow-wrap: anywhere; }
+.summary { margin-top: 8px; color: var(--muted); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 233px), 1fr)); gap: 12px; margin: 21px 0 0; padding: 0; list-style: none; }
+.step { background: #fbfbf3; border: 1px solid var(--line); border-radius: 11px; padding: 16px; min-width: 0; overflow-wrap: anywhere; }
+.surface { color: var(--muted); margin-bottom: 8px; }
+h3 { display: inline-block; font-size: .84rem; line-height: 1.2; padding: 5px 9px; border-radius: 7px; background: #e4e9df; }
+.good h3 { background: #dcebac; color: #25371c; }
+.warn h3 { background: #f4dfbd; color: #5d3609; }
+.detail { margin-top: 10px; font-size: .94rem; line-height: 1.45; }
+.reference { display: inline-block; margin-top: 12px; color: #315345; font-size: .77rem; text-underline-offset: 2px; }
+footer { padding-block: 22px 34px; color: var(--muted); font-size: .85rem; }
+@media (max-width: 560px) {
+  .shell { width: calc(100% - 32px); }
+  .masthead { padding-block: 21px 28px; }
+  .hero { padding-block: 30px 18px; }
+  h1 { font-size: clamp(1.7rem, 12cqi, 2.4rem); }
+  .case { padding-block: 25px 29px; }
+}
+</style></head><body>
+<header class="masthead"><div class="shell">
+<div class="masthead-line"><span class="wordmark">RUNSPINDLE</span>
+<span class="boundary">Synthetic visual reference</span></div>
+<div class="hero"><h1>Workflow storyboards</h1>
+<p>Follow one task across messages, session control, artifact delivery and fleet observation.</p></div>
+<nav aria-label="Storyboard sections"><a href="#h01">Progress</a><a href="#h06">Takeover</a><a href="#h07">Artifact</a><a href="#h09">Fleet</a><a href="#h08">Telemetry</a></nav></div></header>
+<main class="shell"><dl class="identity" aria-label="Shared synthetic identity"><div><dt>task</dt><dd>synthetic-task-007</dd></div><div><dt>host</dt><dd>host-synthetic-02</dd></div><div><dt>session</dt><dd>native-synthetic-007</dd></div><div><dt>artifact</dt><dd>artifact-synthetic-007</dd></div><div><dt>trace</dt><dd>trace-synthetic-007</dd></div><div><dt>clock</dt><dd>2026-11-16T12:00:00Z</dd></div></dl>
+<section class="case" id="h01" aria-labelledby="h01-title"><div class="case-head"><h2 id="h01-title">Follow a request</h2><a class="case-id" href="https://github.com/newdarwindev/runspindle/issues/8">SYNTHETIC · H01 · ISSUE 8</a></div><p class="summary">One admitted task stays visible through duplicate delivery and interrupted progress.</p><ol class="steps"><li class="step neutral"><p class="surface">Tether</p><h3>Admitted</h3><p class="detail">The request is recorded once. The repeated callback adds no task.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-tether/blob/1e8d2091c55dfad47fdc64ec2e73fcd946da9921/docs/visual-reference/admitted.png">Tether reference · admitted</a></li><li class="step good"><p class="surface">Tether</p><h3>Running</h3><p class="detail">The selected host and observed native session are attached to this revision.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-tether/blob/1e8d2091c55dfad47fdc64ec2e73fcd946da9921/docs/visual-reference/running.png">Tether reference · running</a></li><li class="step warn"><p class="surface">Tether</p><h3>Unknown</h3><p class="detail">Progress stopped after disconnect. The latest retained update is shown with its timestamp.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-tether/blob/1e8d2091c55dfad47fdc64ec2e73fcd946da9921/docs/visual-reference/unknown.png">Tether reference · unknown</a></li></ol></section><section class="case" id="h06" aria-labelledby="h06-title"><div class="case-head"><h2 id="h06-title">Observe, take over, hand back</h2><a class="case-id" href="https://github.com/newdarwindev/runspindle/issues/13">SYNTHETIC · H06 · ISSUE 13</a></div><p class="summary">A visible desktop and an interactive lease have separate authority.</p><ol class="steps"><li class="step neutral"><p class="surface">Console</p><h3>View only</h3><p class="detail">The simulated viewer can display a frame. Interactive input stays disabled.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/fixtures/console-ui/scenarios.js">Console reference · simulated</a></li><li class="step warn"><p class="surface">Console</p><h3>Takeover denied</h3><p class="detail">The lease has no authenticated grant. The operator cannot send input.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · takeover-denied</a></li><li class="step neutral"><p class="surface">Console</p><h3>Grant reported</h3><p class="detail">The reference shows a matched grant and the automation fence. The preview accepts no input.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · takeover-granted</a></li><li class="step warn"><p class="surface">Console</p><h3>Handback pending</h3><p class="detail">Release was interrupted. Automation stays fenced until handback is confirmed.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · incomplete-handback</a></li></ol></section><section class="case" id="h07" aria-labelledby="h07-title"><div class="case-head"><h2 id="h07-title">Deliver the accepted artifact</h2><a class="case-id" href="https://github.com/newdarwindev/runspindle/issues/14">SYNTHETIC · H07 · ISSUE 14</a></div><p class="summary">Acceptance and delivery have separate receipts for the same artifact.</p><ol class="steps"><li class="step neutral"><p class="surface">Console</p><h3>Accepted</h3><p class="detail">Validation and approval bind the artifact revision and digest.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · accepted-delivery-unknown</a></li><li class="step warn"><p class="surface">Tether</p><h3>Delivery unknown</h3><p class="detail">The upload acknowledgement was lost. Recovery waits for receipt readback.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-tether/blob/1e8d2091c55dfad47fdc64ec2e73fcd946da9921/docs/visual-reference/unknown.png">Tether reference · unknown</a></li><li class="step good"><p class="surface">Tether</p><h3>Delivered</h3><p class="detail">Readback confirms the same bytes at the authorized destination.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-tether/blob/1e8d2091c55dfad47fdc64ec2e73fcd946da9921/docs/visual-reference/delivered.png">Tether reference · delivered</a></li></ol></section><section class="case" id="h09" aria-labelledby="h09-title"><div class="case-head"><h2 id="h09-title">Inspect fleet freshness</h2><a class="case-id" href="https://github.com/newdarwindev/runspindle/issues/16">SYNTHETIC · H09 · ISSUE 16</a></div><p class="summary">The source observation time controls the freshness shown for this host.</p><ol class="steps"><li class="step good"><p class="surface">Console</p><h3>Fresh</h3><p class="detail">The latest host observation is inside the freshness window.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · fresh</a></li><li class="step warn"><p class="surface">Console</p><h3>Stale</h3><p class="detail">The last observation is retained with its original timestamp.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · stale</a></li><li class="step warn"><p class="surface">Console</p><h3>Disconnected</h3><p class="detail">The session stream stopped. The earlier observation remains stale.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · desktop-disconnected</a></li></ol></section><section class="case" id="h08" aria-labelledby="h08-title"><div class="case-head"><h2 id="h08-title">Read correlated telemetry</h2><a class="case-id" href="https://github.com/newdarwindev/runspindle/issues/15">SYNTHETIC · H08 · ISSUE 15</a></div><p class="summary">Queue, export, persistence, and readback are visible as distinct states.</p><ol class="steps"><li class="step neutral"><p class="surface">Console</p><h3>Queued</h3><p class="detail">The trace is buffered locally.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · telemetry-queued</a></li><li class="step warn"><p class="surface">Console</p><h3>Readback unknown</h3><p class="detail">Export succeeded. Backend persistence has no confirmed readback.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · telemetry-exported</a></li><li class="step good"><p class="surface">Console</p><h3>Persisted</h3><p class="detail">The backend confirms persistence for this trace.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · telemetry-persisted</a></li><li class="step good"><p class="surface">Console</p><h3>Read back</h3><p class="detail">The returned trace matches the task and session correlation.</p><a class="reference" href="https://github.com/newdarwindev/runspindle-console/blob/a0706bc907beb17fa5b4a6ad11639d45a02bf9be/visual/scenarios.mjs">Console reference · telemetry-readback</a></li></ol></section></main><footer class="shell">Actual application captures and behavioral acceptance are pending.</footer>
+</body></html>
