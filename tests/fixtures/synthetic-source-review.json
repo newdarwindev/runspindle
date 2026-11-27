@@ -1,0 +1,12 @@
+{
+  "imports": [
+    {"source": "fixture/alpha", "destination": "fixture/docs/alpha", "use": "review", "notice": "fixture-notice-alpha", "already_present": false},
+    {"source": "fixture/beta", "destination": "fixture/docs/beta", "use": "review", "notice": "fixture-notice-beta", "already_present": true},
+    {"source": "fixture/gamma", "destination": "fixture/docs/gamma", "use": "review", "notice": "fixture-notice-gamma", "already_present": true}
+  ],
+  "grants": [
+    {"source": "fixture/alpha", "destination": "fixture/docs/alpha", "use": "review", "notice": "fixture-notice-alpha", "decision": "allow"},
+    {"source": "fixture/beta", "destination": "fixture/docs/beta", "use": "review", "notice": "fixture-notice-beta", "decision": "allow"},
+    {"source": "fixture/gamma", "destination": "fixture/docs/gamma", "use": "review", "notice": "fixture-notice-gamma", "decision": "allow"}
+  ]
+}
