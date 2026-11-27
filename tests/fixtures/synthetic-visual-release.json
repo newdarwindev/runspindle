@@ -1,0 +1,39 @@
+{
+  "baseline": {
+    "storyboard": {
+      "evidence_class": "synthetic_storyboard",
+      "digest": "8ea4ce7c20c8f5daf17e7b15d1b4cc8863b94d63112fb22b8d52ba3dfe8d8c47",
+      "notice": "fixture-original"
+    },
+    "mock-image": {
+      "evidence_class": "mock_application_image",
+      "digest": "d83c4b1e8c64163eb7c166c0a15cdc475ba0c46bd7a52b5f797ab302dd5bc7a8",
+      "notice": "fixture-original"
+    },
+    "deck": {
+      "evidence_class": "synthetic_deck",
+      "digest": "91366efae469b15a592ad448e958d92509a5f2e9d0b907c7a89c200be5428d9a",
+      "notice": "fixture-original"
+    }
+  },
+  "artifacts": [
+    {
+      "key": "storyboard",
+      "evidence_class": "synthetic_storyboard",
+      "bytes": "Invented scene: two boxes and an arrow\n",
+      "notice": "fixture-original"
+    },
+    {
+      "key": "mock-image",
+      "evidence_class": "mock_application_image",
+      "bytes": "Invented pixel rows: .#. | #.#\n",
+      "notice": "fixture-original"
+    },
+    {
+      "key": "deck",
+      "evidence_class": "synthetic_deck",
+      "bytes": "Invented slide 1: mock image; slide 2: mock storyboard\n",
+      "notice": "fixture-original"
+    }
+  ]
+}
