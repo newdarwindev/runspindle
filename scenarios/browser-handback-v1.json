@@ -1,0 +1,29 @@
+{
+  "version": "runspindle.browser-handback-hero.v1",
+  "browser_commit": "595dd6e75b85ce2069e8aa8a8adb5a9271ab67e3",
+  "repeat_runs": 2,
+  "clock": 20,
+  "payload": "synthetic-h06-input",
+  "binding": {
+    "principal": "principal-synthetic",
+    "account": "account-synthetic",
+    "browser": "browser-synthetic",
+    "tab": "tab-synthetic",
+    "intent": "intent-h06",
+    "revision": 1,
+    "origin": "https://example.invalid"
+  },
+  "target": {
+    "native_session": "session-synthetic",
+    "frame": "frame-synthetic",
+    "frame_origin": "https://example.invalid"
+  },
+  "source_sha256": {
+    "browser_runtime/__init__.py": "7a6bb51d38d0a5c9234a49e7a92419b3b1cb91173c7b1da8c848da5bd568e7ee",
+    "browser_runtime/control_leases.py": "52f61447fc514343f35f68705e81c8248268b3eaacf20cbabd6d39681cd316e5",
+    "browser_runtime/credentials.py": "d237655dce633788c5d2c0d1c6417164fc5715a2e9f399ab5295219fcd2e7161",
+    "browser_runtime/effect_schema.py": "32f7f737923e7ed7457a0e4dcf1470e4be93201a104a201741155d0d10099d34",
+    "browser_runtime/effects.py": "9e6c3e06b4f5b8cc66b985f4e43a2d7dd01871ab9c332fca117ea795bfe86ea9",
+    "browser_runtime/guarded_effects.py": "c16f987eea15b3a6bf45b86bdb12affc41bf888fd88ff35a3c48e47cb2d2590e"
+  }
+}
