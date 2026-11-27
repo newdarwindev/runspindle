@@ -1,0 +1,7 @@
+{
+  "pins": {"prepare": "fixture-v1", "effect": "fixture-v2"},
+  "installed": {"prepare": "fixture-v1", "effect": "fixture-v2"},
+  "input": "sample",
+  "expected_effect": {"id": "fixture-operation", "value": "SAMPLE"},
+  "observer": {"id": "fixture-operation", "value": "SAMPLE"}
+}
