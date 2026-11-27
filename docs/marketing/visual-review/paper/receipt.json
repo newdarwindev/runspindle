@@ -1,0 +1,191 @@
+{
+  "artifacts": {
+    "candidate.pdf": "da65d75281d5b2a650ccdfceca538dfa62aba4abf06df0333ab606937209ab7c",
+    "contact-sheet.png": "f52fc1eaf383c7ec8f922ebad69983455b245d18f06ccb3d1551f66fa535a076",
+    "page-01.png": "c535980e665e021b61b41865faad4b5f482b3ab209d18ead26b5fc4cb79813cf",
+    "page-02.png": "dbe04e678f81b39fe920f824218a8b7c6c6f7114a7b831358632e30ddff51f36",
+    "page-03.png": "e258a613ce4d4ee208c003fd9cdbc8dbcbda9f6a8f18c400cc0bd82d2d7797ed",
+    "page-04.png": "17af561e9fb88daa8cb16e034ab6144c5f468f4c04dee10dc3a20068102e5beb",
+    "page-05.png": "be4d7ae582d0b6e6ddbfab054fa578d7bc2fb8e6f15264281cc3b60424545cfe",
+    "page-06.png": "3521093e660482a338e78eba69f4b97c5ebe3521a07cf4618e770e0e0dc0c863",
+    "page-07.png": "78815c2711e05c8a659deb9ea6f85424e0341fff0a56d218d2d0085b92be8c0f",
+    "page-08.png": "e07c5fa4c78acb989916f0248da3fc99f2955d2bcb52e4c03c9c2e602ba18714",
+    "page-09.png": "61273f24831d32fce3eda474675c09fd7c3e8286c93f094cba21e72e1f9c10c1",
+    "page-10.png": "0713d3e71f2cc056fc239548dd0e104447150e2137c963b56b11515a25996b46",
+    "page-11.png": "f59e0c03a0ca78b8f9f7d8228037297fe17bce2b11e7f195ef425bf13bfe3dc3",
+    "page-12.png": "471912521325a21d73265453ab2c6f3724a28d854f4f6c50ea8f29b774fbe5ba",
+    "text.txt": "6a7d34b330debaa51a10c42bee66e55a791ae71d5b5c656fa7a75b8029e0bb4c"
+  },
+  "classification": "offline_tex_candidate",
+  "commit": "e7419bb79684431cc117bec4029e3d55843224c2",
+  "compile": {
+    "authored_inputs": [
+      "paper/diagrams/comparison-contract.tex",
+      "paper/diagrams/effort-ledger.tex",
+      "paper/diagrams/evaluation-register.tex",
+      "paper/diagrams/stop-triage.tex",
+      "paper/diagrams/workflow-boundaries.tex",
+      "runspindle-paper.tex"
+    ],
+    "overfull_boxes": []
+  },
+  "disposition": "SRC-002-disposition.json",
+  "disposition_sha256": "f94f360dd605645970c48e778e11d22369be9259ffd4219548e8f644d1968bee",
+  "output": {
+    "embedded_fonts": [
+      "AKHCZK+LMRoman12-Bold",
+      "BZIVMZ+LMRoman12-Regular",
+      "CAFSZL+LMMathSymbols10-Regular",
+      "DDIEWW+LMMathItalic10-Regular",
+      "IHAIZV+LMRoman17-Regular",
+      "IXFAWU+LMRoman10-Bold",
+      "TQTHRL+LMRoman10-Regular",
+      "VDVGTR+LMRoman10-Italic",
+      "YEUUOC+LMMono10-Regular"
+    ],
+    "external_link_targets": [
+      "https://academic.oup.com/qje/article/140/2/889/7990658",
+      "https://arxiv.org/abs/2210.03629",
+      "https://arxiv.org/abs/2307.13854",
+      "https://arxiv.org/abs/2308.01263",
+      "https://arxiv.org/abs/2403.07718",
+      "https://arxiv.org/abs/2405.15793",
+      "https://arxiv.org/abs/2405.20947",
+      "https://arxiv.org/abs/2406.12045",
+      "https://arxiv.org/abs/2407.01502",
+      "https://arxiv.org/abs/2412.14161",
+      "https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/",
+      "https://help.openai.com/en/articles/11752874-chatgpt-agent",
+      "https://metr.org/blog/2026-02-24-uplift-update/",
+      "https://openai.github.io/openai-agents-python/",
+      "https://www.anthropic.com/research/building-effective-agents",
+      "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents",
+      "https://www.anthropic.com/research/harness-design-long-running-apps",
+      "https://www.nber.org/papers/w25148"
+    ],
+    "pages": [
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 1,
+        "smallest_word_box_points": 8.847,
+        "words": 401
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 2,
+        "smallest_word_box_points": 8.847,
+        "words": 504
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 3,
+        "smallest_word_box_points": 8.847,
+        "words": 480
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 4,
+        "smallest_word_box_points": 8.847,
+        "words": 452
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 5,
+        "smallest_word_box_points": 9.687,
+        "words": 491
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 6,
+        "smallest_word_box_points": 9.687,
+        "words": 590
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 7,
+        "smallest_word_box_points": 9.687,
+        "words": 520
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 8,
+        "smallest_word_box_points": 8.847,
+        "words": 466
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 9,
+        "smallest_word_box_points": 9.687,
+        "words": 500
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 10,
+        "smallest_word_box_points": 9.687,
+        "words": 344
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 11,
+        "smallest_word_box_points": 9.087,
+        "words": 343
+      },
+      {
+        "geometry_points": [
+          612.0,
+          792.0
+        ],
+        "page": 12,
+        "smallest_word_box_points": 9.087,
+        "words": 55
+      }
+    ],
+    "tagged_pdf": false
+  },
+  "previous_publication_sha256": "e463f5ea1d2df7301792d22c08485f9c5c6aaca17beda88eeaab2d326dbc5b23",
+  "profile_sha256": "ca8f96de7e5608ddb4ad837fa99f6630a6438c9bd6fc2cb68b2aaab82239e47c",
+  "review_status": "pending_confirmation",
+  "source": "docs/marketing/runspindle-paper.tex",
+  "source_hashes": {
+    "paper/diagrams/comparison-contract.tex": "12ae466758e489563c7cfd0f700721fed70565404cfe635121f5370accec5155",
+    "paper/diagrams/effort-ledger.tex": "a7b6b665d77832b0cf6f126c1632f4b5a5bb262c3804b5d68f92968f831afc95",
+    "paper/diagrams/evaluation-register.tex": "02d8c787f963ecaea570df46648b91b02f04b8bf0d063b7bd439f841076bba40",
+    "paper/diagrams/stop-triage.tex": "3b4065e983026e7837127c81b287c65985844cdb2184f112174d4f86a9c17044",
+    "paper/diagrams/workflow-boundaries.tex": "4ad9437b29576046069e05b7aaa15a617196637ddcfd0cbacbfb23e819582c08",
+    "runspindle-paper.tex": "c8424f8ab26cc0146bfa98da57daee6d386b92d747fb0223c7b4afd235068f29"
+  },
+  "source_id": "SRC-002"
+}
