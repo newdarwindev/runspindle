@@ -1,0 +1,22 @@
+{
+  "now": 4,
+  "approval": {
+    "provider": "fixture-provider",
+    "project": "fixture-project",
+    "model": "fixture-model",
+    "payload": "fixture-payload-id",
+    "target": "fixture-disposable-target",
+    "disposable": true,
+    "expires": 5,
+    "caps": {"cost_cents": 0, "calls": 1, "tokens": 12, "runtime_ticks": 3}
+  },
+  "request": {
+    "provider": "fixture-provider",
+    "project": "fixture-project",
+    "model": "fixture-model",
+    "payload": "fixture-payload-id",
+    "target": "fixture-disposable-target",
+    "disposable": true,
+    "usage": {"cost_cents": 0, "calls": 1, "tokens": 12, "runtime_ticks": 3}
+  }
+}
