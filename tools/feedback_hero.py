@@ -418,12 +418,126 @@ def worker(root: Path, tether: Path, refinery: Path, mode: str) -> None:
         network.assert_not_called()
 
 
-def observe(root: Path) -> dict[str, Any]:
+def evidence_digest(value: object, *, ensure_ascii: bool = True) -> str:
+    return sha(
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=ensure_ascii,
+            allow_nan=False,
+        ).encode()
+    )
+
+
+def verify_retained_identity(
+    objects: list[Any], retained: list[Any], snapshot: str
+) -> dict[str, Any]:
     # Reuse the composition's independent codec, not Refinery's serializer.
     from tools.maintained_scenarios import decode as component_decode
 
     decode: Any = component_decode
+    records = {
+        kind: (identity, digest, json.loads(p)) for kind, identity, digest, p in objects
+    }
+    require(
+        len(objects) == 6
+        and records.keys()
+        == {"source", "output", "feedback", "rule", "lineage", "feedback_collection"}
+    )
+    for kind in ("feedback", "lineage", "feedback_collection"):
+        identity, digest, _ = records[kind]
+        require(identity == digest)
 
+    values = {kind: decode(wire) for kind, (_, _, wire) in records.items()}
+    lineage = values["lineage"]
+    receipt = values["feedback_collection"]
+    require(snapshot == records["lineage"][0])
+    require(lineage["collection_evidence"] == records["feedback_collection"][0])
+    require(
+        evidence_digest(records["lineage"][2]["dict"]["batch"])
+        == lineage["batch_sha256"]
+        == receipt["batch_sha256"]
+    )
+
+    require(len(retained) == 1 and len(receipt["selected"]) == 1)
+    identity, revision, digest, body = retained[0]
+    event = json.loads(body)
+    entry = receipt["selected"][0]
+    selection = entry["selection"]
+    require(
+        identity
+        == evidence_digest(
+            [event["namespace"], event["feedback_id"]], ensure_ascii=False
+        )
+        and revision == str(event["revision"])
+        and entry["state"] == "active"
+        and entry["head_revision"] == event["revision"]
+        and entry["target"] == event["target"]
+    )
+    require(
+        (
+            selection["namespace"],
+            selection["feedback_id"],
+            selection["revision"],
+            selection["event_sha256"],
+        )
+        == (event["namespace"], event["feedback_id"], event["revision"], digest)
+    )
+
+    source, output, feedback, rule = (
+        values[kind] for kind in ("source", "output", "feedback", "rule")
+    )
+    require(lineage["batch"] == ((source,), (output,), (feedback,), (rule,), "seed"))
+    target = event["target"]
+    require(
+        (output["output_id"], output["revision"], output["sha256"])
+        == (
+            target["artifact_id"],
+            str(target["artifact_revision"]),
+            target["artifact_sha256"],
+        )
+        and sha(output["content"]) == output["sha256"]
+        and (output["source_id"], output["source_revision"], output["source_sha256"])
+        == (source["source_id"], source["revision"], sha(source["content"]))
+        and source["sha256"] == output["source_sha256"]
+    )
+    require(
+        feedback["feedback_id"]
+        == evidence_digest(
+            {
+                "tuple": [
+                    event["namespace"],
+                    event["feedback_id"],
+                    event["revision"],
+                    digest,
+                ]
+            }
+        )
+        and feedback["actor_id"] == event["actor_id"] == "actor"
+        and feedback["kind"] == event["judgment"] == "positive"
+        and feedback["rule_id"] == selection["rule_id"] == rule["rule_id"]
+        and (
+            feedback["output_id"],
+            feedback["output_revision"],
+            feedback["output_sha256"],
+        )
+        == (output["output_id"], output["revision"], output["sha256"])
+    )
+    examples = lineage["dataset"]["examples"]
+    require(len(examples) == 1)
+    example = examples[0]
+    require(
+        example["source"] == source
+        and example["output"] == output
+        and example["feedback"] == (feedback,)
+        and example["rule_id"] == rule["rule_id"]
+        and example["gold"] == output["content"]
+    )
+    return values
+
+
+def observe(root: Path) -> dict[str, Any]:
     for table in ("budgets", "experiments", "attempts", "environments", "activations"):
         require(
             rows(root / "refinery.sqlite", "SELECT count(*) FROM " + table)[0][0] == 0
@@ -433,41 +547,18 @@ def observe(root: Path) -> dict[str, Any]:
         "SELECT kind,identity,digest,payload FROM objects ORDER BY kind,identity",
     )
     require(all(sha(payload) == digest for _, _, digest, payload in objects))
-    values = {kind: decode(json.loads(payload)) for kind, _, _, payload in objects}
     result = json.loads((root / "result.json").read_bytes())
     retained = rows(
         root / "feedback.sqlite",
-        "SELECT revision,digest,body FROM feedback_revisions ORDER BY revision",
+        "SELECT identity,revision,digest,body FROM feedback_revisions ORDER BY revision",
     )
-    require(all(sha(body) == digest for _, digest, body in retained))
+    require(all(sha(body) == digest for _, _, digest, body in retained))
     require(result["provider_calls"] == 0)
-    if objects:
-        require(len(objects) == 6 and len(values) == 6)
-        require(
-            result["snapshot"]
-            == next(identity for kind, identity, _, _ in objects if kind == "lineage")
-        )
-        selection = values["feedback_collection"]["selected"][0]
-        require(selection["selection"]["event_sha256"] == retained[0][1])
-        example = values["lineage"]["dataset"]["examples"][0]
-        require(
-            sha(example["output"]["content"])
-            == example["output"]["sha256"]
-            == selection["target"]["artifact_sha256"]
-        )
-        require(example["feedback"][0]["actor_id"] == "actor")
-        require(
-            values["lineage"]["batch_sha256"]
-            == values["feedback_collection"]["batch_sha256"]
-        )
-        require(
-            values["lineage"]["collection_evidence"]
-            == next(
-                identity
-                for kind, identity, _, _ in objects
-                if kind == "feedback_collection"
-            )
-        )
+    values = (
+        verify_retained_identity(objects, retained, result["snapshot"])
+        if objects
+        else {}
+    )
 
     return {
         "objects": len(objects),
