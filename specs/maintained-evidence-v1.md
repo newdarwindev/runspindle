@@ -17,6 +17,14 @@ reservation and blocks automatic replay. Completed experiment evidence is
 immutable. Scripted and local DSPy lanes report synthetic usage and narrow exact
 match scores; neither measures provider quality or monetary cost.
 
+H11 independently reads the retained lineage and requires each serving
+experiment to evaluate the same locked heldout cohort once per stage. It
+checks exact output revisions, source and split digests, and baseline and
+candidate digests against the fixture and loader ledger. Matching counts
+across experiments alone cannot establish heldout coverage. The H11 fixture
+uses Refinery's explicit standalone synthetic collection marker and evaluation
+opt-in for these invented examples.
+
 Approval verification defaults to deny and binds exact candidate/evaluation/
 policy bytes and environment. A generation compare-and-swap owns each promotion
 or rollback. Activation intent commits before loading. Registry intent is not
